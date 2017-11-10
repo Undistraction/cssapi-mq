@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-env": "^2.4.1",
+    "eslint": "^4.10.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.8.2"
+  },
+  "dependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "rollup": "^0.51.3",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  },
+  "scripts": {
+    "build": "NODE_ENV=development rollup --config",
+    "test": "NODE_ENV=test jest --config jest.config.js --watch",
+    "test:cov": "NODE_ENV=test jest --config jest.config.js --watch --coverage"
+  }
+}

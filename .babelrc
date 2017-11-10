@@ -1,0 +1,20 @@
+{
+  "env": {
+    // Don't disable modules when testing as they are needed
+    "test": {
+      "presets": ["env"]
+    },
+    // Configuration for rollup (needs modules disabled).
+    "development": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false
+          }
+        ]
+      ],
+      "plugins": ["external-helpers"]
+    }
+  }
+}

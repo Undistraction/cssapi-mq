@@ -1,0 +1,12 @@
+engines: 
+  eslint:
+    enabled: true
+    channel: "eslint-4"
+
+ratings:
+  paths:
+    - "src/"
+
+exclude_paths:
+  - "lib/"
+  - "**.test.js"
