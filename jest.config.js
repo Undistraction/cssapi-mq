@@ -5,4 +5,5 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.js'],
   coveragePathIgnorePatterns: ['src/index.js'],
   setupFiles: [],
+  modulePathIgnorePatterns: ['helpers'],
 };

@@ -1,20 +1,13 @@
 {
-  "env": {
-    // Don't disable modules when testing as they are needed
-    "test": {
-      "presets": ["env"]
-    },
-    // Configuration for rollup (needs modules disabled).
-    "development": {
-      "presets": [
-        [
-          "env",
-          {
-            "modules": false
-          }
-        ]
-      ],
-      "plugins": ["external-helpers"]
-    }
-  }
+  "presets": [
+    "env",
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-decorators",
+    "transform-react-constant-elements",
+    "transform-react-inline-elements"
+  ]
 }
