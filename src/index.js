@@ -1,4 +1,3 @@
-import { css } from 'styled-components';
 import {
   keys,
   compose,
@@ -7,10 +6,7 @@ import {
   prop,
   sort,
   toPairs,
-  sortBy,
   reverse,
-  find,
-  indexOf,
   findIndex,
   propEq,
   nth,
@@ -44,12 +40,10 @@ const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
 
 const withUnit = value => {
   const unit = getUnit();
-  console.log(value, unit);
   if (unit === UNITS.EM) {
     return appendUnit(pxToEm(value), UNITS.EM);
-  } else {
-    return appendUnit(value, UNITS.PX);
   }
+  return appendUnit(value, UNITS.PX);
 };
 
 // Each breakpoint represent the area from its value and below until the next
@@ -70,15 +64,6 @@ const getUpperLimit = breakpoint => {
   return compose(prop('name'), nth(index + 1))(breakpointsArray);
 };
 
-// const previousBreakpoint = (name) => {
-//   breakpoints.
-// }
-
-const breakpointExtents = breakpoint => [
-  getLowExtent(breakpoint),
-  getBreakpoint(breakpoint),
-];
-
 const missingBreakpointErrorMessage = name =>
   `There is no breakpoint defined called '${name}', only: ${keys(
     breakpoints
@@ -92,24 +77,27 @@ const getBreakpoint = name => {
 
 const minWidth = breakpoint =>
   `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
+
 const maxWidth = breakpoint =>
   `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
 
-const aboveWidth = (from, ...contents) => css`
-  @media ${DEFAULT_MEDIA_TYPE} and ${minWidth(from)} {
-    ${contents};
-  }
-`;
+const aboveWidth = (from, ...contents) =>
+  `
+    @media ${DEFAULT_MEDIA_TYPE} and ${minWidth(from)} {
+      ${contents};
+    }
+  `;
 
-const belowWidth = (to, ...contents) => css`
-  @media ${DEFAULT_MEDIA_TYPE} and ${maxWidth(to)} {
-    ${css(contents)};
+const belowWidth = (to, ...contents) =>
+  `
+    @media ${DEFAULT_MEDIA_TYPE} and ${maxWidth(to)} {
+      ${contents};
   }
-`;
+  `;
 
-const betweenWidths = (from, to, ...contents) => css`
+const betweenWidths = (from, to, ...contents) => `
   @media ${DEFAULT_MEDIA_TYPE} and ${minWidth(from)} and ${maxWidth(to)} {
-    ${css(contents)};
+    ${contents};
   }
 `;
 
@@ -117,9 +105,8 @@ const atBreakpoint = (breakpoint, ...contents) => {
   const nextBreakpointWider = getUpperLimit(breakpoint);
   if (nextBreakpointWider) {
     return betweenWidths(breakpoint, nextBreakpointWider, ...contents);
-  } else {
-    return aboveWidth(breakpoint, ...contents);
   }
+  return aboveWidth(breakpoint, ...contents);
 };
 
 export default {
