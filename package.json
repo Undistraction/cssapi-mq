@@ -1,6 +1,6 @@
 {
   "name": "styled-mq",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "devDependencies": {
     "babel": "^6.23.0",
