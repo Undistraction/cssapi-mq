@@ -17,3 +17,24 @@ export default styled.div`
   `}
 `
 ```
+
+## Tests
+
+```
+yarn test
+```
+
+## Maintainance
+
+### Bump Version
+```
+npm version patch
+npm version minor
+npm version major
+```
+
+### Publish
+
+```
+npm publish
+```
