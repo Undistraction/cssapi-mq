@@ -1,6 +1,6 @@
 {
   "name": "styled-mq",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "dist/styled-mq.js",
   "devDependencies": {
     "babel": "^6.23.0",
