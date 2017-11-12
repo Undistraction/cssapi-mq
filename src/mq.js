@@ -14,11 +14,11 @@ import {
 } from 'ramda';
 import { validateBreakpoints, validateConfig } from './validations';
 import { MEDIA_TYPES, UNITS } from './const';
+import { appendUnit } from './utils';
 
 // See: http://tzi.fr/css/prevent-double-breakpoint
 const SEPARATOR_VALUE = 0.01;
-
-const appendUnit = (value, unit) => `${value}${unit}`;
+const PREFIX = '@media';
 
 const configure = (
   breakpoints,
@@ -36,6 +36,10 @@ const configure = (
     unit,
     separateIfEms,
   });
+
+  // ---------------------------------------------------------------------------
+  // UTILS
+  // ---------------------------------------------------------------------------
 
   const pxToEm = px => px / baseFontSize;
 
@@ -67,6 +71,19 @@ const configure = (
     return value;
   };
 
+  const buildQueryDefinition = (...elements) =>
+    `${PREFIX} ${elements.join(' and ')}`;
+
+  const buildQuery = (definition, content) => css`
+    ${definition} {
+      ${content};
+    }
+  `;
+
+  // ---------------------------------------------------------------------------
+  // API
+  // ---------------------------------------------------------------------------
+
   const minWidth = breakpoint =>
     `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
 
@@ -80,43 +97,59 @@ const configure = (
     return `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
   };
 
-  const aboveWidth = from => (stringParts, ...interpolationValues) =>
-    css`
-      @media ${defaultMediaType} and ${minWidth(from)} {
-        ${css(stringParts, ...interpolationValues)};
-      }
-    `;
+  const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
+    stringParts,
+    ...interpolationValues
+  ) =>
+    buildQuery(
+      buildQueryDefinition(config.mediaType, minWidth(from)),
+      css(stringParts, ...interpolationValues)
+    );
 
-  const belowWidth = to => (stringParts, ...interpolationValues) =>
-    css`
-      @media ${defaultMediaType} and ${maxWidth(to)} {
-        ${css(stringParts, ...interpolationValues)};
-      }
-    `;
+  const belowWidth = (to, config = { mediaType: defaultMediaType }) => (
+    stringParts,
+    ...interpolationValues
+  ) =>
+    buildQuery(
+      buildQueryDefinition(config.mediaType, maxWidth(to)),
+      css(stringParts, ...interpolationValues)
+    );
 
-  const betweenWidths = (from, to) => (stringParts, ...interpolationValues) =>
-    css`
-      @media ${defaultMediaType} and ${minWidth(from)} and ${maxWidth(to)} {
-        ${css(stringParts, ...interpolationValues)};
-      }
-    `;
+  const betweenWidths = (
+    from,
+    to,
+    config = { mediaType: defaultMediaType }
+  ) => (stringParts, ...interpolationValues) =>
+    buildQuery(
+      buildQueryDefinition(config.mediaType, minWidth(from), maxWidth(to)),
+      css(stringParts, ...interpolationValues)
+    );
 
-  const atBreakpoint = breakpoint => (stringParts, ...interpolationValues) => {
+  const atBreakpoint = (
+    breakpoint,
+    config = { mediaType: defaultMediaType }
+  ) => (stringParts, ...interpolationValues) => {
     const nextBreakpointWider = getUpperLimit(breakpoint);
     if (nextBreakpointWider) {
-      return betweenWidths(breakpoint, nextBreakpointWider)(
+      return betweenWidths(breakpoint, nextBreakpointWider, config)(
         stringParts,
         ...interpolationValues
       );
     }
-    return aboveWidth(breakpoint)(stringParts, ...interpolationValues);
+    return aboveWidth(breakpoint, config)(stringParts, ...interpolationValues);
   };
+
+  // ---------------------------------------------------------------------------
+  // Export
+  // ---------------------------------------------------------------------------
 
   return {
     aboveWidth,
     belowWidth,
     betweenWidths,
     atBreakpoint,
+    minWidth,
+    maxWidth,
   };
 };
 
