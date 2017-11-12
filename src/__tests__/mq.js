@@ -15,38 +15,105 @@ const validBreakpoints = {
 
 const validMQ = () => mq.configure(validBreakpoints);
 
-describe('aboveWidth', () => {
-  it('returns the correct media query', () => {
-    const result = validMQ().aboveWidth('small')`
-      background-color: ${() => 'GhostWhite'};
-    `;
-    expect(result).toMatchSnapshot();
-  });
-});
+describe('api', () => {
+  describe('configuration', () => {
+    it('throws an error if no breakpoints are supplied', () => {
+      expect(() => mq.configure()).toThrow();
+    });
 
-describe('belowWidth', () => {
-  it('returns the correct media query', () => {
-    const result = validMQ().belowWidth('small')`
-      background-color: ${() => 'GhostWhite'};
-    `;
-    expect(result).toMatchSnapshot();
-  });
-});
+    it('throws an error if invalid breakpoint value is supplied', () => {
+      expect(() => mq.configure({ small: 'xxx' })).toThrow();
+    });
 
-describe('betweenWidths', () => {
-  it('returns the correct media query', () => {
-    const result = validMQ().betweenWidths('small', 'medium')`
-      background-color: ${() => 'GhostWhite'};
-    `;
-    expect(result).toMatchSnapshot();
-  });
-});
+    it("doesn't throw an error with default configuration", () => {
+      expect(() => mq.configure({ small: 400 })).not.toThrow();
+    });
 
-describe('atWidth', () => {
-  it('returns the correct media query', () => {
-    const result = validMQ().atBreakpoint('small')`
-      background-color: ${() => 'GhostWhite'};
-    `;
-    expect(result).toMatchSnapshot();
+    describe('config object', () => {
+      it("adjusts values based on 'basefontSize'", () => {
+        const result = mq
+          .configure(validBreakpoints, { baseFontSize: 10 })
+          .belowWidth('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+        expect(result).toMatchSnapshot();
+      });
+
+      it("throws an error if 'baseFontSize' is not a positive number", () => {
+        const config = { baseFontSize: 'xxxx' };
+        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+      });
+
+      it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
+        const config = { baseFontSize: 12 };
+        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+      });
+
+      it("throws an error if 'defaultMediaType' is not valid", () => {
+        const config = { defaultMediaType: 'xxxx' };
+        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+      });
+
+      it("doesn't throw an error if 'defaultMediaType' is valid", () => {
+        const config = { defaultMediaType: 'all' };
+        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+      });
+
+      it("throws an error if 'unit' is not valid", () => {
+        const config = { unit: 'xxxx' };
+        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+      });
+
+      it("doesn't throw an error if 'unit' is valid", () => {
+        const config = { unit: 'px' };
+        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+      });
+
+      it("throws an error if 'separateIfEms' is not a boolean", () => {
+        const config = { separateIfEms: 'xxxx' };
+        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+      });
+
+      it("doesn't throw an error if 'separateIfEms' is a boolean", () => {
+        const config = { separateIfEms: false };
+        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+      });
+    });
+  });
+
+  describe('aboveWidth', () => {
+    it('returns the correct media query', () => {
+      const result = validMQ().aboveWidth('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('belowWidth', () => {
+    it('returns the correct media query', () => {
+      const result = validMQ().belowWidth('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('betweenWidths', () => {
+    it('returns the correct media query', () => {
+      const result = validMQ().betweenWidths('small', 'medium')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
+  });
+
+  describe('atWidth', () => {
+    it('returns the correct media query', () => {
+      const result = validMQ().atBreakpoint('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
   });
 });

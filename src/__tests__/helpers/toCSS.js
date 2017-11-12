@@ -1,15 +1,5 @@
 import { compose, trim } from 'ramda';
 import cssbeautify from 'cssbeautify';
-// import Stylis from 'stylis';
-
-// const stylis = new Stylis({
-//   global: false,
-//   cascade: true,
-//   keyframe: false,
-//   prefix: true,
-//   compress: false,
-//   semicolon: true,
-// });
 
 const collapseSpaces = s => s.replace(/\s\s+/g, ' ');
 const removeBlankLines = s => s.replace(/^\s*\n/gm, '');

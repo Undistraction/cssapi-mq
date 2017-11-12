@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-
 import {
   keys,
   compose,
@@ -13,18 +12,11 @@ import {
   propEq,
   nth,
 } from 'ramda';
+import { validateBreakpoints, validateConfig } from './validations';
+import { MEDIA_TYPES, UNITS } from './const';
 
-const MEDIA_TYPES = Object.freeze({
-  ALL: 'all',
-  PRINT: 'print',
-  SCREEN: 'screen',
-  SPEECH: 'speech',
-});
-
-const UNITS = Object.freeze({
-  EM: 'em',
-  PX: 'px',
-});
+// See: http://tzi.fr/css/prevent-double-breakpoint
+const SEPARATOR_VALUE = 0.01;
 
 const appendUnit = (value, unit) => `${value}${unit}`;
 
@@ -34,8 +26,17 @@ const configure = (
     baseFontSize = 16,
     defaultMediaType = MEDIA_TYPES.SCREEN,
     unit = UNITS.EM,
+    separateIfEms = true,
   } = {}
 ) => {
+  validateBreakpoints(breakpoints);
+  validateConfig({
+    baseFontSize,
+    defaultMediaType,
+    unit,
+    separateIfEms,
+  });
+
   const pxToEm = px => px / baseFontSize;
 
   const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
@@ -69,8 +70,15 @@ const configure = (
   const minWidth = breakpoint =>
     `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
 
-  const maxWidth = breakpoint =>
-    `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
+  const maxWidth = breakpoint => {
+    // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
+    if (unit === UNITS.EM && separateIfEms) {
+      return `(max-width: ${withUnit(
+        getBreakpoint(breakpoint) - SEPARATOR_VALUE
+      )})`;
+    }
+    return `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
+  };
 
   const aboveWidth = from => (stringParts, ...interpolationValues) =>
     css`
