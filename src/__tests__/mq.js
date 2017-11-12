@@ -1,5 +1,5 @@
 import './helpers/toEqualCSS';
-import mq from '../mq';
+import styledMQ from '../mq';
 
 // Register serializer for use by Jest in generating snapshots. Without a serializer the snapshots are difficult to read.
 import cssSerialiser from './helpers/cssSerialiser';
@@ -13,16 +13,16 @@ const validBreakpoints = {
   xLarge: 1300, // 1100–1300
 };
 
-const validMQ = () => mq.configure(validBreakpoints);
+const validMQ = () => styledMQ.configure(validBreakpoints);
 
 describe('api', () => {
   describe('configuration', () => {
     it('throws if no breakpoints are supplied', () => {
-      expect(() => mq.configure()).toThrow();
+      expect(() => styledMQ.configure()).toThrow();
     });
 
     it('throws if invalid breakpoint value is supplied', () => {
-      expect(() => mq.configure({ small: 'xxx' })).toThrow();
+      expect(() => styledMQ.configure({ small: 'xxx' })).toThrow();
     });
 
     it("doesn't throw an error with default configuration", () => {
@@ -31,7 +31,7 @@ describe('api', () => {
 
     describe('config object', () => {
       it("adjusts values based on 'basefontSize'", () => {
-        const result = mq
+        const result = styledMQ
           .configure(validBreakpoints, { baseFontSize: 10 })
           .belowWidth('small')`
         background-color: ${() => 'GhostWhite'};
@@ -41,47 +41,53 @@ describe('api', () => {
 
       it("throws if 'baseFontSize' is not a positive number", () => {
         const config = { baseFontSize: 'xxxx' };
-        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+        expect(() => styledMQ.configure(validBreakpoints, config)).toThrow();
       });
 
       it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
         const config = { baseFontSize: 12 };
-        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+        expect(() =>
+          styledMQ.configure(validBreakpoints, config)
+        ).not.toThrow();
       });
 
       it("throws if 'defaultMediaType' is not valid", () => {
         const config = { defaultMediaType: 'xxxx' };
-        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+        expect(() => styledMQ.configure(validBreakpoints, config)).toThrow();
       });
 
       it("doesn't throw an error if 'defaultMediaType' is valid", () => {
         expect(() =>
-          mq.configure(validBreakpoints, { defaultMediaType: 'all' })
+          styledMQ.configure(validBreakpoints, { defaultMediaType: 'all' })
         ).not.toThrow();
         // Special check for empty string
         expect(() =>
-          mq.configure(validBreakpoints, { defaultMediaType: '' })
+          styledMQ.configure(validBreakpoints, { defaultMediaType: '' })
         ).not.toThrow();
       });
 
       it("throws if 'unit' is not valid", () => {
         const config = { unit: 'xxxx' };
-        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+        expect(() => styledMQ.configure(validBreakpoints, config)).toThrow();
       });
 
       it("doesn't throw an error if 'unit' is valid", () => {
         const config = { unit: 'px' };
-        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+        expect(() =>
+          styledMQ.configure(validBreakpoints, config)
+        ).not.toThrow();
       });
 
       it("throws if 'separateIfEms' is not a boolean", () => {
         const config = { separateIfEms: 'xxxx' };
-        expect(() => mq.configure(validBreakpoints, config)).toThrow();
+        expect(() => styledMQ.configure(validBreakpoints, config)).toThrow();
       });
 
       it("doesn't throw an error if 'separateIfEms' is a boolean", () => {
         const config = { separateIfEms: false };
-        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+        expect(() =>
+          styledMQ.configure(validBreakpoints, config)
+        ).not.toThrow();
       });
     });
   });

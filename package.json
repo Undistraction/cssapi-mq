@@ -1,7 +1,7 @@
 {
   "name": "styled-mq",
   "version": "0.0.6",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-env": "^2.4.1",

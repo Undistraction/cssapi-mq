@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 export default {
   input: 'src/index.js',
   output: {
-    file: 'lib/index.js',
+    file: 'dist/index.js',
     format: 'cjs', // Use Common JS Modules in transpiled code
   },
   plugins: [
