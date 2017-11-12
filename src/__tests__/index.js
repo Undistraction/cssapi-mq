@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 import './helpers/toEqualCSS';
-import mq from '../index';
+import mq from '../mq';
+
+console.log('MQ', mq);
 import cssSerialiser from './helpers/cssSerialiser';
 
 expect.addSnapshotSerializer(cssSerialiser);
