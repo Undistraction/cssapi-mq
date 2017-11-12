@@ -44,16 +44,12 @@ const configure = (
   const pxToEm = px => px / baseFontSize;
 
   const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
+  const orderByValue = compose(reverse, sort(prop('value')));
 
-  const withUnit = value => {
-    if (unit === UNITS.EM) {
-      return appendUnit(pxToEm(value), UNITS.EM);
-    }
-    return appendUnit(value, UNITS.PX);
-  };
+  const withUnit = value =>
+    appendUnit(unit === UNITS.EM ? pxToEm(value) : value, unit);
 
-  const breakpointsArray = () =>
-    compose(reverse, sort(prop('value')))(toBreakpointArray(breakpoints));
+  const breakpointsArray = orderByValue(toBreakpointArray(breakpoints));
 
   const getUpperLimit = breakpoint => {
     const index = findIndex(propEq('name', breakpoint))(breakpointsArray);
@@ -88,23 +84,24 @@ const configure = (
     `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
 
   const maxWidth = breakpoint => {
+    const breakpointValue = getBreakpoint(breakpoint);
     // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
-    if (unit === UNITS.EM && separateIfEms) {
-      return `(max-width: ${withUnit(
-        getBreakpoint(breakpoint) - SEPARATOR_VALUE
-      )})`;
-    }
-    return `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
+    return `(max-width: ${withUnit(
+      unit === UNITS.EM && separateIfEms
+        ? breakpointValue - SEPARATOR_VALUE
+        : breakpointValue
+    )})`;
   };
 
   const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
     ...interpolationValues
-  ) =>
-    buildQuery(
+  ) => {
+    return buildQuery(
       buildQueryDefinition(config.mediaType, minWidth(from)),
       css(stringParts, ...interpolationValues)
     );
+  };
 
   const belowWidth = (to, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -125,11 +122,12 @@ const configure = (
       css(stringParts, ...interpolationValues)
     );
 
-  const atBreakpoint = (
+  const atWidthBreakpoint = (
     breakpoint,
     config = { mediaType: defaultMediaType }
   ) => (stringParts, ...interpolationValues) => {
     const nextBreakpointWider = getUpperLimit(breakpoint);
+    console.log('UPPER', nextBreakpointWider);
     if (nextBreakpointWider) {
       return betweenWidths(breakpoint, nextBreakpointWider, config)(
         stringParts,
@@ -147,7 +145,7 @@ const configure = (
     aboveWidth,
     belowWidth,
     betweenWidths,
-    atBreakpoint,
+    atWidthBreakpoint,
     minWidth,
     maxWidth,
   };

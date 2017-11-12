@@ -17,16 +17,16 @@ const validMQ = () => mq.configure(validBreakpoints);
 
 describe('api', () => {
   describe('configuration', () => {
-    it('throws an error if no breakpoints are supplied', () => {
+    it('throws if no breakpoints are supplied', () => {
       expect(() => mq.configure()).toThrow();
     });
 
-    it('throws an error if invalid breakpoint value is supplied', () => {
+    it('throws if invalid breakpoint value is supplied', () => {
       expect(() => mq.configure({ small: 'xxx' })).toThrow();
     });
 
     it("doesn't throw an error with default configuration", () => {
-      expect(() => mq.configure({ small: 400 })).not.toThrow();
+      expect(() => validMQ.not.toThrow());
     });
 
     describe('config object', () => {
@@ -39,7 +39,7 @@ describe('api', () => {
         expect(result).toMatchSnapshot();
       });
 
-      it("throws an error if 'baseFontSize' is not a positive number", () => {
+      it("throws if 'baseFontSize' is not a positive number", () => {
         const config = { baseFontSize: 'xxxx' };
         expect(() => mq.configure(validBreakpoints, config)).toThrow();
       });
@@ -49,7 +49,7 @@ describe('api', () => {
         expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
       });
 
-      it("throws an error if 'defaultMediaType' is not valid", () => {
+      it("throws if 'defaultMediaType' is not valid", () => {
         const config = { defaultMediaType: 'xxxx' };
         expect(() => mq.configure(validBreakpoints, config)).toThrow();
       });
@@ -64,7 +64,7 @@ describe('api', () => {
         ).not.toThrow();
       });
 
-      it("throws an error if 'unit' is not valid", () => {
+      it("throws if 'unit' is not valid", () => {
         const config = { unit: 'xxxx' };
         expect(() => mq.configure(validBreakpoints, config)).toThrow();
       });
@@ -74,7 +74,7 @@ describe('api', () => {
         expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
       });
 
-      it("throws an error if 'separateIfEms' is not a boolean", () => {
+      it("throws if 'separateIfEms' is not a boolean", () => {
         const config = { separateIfEms: 'xxxx' };
         expect(() => mq.configure(validBreakpoints, config)).toThrow();
       });
@@ -93,6 +93,10 @@ describe('api', () => {
       `;
       expect(result).toMatchSnapshot();
     });
+
+    it("throws if breakpoint doesn't exist", () => {
+      expect(() => validMQ().aboveWidth('xxxx')``).toThrow();
+    });
   });
 
   describe('belowWidth', () => {
@@ -101,6 +105,10 @@ describe('api', () => {
         background-color: ${() => 'GhostWhite'};
       `;
       expect(result).toMatchSnapshot();
+    });
+
+    it("throws if breakpoint doesn't exist", () => {
+      expect(() => validMQ().belowWidth('xxxx')``).toThrow();
     });
   });
 
@@ -111,16 +119,40 @@ describe('api', () => {
       `;
       expect(result).toMatchSnapshot();
     });
+
+    it("throws if 'from' breakpoint doesn't exist", () => {
+      expect(() => validMQ().betweenWidths('xxxx', 'large')``).toThrow();
+    });
+
+    it("throws if 'to' breakpoint doesn't exist", () => {
+      expect(() => validMQ().betweenWidths('large', 'xxxx')``).toThrow();
+    });
   });
 
-  describe('atWidth', () => {
-    it('returns the correct media query', () => {
-      const result = validMQ().atBreakpoint('small')`
+  describe('atBreakpointWidth', () => {
+    it('returns the correct query when it is first breakpoint', () => {
+      const result = validMQ().atWidthBreakpoint('small')`
         background-color: ${() => 'GhostWhite'};
       `;
       expect(result).toMatchSnapshot();
     });
+
+    it('returns the correct query when it is last breakpoint', () => {
+      const result = validMQ().atWidthBreakpoint('xLarge')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
+
+    it('returns the correct query when it is between other breakpoints', () => {
+      const result = validMQ().atWidthBreakpoint('large')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
+
+    it("throws if breakpoint doesn't exist", () => {
+      expect(() => validMQ().atWidthBreakpoint('xxxx')``).toThrow();
+    });
   });
 });
-// eslint-disable-next-line import/prefer-default-export
-export const appendUnit = (value, unit) => `${value}${unit}`;
