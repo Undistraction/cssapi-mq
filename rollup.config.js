@@ -9,13 +9,13 @@ export default {
     file: 'dist/styled-mq.js',
     format: 'cjs', // Use Common JS Modules in transpiled code
   },
+
+  external: ['ramda', 'styled-components'],
   plugins: [
     nodeResolve(),
-
     babel({
-      exclude: 'node_modules/**', // only transpile project source
+      exclude: 'node_modules/**',
     }),
-
     commonjs({
       namedExports: {
         // left-hand side can be an absolute path, a path
