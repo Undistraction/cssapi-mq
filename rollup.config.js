@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 export default {
   input: 'src/index.js',
   output: {
-    file: 'dist/index.js',
+    file: 'dist/styled-mq.js',
     format: 'cjs', // Use Common JS Modules in transpiled code
   },
   plugins: [
