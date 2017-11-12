@@ -20,6 +20,7 @@
     "stylis": "^3.4.0"
   },
   "dependencies": {
+    "cssbeautify": "^0.3.1",
     "eslint": "^4.11.0",
     "ramda": "^0.25.0",
     "react": "^16.1.0",

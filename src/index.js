@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 import {
   keys,
   compose,
@@ -24,94 +26,92 @@ const UNITS = Object.freeze({
   PX: 'px',
 });
 
-const DEFAULT_MEDIA_TYPE = MEDIA_TYPES.SCREEN;
-const DEFAULT_UNIT = UNITS.EM;
-const DEFAULT_BASE_FONT_SIZE = 16;
-
 const appendUnit = (value, unit) => `${value}${unit}`;
 
-const getUnit = () => DEFAULT_UNIT;
+const configure = (
+  breakpoints,
+  {
+    baseFontSize = 16,
+    defaultMediaType = MEDIA_TYPES.SCREEN,
+    unit = UNITS.EM,
+  } = {}
+) => {
+  const pxToEm = px => px / baseFontSize;
 
-const getBaseFontSize = () => DEFAULT_BASE_FONT_SIZE;
+  const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
 
-const pxToEm = px => px / getBaseFontSize();
-
-const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
-
-const withUnit = value => {
-  const unit = getUnit();
-  if (unit === UNITS.EM) {
-    return appendUnit(pxToEm(value), UNITS.EM);
-  }
-  return appendUnit(value, UNITS.PX);
-};
-
-// Each breakpoint represent the area from its value and below until the next
-// breakpoint or zero.
-const breakpoints = {
-  small: 400, // 0–400
-  medium: 900, // 400–900
-  large: 1100, // 900–1100
-  xLarge: 1300, // 1100–1300
-};
-
-const breakpointsArray = compose(reverse, sort(prop('value')))(
-  toBreakpointArray(breakpoints)
-);
-
-const getUpperLimit = breakpoint => {
-  const index = findIndex(propEq('name', breakpoint))(breakpointsArray);
-  return compose(prop('name'), nth(index + 1))(breakpointsArray);
-};
-
-const missingBreakpointErrorMessage = name =>
-  `There is no breakpoint defined called '${name}', only: ${keys(
-    breakpoints
-  )} are defined.`;
-
-const getBreakpoint = name => {
-  const value = breakpoints[name];
-  if (!value) throw new Error(missingBreakpointErrorMessage(name));
-  return value;
-};
-
-const minWidth = breakpoint =>
-  `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
-
-const maxWidth = breakpoint =>
-  `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
-
-const aboveWidth = (from, ...contents) =>
-  `
-    @media ${DEFAULT_MEDIA_TYPE} and ${minWidth(from)} {
-      ${contents};
+  const withUnit = value => {
+    if (unit === UNITS.EM) {
+      return appendUnit(pxToEm(value), UNITS.EM);
     }
-  `;
+    return appendUnit(value, UNITS.PX);
+  };
 
-const belowWidth = (to, ...contents) =>
-  `
-    @media ${DEFAULT_MEDIA_TYPE} and ${maxWidth(to)} {
-      ${contents};
-  }
-  `;
+  const breakpointsArray = () =>
+    compose(reverse, sort(prop('value')))(toBreakpointArray(breakpoints));
 
-const betweenWidths = (from, to, ...contents) => `
-  @media ${DEFAULT_MEDIA_TYPE} and ${minWidth(from)} and ${maxWidth(to)} {
-    ${contents};
-  }
-`;
+  const getUpperLimit = breakpoint => {
+    const index = findIndex(propEq('name', breakpoint))(breakpointsArray);
+    return compose(prop('name'), nth(index + 1))(breakpointsArray);
+  };
 
-const atBreakpoint = (breakpoint, ...contents) => {
-  const nextBreakpointWider = getUpperLimit(breakpoint);
-  if (nextBreakpointWider) {
-    return betweenWidths(breakpoint, nextBreakpointWider, ...contents);
-  }
-  return aboveWidth(breakpoint, ...contents);
+  const missingBreakpointErrorMessage = name =>
+    `There is no breakpoint defined called '${name}', only: '${keys(
+      breakpoints
+    )}' are defined.`;
+
+  const getBreakpoint = name => {
+    const value = breakpoints[name];
+    if (!value) throw new Error(missingBreakpointErrorMessage(name));
+    return value;
+  };
+
+  const minWidth = breakpoint =>
+    `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
+
+  const maxWidth = breakpoint =>
+    `(max-width: ${withUnit(getBreakpoint(breakpoint))})`;
+
+  const aboveWidth = from => (stringParts, ...interpolationValues) =>
+    css`
+      @media ${defaultMediaType} and ${minWidth(from)} {
+        ${css(stringParts, ...interpolationValues)};
+      }
+    `;
+
+  const belowWidth = to => (stringParts, ...interpolationValues) =>
+    css`
+      @media ${defaultMediaType} and ${maxWidth(to)} {
+        ${css(stringParts, ...interpolationValues)};
+      }
+    `;
+
+  const betweenWidths = (from, to) => (stringParts, ...interpolationValues) =>
+    css`
+      @media ${defaultMediaType} and ${minWidth(from)} and ${maxWidth(to)} {
+        ${css(stringParts, ...interpolationValues)};
+      }
+    `;
+
+  const atBreakpoint = breakpoint => (stringParts, ...interpolationValues) => {
+    const nextBreakpointWider = getUpperLimit(breakpoint);
+    if (nextBreakpointWider) {
+      return betweenWidths(breakpoint, nextBreakpointWider)(
+        stringParts,
+        ...interpolationValues
+      );
+    }
+    return aboveWidth(breakpoint)(stringParts, ...interpolationValues);
+  };
+
+  return {
+    aboveWidth,
+    belowWidth,
+    betweenWidths,
+    atBreakpoint,
+  };
 };
 
 export default {
-  aboveWidth,
-  belowWidth,
-  betweenWidths,
-  atBreakpoint,
+  configure,
 };
