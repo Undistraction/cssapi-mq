@@ -55,8 +55,13 @@ describe('api', () => {
       });
 
       it("doesn't throw an error if 'defaultMediaType' is valid", () => {
-        const config = { defaultMediaType: 'all' };
-        expect(() => mq.configure(validBreakpoints, config)).not.toThrow();
+        expect(() =>
+          mq.configure(validBreakpoints, { defaultMediaType: 'all' })
+        ).not.toThrow();
+        // Special check for empty string
+        expect(() =>
+          mq.configure(validBreakpoints, { defaultMediaType: '' })
+        ).not.toThrow();
       });
 
       it("throws an error if 'unit' is not valid", () => {
@@ -117,3 +122,5 @@ describe('api', () => {
     });
   });
 });
+// eslint-disable-next-line import/prefer-default-export
+export const appendUnit = (value, unit) => `${value}${unit}`;

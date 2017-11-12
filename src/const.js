@@ -3,6 +3,7 @@ export const MEDIA_TYPES = Object.freeze({
   PRINT: 'print',
   SCREEN: 'screen',
   SPEECH: 'speech',
+  NONE: '',
 });
 
 export const UNITS = Object.freeze({
