@@ -2,7 +2,7 @@
 
 exports[`aboveWidth returns the correct media query 1`] = `
 @media screen and (min-width: 25em) {
-    background-color: function (props) {
+    background-color: function () {
         return 'GhostWhite';
     }; ;
 }
@@ -10,7 +10,7 @@ exports[`aboveWidth returns the correct media query 1`] = `
 
 exports[`atWidth returns the correct media query 1`] = `
 @media screen and (min-width: 25em) {
-    background-color: function (props) {
+    background-color: function () {
         return 'GhostWhite';
     }; ;
 }
@@ -18,7 +18,7 @@ exports[`atWidth returns the correct media query 1`] = `
 
 exports[`belowWidth returns the correct media query 1`] = `
 @media screen and (max-width: 25em) {
-    background-color: function (props) {
+    background-color: function () {
         return 'GhostWhite';
     }; ;
 }
@@ -26,7 +26,7 @@ exports[`belowWidth returns the correct media query 1`] = `
 
 exports[`betweenWidths returns the correct media query 1`] = `
 @media screen and (min-width: 25em) and (max-width: 56.25em) {
-    background-color: function (props) {
+    background-color: function () {
         return 'GhostWhite';
     }; ;
 }

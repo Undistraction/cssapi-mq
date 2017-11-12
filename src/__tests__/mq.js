@@ -1,8 +1,7 @@
-import { css } from 'styled-components';
 import './helpers/toEqualCSS';
 import mq from '../mq';
 
-console.log('MQ', mq);
+// Register serializer for use by Jest in generating snapshots. Without a serializer the snapshots are difficult to read.
 import cssSerialiser from './helpers/cssSerialiser';
 
 expect.addSnapshotSerializer(cssSerialiser);
@@ -19,7 +18,7 @@ const validMQ = () => mq.configure(validBreakpoints);
 describe('aboveWidth', () => {
   it('returns the correct media query', () => {
     const result = validMQ().aboveWidth('small')`
-      background-color: ${props => 'GhostWhite'};
+      background-color: ${() => 'GhostWhite'};
     `;
     expect(result).toMatchSnapshot();
   });
@@ -28,7 +27,7 @@ describe('aboveWidth', () => {
 describe('belowWidth', () => {
   it('returns the correct media query', () => {
     const result = validMQ().belowWidth('small')`
-      background-color: ${props => 'GhostWhite'};
+      background-color: ${() => 'GhostWhite'};
     `;
     expect(result).toMatchSnapshot();
   });
@@ -37,7 +36,7 @@ describe('belowWidth', () => {
 describe('betweenWidths', () => {
   it('returns the correct media query', () => {
     const result = validMQ().betweenWidths('small', 'medium')`
-      background-color: ${props => 'GhostWhite'};
+      background-color: ${() => 'GhostWhite'};
     `;
     expect(result).toMatchSnapshot();
   });
@@ -46,7 +45,7 @@ describe('betweenWidths', () => {
 describe('atWidth', () => {
   it('returns the correct media query', () => {
     const result = validMQ().atBreakpoint('small')`
-      background-color: ${props => 'GhostWhite'};
+      background-color: ${() => 'GhostWhite'};
     `;
     expect(result).toMatchSnapshot();
   });
