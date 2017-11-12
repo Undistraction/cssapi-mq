@@ -16,7 +16,6 @@ import { validateBreakpoints, validateConfig } from './validations';
 import { MEDIA_TYPES, UNITS } from './const';
 import { appendUnit } from './utils';
 
-// See: http://tzi.fr/css/prevent-double-breakpoint
 const SEPARATOR_VALUE = 0.01;
 const PREFIX = '@media';
 
@@ -96,12 +95,11 @@ const configure = (
   const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
     ...interpolationValues
-  ) => {
-    return buildQuery(
+  ) =>
+    buildQuery(
       buildQueryDefinition(config.mediaType, minWidth(from)),
       css(stringParts, ...interpolationValues)
     );
-  };
 
   const belowWidth = (to, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -127,7 +125,6 @@ const configure = (
     config = { mediaType: defaultMediaType }
   ) => (stringParts, ...interpolationValues) => {
     const nextBreakpointWider = getUpperLimit(breakpoint);
-    console.log('UPPER', nextBreakpointWider);
     if (nextBreakpointWider) {
       return betweenWidths(breakpoint, nextBreakpointWider, config)(
         stringParts,

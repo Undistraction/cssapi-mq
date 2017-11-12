@@ -6,7 +6,9 @@ A small library to help with using media queries alongside styled-components.
 yarn add styled-mq
 ```
 
-## Basic Usage
+## Configuration
+
+## API
 
 ```
 import mq from 'styled-mq`;
