@@ -8,5 +8,5 @@ ratings:
     - "src/"
 
 exclude_paths:
-  - "lib/"
+  - "dist/"
   - "**.test.js"
