@@ -40,6 +40,10 @@ describe('configuration', () => {
     expect(() => styledMQ.configure()).toThrowError(InvalidValueError);
   });
 
+  it('throws if no breakpoint sets are supplied', () => {
+    expect(() => styledMQ.configure({})).toThrowError(InvalidValueError);
+  });
+
   it('throws if invalid breakpoint value is supplied', () => {
     expect(() => styledMQ.configure({ width: { small: 'xxx' } })).toThrowError(
       InvalidValueError

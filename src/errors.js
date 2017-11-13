@@ -26,6 +26,10 @@ export const throwError = message => {
   throw new InvalidValueError(message);
 };
 
+export const emptyBreakpointMapErrorMessage = () => `
+  You must supply atleast one set of breakpoints, but the you supplied an empty object to 'configure().'
+`;
+
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   `You must supply valid breakpoint map keys. Valid values are: '${
     BREAKPOINT_MAP_NAMES
@@ -58,8 +62,8 @@ export const invalidMediaTypeErrorMessage = value =>
     MEDIA_TYPES
   }) but you supplied: '${value}'`;
 
-export const noUnitAllowedUnitErrorMessage = breakpoints =>
-  `You must supply unitless values for each breakpoint but you supplied ${
+export const invalidBreakpointValueErrorMessage = breakpoints =>
+  `You must supply a unitless number for each breakpoint but you supplied ${
     breakpoints
   }`;
 

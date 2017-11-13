@@ -20,9 +20,10 @@ import {
 import { ensureArray, isNumber, isObject, isBoolean } from './utils';
 import {
   throwError,
-  invalidBreakpointNamesErrorMessage,
+  emptyBreakpointMapErrorMessage,
   emptyBreakpointSetErrorMessage,
-  noUnitAllowedUnitErrorMessage,
+  invalidBreakpointNamesErrorMessage,
+  invalidBreakpointValueErrorMessage,
   invalidBaseFontSizeErrorMessage,
   invalidDefaultMediaTypeErrorMessage,
   invalidUnitErrorMessage,
@@ -30,8 +31,8 @@ import {
   invalidOrientationErrorMessage,
 } from './errors';
 
-const breakpointsWereSupplied = both(complement(isEmpty), isObject);
-const breakpointValuesAreValid = compose(all(isNumber), values);
+const populatedObject = both(complement(isEmpty), isObject);
+const valuesAreNumbers = compose(all(isNumber), values);
 const baseFontSizeIsValid = both(isNumber, gt(__, 0));
 const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
 const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
@@ -41,11 +42,11 @@ const unitIsValid = contains(__, values(UNITS));
 const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
 // Validate a set of breakpoints.
 const validateBreakpointSet = (name, breakpoints) => {
-  if (!breakpointsWereSupplied(breakpoints))
+  if (!populatedObject(breakpoints))
     throwError(emptyBreakpointSetErrorMessage(name));
 
-  if (!breakpointValuesAreValid(breakpoints))
-    throwError(noUnitAllowedUnitErrorMessage(values(breakpoints)));
+  if (!valuesAreNumbers(breakpoints))
+    throwError(invalidBreakpointValueErrorMessage(values(breakpoints)));
 };
 
 // -----------------------------------------------------------------------------
@@ -58,6 +59,13 @@ export const validateBreakpointMapNames = breakpointMap => {
   if (!breakpointMap || !breakpointMapNamesAreValid(breakpointMap)) {
     throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
   }
+};
+
+export const validateBreakpoints = breakpoints => {
+  if (!populatedObject(breakpoints))
+    throwError(emptyBreakpointMapErrorMessage());
+
+  validateBreakpointMapNames(breakpoints);
 };
 
 export const validateBreakpointSets = compose(

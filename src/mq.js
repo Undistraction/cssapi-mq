@@ -6,6 +6,7 @@ import {
   validateConfig,
   mediaTypesAreValid,
   validateOrientation,
+  validateBreakpoints,
 } from './validations';
 import { MEDIA_TYPES, UNITS, SEPARATOR_VALUE } from './const';
 import {
@@ -37,7 +38,7 @@ const configure = (
     shouldSeparateQueries = true,
   } = {}
 ) => {
-  validateBreakpointMapNames(breakpoints);
+  validateBreakpoints(breakpoints);
   const { width: widthBreakpoints, height: heightBreakpoints } = breakpoints;
 
   validateBreakpointSets(breakpoints);
