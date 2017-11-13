@@ -2,6 +2,24 @@
   "name": "styled-mq",
   "version": "0.0.9",
   "main": "dist/styled-mq.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Undistraction/styled-mq.git"
+  },
+  "files": ["dist", "src"],
+  "keywords": [
+    "styled-components",
+    "media-queries",
+    "css-in-js",
+    "css",
+    "breakpoints"
+  ],
+  "author": "Pedr Browne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Undistraction/styled-mq/issues"
+  },
+  "homepage": "https://github.com/Undistraction/styled-mq",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-env": "^2.4.1",
