@@ -8,6 +8,8 @@ import {
   values,
   all,
   gt,
+  toPairs,
+  map,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
 import { ensureArray, isNumber, isObject, isBoolean } from './utils';
@@ -30,6 +32,14 @@ const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const unitIsValid = contains(__, values(UNITS));
 // Validate a map of breakpoint sets.
 const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
+// Validate a set of breakpoints.
+const validateBreakpointSet = (name, breakpoints) => {
+  if (!breakpointsWereSupplied(breakpoints))
+    throwError(emptyBreakpointSetErrorMessage(name));
+
+  if (!breakpointValuesAreValid(breakpoints))
+    throwError(noUnitAllowedUnitErrorMessage(values(breakpoints)));
+};
 
 // -----------------------------------------------------------------------------
 // Exports
@@ -43,14 +53,10 @@ export const validateBreakpointMapNames = breakpointMap => {
   }
 };
 
-// Validate a set of breakpoints.
-export const validateBreakpointSet = (name, breakpoints) => {
-  if (!breakpointsWereSupplied(breakpoints))
-    throwError(emptyBreakpointSetErrorMessage(name));
-
-  if (!breakpointValuesAreValid(breakpoints))
-    throwError(noUnitAllowedUnitErrorMessage(values(breakpoints)));
-};
+export const validateBreakpointSets = compose(
+  map(([name, value]) => validateBreakpointSet(name, value)),
+  toPairs
+);
 
 export const validateConfig = ({
   baseFontSize,

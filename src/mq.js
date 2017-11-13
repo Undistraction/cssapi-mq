@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
-import { partial } from 'ramda';
+import { partial, compose, toPairs, map } from 'ramda';
 import {
   validateBreakpointMapNames,
-  validateBreakpointSet,
+  validateBreakpointSets,
   validateConfig,
   mediaTypesAreValid,
 } from './validations';
@@ -38,8 +38,9 @@ const configure = (
   validateBreakpointMapNames(breakpoints);
   const widthBreakpoints = breakpoints.width;
   const heightBreakpoints = breakpoints.height;
-  if (widthBreakpoints) validateBreakpointSet('width', widthBreakpoints);
-  if (heightBreakpoints) validateBreakpointSet('height', heightBreakpoints);
+
+  validateBreakpointSets(breakpoints);
+
   validateConfig({
     baseFontSize,
     defaultMediaType,
