@@ -120,10 +120,10 @@ const configure = (
       css(stringParts, ...interpolationValues)
     );
 
-  const atWidthBreakpoint = (
-    breakpoint,
-    config = { mediaType: defaultMediaType }
-  ) => (stringParts, ...interpolationValues) => {
+  const atWidth = (breakpoint, config = { mediaType: defaultMediaType }) => (
+    stringParts,
+    ...interpolationValues
+  ) => {
     const nextBreakpointWider = getUpperLimit(breakpoint);
     if (nextBreakpointWider) {
       return betweenWidths(breakpoint, nextBreakpointWider, config)(
@@ -142,7 +142,7 @@ const configure = (
     aboveWidth,
     belowWidth,
     betweenWidths,
-    atWidthBreakpoint,
+    atWidth,
     minWidth,
     maxWidth,
   };

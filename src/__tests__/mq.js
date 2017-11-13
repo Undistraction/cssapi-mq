@@ -137,28 +137,28 @@ describe('api', () => {
 
   describe('atBreakpointWidth', () => {
     it('returns the correct query when it is first breakpoint', () => {
-      const result = validMQ().atWidthBreakpoint('small')`
+      const result = validMQ().atWidth('small')`
         background-color: ${() => 'GhostWhite'};
       `;
       expect(result).toMatchSnapshot();
     });
 
     it('returns the correct query when it is last breakpoint', () => {
-      const result = validMQ().atWidthBreakpoint('xLarge')`
+      const result = validMQ().atWidth('xLarge')`
         background-color: ${() => 'GhostWhite'};
       `;
       expect(result).toMatchSnapshot();
     });
 
     it('returns the correct query when it is between other breakpoints', () => {
-      const result = validMQ().atWidthBreakpoint('large')`
+      const result = validMQ().atWidth('large')`
         background-color: ${() => 'GhostWhite'};
       `;
       expect(result).toMatchSnapshot();
     });
 
     it("throws if breakpoint doesn't exist", () => {
-      expect(() => validMQ().atWidthBreakpoint('xxxx')``).toThrow();
+      expect(() => validMQ().atWidth('xxxx')``).toThrow();
     });
   });
 });
