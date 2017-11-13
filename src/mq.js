@@ -1,6 +1,10 @@
 import { css } from 'styled-components';
 import { partial } from 'ramda';
-import { validateBreakpoints, validateConfig } from './validations';
+import {
+  validateBreakpoints,
+  validateConfig,
+  mediaTypesAreValid,
+} from './validations';
 import { MEDIA_TYPES, UNITS, SEPARATOR_VALUE } from './const';
 import {
   orderByValue,
@@ -11,11 +15,13 @@ import {
   unitIsRemOrEm,
   buildQuery,
   buildQueryDefinition,
+  ensureArray,
 } from './utils';
 import {
   throwError,
   missingBreakpointErrorMessage,
   sameBreakpointsForBetweenErrrorMessage,
+  invalidMediaTypeErrorMessage,
 } from './errors';
 
 const configure = (
@@ -80,6 +86,13 @@ const configure = (
     )})`;
   };
 
+  const mediaType = (mediaTypes = [defaultMediaType]) => {
+    const mediaTypesArray = ensureArray(mediaTypes);
+    if (!mediaTypesAreValid(mediaTypesArray))
+      throwError(invalidMediaTypeErrorMessage(mediaTypesArray));
+    return mediaTypesArray.join(', ');
+  };
+
   // Media Queries
   // ---------------------------------------------------------------------------
 
@@ -88,7 +101,7 @@ const configure = (
     ...interpolationValues
   ) =>
     buildQuery(
-      buildQueryDefinition(config.mediaType, minWidth(from)),
+      buildQueryDefinition(mediaType(config.mediaType), minWidth(from)),
       css(stringParts, ...interpolationValues)
     );
 
@@ -97,7 +110,7 @@ const configure = (
     ...interpolationValues
   ) =>
     buildQuery(
-      buildQueryDefinition(config.mediaType, maxWidth(to)),
+      buildQueryDefinition(mediaType(config.mediaType), maxWidth(to)),
       css(stringParts, ...interpolationValues)
     );
 
@@ -109,7 +122,11 @@ const configure = (
     if (from === to) throwError(sameBreakpointsForBetweenErrrorMessage(from));
     const [lower, higher] = ensureBreakpointOrderWithBreakpoints(from, to);
     return buildQuery(
-      buildQueryDefinition(config.mediaType, minWidth(lower), maxWidth(higher)),
+      buildQueryDefinition(
+        mediaType(config.mediaType),
+        minWidth(lower),
+        maxWidth(higher)
+      ),
       css(stringParts, ...interpolationValues)
     );
   };
@@ -139,6 +156,7 @@ const configure = (
     atWidth,
     minWidth,
     maxWidth,
+    mediaType,
   };
 };
 

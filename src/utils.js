@@ -14,9 +14,17 @@ import {
   propEq,
   nth,
   subtract,
+  when,
+  is,
 } from 'ramda';
 import { css } from 'styled-components';
 import { UNITS, MEDIA_PREFIX } from './const';
+
+// -----------------------------------------------------------------------------
+// Exports
+// -----------------------------------------------------------------------------
+
+export const ensureArray = when(is(String), mediaTypes => [mediaTypes]);
 
 export const appendUnit = (value, unit) => `${value}${unit}`;
 

@@ -11,12 +11,19 @@ import {
   gt,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
+import { ensureArray } from './utils';
 
 const breakpointsWereSupplied = both(complement(isEmpty), is(Object));
 const breakpointValuesAreValid = compose(all(is(Number)), values);
 const baseFontSizeIsValid = both(is(Number), gt(__, 0));
-const defaultMediaTypeIsValid = contains(__, values(MEDIA_TYPES));
+const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
 const unitIsValid = contains(__, values(UNITS));
+
+// -----------------------------------------------------------------------------
+// Exports
+// -----------------------------------------------------------------------------
+
+export const mediaTypesAreValid = all(t => mediaTypeIsValid(t));
 
 export const validateBreakpoints = breakpoints => {
   if (!breakpointsWereSupplied(breakpoints))
@@ -43,7 +50,7 @@ export const validateConfig = ({
       `baseFontSize must be a number, but you supplied '${baseFontSize}'`
     );
 
-  if (!defaultMediaTypeIsValid(defaultMediaType)) {
+  if (!mediaTypesAreValid(ensureArray(defaultMediaType))) {
     throw new Error(
       `'defaultMediaType' must be one of '${values(MEDIA_TYPES)}' but was '${
         defaultMediaType

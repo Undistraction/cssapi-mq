@@ -63,3 +63,13 @@ exports[`api configuration config object adjusts values based on 'basefontSize' 
     }; ;
 }
 `;
+
+exports[`api maxWidth returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
+
+exports[`api mediaType returns the configured media type if passed in as argument 1`] = `print`;
+
+exports[`api mediaType returns the configured media type if passed in as argument 2`] = `print, screen`;
+
+exports[`api mediaType returns the correct default media type if called with no arguments 1`] = `screen`;
+
+exports[`api minWidth returns the correct media fragment 1`] = `(min-width: 25em)`;

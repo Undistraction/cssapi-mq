@@ -60,9 +60,13 @@ describe('api', () => {
         expect(() =>
           styledMQ.configure(validBreakpoints, { defaultMediaType: 'all' })
         ).not.toThrow();
-        // Special check for empty string
         expect(() =>
           styledMQ.configure(validBreakpoints, { defaultMediaType: '' })
+        ).not.toThrow();
+        expect(() =>
+          styledMQ.configure(validBreakpoints, {
+            defaultMediaType: ['screen', 'print'],
+          })
         ).not.toThrow();
       });
 
@@ -92,7 +96,43 @@ describe('api', () => {
     });
   });
 
-  // describe('minWidth')
+  describe('minWidth', () => {
+    it('returns the correct media fragment', () => {
+      expect(validMQ().minWidth('small')).toMatchSnapshot();
+    });
+
+    it("throws if breakpoint doesn't exist", () => {
+      expect(() => validMQ().minWidth('xxxx')).toThrow();
+    });
+  });
+
+  describe('maxWidth', () => {
+    it('returns the correct media fragment', () => {
+      expect(validMQ().maxWidth('small')).toMatchSnapshot();
+    });
+
+    it("throws if breakpoint doesn't exist", () => {
+      expect(() => validMQ().maxWidth('xxxx')).toThrow();
+    });
+  });
+
+  describe('mediaType', () => {
+    it('returns the correct default media type if called with no arguments', () => {
+      expect(validMQ().mediaType()).toMatchSnapshot();
+    });
+
+    it('returns the configured media type if passed in as argument', () => {
+      expect(validMQ().mediaType('print')).toMatchSnapshot();
+    });
+
+    it('returns the configured media type if passed in as argument', () => {
+      expect(validMQ().mediaType(['print', 'screen'])).toMatchSnapshot();
+    });
+
+    it('throws if arument is not valid media type', () => {
+      expect(() => validMQ().mediaType('xxxx')).toThrow();
+    });
+  });
 
   describe('aboveWidth', () => {
     it('returns the correct media query', () => {
