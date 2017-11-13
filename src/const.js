@@ -19,8 +19,8 @@ export const UNITS = Object.freeze({
 export const BREAKPOINT_MAP_NAMES = [
   'width',
   'height',
-  'deviceWidth',
-  'deviceHeight',
+  'resolution',
+  'aspectRatio',
 ];
 
 export const ORIENTATIONS = ['portrait', 'landscape'];
