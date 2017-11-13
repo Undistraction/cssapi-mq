@@ -1,28 +1,52 @@
 import { keys, values } from 'ramda';
 import { MEDIA_TYPES, BREAKPOINT_MAP_NAMES } from './const';
 
+// Horrible hackery to get round issues with Babel extending builtins.
+// This is the only way to have a custom error.
+const InvalidValueError = function(message) {
+  const error = new Error(message);
+  error.name = 'InvalidValueError';
+  this.name = error.name;
+  this.message = error.message;
+  if (error.stack) this.stack = error.stack;
+  this.toString = function() {
+    return `${this.name}: ${this.message}`;
+  };
+};
+InvalidValueError.prototype = new Error();
+InvalidValueError.prototype.name = 'InvalidValueError';
+
 // -----------------------------------------------------------------------------
 // Exports
 // -----------------------------------------------------------------------------
 
+export { InvalidValueError };
+
 export const throwError = message => {
-  throw new Error(message);
+  throw new InvalidValueError(message);
 };
 
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   `You must supply valid breakpoint map keys. Valid values are: '${
     BREAKPOINT_MAP_NAMES
-  }'. but you supplied: '${keys(breakpointMap)}.`;
+  }'. but you supplied: '${breakpointMap}'.`;
 
 export const emptyBreakpointSetErrorMessage = breakpointMapName =>
   `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${
     breakpointMapName
   }' map.`;
 
-export const missingBreakpointErrorMessage = (breakpoints, name) =>
-  `There is no breakpoint defined called '${name}', only: '${keys(
-    breakpoints
-  )}' are defined.`;
+export const mssingBreakpointMapErrorMessage = name =>
+  `There is no breakpoint map for ${name}`;
+
+export const missingBreakpointErrorMessage = (
+  breakpoints,
+  breakpointMapName,
+  name
+) =>
+  `There is no '${breakpointMapName}' breakpoint defined called '${
+    name
+  }', only: '${keys(breakpoints)}' are defined.`;
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
   `You must supply two different breakpoints to 'widthBetween' but both were: '${
