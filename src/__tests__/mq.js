@@ -128,12 +128,23 @@ describe('api', () => {
       expect(result).toMatchSnapshot();
     });
 
+    it('returns the correct media query with breakpoint order reversed', () => {
+      const result = validMQ().betweenWidths('medium', 'small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+      expect(result).toMatchSnapshot();
+    });
+
     it("throws if 'from' breakpoint doesn't exist", () => {
       expect(() => validMQ().betweenWidths('xxxx', 'large')``).toThrow();
     });
 
     it("throws if 'to' breakpoint doesn't exist", () => {
       expect(() => validMQ().betweenWidths('large', 'xxxx')``).toThrow();
+    });
+
+    it("throws if 'from' and 'to' breakpoints are the samet", () => {
+      expect(() => validMQ().betweenWidths('large', 'large')``).toThrow();
     });
   });
 

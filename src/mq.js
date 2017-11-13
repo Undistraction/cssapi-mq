@@ -3,7 +3,6 @@ import {
   __,
   inc,
   divide,
-  curry,
   keys,
   contains,
   compose,
@@ -16,6 +15,7 @@ import {
   findIndex,
   propEq,
   nth,
+  partial,
 } from 'ramda';
 import { validateBreakpoints, validateConfig } from './validations';
 import { MEDIA_TYPES, UNITS } from './const';
@@ -24,6 +24,8 @@ import { appendUnit } from './utils';
 const SEPARATOR_VALUE = 0.01;
 const MEDIA_PREFIX = '@media';
 
+const ensureBreakpointOrder = (breakpoints, ...args) =>
+  sort((a, b) => breakpoints[a] - breakpoints[b])(args);
 const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
 const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
 const orderByValue = compose(reverse, sort(prop('value')));
@@ -35,6 +37,10 @@ const missingBreakpointErrorMessage = (breakpoints, name) =>
   `There is no breakpoint defined called '${name}', only: '${keys(
     breakpoints
   )}' are defined.`;
+const sameBreakpointsForBetweenErrrorMessage = name =>
+  `You must supply two different breakpoints to 'widthBetween' but both were: '${
+    name
+  }'.`;
 
 const buildQueryDefinition = (...elements) =>
   `${MEDIA_PREFIX} ${elements.join(' and ')}`;
@@ -47,6 +53,10 @@ const buildQuery = (definition, content) => css`
 
 const toOutput = (unit, baseFontSize, value) =>
   appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);
+
+const throwError = message => {
+  throw new Error(message);
+};
 
 const configure = (
   breakpoints,
@@ -71,16 +81,22 @@ const configure = (
 
   const breakpointsArray = orderByValue(toBreakpointArray(breakpoints));
 
-  const getUpperLimitWithBreakpoints = curry(getUpperLimit)(breakpointsArray);
-  const missingBreakpointErrorMessageWithBreakpoints = curry(
-    missingBreakpointErrorMessage
-  )(breakpoints);
-  const toOutputWithUnit = curry(toOutput)(unit)(baseFontSize);
+  const getUpperLimitWithBreakpoints = partial(getUpperLimit, [
+    breakpointsArray,
+  ]);
+  const missingBreakpointErrorMessageWithBreakpoints = partial(
+    missingBreakpointErrorMessage,
+    [breakpoints]
+  );
+  const toOutputWithUnit = partial(toOutput, [unit, baseFontSize]);
+
+  const ensureBreakpointOrderWithBreakpoints = partial(ensureBreakpointOrder, [
+    breakpoints,
+  ]);
 
   const getBreakpoint = name => {
     const value = breakpoints[name];
-    if (!value)
-      throw new Error(missingBreakpointErrorMessageWithBreakpoints(name));
+    if (!value) throwError(missingBreakpointErrorMessageWithBreakpoints(name));
     return value;
   };
 
@@ -129,11 +145,14 @@ const configure = (
     from,
     to,
     config = { mediaType: defaultMediaType }
-  ) => (stringParts, ...interpolationValues) =>
-    buildQuery(
-      buildQueryDefinition(config.mediaType, minWidth(from), maxWidth(to)),
+  ) => (stringParts, ...interpolationValues) => {
+    if (from === to) throwError(sameBreakpointsForBetweenErrrorMessage(from));
+    const [lower, higher] = ensureBreakpointOrderWithBreakpoints(from, to);
+    return buildQuery(
+      buildQueryDefinition(config.mediaType, minWidth(lower), maxWidth(higher)),
       css(stringParts, ...interpolationValues)
     );
+  };
 
   const atWidth = (breakpoint, config = { mediaType: defaultMediaType }) => (
     stringParts,

@@ -48,6 +48,14 @@ exports[`api betweenWidths returns the correct media query 1`] = `
 }
 `;
 
+exports[`api betweenWidths returns the correct media query with breakpoint order reversed 1`] = `
+@media screen and (min-width: 25em) and (max-width: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`api configuration config object adjusts values based on 'basefontSize' 1`] = `
 @media screen and (max-width: 39.999em) {
     background-color: function () {
