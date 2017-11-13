@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { partial, compose, toPairs, map } from 'ramda';
+import { partial } from 'ramda';
 import {
   validateBreakpointMapNames,
   validateBreakpointSets,
