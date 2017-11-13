@@ -1,62 +1,22 @@
 import { css } from 'styled-components';
-import {
-  __,
-  inc,
-  divide,
-  keys,
-  contains,
-  compose,
-  map,
-  zipObj,
-  prop,
-  sort,
-  toPairs,
-  reverse,
-  findIndex,
-  propEq,
-  nth,
-  partial,
-} from 'ramda';
+import { partial } from 'ramda';
 import { validateBreakpoints, validateConfig } from './validations';
-import { MEDIA_TYPES, UNITS } from './const';
-import { appendUnit } from './utils';
-
-const SEPARATOR_VALUE = 0.01;
-const MEDIA_PREFIX = '@media';
-
-const ensureBreakpointOrder = (breakpoints, ...args) =>
-  sort((a, b) => breakpoints[a] - breakpoints[b])(args);
-const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
-const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
-const orderByValue = compose(reverse, sort(prop('value')));
-const getUpperLimit = (breakpointsArray, breakpoint) => {
-  const index = findIndex(propEq('name', breakpoint))(breakpointsArray);
-  return compose(prop('name'), nth(inc(index)))(breakpointsArray);
-};
-const missingBreakpointErrorMessage = (breakpoints, name) =>
-  `There is no breakpoint defined called '${name}', only: '${keys(
-    breakpoints
-  )}' are defined.`;
-const sameBreakpointsForBetweenErrrorMessage = name =>
-  `You must supply two different breakpoints to 'widthBetween' but both were: '${
-    name
-  }'.`;
-
-const buildQueryDefinition = (...elements) =>
-  `${MEDIA_PREFIX} ${elements.join(' and ')}`;
-
-const buildQuery = (definition, content) => css`
-  ${definition} {
-    ${content};
-  }
-`;
-
-const toOutput = (unit, baseFontSize, value) =>
-  appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);
-
-const throwError = message => {
-  throw new Error(message);
-};
+import { MEDIA_TYPES, UNITS, SEPARATOR_VALUE } from './const';
+import {
+  orderByValue,
+  toBreakpointArray,
+  getUpperLimit,
+  toOutput,
+  ensureBreakpointOrder,
+  unitIsRemOrEm,
+  buildQuery,
+  buildQueryDefinition,
+} from './utils';
+import {
+  throwError,
+  missingBreakpointErrorMessage,
+  sameBreakpointsForBetweenErrrorMessage,
+} from './errors';
 
 const configure = (
   breakpoints,

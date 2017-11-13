@@ -11,3 +11,7 @@ export const UNITS = Object.freeze({
   REM: 'rem',
   PX: 'px',
 });
+
+export const SEPARATOR_VALUE = 0.01;
+
+export const MEDIA_PREFIX = '@media';
