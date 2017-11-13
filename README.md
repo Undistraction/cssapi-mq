@@ -1,3 +1,5 @@
+![Grid Model Logo](https://dl.dropbox.com/s/i2frqmnui6fr5ki/styled-mq-logo.png?dl=0)
+
 # Styled MQ
 
 A small library to help with using media queries alongside styled-components.
