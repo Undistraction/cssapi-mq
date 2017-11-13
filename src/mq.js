@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 import {
+  __,
   keys,
+  contains,
   compose,
   map,
   zipObj,
@@ -40,13 +42,15 @@ const configure = (
   // UTILS
   // ---------------------------------------------------------------------------
 
-  const pxToEm = px => px / baseFontSize;
+  const pxToEmOrRem = px => px / baseFontSize;
+
+  const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
 
   const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
   const orderByValue = compose(reverse, sort(prop('value')));
 
   const withUnit = value =>
-    appendUnit(unit === UNITS.EM ? pxToEm(value) : value, unit);
+    appendUnit(unitIsRemOrEm(unit) ? pxToEmOrRem(value) : value, unit);
 
   const breakpointsArray = orderByValue(toBreakpointArray(breakpoints));
 
@@ -86,7 +90,7 @@ const configure = (
     const breakpointValue = getBreakpoint(breakpoint);
     // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
     return `(max-width: ${withUnit(
-      unit === UNITS.EM && separateIfEms
+      unitIsRemOrEm(unit) && separateIfEms
         ? breakpointValue - SEPARATOR_VALUE
         : breakpointValue
     )})`;

@@ -8,5 +8,6 @@ export const MEDIA_TYPES = Object.freeze({
 
 export const UNITS = Object.freeze({
   EM: 'em',
+  REM: 'rem',
   PX: 'px',
 });
