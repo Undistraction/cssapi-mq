@@ -3,3 +3,4 @@ yarn-error.log
 coverage
 out
 dist
+lib

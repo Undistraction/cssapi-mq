@@ -6,10 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist", "src", "lib"],
   "keywords": [
     "styled-components",
     "media-queries",
@@ -49,7 +46,11 @@
     "styled-components": "^2.2.3"
   },
   "scripts": {
-    "build": "NODE_ENV=development rollup --config",
+    "build": "npm run build:lib && npm run build:dist",
+    "prebuild:lib": "rimraf lib/*",
+    "build:lib": "babel --out-dir lib --ignore \"__tests__\" src",
+    "prebuild:dist": "rimraf dist/*",
+    "build:dist": "NODE_ENV=development rollup --config",
     "test": "NODE_ENV=test jest --config jest.config.js --watch",
     "publish-patch": "npm version patch && sudo npm publish"
   }

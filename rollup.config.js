@@ -3,10 +3,11 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 
 export default {
+  name: 'styledMQ',
   input: 'src/index.js',
   output: {
     file: 'dist/styled-mq.js',
-    format: 'cjs', // Use Common JS Modules in transpiled code
+    format: 'umd', // Use Common JS Modules in transpiled code
   },
 
   external: ['ramda', 'styled-components'],
@@ -22,4 +23,5 @@ export default {
       },
     }),
   ],
+  globals: { react: 'React', 'styled-components': 'styled', ramda: 'R' },
 };
