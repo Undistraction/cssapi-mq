@@ -1,12 +1,13 @@
 import './helpers/toEqualCSS';
 import styledMQ from '../mq';
+import { InvalidValueError } from '../errors';
 
 // Register serializer for use by Jest in generating snapshots. Without a serializer the snapshots are difficult to read.
 import cssSerialiser from './helpers/cssSerialiser';
 
 expect.addSnapshotSerializer(cssSerialiser);
 
-const validWidthBreakpoints = {
+const validBreakpoints = {
   small: 400, // 0–400
   medium: 900, // 400–900
   large: 1100, // 900–1100
@@ -14,10 +15,21 @@ const validWidthBreakpoints = {
 };
 
 const validBreakpointsWidthOnly = {
-  width: validWidthBreakpoints,
+  width: validBreakpoints,
 };
 
-const validMQ = () => styledMQ.configure(validBreakpointsWidthOnly);
+const validBreakpointsHeightOnly = {
+  height: validBreakpoints,
+};
+
+const mqWithWidthBreakpoints = (config = {}) =>
+  styledMQ.configure(validBreakpointsWidthOnly, config);
+
+const mqWithHeightBreakpoints = (config = {}) =>
+  styledMQ.configure(validBreakpointsHeightOnly, config);
+
+const mqWithNoWidthBreakpoints = () => styledMQ.configure({});
+const mqWithNoHeightBreakpoints = () => styledMQ.configure({});
 
 // -----------------------------------------------------------------------------
 // Configuration
@@ -25,15 +37,17 @@ const validMQ = () => styledMQ.configure(validBreakpointsWidthOnly);
 
 describe('configuration', () => {
   it('throws if no breakpoints are supplied', () => {
-    expect(() => styledMQ.configure()).toThrow();
+    expect(() => styledMQ.configure()).toThrowError(InvalidValueError);
   });
 
   it('throws if invalid breakpoint value is supplied', () => {
-    expect(() => styledMQ.configure({ width: { small: 'xxx' } })).toThrow();
+    expect(() => styledMQ.configure({ width: { small: 'xxx' } })).toThrowError(
+      InvalidValueError
+    );
   });
 
   it("doesn't throw an error with default configuration", () => {
-    expect(() => validMQ.not.toThrow());
+    expect(() => mqWithWidthBreakpoints.not.toThrowError(InvalidValueError));
   });
 
   describe('config object', () => {
@@ -50,21 +64,21 @@ describe('configuration', () => {
       const config = { baseFontSize: 'xxxx' };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).toThrow();
+      ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
       const config = { baseFontSize: 12 };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).not.toThrow();
+      ).not.toThrowError(InvalidValueError);
     });
 
     it("throws if 'defaultMediaType' is not valid", () => {
       const config = { defaultMediaType: 'xxxx' };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).toThrow();
+      ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'defaultMediaType' is valid", () => {
@@ -72,43 +86,43 @@ describe('configuration', () => {
         styledMQ.configure(validBreakpointsWidthOnly, {
           defaultMediaType: 'all',
         })
-      ).not.toThrow();
+      ).not.toThrowError(InvalidValueError);
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, { defaultMediaType: '' })
-      ).not.toThrow();
+      ).not.toThrowError(InvalidValueError);
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, {
           defaultMediaType: ['screen', 'print'],
         })
-      ).not.toThrow();
+      ).not.toThrowError(InvalidValueError);
     });
 
     it("throws if 'unit' is not valid", () => {
       const config = { unit: 'xxxx' };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).toThrow();
+      ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'unit' is valid", () => {
       const config = { unit: 'px' };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).not.toThrow();
+      ).not.toThrowError(InvalidValueError);
     });
 
     it("throws if 'shouldSeparateQueries' is not a boolean", () => {
       const config = { shouldSeparateQueries: 'xxxx' };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).toThrow();
+      ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'shouldSeparateQueries' is a boolean", () => {
       const config = { shouldSeparateQueries: false };
       expect(() =>
         styledMQ.configure(validBreakpointsWidthOnly, config)
-      ).not.toThrow();
+      ).not.toThrowError(InvalidValueError);
     });
   });
 });
@@ -119,59 +133,95 @@ describe('configuration', () => {
 
 describe('minWidth', () => {
   it('returns the correct media fragment', () => {
-    expect(validMQ().minWidth('small')).toMatchSnapshot();
+    expect(mqWithWidthBreakpoints().minWidth('small')).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => validMQ().minWidth('xxxx')).toThrow();
+    expect(() => mqWithWidthBreakpoints().minWidth('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it("throws if 'width' breakpoint map doesn't exist", () => {
+    expect(() => mqWithNoWidthBreakpoints().minWidth('xxxx')).toThrowError(
+      InvalidValueError
+    );
   });
 });
 
 describe('maxWidth', () => {
   it('returns the correct media fragment', () => {
-    expect(validMQ().maxWidth('small')).toMatchSnapshot();
+    expect(mqWithWidthBreakpoints().maxWidth('small')).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => validMQ().maxWidth('xxxx')).toThrow();
+    expect(() => mqWithWidthBreakpoints().maxWidth('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it("throws if 'width' breakpoint map doesn't exist", () => {
+    expect(() => mqWithNoWidthBreakpoints().maxWidth('xxxx')).toThrowError(
+      InvalidValueError
+    );
   });
 });
 
-// describe('minHeight', () => {
-//   it('returns the correct media fragment', () => {
-//     expect(validMQ().minHeight('small')).toMatchSnapshot();
-//   });
+describe('minHeight', () => {
+  it('returns the correct media fragment', () => {
+    expect(mqWithHeightBreakpoints().minHeight('small')).toMatchSnapshot();
+  });
 
-//   it("throws if breakpoint doesn't exist", () => {
-//     expect(() => validMQ().minHeight('xxxx')).toThrow();
-//   });
-// });
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithWidthBreakpoints().minHeight('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
 
-// describe('maxHeight', () => {
-//   it('returns the correct media fragment', () => {
-//     expect(validMQ().maxHeight('small')).toMatchSnapshot();
-//   });
+  it("throws if 'height' breakpoint map doesn't exist", () => {
+    expect(() => mqWithNoHeightBreakpoints().minHeight('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+});
 
-//   it("throws if breakpoint doesn't exist", () => {
-//     expect(() => validMQ().maxHeight('xxxx')).toThrow();
-//   });
-// });
+describe('maxHeight', () => {
+  it('returns the correct media fragment', () => {
+    expect(mqWithHeightBreakpoints().maxHeight('small')).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithWidthBreakpoints().maxHeight('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it("throws if 'height' breakpoint map doesn't exist", () => {
+    expect(() => mqWithNoHeightBreakpoints().maxWidth('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+});
 
 describe('mediaType', () => {
   it('returns the correct default media type if called with no arguments', () => {
-    expect(validMQ().mediaType()).toMatchSnapshot();
+    expect(mqWithWidthBreakpoints().mediaType()).toMatchSnapshot();
   });
 
   it('returns the configured media type if passed in as argument', () => {
-    expect(validMQ().mediaType('print')).toMatchSnapshot();
+    expect(mqWithWidthBreakpoints().mediaType('print')).toMatchSnapshot();
   });
 
   it('returns the configured media type if passed in as argument', () => {
-    expect(validMQ().mediaType(['print', 'screen'])).toMatchSnapshot();
+    expect(
+      mqWithWidthBreakpoints().mediaType(['print', 'screen'])
+    ).toMatchSnapshot();
   });
 
   it('throws if arument is not valid media type', () => {
-    expect(() => validMQ().mediaType('xxxx')).toThrow();
+    expect(() => mqWithWidthBreakpoints().mediaType('xxxx')).toThrowError(
+      InvalidValueError
+    );
   });
 });
 
@@ -181,81 +231,186 @@ describe('mediaType', () => {
 
 describe('aboveWidth', () => {
   it('returns the correct media query', () => {
-    const result = validMQ().aboveWidth('small')`
+    const result = mqWithWidthBreakpoints().aboveWidth('small')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => validMQ().aboveWidth('xxxx')``).toThrow();
+    expect(() => mqWithWidthBreakpoints().aboveWidth('xxxx')``).toThrowError(
+      InvalidValueError
+    );
   });
 });
 
 describe('belowWidth', () => {
   it('returns the correct media query', () => {
-    const result = validMQ().belowWidth('small')`
+    const result = mqWithWidthBreakpoints().belowWidth('small')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => validMQ().belowWidth('xxxx')``).toThrow();
+    expect(() => mqWithWidthBreakpoints().belowWidth('xxxx')``).toThrowError(
+      InvalidValueError
+    );
   });
 });
 
 describe('betweenWidths', () => {
   it('returns the correct media query', () => {
-    const result = validMQ().betweenWidths('small', 'medium')`
+    const result = mqWithWidthBreakpoints().betweenWidths('small', 'medium')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct media query with breakpoint order reversed', () => {
-    const result = validMQ().betweenWidths('medium', 'small')`
+    const result = mqWithWidthBreakpoints().betweenWidths('medium', 'small')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it("throws if 'from' breakpoint doesn't exist", () => {
-    expect(() => validMQ().betweenWidths('xxxx', 'large')``).toThrow();
+    expect(
+      () => mqWithWidthBreakpoints().betweenWidths('xxxx', 'large')``
+    ).toThrowError(InvalidValueError);
   });
 
   it("throws if 'to' breakpoint doesn't exist", () => {
-    expect(() => validMQ().betweenWidths('large', 'xxxx')``).toThrow();
+    expect(
+      () => mqWithWidthBreakpoints().betweenWidths('large', 'xxxx')``
+    ).toThrowError(InvalidValueError);
   });
 
-  it("throws if 'from' and 'to' breakpoints are the samet", () => {
-    expect(() => validMQ().betweenWidths('large', 'large')``).toThrow();
+  it("throws if 'from' and 'to' breakpoints are the same value", () => {
+    expect(
+      () => mqWithWidthBreakpoints().betweenWidths('large', 'large')``
+    ).toThrowError(InvalidValueError);
   });
 });
 
 describe('atBreakpointWidth', () => {
   it('returns the correct query when it is first breakpoint', () => {
-    const result = validMQ().atWidth('small')`
+    const result = mqWithWidthBreakpoints().atWidth('small')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct query when it is last breakpoint', () => {
-    const result = validMQ().atWidth('xLarge')`
+    const result = mqWithWidthBreakpoints().atWidth('xLarge')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct query when it is between other breakpoints', () => {
-    const result = validMQ().atWidth('large')`
+    const result = mqWithWidthBreakpoints().atWidth('large')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => validMQ().atWidth('xxxx')``).toThrow();
+    expect(() => mqWithWidthBreakpoints().atWidth('xxxx')``).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
+describe('aboveWidth', () => {
+  it('returns the correct media query', () => {
+    const result = mqWithWidthBreakpoints().aboveWidth('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithWidthBreakpoints().aboveWidth('xxxx')``).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
+describe('belowWidth', () => {
+  it('returns the correct media query', () => {
+    const result = mqWithWidthBreakpoints().belowWidth('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithWidthBreakpoints().belowWidth('xxxx')``).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
+describe('betweenHeights', () => {
+  it('returns the correct media query', () => {
+    const result = mqWithHeightBreakpoints().betweenHeights('small', 'medium')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it('returns the correct media query with breakpoint order reversed', () => {
+    const result = mqWithHeightBreakpoints().betweenHeights('medium', 'small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it("throws if 'from' breakpoint doesn't exist", () => {
+    expect(
+      () => mqWithHeightBreakpoints().betweenHeights('xxxx', 'large')``
+    ).toThrowError(InvalidValueError);
+  });
+
+  it("throws if 'to' breakpoint doesn't exist", () => {
+    expect(
+      () => mqWithHeightBreakpoints().betweenHeights('large', 'xxxx')``
+    ).toThrowError(InvalidValueError);
+  });
+
+  it("throws if 'from' and 'to' breakpoints are the same value", () => {
+    expect(
+      () => mqWithHeightBreakpoints().betweenHeights('large', 'large')``
+    ).toThrowError(InvalidValueError);
+  });
+});
+
+describe('atBreakpointHeight', () => {
+  it('returns the correct query when it is first breakpoint', () => {
+    const result = mqWithHeightBreakpoints().atHeight('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it('returns the correct query when it is last breakpoint', () => {
+    const result = mqWithHeightBreakpoints().atHeight('xLarge')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it('returns the correct query when it is between other breakpoints', () => {
+    const result = mqWithHeightBreakpoints().atHeight('large')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithHeightBreakpoints().atHeight('xxxx')``).toThrowError(
+      InvalidValueError
+    );
   });
 });

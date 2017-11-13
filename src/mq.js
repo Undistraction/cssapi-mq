@@ -21,8 +21,9 @@ import {
 import {
   throwError,
   missingBreakpointErrorMessage,
-  sameBreakpointsForBetweenErrrorMessage,
+  sameBreakpointsForBetweenErrorMessage,
   invalidMediaTypeErrorMessage,
+  mssingBreakpointMapErrorMessage,
 } from './errors';
 
 const configure = (
@@ -36,7 +37,9 @@ const configure = (
 ) => {
   validateBreakpointMapNames(breakpoints);
   const widthBreakpoints = breakpoints.width;
-  validateBreakpointSet('width', widthBreakpoints);
+  const heightBreakpoints = breakpoints.height;
+  if (widthBreakpoints) validateBreakpointSet('width', widthBreakpoints);
+  if (heightBreakpoints) validateBreakpointSet('height', heightBreakpoints);
   validateConfig({
     baseFontSize,
     defaultMediaType,
@@ -59,13 +62,20 @@ const configure = (
   );
   const toOutputWithUnit = partial(toOutput, [unit, baseFontSize]);
 
-  const ensureBreakpointOrderWithBreakpoints = partial(ensureBreakpointOrder, [
-    widthBreakpoints,
-  ]);
-
   const getWidthBreakpoint = name => {
+    if (!widthBreakpoints) throwError(mssingBreakpointMapErrorMessage('width'));
     const value = widthBreakpoints[name];
-    if (!value) throwError(missingBreakpointErrorMessageWithBreakpoints(name));
+    if (!value)
+      throwError(missingBreakpointErrorMessageWithBreakpoints('width', name));
+    return value;
+  };
+
+  const getHeightBreakpoint = name => {
+    if (!heightBreakpoints)
+      throwError(mssingBreakpointMapErrorMessage('height'));
+    const value = heightBreakpoints[name];
+    if (!value)
+      throwError(missingBreakpointErrorMessageWithBreakpoints('height', name));
     return value;
   };
 
@@ -75,6 +85,8 @@ const configure = (
 
   // Media Query Elements
   // ---------------------------------------------------------------------------
+
+  // Width
 
   const minWidth = breakpoint =>
     `(min-width: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
@@ -89,11 +101,13 @@ const configure = (
     )})`;
   };
 
+  // Height
+
   const minHeight = breakpoint =>
-    `(min-height: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
+    `(min-height: ${toOutputWithUnit(getHeightBreakpoint(breakpoint))})`;
 
   const maxHeight = breakpoint => {
-    const breakpointValue = getWidthBreakpoint(breakpoint);
+    const breakpointValue = getHeightBreakpoint(breakpoint);
     // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
     return `(max-height: ${toOutputWithUnit(
       unitIsRemOrEm(unit) && shouldSeparateQueries
@@ -101,6 +115,8 @@ const configure = (
         : breakpointValue
     )})`;
   };
+
+  // Media Type
 
   const mediaType = (mediaTypes = [defaultMediaType]) => {
     const mediaTypesArray = ensureArray(mediaTypes);
@@ -111,6 +127,8 @@ const configure = (
 
   // Media Queries
   // ---------------------------------------------------------------------------
+
+  // Width
 
   const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -135,8 +153,8 @@ const configure = (
     to,
     config = { mediaType: defaultMediaType }
   ) => (stringParts, ...interpolationValues) => {
-    if (from === to) throwError(sameBreakpointsForBetweenErrrorMessage(from));
-    const [lower, higher] = ensureBreakpointOrderWithBreakpoints(from, to);
+    if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
+    const [lower, higher] = ensureBreakpointOrder(widthBreakpoints, from, to);
     return buildQuery(
       buildQueryDefinition(
         mediaType(config.mediaType),
@@ -161,6 +179,57 @@ const configure = (
     return aboveWidth(breakpoint, config)(stringParts, ...interpolationValues);
   };
 
+  // Height
+
+  const aboveHeight = (from, config = { mediaType: defaultMediaType }) => (
+    stringParts,
+    ...interpolationValues
+  ) =>
+    buildQuery(
+      buildQueryDefinition(mediaType(config.mediaType), minHeight(from)),
+      css(stringParts, ...interpolationValues)
+    );
+
+  const belowHeight = (to, config = { mediaType: defaultMediaType }) => (
+    stringParts,
+    ...interpolationValues
+  ) =>
+    buildQuery(
+      buildQueryDefinition(mediaType(config.mediaType), maxHeight(to)),
+      css(stringParts, ...interpolationValues)
+    );
+
+  const betweenHeights = (
+    from,
+    to,
+    config = { mediaType: defaultMediaType }
+  ) => (stringParts, ...interpolationValues) => {
+    if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
+    const [lower, higher] = ensureBreakpointOrder(heightBreakpoints, from, to);
+    return buildQuery(
+      buildQueryDefinition(
+        mediaType(config.mediaType),
+        minHeight(lower),
+        maxHeight(higher)
+      ),
+      css(stringParts, ...interpolationValues)
+    );
+  };
+
+  const atHeight = (breakpoint, config = { mediaType: defaultMediaType }) => (
+    stringParts,
+    ...interpolationValues
+  ) => {
+    const nextBreakpointWider = getUpperLimitWithBreakpoints(breakpoint);
+    if (nextBreakpointWider) {
+      return betweenHeights(breakpoint, nextBreakpointWider, config)(
+        stringParts,
+        ...interpolationValues
+      );
+    }
+    return aboveHeight(breakpoint, config)(stringParts, ...interpolationValues);
+  };
+
   // ---------------------------------------------------------------------------
   // Export
   // ---------------------------------------------------------------------------
@@ -170,8 +239,14 @@ const configure = (
     belowWidth,
     betweenWidths,
     atWidth,
+    aboveHeight,
+    belowHeight,
+    betweenHeights,
+    atHeight,
     minWidth,
     maxWidth,
+    minHeight,
+    maxHeight,
     mediaType,
   };
 };

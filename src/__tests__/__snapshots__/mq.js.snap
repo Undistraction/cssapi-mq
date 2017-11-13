@@ -8,6 +8,38 @@ exports[`aboveWidth returns the correct media query 1`] = `
 }
 `;
 
+exports[`aboveWidth returns the correct media query 2`] = `
+@media screen and (min-width: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`atBreakpointHeight returns the correct query when it is between other breakpoints 1`] = `
+@media screen and (min-height: 68.75em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`atBreakpointHeight returns the correct query when it is first breakpoint 1`] = `
+@media screen and (min-height: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`atBreakpointHeight returns the correct query when it is last breakpoint 1`] = `
+@media screen and (min-height: 81.25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`atBreakpointWidth returns the correct query when it is between other breakpoints 1`] = `
 @media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
     background-color: function () {
@@ -40,6 +72,30 @@ exports[`belowWidth returns the correct media query 1`] = `
 }
 `;
 
+exports[`belowWidth returns the correct media query 2`] = `
+@media screen and (max-width: 24.999375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`betweenHeights returns the correct media query 1`] = `
+@media screen and (min-height: 25em) and (max-height: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`betweenHeights returns the correct media query with breakpoint order reversed 1`] = `
+@media screen and (min-height: 25em) and (max-height: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`betweenWidths returns the correct media query 1`] = `
 @media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
@@ -64,6 +120,8 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
+exports[`maxHeight returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
+
 exports[`maxWidth returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
 
 exports[`mediaType returns the configured media type if passed in as argument 1`] = `print`;
@@ -71,5 +129,7 @@ exports[`mediaType returns the configured media type if passed in as argument 1`
 exports[`mediaType returns the configured media type if passed in as argument 2`] = `print, screen`;
 
 exports[`mediaType returns the correct default media type if called with no arguments 1`] = `screen`;
+
+exports[`minHeight returns the correct media fragment 1`] = `(min-height: 25em)`;
 
 exports[`minWidth returns the correct media fragment 1`] = `(min-width: 25em)`;

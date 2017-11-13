@@ -38,7 +38,7 @@ const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
 export const mediaTypesAreValid = all(t => mediaTypeIsValid(t));
 
 export const validateBreakpointMapNames = breakpointMap => {
-  if (!breakpointMapNamesAreValid(breakpointMap)) {
+  if (!breakpointMap || !breakpointMapNamesAreValid(breakpointMap)) {
     throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
   }
 };
