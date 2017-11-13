@@ -5,6 +5,7 @@ import {
   validateBreakpointSets,
   validateConfig,
   mediaTypesAreValid,
+  validateOrientation,
 } from './validations';
 import { MEDIA_TYPES, UNITS, SEPARATOR_VALUE } from './const';
 import {
@@ -17,6 +18,7 @@ import {
   buildQuery,
   buildQueryDefinition,
   ensureArray,
+  buildFeature,
 } from './utils';
 import {
   throwError,
@@ -36,8 +38,7 @@ const configure = (
   } = {}
 ) => {
   validateBreakpointMapNames(breakpoints);
-  const widthBreakpoints = breakpoints.width;
-  const heightBreakpoints = breakpoints.height;
+  const { width: widthBreakpoints, height: heightBreakpoints } = breakpoints;
 
   validateBreakpointSets(breakpoints);
 
@@ -54,9 +55,7 @@ const configure = (
 
   const breakpointsArray = orderByValue(toBreakpointArray(widthBreakpoints));
 
-  const getUpperLimitWithBreakpoints = partial(getUpperLimit, [
-    breakpointsArray,
-  ]);
+  const getBreakpointAbove = partial(getUpperLimit, [breakpointsArray]);
   const missingBreakpointErrorMessageWithBreakpoints = partial(
     missingBreakpointErrorMessage,
     [widthBreakpoints]
@@ -86,6 +85,22 @@ const configure = (
 
   // Media Query Elements
   // ---------------------------------------------------------------------------
+
+  // Media Type
+
+  const mediaType = (mediaTypes = [defaultMediaType]) => {
+    const mediaTypesArray = ensureArray(mediaTypes);
+    if (!mediaTypesAreValid(mediaTypesArray))
+      throwError(invalidMediaTypeErrorMessage(mediaTypesArray));
+    return mediaTypesArray.join(', ');
+  };
+
+  // Orientation
+
+  const orientation = value => {
+    validateOrientation(value);
+    return buildFeature('orientation', value);
+  };
 
   // Width
 
@@ -117,19 +132,8 @@ const configure = (
     )})`;
   };
 
-  // Media Type
-
-  const mediaType = (mediaTypes = [defaultMediaType]) => {
-    const mediaTypesArray = ensureArray(mediaTypes);
-    if (!mediaTypesAreValid(mediaTypesArray))
-      throwError(invalidMediaTypeErrorMessage(mediaTypesArray));
-    return mediaTypesArray.join(', ');
-  };
-
   // Media Queries
   // ---------------------------------------------------------------------------
-
-  // Width
 
   const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -170,17 +174,15 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const nextBreakpointWider = getUpperLimitWithBreakpoints(breakpoint);
-    if (nextBreakpointWider) {
-      return betweenWidths(breakpoint, nextBreakpointWider, config)(
+    const breakpointAbove = getBreakpointAbove(breakpoint);
+    if (breakpointAbove) {
+      return betweenWidths(breakpoint, breakpointAbove, config)(
         stringParts,
         ...interpolationValues
       );
     }
     return aboveWidth(breakpoint, config)(stringParts, ...interpolationValues);
   };
-
-  // Height
 
   const aboveHeight = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -221,9 +223,9 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const nextBreakpointWider = getUpperLimitWithBreakpoints(breakpoint);
-    if (nextBreakpointWider) {
-      return betweenHeights(breakpoint, nextBreakpointWider, config)(
+    const breakpointAbove = getBreakpointAbove(breakpoint);
+    if (breakpointAbove) {
+      return betweenHeights(breakpoint, breakpointAbove, config)(
         stringParts,
         ...interpolationValues
       );
@@ -236,6 +238,12 @@ const configure = (
   // ---------------------------------------------------------------------------
 
   return {
+    mediaType,
+    orientation,
+    minWidth,
+    maxWidth,
+    minHeight,
+    maxHeight,
     aboveWidth,
     belowWidth,
     betweenWidths,
@@ -244,11 +252,6 @@ const configure = (
     belowHeight,
     betweenHeights,
     atHeight,
-    minWidth,
-    maxWidth,
-    minHeight,
-    maxHeight,
-    mediaType,
   };
 };
 

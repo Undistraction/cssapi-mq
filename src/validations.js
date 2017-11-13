@@ -11,7 +11,12 @@ import {
   toPairs,
   map,
 } from 'ramda';
-import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
+import {
+  MEDIA_TYPES,
+  UNITS,
+  BREAKPOINT_MAP_NAMES,
+  ORIENTATIONS,
+} from './const';
 import { ensureArray, isNumber, isObject, isBoolean } from './utils';
 import {
   throwError,
@@ -22,6 +27,7 @@ import {
   invalidDefaultMediaTypeErrorMessage,
   invalidUnitErrorMessage,
   shouldSeparateQueriesErrorMessage,
+  invalidOrientationErrorMessage,
 } from './errors';
 
 const breakpointsWereSupplied = both(complement(isEmpty), isObject);
@@ -29,6 +35,7 @@ const breakpointValuesAreValid = compose(all(isNumber), values);
 const baseFontSizeIsValid = both(isNumber, gt(__, 0));
 const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
 const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
+const orientationIsValid = contains(__, values(ORIENTATIONS));
 const unitIsValid = contains(__, values(UNITS));
 // Validate a map of breakpoint sets.
 const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
@@ -77,4 +84,9 @@ export const validateConfig = ({
   if (!isBoolean(shouldSeparateQueries)) {
     throwError(shouldSeparateQueriesErrorMessage());
   }
+};
+
+export const validateOrientation = origin => {
+  if (!orientationIsValid(origin))
+    throwError(invalidOrientationErrorMessage(origin));
 };

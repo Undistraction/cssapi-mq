@@ -133,3 +133,5 @@ exports[`mediaType returns the correct default media type if called with no argu
 exports[`minHeight returns the correct media fragment 1`] = `(min-height: 25em)`;
 
 exports[`minWidth returns the correct media fragment 1`] = `(min-width: 25em)`;
+
+exports[`orientation returns the supplied orientation 1`] = `(orientation: landscape)`;

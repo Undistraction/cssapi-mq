@@ -225,6 +225,18 @@ describe('mediaType', () => {
   });
 });
 
+describe('orientation', () => {
+  it('returns the supplied orientation', () => {
+    expect(mqWithWidthBreakpoints().orientation('landscape')).toMatchSnapshot();
+  });
+
+  it('throws if arument is not valid media type', () => {
+    expect(() => mqWithWidthBreakpoints().orientation('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
 // -----------------------------------------------------------------------------
 // Media Queries
 // -----------------------------------------------------------------------------
