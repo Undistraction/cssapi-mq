@@ -1,6 +1,5 @@
 import {
   __,
-  is,
   compose,
   both,
   complement,
@@ -10,14 +9,27 @@ import {
   all,
   gt,
 } from 'ramda';
-import { MEDIA_TYPES, UNITS } from './const';
-import { ensureArray } from './utils';
+import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
+import { ensureArray, isNumber, isObject, isBoolean } from './utils';
+import {
+  throwError,
+  invalidBreakpointNamesErrorMessage,
+  emptyBreakpointSetErrorMessage,
+  noUnitAllowedUnitErrorMessage,
+  invalidBaseFontSizeErrorMessage,
+  invalidDefaultMediaTypeErrorMessage,
+  invalidUnitErrorMessage,
+  shouldSeparateQueriesErrorMessage,
+} from './errors';
 
-const breakpointsWereSupplied = both(complement(isEmpty), is(Object));
-const breakpointValuesAreValid = compose(all(is(Number)), values);
-const baseFontSizeIsValid = both(is(Number), gt(__, 0));
+const breakpointsWereSupplied = both(complement(isEmpty), isObject);
+const breakpointValuesAreValid = compose(all(isNumber), values);
+const baseFontSizeIsValid = both(isNumber, gt(__, 0));
 const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
+const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const unitIsValid = contains(__, values(UNITS));
+// Validate a map of breakpoint sets.
+const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
 
 // -----------------------------------------------------------------------------
 // Exports
@@ -25,46 +37,38 @@ const unitIsValid = contains(__, values(UNITS));
 
 export const mediaTypesAreValid = all(t => mediaTypeIsValid(t));
 
-export const validateBreakpoints = breakpoints => {
+export const validateBreakpointMapNames = breakpointMap => {
+  if (!breakpointMapNamesAreValid(breakpointMap)) {
+    throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
+  }
+};
+
+// Validate a set of breakpoints.
+export const validateBreakpointSet = (name, breakpoints) => {
   if (!breakpointsWereSupplied(breakpoints))
-    throw new Error(
-      "You must supply a breakpoint object with at least one breakpoint to 'configure()'"
-    );
+    throwError(emptyBreakpointSetErrorMessage(name));
 
   if (!breakpointValuesAreValid(breakpoints))
-    throw new Error(
-      `You must supply unitless values for each breakpoint but you supplied ${values(
-        breakpoints
-      )}`
-    );
+    throwError(noUnitAllowedUnitErrorMessage(values(breakpoints)));
 };
 
 export const validateConfig = ({
   baseFontSize,
   defaultMediaType,
   unit,
-  separateIfEms,
+  shouldSeparateQueries,
 }) => {
   if (!baseFontSizeIsValid(baseFontSize))
-    throw new Error(
-      `baseFontSize must be a number, but you supplied '${baseFontSize}'`
-    );
+    throwError(invalidBaseFontSizeErrorMessage(baseFontSize));
 
-  if (!mediaTypesAreValid(ensureArray(defaultMediaType))) {
-    throw new Error(
-      `'defaultMediaType' must be one of '${values(MEDIA_TYPES)}' but was '${
-        defaultMediaType
-      }'`
-    );
-  }
+  if (!mediaTypesAreValid(ensureArray(defaultMediaType)))
+    throwError(invalidDefaultMediaTypeErrorMessage(defaultMediaType));
 
   if (!unitIsValid(unit)) {
-    throw new Error(
-      `'unit' must be one of '${values(MEDIA_TYPES)}' but was '${unit}'`
-    );
+    throwError(invalidUnitErrorMessage(unit));
   }
 
-  if (!is(Boolean)(separateIfEms)) {
-    throw new Error(`'unit' must be a boolean but was '${unit}'`);
+  if (!isBoolean(shouldSeparateQueries)) {
+    throwError(shouldSeparateQueriesErrorMessage());
   }
 };

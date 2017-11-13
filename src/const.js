@@ -16,6 +16,13 @@ export const UNITS = Object.freeze({
   PX: 'px',
 });
 
+export const BREAKPOINT_MAP_NAMES = [
+  'width',
+  'height',
+  'deviceWidth',
+  'deviceHeight',
+];
+
 export const SEPARATOR_VALUE = 0.01;
 
 export const MEDIA_PREFIX = '@media';

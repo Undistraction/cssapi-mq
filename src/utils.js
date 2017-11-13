@@ -1,6 +1,7 @@
 import {
   __,
   inc,
+  is,
   divide,
   contains,
   compose,
@@ -15,7 +16,6 @@ import {
   nth,
   subtract,
   when,
-  is,
 } from 'ramda';
 import { css } from 'styled-components';
 import { UNITS, MEDIA_PREFIX } from './const';
@@ -24,7 +24,12 @@ import { UNITS, MEDIA_PREFIX } from './const';
 // Exports
 // -----------------------------------------------------------------------------
 
-export const ensureArray = when(is(String), mediaTypes => [mediaTypes]);
+export const isBoolean = is(Boolean);
+export const isNumber = is(Number);
+export const isObject = is(Object);
+export const isString = is(String);
+
+export const ensureArray = when(isString, mediaTypes => [mediaTypes]);
 
 export const appendUnit = (value, unit) => `${value}${unit}`;
 

@@ -1,7 +1,8 @@
 import { css } from 'styled-components';
 import { partial } from 'ramda';
 import {
-  validateBreakpoints,
+  validateBreakpointMapNames,
+  validateBreakpointSet,
   validateConfig,
   mediaTypesAreValid,
 } from './validations';
@@ -30,38 +31,40 @@ const configure = (
     baseFontSize = 16,
     defaultMediaType = MEDIA_TYPES.SCREEN,
     unit = UNITS.EM,
-    separateIfEms = true,
+    shouldSeparateQueries = true,
   } = {}
 ) => {
-  validateBreakpoints(breakpoints);
+  validateBreakpointMapNames(breakpoints);
+  const widthBreakpoints = breakpoints.width;
+  validateBreakpointSet('width', widthBreakpoints);
   validateConfig({
     baseFontSize,
     defaultMediaType,
     unit,
-    separateIfEms,
+    shouldSeparateQueries,
   });
 
   // ---------------------------------------------------------------------------
   // UTILS
   // ---------------------------------------------------------------------------
 
-  const breakpointsArray = orderByValue(toBreakpointArray(breakpoints));
+  const breakpointsArray = orderByValue(toBreakpointArray(widthBreakpoints));
 
   const getUpperLimitWithBreakpoints = partial(getUpperLimit, [
     breakpointsArray,
   ]);
   const missingBreakpointErrorMessageWithBreakpoints = partial(
     missingBreakpointErrorMessage,
-    [breakpoints]
+    [widthBreakpoints]
   );
   const toOutputWithUnit = partial(toOutput, [unit, baseFontSize]);
 
   const ensureBreakpointOrderWithBreakpoints = partial(ensureBreakpointOrder, [
-    breakpoints,
+    widthBreakpoints,
   ]);
 
-  const getBreakpoint = name => {
-    const value = breakpoints[name];
+  const getWidthBreakpoint = name => {
+    const value = widthBreakpoints[name];
     if (!value) throwError(missingBreakpointErrorMessageWithBreakpoints(name));
     return value;
   };
@@ -74,13 +77,26 @@ const configure = (
   // ---------------------------------------------------------------------------
 
   const minWidth = breakpoint =>
-    `(min-width: ${toOutputWithUnit(getBreakpoint(breakpoint))})`;
+    `(min-width: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
 
   const maxWidth = breakpoint => {
-    const breakpointValue = getBreakpoint(breakpoint);
+    const breakpointValue = getWidthBreakpoint(breakpoint);
     // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
     return `(max-width: ${toOutputWithUnit(
-      unitIsRemOrEm(unit) && separateIfEms
+      unitIsRemOrEm(unit) && shouldSeparateQueries
+        ? breakpointValue - SEPARATOR_VALUE
+        : breakpointValue
+    )})`;
+  };
+
+  const minHeight = breakpoint =>
+    `(min-height: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
+
+  const maxHeight = breakpoint => {
+    const breakpointValue = getWidthBreakpoint(breakpoint);
+    // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
+    return `(max-height: ${toOutputWithUnit(
+      unitIsRemOrEm(unit) && shouldSeparateQueries
         ? breakpointValue - SEPARATOR_VALUE
         : breakpointValue
     )})`;
