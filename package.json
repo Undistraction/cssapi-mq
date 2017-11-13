@@ -6,11 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
   },
-  "files": [
-    "dist",
-    "src",
-    "lib"
-  ],
+  "files": ["dist", "src", "lib"],
   "keywords": [
     "styled-components",
     "media-queries",
@@ -24,6 +20,17 @@
     "url": "https://github.com/Undistraction/styled-mq/issues"
   },
   "homepage": "https://github.com/Undistraction/styled-mq",
+  "scripts": {
+    "build": "npm run build:lib && npm run build:dist",
+    "prebuild:lib": "rimraf lib/*",
+    "build:lib": "babel --out-dir lib --ignore \"__tests__\" src",
+    "prebuild:dist": "rimraf dist/*",
+    "build:dist": "NODE_ENV=development rollup --config",
+    "test": "NODE_ENV=test jest --config jest.config.js --watch",
+    "publish:patch": "npm version patch && sudo npm publish",
+    "publish:minor": "npm version minor && sudo npm publish",
+    "publish:major": "npm version major && sudo npm publish"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-env": "^2.4.1",
@@ -48,14 +55,5 @@
     "ramda": "^0.25.0",
     "react": "^16.1.0",
     "styled-components": "^2.2.3"
-  },
-  "scripts": {
-    "build": "npm run build:lib && npm run build:dist",
-    "prebuild:lib": "rimraf lib/*",
-    "build:lib": "babel --out-dir lib --ignore \"__tests__\" src",
-    "prebuild:dist": "rimraf dist/*",
-    "build:dist": "NODE_ENV=development rollup --config",
-    "test": "NODE_ENV=test jest --config jest.config.js --watch",
-    "publish-patch": "npm version patch && sudo npm publish"
   }
 }
