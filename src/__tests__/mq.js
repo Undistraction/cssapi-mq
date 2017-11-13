@@ -92,6 +92,8 @@ describe('api', () => {
     });
   });
 
+  // describe('minWidth')
+
   describe('aboveWidth', () => {
     it('returns the correct media query', () => {
       const result = validMQ().aboveWidth('small')`

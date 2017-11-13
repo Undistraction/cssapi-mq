@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 import {
   __,
+  inc,
+  divide,
+  curry,
   keys,
   contains,
   compose,
@@ -19,7 +22,31 @@ import { MEDIA_TYPES, UNITS } from './const';
 import { appendUnit } from './utils';
 
 const SEPARATOR_VALUE = 0.01;
-const PREFIX = '@media';
+const MEDIA_PREFIX = '@media';
+
+const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
+const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
+const orderByValue = compose(reverse, sort(prop('value')));
+const getUpperLimit = (breakpointsArray, breakpoint) => {
+  const index = findIndex(propEq('name', breakpoint))(breakpointsArray);
+  return compose(prop('name'), nth(inc(index)))(breakpointsArray);
+};
+const missingBreakpointErrorMessage = (breakpoints, name) =>
+  `There is no breakpoint defined called '${name}', only: '${keys(
+    breakpoints
+  )}' are defined.`;
+
+const buildQueryDefinition = (...elements) =>
+  `${MEDIA_PREFIX} ${elements.join(' and ')}`;
+
+const buildQuery = (definition, content) => css`
+  ${definition} {
+    ${content};
+  }
+`;
+
+const toOutput = (unit, baseFontSize, value) =>
+  appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);
 
 const configure = (
   breakpoints,
@@ -42,59 +69,43 @@ const configure = (
   // UTILS
   // ---------------------------------------------------------------------------
 
-  const pxToEmOrRem = px => px / baseFontSize;
-
-  const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
-
-  const toBreakpointArray = compose(map(zipObj(['name', 'value'])), toPairs);
-  const orderByValue = compose(reverse, sort(prop('value')));
-
-  const withUnit = value =>
-    appendUnit(unitIsRemOrEm(unit) ? pxToEmOrRem(value) : value, unit);
-
   const breakpointsArray = orderByValue(toBreakpointArray(breakpoints));
 
-  const getUpperLimit = breakpoint => {
-    const index = findIndex(propEq('name', breakpoint))(breakpointsArray);
-    return compose(prop('name'), nth(index + 1))(breakpointsArray);
-  };
-
-  const missingBreakpointErrorMessage = name =>
-    `There is no breakpoint defined called '${name}', only: '${keys(
-      breakpoints
-    )}' are defined.`;
+  const getUpperLimitWithBreakpoints = curry(getUpperLimit)(breakpointsArray);
+  const missingBreakpointErrorMessageWithBreakpoints = curry(
+    missingBreakpointErrorMessage
+  )(breakpoints);
+  const toOutputWithUnit = curry(toOutput)(unit)(baseFontSize);
 
   const getBreakpoint = name => {
     const value = breakpoints[name];
-    if (!value) throw new Error(missingBreakpointErrorMessage(name));
+    if (!value)
+      throw new Error(missingBreakpointErrorMessageWithBreakpoints(name));
     return value;
   };
-
-  const buildQueryDefinition = (...elements) =>
-    `${PREFIX} ${elements.join(' and ')}`;
-
-  const buildQuery = (definition, content) => css`
-    ${definition} {
-      ${content};
-    }
-  `;
 
   // ---------------------------------------------------------------------------
   // API
   // ---------------------------------------------------------------------------
 
+  // Media Query Elements
+  // ---------------------------------------------------------------------------
+
   const minWidth = breakpoint =>
-    `(min-width: ${withUnit(getBreakpoint(breakpoint))})`;
+    `(min-width: ${toOutputWithUnit(getBreakpoint(breakpoint))})`;
 
   const maxWidth = breakpoint => {
     const breakpointValue = getBreakpoint(breakpoint);
     // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
-    return `(max-width: ${withUnit(
+    return `(max-width: ${toOutputWithUnit(
       unitIsRemOrEm(unit) && separateIfEms
         ? breakpointValue - SEPARATOR_VALUE
         : breakpointValue
     )})`;
   };
+
+  // Media Queries
+  // ---------------------------------------------------------------------------
 
   const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -128,7 +139,7 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const nextBreakpointWider = getUpperLimit(breakpoint);
+    const nextBreakpointWider = getUpperLimitWithBreakpoints(breakpoint);
     if (nextBreakpointWider) {
       return betweenWidths(breakpoint, nextBreakpointWider, config)(
         stringParts,
