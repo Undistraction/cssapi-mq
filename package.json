@@ -1,12 +1,15 @@
 {
   "name": "styled-mq",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "dist/styled-mq.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "keywords": [
     "styled-components",
     "media-queries",
