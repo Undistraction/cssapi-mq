@@ -16,7 +16,7 @@ exports[`aboveWidth returns the correct media query 2`] = `
 }
 `;
 
-exports[`atBreakpointHeight returns the correct query when it is between other breakpoints 1`] = `
+exports[`atHeightBreakpoint returns the correct query when it is between other breakpoints 1`] = `
 @media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -24,7 +24,7 @@ exports[`atBreakpointHeight returns the correct query when it is between other b
 }
 `;
 
-exports[`atBreakpointHeight returns the correct query when it is first breakpoint 1`] = `
+exports[`atHeightBreakpoint returns the correct query when it is first breakpoint 1`] = `
 @media screen and (min-height: 25em) and (max-height: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -32,7 +32,7 @@ exports[`atBreakpointHeight returns the correct query when it is first breakpoin
 }
 `;
 
-exports[`atBreakpointHeight returns the correct query when it is last breakpoint 1`] = `
+exports[`atHeightBreakpoint returns the correct query when it is last breakpoint 1`] = `
 @media screen and (min-height: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -40,7 +40,7 @@ exports[`atBreakpointHeight returns the correct query when it is last breakpoint
 }
 `;
 
-exports[`atBreakpointWidth returns the correct query when it is between other breakpoints 1`] = `
+exports[`atWidthBreakpoint returns the correct query when it is between other breakpoints 1`] = `
 @media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -48,7 +48,7 @@ exports[`atBreakpointWidth returns the correct query when it is between other br
 }
 `;
 
-exports[`atBreakpointWidth returns the correct query when it is first breakpoint 1`] = `
+exports[`atWidthBreakpoint returns the correct query when it is first breakpoint 1`] = `
 @media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -56,7 +56,7 @@ exports[`atBreakpointWidth returns the correct query when it is first breakpoint
 }
 `;
 
-exports[`atBreakpointWidth returns the correct query when it is last breakpoint 1`] = `
+exports[`atWidthBreakpoint returns the correct query when it is last breakpoint 1`] = `
 @media screen and (min-width: 81.25em) {
     background-color: function () {
         return 'GhostWhite';

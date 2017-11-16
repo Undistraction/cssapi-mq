@@ -325,32 +325,32 @@ describe('betweenWidths', () => {
   });
 });
 
-describe('atBreakpointWidth', () => {
+describe('atWidthBreakpoint', () => {
   it('returns the correct query when it is first breakpoint', () => {
-    const result = mqWithWidthBreakpoints().atWidth('small')`
+    const result = mqWithWidthBreakpoints().atWidthBreakpoint('small')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct query when it is last breakpoint', () => {
-    const result = mqWithWidthBreakpoints().atWidth('xLarge')`
+    const result = mqWithWidthBreakpoints().atWidthBreakpoint('xLarge')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct query when it is between other breakpoints', () => {
-    const result = mqWithWidthBreakpoints().atWidth('large')`
+    const result = mqWithWidthBreakpoints().atWidthBreakpoint('large')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().atWidth('xxxx')``).toThrowError(
-      InvalidValueError
-    );
+    expect(
+      () => mqWithWidthBreakpoints().atWidthBreakpoint('xxxx')``
+    ).toThrowError(InvalidValueError);
   });
 });
 
@@ -418,31 +418,31 @@ describe('betweenHeights', () => {
   });
 });
 
-describe('atBreakpointHeight', () => {
+describe('atHeightBreakpoint', () => {
   it('returns the correct query when it is first breakpoint', () => {
-    const result = mqWithHeightBreakpoints().atHeight('small')`
+    const result = mqWithHeightBreakpoints().atHeightBreakpoint('small')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct query when it is last breakpoint', () => {
-    const result = mqWithHeightBreakpoints().atHeight('xLarge')`
+    const result = mqWithHeightBreakpoints().atHeightBreakpoint('xLarge')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it('returns the correct query when it is between other breakpoints', () => {
-    const result = mqWithHeightBreakpoints().atHeight('large')`
+    const result = mqWithHeightBreakpoints().atHeightBreakpoint('large')`
         background-color: ${() => 'GhostWhite'};
       `;
     expect(result).toMatchSnapshot();
   });
 
   it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithHeightBreakpoints().atHeight('xxxx')``).toThrowError(
-      InvalidValueError
-    );
+    expect(
+      () => mqWithHeightBreakpoints().atHeightBreakpoint('xxxx')``
+    ).toThrowError(InvalidValueError);
   });
 });

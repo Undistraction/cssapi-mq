@@ -186,10 +186,10 @@ const configure = (
     );
   };
 
-  const atWidth = (breakpoint, config = { mediaType: defaultMediaType }) => (
-    stringParts,
-    ...interpolationValues
-  ) => {
+  const atWidthBreakpoint = (
+    breakpoint,
+    config = { mediaType: defaultMediaType }
+  ) => (stringParts, ...interpolationValues) => {
     const breakpointAbove = getBreakpointAboveWidth(breakpoint);
     if (breakpointAbove) {
       return betweenWidths(breakpoint, breakpointAbove, config)(
@@ -239,10 +239,10 @@ const configure = (
     );
   };
 
-  const atHeight = (breakpoint, config = { mediaType: defaultMediaType }) => (
-    stringParts,
-    ...interpolationValues
-  ) => {
+  const atHeightBreakpoint = (
+    breakpoint,
+    config = { mediaType: defaultMediaType }
+  ) => (stringParts, ...interpolationValues) => {
     const breakpointAbove = getBreakpointAboveHeight(breakpoint);
     if (breakpointAbove) {
       return betweenHeights(breakpoint, breakpointAbove, config)(
@@ -267,11 +267,11 @@ const configure = (
     aboveWidth,
     belowWidth,
     betweenWidths,
-    atWidth,
+    atWidthBreakpoint,
     aboveHeight,
     belowHeight,
     betweenHeights,
-    atHeight,
+    atHeightBreakpoint,
   };
 };
 
