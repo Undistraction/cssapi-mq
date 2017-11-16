@@ -120,7 +120,15 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
+exports[`maxHeight renders configured units 1`] = `(max-height: 24.999375rem)`;
+
+exports[`maxHeight renders configured units 2`] = `(max-height: 400px)`;
+
 exports[`maxHeight returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
+
+exports[`maxWidth renders configured units 1`] = `(max-width: 24.999375rem)`;
+
+exports[`maxWidth renders configured units 2`] = `(max-width: 400px)`;
 
 exports[`maxWidth returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
 
@@ -130,7 +138,15 @@ exports[`mediaType returns the configured media type if passed in as argument 2`
 
 exports[`mediaType returns the correct default media type if called with no arguments 1`] = `screen`;
 
+exports[`minHeight renders configured units 1`] = `(min-height: 25rem)`;
+
+exports[`minHeight renders configured units 2`] = `(min-height: 400px)`;
+
 exports[`minHeight returns the correct media fragment 1`] = `(min-height: 25em)`;
+
+exports[`minWidth renders configured units 1`] = `(min-width: 25rem)`;
+
+exports[`minWidth renders configured units 2`] = `(min-width: 400px)`;
 
 exports[`minWidth returns the correct media fragment 1`] = `(min-width: 25em)`;
 

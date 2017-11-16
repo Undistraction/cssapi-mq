@@ -31,6 +31,14 @@ const mqWithHeightBreakpoints = (config = {}) =>
 const mqWithNoWidthBreakpoints = () => styledMQ.configure({});
 const mqWithNoHeightBreakpoints = () => styledMQ.configure({});
 
+const testConfiguredUnits = (mq, method, ...args) => {
+  it('renders configured units', () => {
+    expect(mq({ unit: 'rem' })[method](...args)).toMatchSnapshot();
+
+    expect(mq({ unit: 'px' })[method](...args)).toMatchSnapshot();
+  });
+};
+
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
@@ -136,6 +144,8 @@ describe('configuration', () => {
 // ---------------------------------------------------------------------------
 
 describe('minWidth', () => {
+  testConfiguredUnits(mqWithWidthBreakpoints, 'minWidth', 'small');
+
   it('returns the correct media fragment', () => {
     expect(mqWithWidthBreakpoints().minWidth('small')).toMatchSnapshot();
   });
@@ -154,6 +164,8 @@ describe('minWidth', () => {
 });
 
 describe('maxWidth', () => {
+  testConfiguredUnits(mqWithWidthBreakpoints, 'maxWidth', 'small');
+
   it('returns the correct media fragment', () => {
     expect(mqWithWidthBreakpoints().maxWidth('small')).toMatchSnapshot();
   });
@@ -172,6 +184,8 @@ describe('maxWidth', () => {
 });
 
 describe('minHeight', () => {
+  testConfiguredUnits(mqWithHeightBreakpoints, 'minHeight', 'small');
+
   it('returns the correct media fragment', () => {
     expect(mqWithHeightBreakpoints().minHeight('small')).toMatchSnapshot();
   });
@@ -190,6 +204,8 @@ describe('minHeight', () => {
 });
 
 describe('maxHeight', () => {
+  testConfiguredUnits(mqWithHeightBreakpoints, 'maxHeight', 'small');
+
   it('returns the correct media fragment', () => {
     expect(mqWithHeightBreakpoints().maxHeight('small')).toMatchSnapshot();
   });
