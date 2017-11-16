@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
-import { partial } from 'ramda';
+import { partial, findIndex, __ } from 'ramda';
 import {
-  validateBreakpointMapNames,
   validateBreakpointSets,
   validateConfig,
   mediaTypesAreValid,
@@ -14,12 +13,12 @@ import {
   toBreakpointArray,
   getUpperLimit,
   toOutput,
-  ensureBreakpointOrder,
   unitIsRemOrEm,
   buildQuery,
   buildQueryDefinition,
   ensureArray,
   buildFeature,
+  propEqName,
 } from './utils';
 import {
   throwError,
@@ -54,9 +53,22 @@ const configure = (
   // UTILS
   // ---------------------------------------------------------------------------
 
-  const breakpointsArray = orderByValue(toBreakpointArray(widthBreakpoints));
+  const widthBreakpointArray = orderByValue(
+    toBreakpointArray(widthBreakpoints)
+  );
+  const heightBreakpointArray = orderByValue(
+    toBreakpointArray(heightBreakpoints)
+  );
 
-  const getBreakpointAbove = partial(getUpperLimit, [breakpointsArray]);
+  const findIndexInWidthBreakpointArray = findIndex(__, widthBreakpointArray);
+  const findIndexInHeightBreakpointArray = findIndex(__, heightBreakpointArray);
+
+  const getBreakpointAboveWidth = partial(getUpperLimit, [
+    widthBreakpointArray,
+  ]);
+  const getBreakpointAboveHeight = partial(getUpperLimit, [
+    heightBreakpointArray,
+  ]);
   const missingBreakpointErrorMessageWithBreakpoints = partial(
     missingBreakpointErrorMessage,
     [widthBreakpoints]
@@ -160,7 +172,10 @@ const configure = (
     config = { mediaType: defaultMediaType }
   ) => (stringParts, ...interpolationValues) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
-    const [lower, higher] = ensureBreakpointOrder(widthBreakpoints, from, to);
+    const fromIndex = findIndexInWidthBreakpointArray(propEqName(from));
+    const toIndex = findIndexInWidthBreakpointArray(propEqName(to));
+
+    const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
     return buildQuery(
       buildQueryDefinition(
         mediaType(config.mediaType),
@@ -175,7 +190,7 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const breakpointAbove = getBreakpointAbove(breakpoint);
+    const breakpointAbove = getBreakpointAboveWidth(breakpoint);
     if (breakpointAbove) {
       return betweenWidths(breakpoint, breakpointAbove, config)(
         stringParts,
@@ -209,7 +224,11 @@ const configure = (
     config = { mediaType: defaultMediaType }
   ) => (stringParts, ...interpolationValues) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
-    const [lower, higher] = ensureBreakpointOrder(heightBreakpoints, from, to);
+
+    const fromIndex = findIndexInHeightBreakpointArray(propEqName(from));
+    const toIndex = findIndexInHeightBreakpointArray(propEqName(to));
+
+    const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
     return buildQuery(
       buildQueryDefinition(
         mediaType(config.mediaType),
@@ -224,7 +243,7 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const breakpointAbove = getBreakpointAbove(breakpoint);
+    const breakpointAbove = getBreakpointAboveHeight(breakpoint);
     if (breakpointAbove) {
       return betweenHeights(breakpoint, breakpointAbove, config)(
         stringParts,

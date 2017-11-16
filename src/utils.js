@@ -14,7 +14,6 @@ import {
   findIndex,
   propEq,
   nth,
-  subtract,
   when,
 } from 'ramda';
 import { css } from 'styled-components';
@@ -29,12 +28,11 @@ export const isNumber = is(Number);
 export const isObject = is(Object);
 export const isString = is(String);
 
+export const propEqName = propEq('name');
+
 export const ensureArray = when(isString, mediaTypes => [mediaTypes]);
 
 export const appendUnit = (value, unit) => `${value}${unit}`;
-
-export const ensureBreakpointOrder = (breakpoints, ...args) =>
-  sort((a, b) => subtract(prop(a)(breakpoints), prop(b)(breakpoints)))(args);
 
 export const toBreakpointArray = compose(
   map(zipObj(['name', 'value'])),
