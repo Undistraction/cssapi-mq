@@ -118,6 +118,9 @@ const configure = (
 
   // Width
 
+  const width = breakpoint =>
+    `(width: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
+
   const minWidth = breakpoint =>
     `(min-width: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
 
@@ -132,6 +135,9 @@ const configure = (
   };
 
   // Height
+
+  const height = breakpoint =>
+    `(height: ${toOutputWithUnit(getHeightBreakpoint(breakpoint))})`;
 
   const minHeight = breakpoint =>
     `(min-height: ${toOutputWithUnit(getHeightBreakpoint(breakpoint))})`;
@@ -152,12 +158,11 @@ const configure = (
   const aboveWidth = (from, config = defaultAPIConfig) => (
     stringParts,
     ...interpolationValues
-  ) => {
-    return buildQuery(
+  ) =>
+    buildQuery(
       buildQueryDefinition(mediaType(config.mediaType), minWidth(from)),
       css(stringParts, ...interpolationValues)
     );
-  };
 
   const belowWidth = (to, config = defaultAPIConfig) => (
     stringParts,
@@ -200,6 +205,15 @@ const configure = (
     }
     return aboveWidth(breakpoint, config)(stringParts, ...interpolationValues);
   };
+
+  const atWidth = (breakpoint, config = defaultAPIConfig) => (
+    stringParts,
+    ...interpolationValues
+  ) =>
+    buildQuery(
+      buildQueryDefinition(mediaType(config.mediaType), width(breakpoint)),
+      css(stringParts, ...interpolationValues)
+    );
 
   // Media Queries > Height
   // ---------------------------------------------------------------------------
@@ -256,6 +270,15 @@ const configure = (
     return aboveHeight(breakpoint, config)(stringParts, ...interpolationValues);
   };
 
+  const atHeight = (breakpoint, config = defaultAPIConfig) => (
+    stringParts,
+    ...interpolationValues
+  ) =>
+    buildQuery(
+      buildQueryDefinition(mediaType(config.mediaType), height(breakpoint)),
+      css(stringParts, ...interpolationValues)
+    );
+
   const tweak = (mq, tweakpoints) => {
     validateBreakpoints(tweakpoints);
     validateBreakpointSets(tweakpoints);
@@ -276,18 +299,22 @@ const configure = (
   const exports = {
     mediaType,
     orientation,
+    width,
     minWidth,
     maxWidth,
+    height,
     minHeight,
     maxHeight,
     aboveWidth,
     belowWidth,
     betweenWidths,
     atWidthBreakpoint,
+    atWidth,
     aboveHeight,
     belowHeight,
     betweenHeights,
     atHeightBreakpoint,
+    atHeight,
     tweak,
   };
 

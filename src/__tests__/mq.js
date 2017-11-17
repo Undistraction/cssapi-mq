@@ -206,6 +206,26 @@ describe('tweaked', () => {
 // Media Fragments
 // -----------------------------------------------------------------------------
 
+describe('width', () => {
+  testConfiguredUnits(mqWithWidthBreakpoints, 'width', 'small');
+
+  it('returns the correct media fragment', () => {
+    expect(mqWithWidthBreakpoints().width('small')).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithWidthBreakpoints().width('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it("throws if 'width' breakpoint map doesn't exist", () => {
+    expect(() => mqWithNoWidthBreakpoints().width('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
 describe('minWidth', () => {
   testConfiguredUnits(mqWithWidthBreakpoints, 'minWidth', 'small');
 
@@ -241,6 +261,26 @@ describe('maxWidth', () => {
 
   it("throws if 'width' breakpoint map doesn't exist", () => {
     expect(() => mqWithNoWidthBreakpoints().maxWidth('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
+describe('height', () => {
+  testConfiguredUnits(mqWithHeightBreakpoints, 'height', 'small');
+
+  it('returns the correct media fragment', () => {
+    expect(mqWithHeightBreakpoints().height('small')).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithHeightBreakpoints().height('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it("throws if 'height' breakpoint map doesn't exist", () => {
+    expect(() => mqWithNoHeightBreakpoints().height('xxxx')).toThrowError(
       InvalidValueError
     );
   });
@@ -321,7 +361,7 @@ describe('orientation', () => {
 });
 
 // -----------------------------------------------------------------------------
-// Media Queries
+// Media Queries > Width
 // -----------------------------------------------------------------------------
 
 describe('aboveWidth', () => {
@@ -447,6 +487,25 @@ describe('belowWidth', () => {
   });
 });
 
+describe('atWidth', () => {
+  it('returns the correct media query', () => {
+    const result = mqWithWidthBreakpoints().atWidth('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithWidthBreakpoints().atWidth('xxxx')``).toThrowError(
+      InvalidValueError
+    );
+  });
+});
+
+// -----------------------------------------------------------------------------
+// Media Queries > Height
+// -----------------------------------------------------------------------------
+
 describe('betweenHeights', () => {
   it('returns the correct media query', () => {
     const result = mqWithHeightBreakpoints().betweenHeights('small', 'medium')`
@@ -507,5 +566,20 @@ describe('atHeightBreakpoint', () => {
     expect(
       () => mqWithHeightBreakpoints().atHeightBreakpoint('xxxx')``
     ).toThrowError(InvalidValueError);
+  });
+});
+
+describe('atHeight', () => {
+  it('returns the correct media query', () => {
+    const result = mqWithHeightBreakpoints().atHeight('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+    expect(result).toMatchSnapshot();
+  });
+
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() => mqWithHeightBreakpoints().atHeight('xxxx')``).toThrowError(
+      InvalidValueError
+    );
   });
 });

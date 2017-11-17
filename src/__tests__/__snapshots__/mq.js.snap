@@ -16,6 +16,14 @@ exports[`aboveWidth returns the correct media query 2`] = `
 }
 `;
 
+exports[`atHeight returns the correct media query 1`] = `
+@media screen and (height: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`atHeightBreakpoint returns the correct query when it is between other breakpoints 1`] = `
 @media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
     background-color: function () {
@@ -34,6 +42,14 @@ exports[`atHeightBreakpoint returns the correct query when it is first breakpoin
 
 exports[`atHeightBreakpoint returns the correct query when it is last breakpoint 1`] = `
 @media screen and (min-height: 81.25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`atWidth returns the correct media query 1`] = `
+@media screen and (width: 25em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -120,6 +136,12 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
+exports[`height renders configured units 1`] = `(height: 25rem)`;
+
+exports[`height renders configured units 2`] = `(height: 400px)`;
+
+exports[`height returns the correct media fragment 1`] = `(height: 25em)`;
+
 exports[`maxHeight renders configured units 1`] = `(max-height: 24.999375rem)`;
 
 exports[`maxHeight renders configured units 2`] = `(max-height: 400px)`;
@@ -175,3 +197,9 @@ exports[`tweaked doesn't effect the original mq 1`] = `
     }; ;
 }
 `;
+
+exports[`width renders configured units 1`] = `(width: 25rem)`;
+
+exports[`width renders configured units 2`] = `(width: 400px)`;
+
+exports[`width returns the correct media fragment 1`] = `(width: 25em)`;
