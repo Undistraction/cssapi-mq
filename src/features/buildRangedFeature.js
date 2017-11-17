@@ -18,7 +18,7 @@ import {
   missingBreakpointErrorMessage,
   mssingBreakpointMapErrorMessage,
 } from '../errors';
-import { buildMediaType } from './features';
+import buildMediaType from './buildMediaType';
 
 import {
   getUpperLimit,

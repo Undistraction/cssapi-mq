@@ -1,7 +1,8 @@
 import { partial, mergeDeepLeft, merge, map, mergeAll, compose } from 'ramda';
 
-import featureBuilder from './utils/featureBuilder';
-import { buildMediaType, buildOrientation } from './utils/features';
+import buildRangedFeature from './features/buildRangedFeature';
+import buildMediaType from './features/buildMediaType';
+import buildOrientation from './features/buildOrientation';
 
 import {
   validateBreakpointSets,
@@ -28,7 +29,9 @@ const configure = (breakpoints, config) => {
   const renderFeatures = () =>
     compose(
       mergeAll,
-      map(name => featureBuilder(name, breakpoints[name], configWithDefaults))
+      map(name =>
+        buildRangedFeature(name, breakpoints[name], configWithDefaults)
+      )
     )(BREAKPOINT_MAP_NAMES);
 
   // ---------------------------------------------------------------------------
