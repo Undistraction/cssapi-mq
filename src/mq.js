@@ -48,6 +48,8 @@ const configure = (
     shouldSeparateQueries,
   });
 
+  const defaultAPIConfig = { mediaType: defaultMediaType };
+
   // ---------------------------------------------------------------------------
   // UTILS
   // ---------------------------------------------------------------------------
@@ -144,10 +146,10 @@ const configure = (
     )})`;
   };
 
-  // Media Queries
+  // Media Queries > Width
   // ---------------------------------------------------------------------------
 
-  const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
+  const aboveWidth = (from, config = defaultAPIConfig) => (
     stringParts,
     ...interpolationValues
   ) => {
@@ -157,7 +159,7 @@ const configure = (
     );
   };
 
-  const belowWidth = (to, config = { mediaType: defaultMediaType }) => (
+  const belowWidth = (to, config = defaultAPIConfig) => (
     stringParts,
     ...interpolationValues
   ) =>
@@ -166,11 +168,10 @@ const configure = (
       css(stringParts, ...interpolationValues)
     );
 
-  const betweenWidths = (
-    from,
-    to,
-    config = { mediaType: defaultMediaType }
-  ) => (stringParts, ...interpolationValues) => {
+  const betweenWidths = (from, to, config = defaultAPIConfig) => (
+    stringParts,
+    ...interpolationValues
+  ) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
     const fromIndex = findIndexInWidthBreakpointArray(propEqName(from));
     const toIndex = findIndexInWidthBreakpointArray(propEqName(to));
@@ -186,10 +187,10 @@ const configure = (
     );
   };
 
-  const atWidthBreakpoint = (
-    breakpoint,
-    config = { mediaType: defaultMediaType }
-  ) => (stringParts, ...interpolationValues) => {
+  const atWidthBreakpoint = (breakpoint, config = defaultAPIConfig) => (
+    stringParts,
+    ...interpolationValues
+  ) => {
     const breakpointAbove = getBreakpointAboveWidth(breakpoint);
     if (breakpointAbove) {
       return betweenWidths(breakpoint, breakpointAbove, config)(
@@ -200,7 +201,10 @@ const configure = (
     return aboveWidth(breakpoint, config)(stringParts, ...interpolationValues);
   };
 
-  const aboveHeight = (from, config = { mediaType: defaultMediaType }) => (
+  // Media Queries > Height
+  // ---------------------------------------------------------------------------
+
+  const aboveHeight = (from, config = defaultAPIConfig) => (
     stringParts,
     ...interpolationValues
   ) =>
@@ -209,7 +213,7 @@ const configure = (
       css(stringParts, ...interpolationValues)
     );
 
-  const belowHeight = (to, config = { mediaType: defaultMediaType }) => (
+  const belowHeight = (to, config = defaultAPIConfig) => (
     stringParts,
     ...interpolationValues
   ) =>
@@ -218,11 +222,10 @@ const configure = (
       css(stringParts, ...interpolationValues)
     );
 
-  const betweenHeights = (
-    from,
-    to,
-    config = { mediaType: defaultMediaType }
-  ) => (stringParts, ...interpolationValues) => {
+  const betweenHeights = (from, to, config = defaultAPIConfig) => (
+    stringParts,
+    ...interpolationValues
+  ) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
 
     const fromIndex = findIndexInHeightBreakpointArray(propEqName(from));
@@ -239,10 +242,10 @@ const configure = (
     );
   };
 
-  const atHeightBreakpoint = (
-    breakpoint,
-    config = { mediaType: defaultMediaType }
-  ) => (stringParts, ...interpolationValues) => {
+  const atHeightBreakpoint = (breakpoint, config = defaultAPIConfig) => (
+    stringParts,
+    ...interpolationValues
+  ) => {
     const breakpointAbove = getBreakpointAboveHeight(breakpoint);
     if (breakpointAbove) {
       return betweenHeights(breakpoint, breakpointAbove, config)(
