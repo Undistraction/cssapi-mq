@@ -139,6 +139,9 @@ const configure = (
     )(value);
   };
 
+  const feature = (name, parser, shouldSeparate = false) => breakpoint =>
+    buildFeature(name, parser(breakpoint, shouldSeparate));
+
   // ---------------------------------------------------------------------------
   // API
   // ---------------------------------------------------------------------------
@@ -164,21 +167,15 @@ const configure = (
 
   // Height
 
-  const width = breakpoint =>
-    buildFeature('width', parseWidthValue(breakpoint));
-  const minWidth = breakpoint =>
-    buildFeature('min-width', parseWidthValue(breakpoint));
-  const maxWidth = breakpoint =>
-    buildFeature('max-width', parseWidthValue(breakpoint, true));
+  const width = feature('width', parseWidthValue);
+  const minWidth = feature('min-width', parseWidthValue);
+  const maxWidth = feature('max-width', parseWidthValue, true);
 
   // Height
 
-  const height = breakpoint =>
-    buildFeature('height', parseHeightValue(breakpoint));
-  const minHeight = breakpoint =>
-    buildFeature('min-height', parseHeightValue(breakpoint));
-  const maxHeight = breakpoint =>
-    buildFeature('max-height', parseHeightValue(breakpoint, true));
+  const height = feature('height', parseHeightValue);
+  const minHeight = feature('min-height', parseHeightValue);
+  const maxHeight = feature('max-height', parseHeightValue, true);
 
   // Media Queries > Width
   // ---------------------------------------------------------------------------

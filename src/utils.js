@@ -29,7 +29,6 @@ export const isObject = is(Object);
 export const isString = is(String);
 
 export const propEqName = propEq('name');
-
 export const ensureArray = when(isString, mediaTypes => [mediaTypes]);
 
 export const appendUnit = (value, unit) => `${value}${unit}`;
@@ -45,10 +44,8 @@ export const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
 
 export const orderByValue = compose(reverse, sort(prop('value')));
 
-export const namePropEquals = propEq('name');
-
 const findBreakpointIndex = (breakpoint, breakpointsArray) =>
-  findIndex(namePropEquals(breakpoint))(breakpointsArray);
+  findIndex(propEqName(breakpoint))(breakpointsArray);
 
 export const getUpperLimit = (breakpointsArray, breakpoint) => {
   const index = findBreakpointIndex(breakpoint, breakpointsArray);
