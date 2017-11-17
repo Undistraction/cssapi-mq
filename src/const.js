@@ -16,15 +16,19 @@ export const UNITS = Object.freeze({
   PX: 'px',
 });
 
-export const BREAKPOINT_MAP_NAMES = [
+export const BREAKPOINT_MAP_NAMES = Object.freeze([
   'width',
   'height',
   'resolution',
   'aspectRatio',
-];
+]);
 
-export const ORIENTATIONS = ['portrait', 'landscape'];
+export const ORIENTATIONS = Object.freeze(['portrait', 'landscape']);
 
-export const SEPARATOR_VALUE = 0.01;
+export const SEPARATOR_VALUES = Object.freeze({
+  rem: 0.01,
+  em: 0.01,
+  px: 1,
+});
 
 export const MEDIA_PREFIX = '@media';

@@ -1,5 +1,14 @@
 import { css } from 'styled-components';
-import { partial, findIndex, __, mergeDeepLeft } from 'ramda';
+import {
+  partial,
+  findIndex,
+  __,
+  mergeDeepLeft,
+  when,
+  always,
+  subtract,
+  compose,
+} from 'ramda';
 import {
   validateBreakpointSets,
   validateConfig,
@@ -7,18 +16,18 @@ import {
   validateOrientation,
   validateBreakpoints,
 } from './validations';
-import { MEDIA_TYPES, UNITS, SEPARATOR_VALUE } from './const';
+import { MEDIA_TYPES, UNITS } from './const';
 import {
   orderByValue,
   toBreakpointArray,
   getUpperLimit,
   toOutput,
-  unitIsRemOrEm,
   buildQuery,
   buildQueryDefinition,
   ensureArray,
   buildFeature,
   propEqName,
+  separatorValueForUnit,
 } from './utils';
 import {
   throwError,
@@ -35,6 +44,7 @@ const configure = (
     defaultMediaType = MEDIA_TYPES.SCREEN,
     unit = UNITS.EM,
     shouldSeparateQueries = true,
+    errorIfNoBreakpointDefined = true,
   } = {}
 ) => {
   validateBreakpoints(breakpoints);
@@ -93,6 +103,42 @@ const configure = (
     return value;
   };
 
+  const retrieveWidthBreakpointIfNeeded = when(
+    always(errorIfNoBreakpointDefined),
+    getWidthBreakpoint
+  );
+
+  const retrieveHeightBreakpointIfNeeded = when(
+    always(errorIfNoBreakpointDefined),
+    getHeightBreakpoint
+  );
+
+  const parseWidthValue = (value, shouldSeparate = false) => {
+    const prepareUnitlessValue = when(
+      always(shouldSeparate),
+      subtract(__, separatorValueForUnit(unit))
+    );
+
+    return compose(
+      toOutputWithUnit,
+      prepareUnitlessValue,
+      retrieveWidthBreakpointIfNeeded
+    )(value);
+  };
+
+  const parseHeightValue = (value, shouldSeparate = false) => {
+    const prepareUnitlessValue = when(
+      always(shouldSeparate),
+      subtract(__, separatorValueForUnit(unit))
+    );
+
+    return compose(
+      toOutputWithUnit,
+      prepareUnitlessValue,
+      retrieveHeightBreakpointIfNeeded
+    )(value);
+  };
+
   // ---------------------------------------------------------------------------
   // API
   // ---------------------------------------------------------------------------
@@ -116,41 +162,23 @@ const configure = (
     return buildFeature('orientation', value);
   };
 
-  // Width
+  // Height
 
   const width = breakpoint =>
-    `(width: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
-
+    buildFeature('width', parseWidthValue(breakpoint));
   const minWidth = breakpoint =>
-    `(min-width: ${toOutputWithUnit(getWidthBreakpoint(breakpoint))})`;
-
-  const maxWidth = breakpoint => {
-    const breakpointValue = getWidthBreakpoint(breakpoint);
-    // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
-    return `(max-width: ${toOutputWithUnit(
-      unitIsRemOrEm(unit) && shouldSeparateQueries
-        ? breakpointValue - SEPARATOR_VALUE
-        : breakpointValue
-    )})`;
-  };
+    buildFeature('min-width', parseWidthValue(breakpoint));
+  const maxWidth = breakpoint =>
+    buildFeature('max-width', parseWidthValue(breakpoint, true));
 
   // Height
 
   const height = breakpoint =>
-    `(height: ${toOutputWithUnit(getHeightBreakpoint(breakpoint))})`;
-
+    buildFeature('height', parseHeightValue(breakpoint));
   const minHeight = breakpoint =>
-    `(min-height: ${toOutputWithUnit(getHeightBreakpoint(breakpoint))})`;
-
-  const maxHeight = breakpoint => {
-    const breakpointValue = getHeightBreakpoint(breakpoint);
-    // If using ems, try and avoid any overlap in media queries by reducing the value of max-width queries so they don't run up against min-width queries.
-    return `(max-height: ${toOutputWithUnit(
-      unitIsRemOrEm(unit) && shouldSeparateQueries
-        ? breakpointValue - SEPARATOR_VALUE
-        : breakpointValue
-    )})`;
-  };
+    buildFeature('min-height', parseHeightValue(breakpoint));
+  const maxHeight = breakpoint =>
+    buildFeature('max-height', parseHeightValue(breakpoint, true));
 
   // Media Queries > Width
   // ---------------------------------------------------------------------------

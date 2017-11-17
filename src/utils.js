@@ -17,7 +17,7 @@ import {
   when,
 } from 'ramda';
 import { css } from 'styled-components';
-import { UNITS, MEDIA_PREFIX } from './const';
+import { UNITS, MEDIA_PREFIX, SEPARATOR_VALUES } from './const';
 
 // -----------------------------------------------------------------------------
 // Exports
@@ -39,6 +39,8 @@ export const toBreakpointArray = compose(
   toPairs
 );
 
+export const separatorValueForUnit = unit => SEPARATOR_VALUES[unit];
+
 export const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
 
 export const orderByValue = compose(reverse, sort(prop('value')));
@@ -53,6 +55,8 @@ export const getUpperLimit = (breakpointsArray, breakpoint) => {
   return compose(prop('name'), nth(inc(index)))(breakpointsArray);
 };
 
+export const buildFeature = (feature, value) => `(${feature}: ${value})`;
+
 export const buildQueryDefinition = (...elements) =>
   `${MEDIA_PREFIX} ${elements.join(' and ')}`;
 
@@ -61,8 +65,6 @@ export const buildQuery = (definition, content) => css`
     ${content};
   }
 `;
-
-export const buildFeature = (name, value) => `(${name}: ${value})`;
 
 export const toOutput = (unit, baseFontSize, value) =>
   appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);
