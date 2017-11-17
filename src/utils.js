@@ -65,5 +65,3 @@ export const buildQuery = (definition, content) => css`
 
 export const toOutput = (unit, baseFontSize, value) =>
   appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);
-
-export const orderdBreakpoints = map(toBreakpointArray);

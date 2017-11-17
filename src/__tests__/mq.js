@@ -42,6 +42,14 @@ const testConfiguredUnits = (mq, method, ...args) => {
   });
 };
 
+const testConfigurableSeparation = (mq, method, ...args) => {
+  it("doesn't separate units if not configured", () => {
+    expect(
+      mq({ shouldSeparateQueries: false })[method](...args)
+    ).toMatchSnapshot();
+  });
+};
+
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
@@ -248,6 +256,7 @@ describe('minWidth', () => {
 
 describe('maxWidth', () => {
   testConfiguredUnits(mqWithWidthBreakpoints, 'maxWidth', 'small');
+  testConfigurableSeparation(mqWithWidthBreakpoints, 'maxWidth', 'small');
 
   it('returns the correct media fragment', () => {
     expect(mqWithWidthBreakpoints().maxWidth('small')).toMatchSnapshot();
@@ -308,6 +317,7 @@ describe('minHeight', () => {
 
 describe('maxHeight', () => {
   testConfiguredUnits(mqWithHeightBreakpoints, 'maxHeight', 'small');
+  testConfigurableSeparation(mqWithHeightBreakpoints, 'maxHeight', 'small');
 
   it('returns the correct media fragment', () => {
     expect(mqWithHeightBreakpoints().maxHeight('small')).toMatchSnapshot();

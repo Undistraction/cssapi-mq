@@ -16,12 +16,7 @@ export const UNITS = Object.freeze({
   PX: 'px',
 });
 
-export const BREAKPOINT_MAP_NAMES = Object.freeze([
-  'width',
-  'height',
-  'resolution',
-  'aspectRatio',
-]);
+export const BREAKPOINT_MAP_NAMES = Object.freeze(['width', 'height']);
 
 export const ORIENTATIONS = Object.freeze(['portrait', 'landscape']);
 

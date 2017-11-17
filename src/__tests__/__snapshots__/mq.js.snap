@@ -142,11 +142,15 @@ exports[`height renders configured units 2`] = `(height: 400px)`;
 
 exports[`height returns the correct media fragment 1`] = `(height: 25em)`;
 
+exports[`maxHeight doesn't separate units if not configured 1`] = `(max-height: 25em)`;
+
 exports[`maxHeight renders configured units 1`] = `(max-height: 24.999375rem)`;
 
 exports[`maxHeight renders configured units 2`] = `(max-height: 399px)`;
 
 exports[`maxHeight returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
+
+exports[`maxWidth doesn't separate units if not configured 1`] = `(max-width: 25em)`;
 
 exports[`maxWidth renders configured units 1`] = `(max-width: 24.999375rem)`;
 
