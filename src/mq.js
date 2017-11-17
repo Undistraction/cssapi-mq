@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { partial, findIndex, __ } from 'ramda';
+import { partial, findIndex, __, mergeDeepLeft } from 'ramda';
 import {
   validateBreakpointSets,
   validateConfig,
@@ -38,9 +38,8 @@ const configure = (
   } = {}
 ) => {
   validateBreakpoints(breakpoints);
-  const { width: widthBreakpoints, height: heightBreakpoints } = breakpoints;
-
   validateBreakpointSets(breakpoints);
+  const { width: widthBreakpoints, height: heightBreakpoints } = breakpoints;
 
   validateConfig({
     baseFontSize,
@@ -151,11 +150,12 @@ const configure = (
   const aboveWidth = (from, config = { mediaType: defaultMediaType }) => (
     stringParts,
     ...interpolationValues
-  ) =>
-    buildQuery(
+  ) => {
+    return buildQuery(
       buildQueryDefinition(mediaType(config.mediaType), minWidth(from)),
       css(stringParts, ...interpolationValues)
     );
+  };
 
   const belowWidth = (to, config = { mediaType: defaultMediaType }) => (
     stringParts,
@@ -253,11 +253,24 @@ const configure = (
     return aboveHeight(breakpoint, config)(stringParts, ...interpolationValues);
   };
 
+  const tweak = (mq, tweakpoints) => {
+    validateBreakpoints(tweakpoints);
+    validateBreakpointSets(tweakpoints);
+    const mergedBreakpoints = mergeDeepLeft(breakpoints, tweakpoints);
+    mq.tweaked = configure(mergedBreakpoints, {
+      baseFontSize,
+      defaultMediaType,
+      unit,
+      shouldSeparateQueries,
+    });
+    return mq;
+  };
+
   // ---------------------------------------------------------------------------
   // Export
   // ---------------------------------------------------------------------------
 
-  return {
+  const exports = {
     mediaType,
     orientation,
     minWidth,
@@ -272,7 +285,12 @@ const configure = (
     belowHeight,
     betweenHeights,
     atHeightBreakpoint,
+    tweak,
   };
+
+  exports.tweak = partial(tweak, [exports]);
+
+  return exports;
 };
 
 export default {

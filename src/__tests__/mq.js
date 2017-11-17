@@ -31,6 +31,9 @@ const mqWithHeightBreakpoints = (config = {}) =>
 const mqWithNoWidthBreakpoints = () => styledMQ.configure({});
 const mqWithNoHeightBreakpoints = () => styledMQ.configure({});
 
+const mqWithTweakedWidthBreakpoints = () =>
+  mqWithWidthBreakpoints().tweak({ width: { alpha: 300 } });
+
 const testConfiguredUnits = (mq, method, ...args) => {
   it('renders configured units', () => {
     expect(mq({ unit: 'rem' })[method](...args)).toMatchSnapshot();
@@ -140,8 +143,68 @@ describe('configuration', () => {
 });
 
 // -----------------------------------------------------------------------------
+// Tweakpoints
+// -----------------------------------------------------------------------------
+
+describe('tweakpoints', () => {
+  it('throws if no breakpoints are supplied', () => {
+    expect(() => mqWithWidthBreakpoints().tweak()).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it('throws if no breakpoint sets are supplied', () => {
+    expect(() => mqWithWidthBreakpoints().tweak({})).toThrowError(
+      InvalidValueError
+    );
+  });
+
+  it('throws if invalid breakpoint value is supplied', () => {
+    expect(() =>
+      mqWithWidthBreakpoints().tweak({ width: { small: 'xxx' } })
+    ).toThrowError(InvalidValueError);
+  });
+});
+
+// -----------------------------------------------------------------------------
+// Tweaked
+// -----------------------------------------------------------------------------
+
+describe('tweaked', () => {
+  it('adds includes both old breakpoints and added tweakpoints', () => {
+    expect(
+      mqWithTweakedWidthBreakpoints().tweaked.aboveWidth('alpha')`
+      background-color: ${() => 'GhostWhite'};
+    `
+    ).toMatchSnapshot();
+
+    expect(
+      mqWithTweakedWidthBreakpoints().tweaked.betweenWidths('alpha', 'large')`
+      background-color: ${() => 'GhostWhite'};
+    `
+    ).toMatchSnapshot();
+  });
+
+  it("doesn't effect the original mq", () => {
+    expect(
+      () =>
+        mqWithTweakedWidthBreakpoints().aboveWidth('alpha')`
+      background-color: ${() => 'GhostWhite'};
+    `
+    ).toThrowError(InvalidValueError);
+
+    // Make sure the upper limit is 'medium', not 'alpha'
+    expect(
+      mqWithTweakedWidthBreakpoints().tweaked.atWidthBreakpoint('small')`
+      background-color: ${() => 'GhostWhite'};
+    `
+    ).toMatchSnapshot();
+  });
+});
+
+// -----------------------------------------------------------------------------
 // Media Fragments
-// ---------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 describe('minWidth', () => {
   testConfiguredUnits(mqWithWidthBreakpoints, 'minWidth', 'small');
