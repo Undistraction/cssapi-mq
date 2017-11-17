@@ -23,16 +23,15 @@ import buildMediaType from './buildMediaType';
 import {
   getUpperLimit,
   toOutput,
-  buildQuery,
-  buildQueryDefinition,
-  buildFeature,
   propEqName,
   separatorValueForUnit,
   toBreakpointArray,
 } from '../utils';
 
+import { renderQuery, renderQueryDefinition, renderFeature } from '../render';
+
 const buildFeatureItem = (name, parser, shouldSeparate = false) => breakpoint =>
-  buildFeature(name, parser(breakpoint, shouldSeparate));
+  renderFeature(name, parser(breakpoint, shouldSeparate));
 
 export default (
   name,
@@ -96,8 +95,8 @@ export default (
     stringParts,
     ...interpolationValues
   ) =>
-    buildQuery(
-      buildQueryDefinition(mediaType(config.mediaType), minFeature(from)),
+    renderQuery(
+      renderQueryDefinition(mediaType(config.mediaType), minFeature(from)),
       css(stringParts, ...interpolationValues)
     );
 
@@ -105,8 +104,8 @@ export default (
     stringParts,
     ...interpolationValues
   ) =>
-    buildQuery(
-      buildQueryDefinition(mediaType(config.mediaType), maxFeature(to)),
+    renderQuery(
+      renderQueryDefinition(mediaType(config.mediaType), maxFeature(to)),
       css(stringParts, ...interpolationValues)
     );
 
@@ -118,8 +117,8 @@ export default (
     const fromIndex = indexOfBreakpointNamed(propEqName(from));
     const toIndex = indexOfBreakpointNamed(propEqName(to));
     const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
-    return buildQuery(
-      buildQueryDefinition(
+    return renderQuery(
+      renderQueryDefinition(
         mediaType(config.mediaType),
         minFeature(lower),
         maxFeature(higher)
@@ -149,8 +148,8 @@ export default (
     stringParts,
     ...interpolationValues
   ) =>
-    buildQuery(
-      buildQueryDefinition(mediaType(config.mediaType), feature(breakpoint)),
+    renderQuery(
+      renderQueryDefinition(mediaType(config.mediaType), feature(breakpoint)),
       css(stringParts, ...interpolationValues)
     );
   const titleizedName = name[0].toUpperCase() + name.slice(1);

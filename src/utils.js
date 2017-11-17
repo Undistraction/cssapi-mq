@@ -52,16 +52,5 @@ export const getUpperLimit = (breakpointsArray, breakpoint) => {
   return compose(prop('name'), nth(inc(index)))(breakpointsArray);
 };
 
-export const buildFeature = (feature, value) => `(${feature}: ${value})`;
-
-export const buildQueryDefinition = (...elements) =>
-  `${MEDIA_PREFIX} ${elements.join(' and ')}`;
-
-export const buildQuery = (definition, content) => css`
-  ${definition} {
-    ${content};
-  }
-`;
-
 export const toOutput = (unit, baseFontSize, value) =>
   appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);

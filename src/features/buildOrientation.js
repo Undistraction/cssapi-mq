@@ -1,7 +1,7 @@
 import { validateOrientation } from '../validations';
-import { buildFeature } from '../utils';
+import { renderFeature } from '../render';
 
 export default () => value => {
   validateOrientation(value);
-  return buildFeature('orientation', value);
+  return renderFeature('orientation', value);
 };
