@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+
 import {
   partial,
   findIndex,
@@ -9,6 +10,7 @@ import {
   subtract,
   compose,
 } from 'ramda';
+
 import {
   validateBreakpointSets,
   validateConfig,
@@ -16,10 +18,10 @@ import {
   validateOrientation,
   validateBreakpoints,
 } from './validations';
+
 import { MEDIA_TYPES, UNITS } from './const';
+
 import {
-  orderByValue,
-  toBreakpointArray,
   getUpperLimit,
   toOutput,
   buildQuery,
@@ -28,7 +30,9 @@ import {
   buildFeature,
   propEqName,
   separatorValueForUnit,
+  orderdBreakpoints,
 } from './utils';
+
 import {
   throwError,
   missingBreakpointErrorMessage,
@@ -49,7 +53,6 @@ const configure = (
 ) => {
   validateBreakpoints(breakpoints);
   validateBreakpointSets(breakpoints);
-  const { width: widthBreakpoints, height: heightBreakpoints } = breakpoints;
 
   validateConfig({
     baseFontSize,
@@ -64,53 +67,33 @@ const configure = (
   // UTILS
   // ---------------------------------------------------------------------------
 
-  const widthBreakpointArray = orderByValue(
-    toBreakpointArray(widthBreakpoints)
-  );
-  const heightBreakpointArray = orderByValue(
-    toBreakpointArray(heightBreakpoints)
-  );
+  const orderedBreakpoints = orderdBreakpoints(breakpoints);
 
-  const findIndexInWidthBreakpointArray = findIndex(__, widthBreakpointArray);
-  const findIndexInHeightBreakpointArray = findIndex(__, heightBreakpointArray);
+  const indexOfBreakpointNamed = (name, value) =>
+    findIndex(value, orderedBreakpoints[name]);
 
-  const getBreakpointAboveWidth = partial(getUpperLimit, [
-    widthBreakpointArray,
-  ]);
-  const getBreakpointAboveHeight = partial(getUpperLimit, [
-    heightBreakpointArray,
-  ]);
-  const missingBreakpointErrorMessageWithBreakpoints = partial(
-    missingBreakpointErrorMessage,
-    [widthBreakpoints]
-  );
+  const nextBreakpointAboveNamed = (value, breakpoint) =>
+    getUpperLimit(orderedBreakpoints[value], breakpoint);
+
   const toOutputWithUnit = partial(toOutput, [unit, baseFontSize]);
 
-  const getWidthBreakpoint = name => {
-    if (!widthBreakpoints) throwError(mssingBreakpointMapErrorMessage('width'));
-    const value = widthBreakpoints[name];
+  const getBreakpointNamed = (feature, name) => {
+    if (!breakpoints[feature])
+      throwError(mssingBreakpointMapErrorMessage(feature));
+    const value = breakpoints[feature][name];
     if (!value)
-      throwError(missingBreakpointErrorMessageWithBreakpoints('width', name));
-    return value;
-  };
-
-  const getHeightBreakpoint = name => {
-    if (!heightBreakpoints)
-      throwError(mssingBreakpointMapErrorMessage('height'));
-    const value = heightBreakpoints[name];
-    if (!value)
-      throwError(missingBreakpointErrorMessageWithBreakpoints('height', name));
+      throwError(missingBreakpointErrorMessage(name, breakpoints[feature]));
     return value;
   };
 
   const retrieveWidthBreakpointIfNeeded = when(
     always(errorIfNoBreakpointDefined),
-    getWidthBreakpoint
+    partial(getBreakpointNamed, ['width'])
   );
 
   const retrieveHeightBreakpointIfNeeded = when(
     always(errorIfNoBreakpointDefined),
-    getHeightBreakpoint
+    partial(getBreakpointNamed, ['height'])
   );
 
   const parseWidthValue = (value, shouldSeparate = false) => {
@@ -146,7 +129,23 @@ const configure = (
   // API
   // ---------------------------------------------------------------------------
 
-  // Media Query Elements
+  // Tweak
+  // ---------------------------------------------------------------------------
+
+  const tweak = (mq, tweakpoints) => {
+    validateBreakpoints(tweakpoints);
+    validateBreakpointSets(tweakpoints);
+    const mergedBreakpoints = mergeDeepLeft(breakpoints, tweakpoints);
+    mq.tweaked = configure(mergedBreakpoints, {
+      baseFontSize,
+      defaultMediaType,
+      unit,
+      shouldSeparateQueries,
+    });
+    return mq;
+  };
+
+  // Media Query Features
   // ---------------------------------------------------------------------------
 
   // Media Type
@@ -203,8 +202,8 @@ const configure = (
     ...interpolationValues
   ) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
-    const fromIndex = findIndexInWidthBreakpointArray(propEqName(from));
-    const toIndex = findIndexInWidthBreakpointArray(propEqName(to));
+    const fromIndex = indexOfBreakpointNamed('width', propEqName(from));
+    const toIndex = indexOfBreakpointNamed('width', propEqName(to));
 
     const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
     return buildQuery(
@@ -221,7 +220,7 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const breakpointAbove = getBreakpointAboveWidth(breakpoint);
+    const breakpointAbove = nextBreakpointAboveNamed('width', breakpoint);
     if (breakpointAbove) {
       return betweenWidths(breakpoint, breakpointAbove, config)(
         stringParts,
@@ -267,8 +266,8 @@ const configure = (
   ) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
 
-    const fromIndex = findIndexInHeightBreakpointArray(propEqName(from));
-    const toIndex = findIndexInHeightBreakpointArray(propEqName(to));
+    const fromIndex = indexOfBreakpointNamed('height', propEqName(from));
+    const toIndex = indexOfBreakpointNamed('height', propEqName(to));
 
     const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
     return buildQuery(
@@ -285,7 +284,7 @@ const configure = (
     stringParts,
     ...interpolationValues
   ) => {
-    const breakpointAbove = getBreakpointAboveHeight(breakpoint);
+    const breakpointAbove = nextBreakpointAboveNamed('height', breakpoint);
     if (breakpointAbove) {
       return betweenHeights(breakpoint, breakpointAbove, config)(
         stringParts,
@@ -303,19 +302,6 @@ const configure = (
       buildQueryDefinition(mediaType(config.mediaType), height(breakpoint)),
       css(stringParts, ...interpolationValues)
     );
-
-  const tweak = (mq, tweakpoints) => {
-    validateBreakpoints(tweakpoints);
-    validateBreakpointSets(tweakpoints);
-    const mergedBreakpoints = mergeDeepLeft(breakpoints, tweakpoints);
-    mq.tweaked = configure(mergedBreakpoints, {
-      baseFontSize,
-      defaultMediaType,
-      unit,
-      shouldSeparateQueries,
-    });
-    return mq;
-  };
 
   // ---------------------------------------------------------------------------
   // Export
