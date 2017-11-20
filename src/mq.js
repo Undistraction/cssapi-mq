@@ -1,4 +1,4 @@
-import { partial, mergeDeepLeft, merge, map, mergeAll, compose } from 'ramda';
+import { partial, mergeDeepLeft, merge, mergeAll } from 'ramda';
 
 import buildRangedFeature from './features/buildRangedFeature';
 import buildMediaType from './features/buildMediaType';
@@ -10,12 +10,15 @@ import {
   validateBreakpoints,
 } from './validations';
 
-import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
+import dimensionsOutput from './output/dimensionsOutput';
+import resolutionOutput from './output/resolutionOutput';
+
+import { MEDIA_TYPES, UNITS } from './const';
 
 const defaultConfig = {
   baseFontSize: 16,
   defaultMediaType: MEDIA_TYPES.SCREEN,
-  unit: UNITS.EM,
+  dimensionsUnit: UNITS.DIMENSIONS.EM,
   shouldSeparateQueries: true,
   errorIfNoBreakpointDefined: true,
 };
@@ -27,12 +30,26 @@ const configure = (breakpoints, config) => {
   validateConfig(configWithDefaults);
 
   const renderFeatures = () =>
-    compose(
-      mergeAll,
-      map(name =>
-        buildRangedFeature(name, breakpoints[name], configWithDefaults)
-      )
-    )(BREAKPOINT_MAP_NAMES);
+    mergeAll([
+      buildRangedFeature(
+        'width',
+        dimensionsOutput(config),
+        breakpoints.width,
+        configWithDefaults
+      ),
+      buildRangedFeature(
+        'height',
+        dimensionsOutput(config),
+        breakpoints.height,
+        configWithDefaults
+      ),
+      buildRangedFeature(
+        'resolution',
+        resolutionOutput(config),
+        breakpoints.resolution,
+        configWithDefaults
+      ),
+    ]);
 
   // ---------------------------------------------------------------------------
   // API

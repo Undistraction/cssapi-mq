@@ -8,15 +8,23 @@ import cssSerialiser from './helpers/cssSerialiser';
 expect.addSnapshotSerializer(cssSerialiser);
 
 const validDimensionBreakpoints = {
-  small: 400, // 0–400
-  medium: 900, // 400–900
-  large: 1100, // 900–1100
-  xLarge: 1300, // 1100–1300
+  small: 400,
+  medium: 900,
+  large: 1100,
+  xLarge: 1300,
+};
+
+const validResolutionBreakpoints = {
+  small: 72,
+  medium: 150,
+  large: 300,
+  xLarge: 600,
 };
 
 const validBreakpoints = {
   width: validDimensionBreakpoints,
   height: validDimensionBreakpoints,
+  resolution: validResolutionBreakpoints,
 };
 
 const validBreakpointsForRange = name => {
@@ -36,19 +44,23 @@ const mqWithTweakedBreakpointsForRange = name =>
 const mqWithNoBreakpoints = () => styledMQ.configure({});
 
 const testConfiguredUnits = (name, method, ...args) => {
-  it('renders configured units', () => {
+  it('renders configured dimensionsUnits', () => {
     expect(
-      mqWithValidBreakpointsForRange(name, { unit: 'rem' })[method](...args)
+      mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'rem' })[method](
+        ...args
+      )
     ).toMatchSnapshot();
 
     expect(
-      mqWithValidBreakpointsForRange(name, { unit: 'px' })[method](...args)
+      mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'px' })[method](
+        ...args
+      )
     ).toMatchSnapshot();
   });
 };
 
 const testConfigurableSeparation = (name, method, ...args) => {
-  it("doesn't separate units if not configured", () => {
+  it("doesn't separate dimensionsUnits if not configured", () => {
     expect(
       mqWithValidBreakpointsForRange(name, { shouldSeparateQueries: false })[
         method
@@ -345,15 +357,15 @@ describe('configuration', () => {
       ).not.toThrowError(InvalidValueError);
     });
 
-    it("throws if 'unit' is not valid", () => {
-      const config = { unit: 'xxxx' };
+    it("throws if 'dimensionsUnit' is not valid", () => {
+      const config = { dimensionsUnit: 'xxxx' };
       expect(() =>
         styledMQ.configure(validBreakpointsForRange('width'), config)
       ).toThrowError(InvalidValueError);
     });
 
-    it("doesn't throw an error if 'unit' is valid", () => {
-      const config = { unit: 'px' };
+    it("doesn't throw an error if 'dimensionsUnit' is valid", () => {
+      const config = { dimensionsUnit: 'px' };
       expect(() =>
         styledMQ.configure(validBreakpointsForRange('width'), config)
       ).not.toThrowError(InvalidValueError);
@@ -446,6 +458,7 @@ describe('tweaked', () => {
 
 testRangeQuery('width');
 testRangeQuery('height');
+testRangeQuery('resolution');
 
 describe('mediaType', () => {
   it('returns the correct default media type if called with no arguments', () => {

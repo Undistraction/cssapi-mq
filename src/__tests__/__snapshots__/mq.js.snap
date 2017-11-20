@@ -8,27 +8,27 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
-exports[`height range accessors height() doesn't separate units if not configured 1`] = `(height: 25em)`;
+exports[`height range accessors height() doesn't separate dimensionsUnits if not configured 1`] = `(height: 25em)`;
 
-exports[`height range accessors height() renders configured units 1`] = `(height: 25rem)`;
+exports[`height range accessors height() renders configured dimensionsUnits 1`] = `(height: 25rem)`;
 
-exports[`height range accessors height() renders configured units 2`] = `(height: 400px)`;
+exports[`height range accessors height() renders configured dimensionsUnits 2`] = `(height: 400px)`;
 
 exports[`height range accessors height() returns the correct media fragment 1`] = `(height: 25em)`;
 
-exports[`height range accessors maxHeight() doesn't separate units if not configured 1`] = `(max-height: 25em)`;
+exports[`height range accessors maxHeight() doesn't separate dimensionsUnits if not configured 1`] = `(max-height: 25em)`;
 
-exports[`height range accessors maxHeight() renders configured units 1`] = `(max-height: 24.999375rem)`;
+exports[`height range accessors maxHeight() renders configured dimensionsUnits 1`] = `(max-height: 24.999375rem)`;
 
-exports[`height range accessors maxHeight() renders configured units 2`] = `(max-height: 399px)`;
+exports[`height range accessors maxHeight() renders configured dimensionsUnits 2`] = `(max-height: 399px)`;
 
 exports[`height range accessors maxHeight() returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
 
-exports[`height range accessors minHeight() doesn't separate units if not configured 1`] = `(min-height: 25em)`;
+exports[`height range accessors minHeight() doesn't separate dimensionsUnits if not configured 1`] = `(min-height: 25em)`;
 
-exports[`height range accessors minHeight() renders configured units 1`] = `(min-height: 25rem)`;
+exports[`height range accessors minHeight() renders configured dimensionsUnits 1`] = `(min-height: 25rem)`;
 
-exports[`height range accessors minHeight() renders configured units 2`] = `(min-height: 400px)`;
+exports[`height range accessors minHeight() renders configured dimensionsUnits 2`] = `(min-height: 400px)`;
 
 exports[`height range accessors minHeight() returns the correct media fragment 1`] = `(min-height: 25em)`;
 
@@ -104,6 +104,94 @@ exports[`mediaType returns the correct default media type if called with no argu
 
 exports[`orientation returns the supplied orientation 1`] = `(orientation: landscape)`;
 
+exports[`resolution range accessors maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
+
+exports[`resolution range accessors maxResolution() renders configured dimensionsUnits 1`] = `(max-resolution: 71dpi)`;
+
+exports[`resolution range accessors maxResolution() renders configured dimensionsUnits 2`] = `(max-resolution: 71dpi)`;
+
+exports[`resolution range accessors maxResolution() returns the correct media fragment 1`] = `(max-resolution: 71dpi)`;
+
+exports[`resolution range accessors minResolution() doesn't separate dimensionsUnits if not configured 1`] = `(min-resolution: 72dpi)`;
+
+exports[`resolution range accessors minResolution() renders configured dimensionsUnits 1`] = `(min-resolution: 72dpi)`;
+
+exports[`resolution range accessors minResolution() renders configured dimensionsUnits 2`] = `(min-resolution: 72dpi)`;
+
+exports[`resolution range accessors minResolution() returns the correct media fragment 1`] = `(min-resolution: 72dpi)`;
+
+exports[`resolution range accessors resolution() doesn't separate dimensionsUnits if not configured 1`] = `(resolution: 72dpi)`;
+
+exports[`resolution range accessors resolution() renders configured dimensionsUnits 1`] = `(resolution: 72dpi)`;
+
+exports[`resolution range accessors resolution() renders configured dimensionsUnits 2`] = `(resolution: 72dpi)`;
+
+exports[`resolution range accessors resolution() returns the correct media fragment 1`] = `(resolution: 72dpi)`;
+
+exports[`resolution range queries aboveResolution() returns the correct media query 1`] = `
+@media screen and (min-resolution: 72dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries atResolution() returns the correct media query 1`] = `
+@media screen and (resolution: 72dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query when it is between other breakpoints 1`] = `
+@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query when it is first breakpoint 1`] = `
+@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query when it is last breakpoint 1`] = `
+@media screen and (min-resolution: 600dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries belowResolution() returns the correct media query 1`] = `
+@media screen and (max-resolution: 71dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries betweenResolutions() returns the correct media query 1`] = `
+@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`resolution range queries betweenResolutions() returns the correct media query with breakpoint order reversed 1`] = `
+@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`tweaked adds includes both old breakpoints and added tweakpoints 1`] = `
 @media screen and (min-width: 18.75em) {
     background-color: function () {
@@ -128,27 +216,27 @@ exports[`tweaked doesn't effect the original mq 1`] = `
 }
 `;
 
-exports[`width range accessors maxWidth() doesn't separate units if not configured 1`] = `(max-width: 25em)`;
+exports[`width range accessors maxWidth() doesn't separate dimensionsUnits if not configured 1`] = `(max-width: 25em)`;
 
-exports[`width range accessors maxWidth() renders configured units 1`] = `(max-width: 24.999375rem)`;
+exports[`width range accessors maxWidth() renders configured dimensionsUnits 1`] = `(max-width: 24.999375rem)`;
 
-exports[`width range accessors maxWidth() renders configured units 2`] = `(max-width: 399px)`;
+exports[`width range accessors maxWidth() renders configured dimensionsUnits 2`] = `(max-width: 399px)`;
 
 exports[`width range accessors maxWidth() returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
 
-exports[`width range accessors minWidth() doesn't separate units if not configured 1`] = `(min-width: 25em)`;
+exports[`width range accessors minWidth() doesn't separate dimensionsUnits if not configured 1`] = `(min-width: 25em)`;
 
-exports[`width range accessors minWidth() renders configured units 1`] = `(min-width: 25rem)`;
+exports[`width range accessors minWidth() renders configured dimensionsUnits 1`] = `(min-width: 25rem)`;
 
-exports[`width range accessors minWidth() renders configured units 2`] = `(min-width: 400px)`;
+exports[`width range accessors minWidth() renders configured dimensionsUnits 2`] = `(min-width: 400px)`;
 
 exports[`width range accessors minWidth() returns the correct media fragment 1`] = `(min-width: 25em)`;
 
-exports[`width range accessors width() doesn't separate units if not configured 1`] = `(width: 25em)`;
+exports[`width range accessors width() doesn't separate dimensionsUnits if not configured 1`] = `(width: 25em)`;
 
-exports[`width range accessors width() renders configured units 1`] = `(width: 25rem)`;
+exports[`width range accessors width() renders configured dimensionsUnits 1`] = `(width: 25rem)`;
 
-exports[`width range accessors width() renders configured units 2`] = `(width: 400px)`;
+exports[`width range accessors width() renders configured dimensionsUnits 2`] = `(width: 400px)`;
 
 exports[`width range accessors width() returns the correct media fragment 1`] = `(width: 25em)`;
 

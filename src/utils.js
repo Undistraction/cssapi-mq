@@ -1,9 +1,6 @@
 import {
-  __,
   inc,
   is,
-  divide,
-  contains,
   compose,
   map,
   zipObj,
@@ -16,7 +13,6 @@ import {
   nth,
   when,
 } from 'ramda';
-import { UNITS, SEPARATOR_VALUES } from './const';
 
 // -----------------------------------------------------------------------------
 // Exports
@@ -30,16 +26,10 @@ export const isString = is(String);
 export const propEqName = propEq('name');
 export const ensureArray = when(isString, mediaTypes => [mediaTypes]);
 
-export const appendUnit = (value, unit) => `${value}${unit}`;
-
 export const toBreakpointArray = compose(
   map(zipObj(['name', 'value'])),
   toPairs
 );
-
-export const separatorValueForUnit = unit => SEPARATOR_VALUES[unit];
-
-export const unitIsRemOrEm = contains(__, [UNITS.EM, UNITS.REM]);
 
 export const orderByValue = compose(reverse, sort(prop('value')));
 
@@ -50,6 +40,3 @@ export const getUpperLimit = (breakpointsArray, breakpoint) => {
   const index = findBreakpointIndex(breakpoint, breakpointsArray);
   return compose(prop('name'), nth(inc(index)))(breakpointsArray);
 };
-
-export const toOutput = (unit, baseFontSize, value) =>
-  appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);

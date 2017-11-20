@@ -37,7 +37,7 @@ const baseFontSizeIsValid = both(isNumber, gt(__, 0));
 const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
 const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const orientationIsValid = contains(__, values(ORIENTATIONS));
-const unitIsValid = contains(__, values(UNITS));
+const dimensionsUnitIsValid = contains(__, values(UNITS.DIMENSIONS));
 // Validate a map of breakpoint sets.
 const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
 // Validate a set of breakpoints.
@@ -76,7 +76,7 @@ export const validateBreakpointSets = compose(
 export const validateConfig = ({
   baseFontSize,
   defaultMediaType,
-  unit,
+  dimensionsUnit,
   shouldSeparateQueries,
 }) => {
   if (!baseFontSizeIsValid(baseFontSize))
@@ -85,8 +85,8 @@ export const validateConfig = ({
   if (!mediaTypesAreValid(ensureArray(defaultMediaType)))
     throwError(invalidDefaultMediaTypeErrorMessage(defaultMediaType));
 
-  if (!unitIsValid(unit)) {
-    throwError(invalidUnitErrorMessage(unit));
+  if (!dimensionsUnitIsValid(dimensionsUnit)) {
+    throwError(invalidUnitErrorMessage(dimensionsUnit));
   }
 
   if (!isBoolean(shouldSeparateQueries)) {

@@ -1,17 +1,8 @@
-import {
-  partial,
-  findIndex,
-  __,
-  when,
-  always,
-  subtract,
-  compose,
-  both,
-} from 'ramda';
+import { findIndex, when, always, compose } from 'ramda';
 
 import { css } from 'styled-components';
 
-import { MEDIA_TYPES, UNITS } from '../const';
+import { MEDIA_TYPES } from '../const';
 import {
   throwError,
   sameBreakpointsForBetweenErrorMessage,
@@ -20,35 +11,30 @@ import {
 } from '../errors';
 import buildMediaType from './buildMediaType';
 
-import {
-  getUpperLimit,
-  toOutput,
-  propEqName,
-  separatorValueForUnit,
-  toBreakpointArray,
-} from '../utils';
+import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
 import { renderQuery, renderQueryDefinition, renderFeature } from '../render';
 
-const buildFeatureItem = (name, parser, shouldSeparate = false) => breakpoint =>
-  renderFeature(name, parser(breakpoint, shouldSeparate));
+const buildFeatureItem = (
+  name,
+  parser,
+  shouldSeparate = false
+) => breakpoint => {
+  return renderFeature(name, parser(breakpoint, shouldSeparate));
+};
 
 export default (
   name,
+  output,
   breakpoints = {},
   {
-    baseFontSize = 16,
     defaultMediaType = MEDIA_TYPES.SCREEN,
-    unit = UNITS.EM,
-    shouldSeparateQueries = true,
     errorIfNoBreakpointDefined = true,
   } = {}
 ) => {
   // ---------------------------------------------------------------------------
   // UTILS
   // ---------------------------------------------------------------------------
-
-  const toOutputWithUnit = partial(toOutput, [unit, baseFontSize]);
 
   const getBreakpointNamed = breakpoint => {
     if (!breakpoints) throwError(mssingBreakpointMapErrorMessage(name));
@@ -62,17 +48,10 @@ export default (
     always(errorIfNoBreakpointDefined),
     getBreakpointNamed
   );
-
-  const parseValue = (value, shouldSeparate = false) => {
-    const prepareUnitlessValue = when(
-      both(always(shouldSeparate), always(shouldSeparateQueries)),
-      subtract(__, separatorValueForUnit(unit))
-    );
-
-    return compose(toOutputWithUnit, prepareUnitlessValue, breakpointIfNeeded)(
+  const parseValue = (value, shouldSeparate = false) =>
+    compose(output.toUnit, output.prepare(shouldSeparate), breakpointIfNeeded)(
       value
     );
-  };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };
   const mediaType = buildMediaType(defaultMediaType);
