@@ -2,6 +2,7 @@ import { partial, mergeDeepLeft, merge, mergeAll } from 'ramda';
 
 import buildRangedFeature from './features/buildRangedFeature';
 import buildMediaType from './features/buildMediaType';
+import buildScan from './features/buildScan';
 import buildOrientation from './features/buildOrientation';
 
 import {
@@ -25,10 +26,10 @@ const defaultConfig = {
 };
 
 const configure = (breakpoints, config) => {
-  validateBreakpoints(breakpoints);
-  validateBreakpointSets(breakpoints);
   const configWithDefaults = merge(defaultConfig, config);
   validateConfig(configWithDefaults);
+  validateBreakpoints(breakpoints);
+  validateBreakpointSets(breakpoints);
   const renderFeatures = () =>
     mergeAll([
       buildRangedFeature(
@@ -82,6 +83,7 @@ const configure = (breakpoints, config) => {
   const exports = {
     mediaType: buildMediaType(configWithDefaults.defaultMediaType),
     orientation: buildOrientation(),
+    scan: buildScan(),
     ...renderFeatures(),
   };
 

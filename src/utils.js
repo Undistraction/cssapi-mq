@@ -11,6 +11,7 @@ import {
   findIndex,
   propEq,
   nth,
+  gte,
   when,
   test,
 } from 'ramda';
@@ -25,6 +26,7 @@ export const isObject = is(Object);
 export const isString = is(String);
 // {number} / {number}
 export const isRatioString = test(/^\d+ ?\/ ?\d+$/);
+export const isPositiveInteger = compose(Number.isInteger, gte(0));
 
 export const propEqName = propEq('name');
 export const ensureArray = when(isString, mediaTypes => [mediaTypes]);

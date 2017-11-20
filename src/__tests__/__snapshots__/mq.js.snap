@@ -172,13 +172,23 @@ exports[`height range queries betweenHeights() returns the correct media query w
 }
 `;
 
-exports[`mediaType returns the configured media type if passed in as argument 1`] = `print`;
-
-exports[`mediaType returns the configured media type if passed in as argument 2`] = `print, screen`;
-
 exports[`mediaType returns the correct default media type if called with no arguments 1`] = `screen`;
 
-exports[`orientation returns the supplied orientation 1`] = `(orientation: landscape)`;
+exports[`mediaType returns the supplied mediaType for '' 1`] = ``;
+
+exports[`mediaType returns the supplied mediaType for 'all' 1`] = `all`;
+
+exports[`mediaType returns the supplied mediaType for 'print' 1`] = `print`;
+
+exports[`mediaType returns the supplied mediaType for 'screen' 1`] = `screen`;
+
+exports[`mediaType returns the supplied mediaType for 'speech' 1`] = `speech`;
+
+exports[`mediaType supports multiple values 1`] = `screen, speech,`;
+
+exports[`orientation returns the supplied orientation for 'landscape' 1`] = `(orientation: landscape)`;
+
+exports[`orientation returns the supplied orientation for 'portrait' 1`] = `(orientation: portrait)`;
 
 exports[`resolution range accessors maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
 
@@ -255,6 +265,10 @@ exports[`resolution range queries betweenResolutions() returns the correct media
     }; ;
 }
 `;
+
+exports[`scan returns the supplied scan for 'interlace' 1`] = `(scan: interlace)`;
+
+exports[`scan returns the supplied scan for 'progressive' 1`] = `(scan: progressive)`;
 
 exports[`tweaked adds includes both old breakpoints and added tweakpoints 1`] = `
 @media screen and (min-width: 18.75em) {

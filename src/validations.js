@@ -16,6 +16,7 @@ import {
   UNITS,
   BREAKPOINT_MAP_NAMES,
   ORIENTATIONS,
+  SCANS,
 } from './const';
 import {
   ensureArray,
@@ -35,6 +36,7 @@ import {
   invalidUnitErrorMessage,
   shouldSeparateQueriesErrorMessage,
   invalidOrientationErrorMessage,
+  invalidScanErrorMessage,
 } from './errors';
 
 const populatedObject = both(complement(isEmpty), isObject);
@@ -42,6 +44,7 @@ const baseFontSizeIsValid = both(isNumber, gt(__, 0));
 const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
 const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const orientationIsValid = contains(__, values(ORIENTATIONS));
+const scanIsValid = contains(__, values(SCANS));
 const dimensionsUnitIsValid = contains(__, values(UNITS.DIMENSIONS));
 
 const validationsByFeature = {
@@ -109,4 +112,8 @@ export const validateConfig = ({
 export const validateOrientation = origin => {
   if (!orientationIsValid(origin))
     throwError(invalidOrientationErrorMessage(origin));
+};
+
+export const validateScan = scan => {
+  if (!scanIsValid(scan)) throwError(invalidScanErrorMessage(scan));
 };

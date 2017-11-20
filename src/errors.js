@@ -4,6 +4,7 @@ import {
   BREAKPOINT_MAP_NAMES,
   ORIENTATIONS,
   UNITS,
+  SCANS,
 } from './const';
 
 // Horrible hackery to get round issues with Babel extending builtins.
@@ -88,3 +89,6 @@ export const shouldSeparateQueriesErrorMessage = value =>
 
 export const invalidOrientationErrorMessage = value => `
   orientation must be one of: '${ORIENTATIONS}' but was: '${value}'`;
+
+export const invalidScanErrorMessage = value => `
+  scan must be one of: '${SCANS}' but was: '${value}'`;

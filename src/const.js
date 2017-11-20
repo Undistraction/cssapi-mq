@@ -1,13 +1,14 @@
+export const MEDIA_PREFIX = '@media';
+
 // -----------------------------------------------------------------------------
-// Exports
+// CONFIG
 // -----------------------------------------------------------------------------
 
-export const MEDIA_TYPES = Object.freeze({
-  ALL: 'all',
-  PRINT: 'print',
-  SCREEN: 'screen',
-  SPEECH: 'speech',
-  NONE: '',
+export const SEPARATOR_VALUES = Object.freeze({
+  rem: 0.01,
+  em: 0.01,
+  px: 1,
+  dpi: 1,
 });
 
 export const DIMENSIONS_UNITS = Object.freeze({
@@ -27,13 +28,36 @@ export const BREAKPOINT_MAP_NAMES = Object.freeze([
   'resolution',
 ]);
 
-export const ORIENTATIONS = Object.freeze(['portrait', 'landscape']);
+// -----------------------------------------------------------------------------
+// MEDIA TYPES
+// -----------------------------------------------------------------------------
 
-export const SEPARATOR_VALUES = Object.freeze({
-  rem: 0.01,
-  em: 0.01,
-  px: 1,
-  dpi: 1,
+export const MEDIA_TYPES = Object.freeze({
+  ALL: 'all',
+  PRINT: 'print',
+  SCREEN: 'screen',
+  SPEECH: 'speech',
+  NONE: '',
 });
 
-export const MEDIA_PREFIX = '@media';
+// -----------------------------------------------------------------------------
+// MEDIA FEATURES
+// -----------------------------------------------------------------------------
+
+export const ORIENTATIONS = Object.freeze(['portrait', 'landscape']);
+export const SCANS = Object.freeze(['interlace', 'progressive']);
+export const GRIDS = Object.freeze([0, 1]);
+export const UPDATE = Object.freeze(['none', 'slow', 'fast']);
+export const OVERFLOW_BLOCK = Object.freeze([
+  'none',
+  'scroll',
+  'optional-paged',
+]);
+export const OVERFLOW_INLINE = Object.freeze('none', 'scroll');
+export const COLOR_GAMUR = Object.freeze('srgb', 'p3', 'rec2020');
+export const DISPLAY_MODE = Object.freeze(
+  'fullscreen',
+  'standalone',
+  'minimal-ui',
+  'browser'
+);
