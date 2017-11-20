@@ -23,7 +23,8 @@ export const isBoolean = is(Boolean);
 export const isNumber = is(Number);
 export const isObject = is(Object);
 export const isString = is(String);
-export const isRatioString = test(/^\d+\/\d+$/);
+// {number} / {number}
+export const isRatioString = test(/^\d+ ?\/ ?\d+$/);
 
 export const propEqName = propEq('name');
 export const ensureArray = when(isString, mediaTypes => [mediaTypes]);
