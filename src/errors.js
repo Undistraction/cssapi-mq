@@ -36,9 +36,9 @@ export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   }'. but you supplied: '${breakpointMap}'.`;
 
 export const emptyBreakpointSetErrorMessage = breakpointMapName =>
-  `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${
+  `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${JSON.stringify(
     breakpointMapName
-  }' map.`;
+  )}' map.`;
 
 export const mssingBreakpointMapErrorMessage = name =>
   `There is no breakpoint map for ${name}`;
@@ -63,9 +63,9 @@ export const invalidMediaTypeErrorMessage = value =>
   }) but you supplied: '${value}'`;
 
 export const invalidBreakpointValueErrorMessage = breakpoints =>
-  `You must supply a unitless number for each breakpoint but you supplied ${
+  `You must supply a unitless number for each breakpoint but you supplied ${JSON.stringify(
     breakpoints
-  }`;
+  )}`;
 
 export const invalidBaseFontSizeErrorMessage = value =>
   `'baseFontSize' must be a number, but you supplied '${value}'`;

@@ -7,46 +7,265 @@ import cssSerialiser from './helpers/cssSerialiser';
 
 expect.addSnapshotSerializer(cssSerialiser);
 
-const validBreakpoints = {
+const validDimensionBreakpoints = {
   small: 400, // 0–400
   medium: 900, // 400–900
   large: 1100, // 900–1100
   xLarge: 1300, // 1100–1300
 };
 
-const validBreakpointsWidthOnly = {
-  width: validBreakpoints,
+const validBreakpoints = {
+  width: validDimensionBreakpoints,
+  height: validDimensionBreakpoints,
 };
 
-const validBreakpointsHeightOnly = {
-  height: validBreakpoints,
+const validBreakpointsForRange = name => {
+  const o = {};
+  o[name] = validBreakpoints[name];
+  return o;
 };
 
-const mqWithWidthBreakpoints = (config = {}) =>
-  styledMQ.configure(validBreakpointsWidthOnly, config);
+const mqWithValidBreakpointsForRange = (name, config = {}) =>
+  styledMQ.configure(validBreakpointsForRange(name), config);
 
-const mqWithHeightBreakpoints = (config = {}) =>
-  styledMQ.configure(validBreakpointsHeightOnly, config);
+const mqWithTweakedBreakpointsForRange = name =>
+  styledMQ
+    .configure(validBreakpointsForRange(name))
+    .tweak({ width: { alpha: 300 } });
 
-const mqWithNoWidthBreakpoints = () => styledMQ.configure({});
-const mqWithNoHeightBreakpoints = () => styledMQ.configure({});
+const mqWithNoBreakpoints = () => styledMQ.configure({});
 
-const mqWithTweakedWidthBreakpoints = () =>
-  mqWithWidthBreakpoints().tweak({ width: { alpha: 300 } });
-
-const testConfiguredUnits = (mq, method, ...args) => {
+const testConfiguredUnits = (name, method, ...args) => {
   it('renders configured units', () => {
-    expect(mq({ unit: 'rem' })[method](...args)).toMatchSnapshot();
+    expect(
+      mqWithValidBreakpointsForRange(name, { unit: 'rem' })[method](...args)
+    ).toMatchSnapshot();
 
-    expect(mq({ unit: 'px' })[method](...args)).toMatchSnapshot();
+    expect(
+      mqWithValidBreakpointsForRange(name, { unit: 'px' })[method](...args)
+    ).toMatchSnapshot();
   });
 };
 
-const testConfigurableSeparation = (mq, method, ...args) => {
+const testConfigurableSeparation = (name, method, ...args) => {
   it("doesn't separate units if not configured", () => {
     expect(
-      mq({ shouldSeparateQueries: false })[method](...args)
+      mqWithValidBreakpointsForRange(name, { shouldSeparateQueries: false })[
+        method
+      ](...args)
     ).toMatchSnapshot();
+  });
+};
+
+const testRangeQuery = name => {
+  describe(`${name} range`, () => {
+    const capitalizedName = name[0].toUpperCase() + name.slice(1);
+
+    describe('accessors', () => {
+      // Define accessor names
+      const min = `min${capitalizedName}`;
+      const max = `max${capitalizedName}`;
+
+      describe(`${name}()`, () => {
+        testConfiguredUnits(name, name, 'small');
+        testConfigurableSeparation(name, name, 'small');
+
+        it('returns the correct media fragment', () => {
+          expect(
+            mqWithValidBreakpointsForRange(name)[name]('small')
+          ).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(() =>
+            mqWithValidBreakpointsForRange(name)[name]('xxxx')
+          ).toThrowError(InvalidValueError);
+        });
+
+        it(`throws if ${name} breakpoint map doesn't exist`, () => {
+          expect(() => mqWithNoBreakpoints()[name]('xxxx')).toThrowError(
+            InvalidValueError
+          );
+        });
+      });
+
+      describe(`${min}()`, () => {
+        testConfiguredUnits(name, min, 'small');
+        testConfigurableSeparation(name, min, 'small');
+
+        it('returns the correct media fragment', () => {
+          expect(
+            mqWithValidBreakpointsForRange(name)[min]('small')
+          ).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(() =>
+            mqWithValidBreakpointsForRange(name)[min]('xxxx')
+          ).toThrowError(InvalidValueError);
+        });
+
+        it(`throws if ${name} breakpoint map doesn't exist`, () => {
+          expect(() => mqWithNoBreakpoints()[min]('xxxx')).toThrowError(
+            InvalidValueError
+          );
+        });
+      });
+
+      describe(`${max}()`, () => {
+        testConfiguredUnits(name, max, 'small');
+        testConfigurableSeparation(name, max, 'small');
+
+        it('returns the correct media fragment', () => {
+          expect(
+            mqWithValidBreakpointsForRange(name)[max]('small')
+          ).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(() =>
+            mqWithValidBreakpointsForRange(name)[max]('xxxx')
+          ).toThrowError(InvalidValueError);
+        });
+
+        it(`throws if ${name} breakpoint map doesn't exist`, () => {
+          expect(() => mqWithNoBreakpoints()[max]('xxxx')).toThrowError(
+            InvalidValueError
+          );
+        });
+      });
+    });
+    describe('queries', () => {
+      // Define accessor names
+      const above = `above${capitalizedName}`;
+      const below = `below${capitalizedName}`;
+      const between = `between${capitalizedName}s`;
+      const at = `at${capitalizedName}`;
+      const atBreakpoint = `at${capitalizedName}Breakpoint`;
+
+      describe(`${above}()`, () => {
+        it('returns the correct media query', () => {
+          const result = mqWithValidBreakpointsForRange(name)[above]('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(
+            () => mqWithValidBreakpointsForRange(name)[above]('xxxx')``
+          ).toThrowError(InvalidValueError);
+        });
+      });
+
+      describe(`${below}()`, () => {
+        it('returns the correct media query', () => {
+          const result = mqWithValidBreakpointsForRange(name)[below]('small')`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(
+            () => mqWithValidBreakpointsForRange(name)[below]('xxxx')``
+          ).toThrowError(InvalidValueError);
+        });
+      });
+
+      describe(`${between}()`, () => {
+        it('returns the correct media query', () => {
+          const result = mqWithValidBreakpointsForRange(name)[between](
+            'small',
+            'medium'
+          )`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it('returns the correct media query with breakpoint order reversed', () => {
+          const result = mqWithValidBreakpointsForRange(name)[between](
+            'medium',
+            'small'
+          )`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it("throws if 'from' breakpoint doesn't exist", () => {
+          expect(
+            () =>
+              mqWithValidBreakpointsForRange(name)[between]('xxxx', 'large')``
+          ).toThrowError(InvalidValueError);
+        });
+
+        it("throws if 'to' breakpoint doesn't exist", () => {
+          expect(
+            () =>
+              mqWithValidBreakpointsForRange(name)[between]('large', 'xxxx')``
+          ).toThrowError(InvalidValueError);
+        });
+
+        it("throws if 'from' and 'to' breakpoints are the same value", () => {
+          expect(
+            () =>
+              mqWithValidBreakpointsForRange(name)[between]('large', 'large')``
+          ).toThrowError(InvalidValueError);
+        });
+      });
+
+      describe(`${at}()`, () => {
+        it('returns the correct media query', () => {
+          const result = mqWithValidBreakpointsForRange(name)[at]('small')`
+              background-color: ${() => 'GhostWhite'};
+            `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(
+            () => mqWithValidBreakpointsForRange(name)[at]('xxxx')``
+          ).toThrowError(InvalidValueError);
+        });
+      });
+
+      describe(`${atBreakpoint}()`, () => {
+        it('returns the correct query when it is first breakpoint', () => {
+          const result = mqWithValidBreakpointsForRange(name)[atBreakpoint](
+            'small'
+          )`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it('returns the correct query when it is last breakpoint', () => {
+          const result = mqWithValidBreakpointsForRange(name)[atBreakpoint](
+            'xLarge'
+          )`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it('returns the correct query when it is between other breakpoints', () => {
+          const result = mqWithValidBreakpointsForRange(name)[atBreakpoint](
+            'large'
+          )`
+        background-color: ${() => 'GhostWhite'};
+      `;
+          expect(result).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(
+            () => mqWithValidBreakpointsForRange(name)[atBreakpoint]('xxxx')``
+          ).toThrowError(InvalidValueError);
+        });
+      });
+    });
   });
 };
 
@@ -70,13 +289,17 @@ describe('configuration', () => {
   });
 
   it("doesn't throw an error with default configuration", () => {
-    expect(() => mqWithWidthBreakpoints.not.toThrowError(InvalidValueError));
+    expect(() =>
+      mqWithValidBreakpointsForRange('width').not.toThrowError(
+        InvalidValueError
+      )
+    );
   });
 
   describe('config object', () => {
     it("adjusts values based on 'basefontSize'", () => {
       const result = styledMQ
-        .configure(validBreakpointsWidthOnly, { baseFontSize: 10 })
+        .configure(validBreakpointsForRange('width'), { baseFontSize: 10 })
         .belowWidth('small')`
         background-color: ${() => 'GhostWhite'};
       `;
@@ -86,35 +309,37 @@ describe('configuration', () => {
     it("throws if 'baseFontSize' is not a positive number", () => {
       const config = { baseFontSize: 'xxxx' };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
       const config = { baseFontSize: 12 };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).not.toThrowError(InvalidValueError);
     });
 
     it("throws if 'defaultMediaType' is not valid", () => {
       const config = { defaultMediaType: 'xxxx' };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'defaultMediaType' is valid", () => {
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, {
+        styledMQ.configure(validBreakpointsForRange('width'), {
           defaultMediaType: 'all',
         })
       ).not.toThrowError(InvalidValueError);
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, { defaultMediaType: '' })
+        styledMQ.configure(validBreakpointsForRange('width'), {
+          defaultMediaType: '',
+        })
       ).not.toThrowError(InvalidValueError);
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, {
+        styledMQ.configure(validBreakpointsForRange('width'), {
           defaultMediaType: ['screen', 'print'],
         })
       ).not.toThrowError(InvalidValueError);
@@ -123,28 +348,28 @@ describe('configuration', () => {
     it("throws if 'unit' is not valid", () => {
       const config = { unit: 'xxxx' };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'unit' is valid", () => {
       const config = { unit: 'px' };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).not.toThrowError(InvalidValueError);
     });
 
     it("throws if 'shouldSeparateQueries' is not a boolean", () => {
       const config = { shouldSeparateQueries: 'xxxx' };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).toThrowError(InvalidValueError);
     });
 
     it("doesn't throw an error if 'shouldSeparateQueries' is a boolean", () => {
       const config = { shouldSeparateQueries: false };
       expect(() =>
-        styledMQ.configure(validBreakpointsWidthOnly, config)
+        styledMQ.configure(validBreakpointsForRange('width'), config)
       ).not.toThrowError(InvalidValueError);
     });
   });
@@ -156,20 +381,20 @@ describe('configuration', () => {
 
 describe('tweakpoints', () => {
   it('throws if no breakpoints are supplied', () => {
-    expect(() => mqWithWidthBreakpoints().tweak()).toThrowError(
+    expect(() => mqWithValidBreakpointsForRange('width').tweak()).toThrowError(
       InvalidValueError
     );
   });
 
   it('throws if no breakpoint sets are supplied', () => {
-    expect(() => mqWithWidthBreakpoints().tweak({})).toThrowError(
-      InvalidValueError
-    );
+    expect(() =>
+      mqWithValidBreakpointsForRange('width').tweak({})
+    ).toThrowError(InvalidValueError);
   });
 
   it('throws if invalid breakpoint value is supplied', () => {
     expect(() =>
-      mqWithWidthBreakpoints().tweak({ width: { small: 'xxx' } })
+      mqWithValidBreakpointsForRange('width').tweak({ width: { small: 'xxx' } })
     ).toThrowError(InvalidValueError);
   });
 });
@@ -181,13 +406,16 @@ describe('tweakpoints', () => {
 describe('tweaked', () => {
   it('adds includes both old breakpoints and added tweakpoints', () => {
     expect(
-      mqWithTweakedWidthBreakpoints().tweaked.aboveWidth('alpha')`
+      mqWithTweakedBreakpointsForRange('width').tweaked.aboveWidth('alpha')`
       background-color: ${() => 'GhostWhite'};
     `
     ).toMatchSnapshot();
 
     expect(
-      mqWithTweakedWidthBreakpoints().tweaked.betweenWidths('alpha', 'large')`
+      mqWithTweakedBreakpointsForRange('width').tweaked.betweenWidths(
+        'alpha',
+        'large'
+      )`
       background-color: ${() => 'GhostWhite'};
     `
     ).toMatchSnapshot();
@@ -196,14 +424,16 @@ describe('tweaked', () => {
   it("doesn't effect the original mq", () => {
     expect(
       () =>
-        mqWithTweakedWidthBreakpoints().aboveWidth('alpha')`
+        mqWithTweakedBreakpointsForRange('width').aboveWidth('alpha')`
       background-color: ${() => 'GhostWhite'};
     `
     ).toThrowError(InvalidValueError);
 
     // Make sure the upper limit is 'medium', not 'alpha'
     expect(
-      mqWithTweakedWidthBreakpoints().tweaked.atWidthBreakpoint('small')`
+      mqWithTweakedBreakpointsForRange('width').tweaked.atWidthBreakpoint(
+        'small'
+      )`
       background-color: ${() => 'GhostWhite'};
     `
     ).toMatchSnapshot();
@@ -214,382 +444,45 @@ describe('tweaked', () => {
 // Media Fragments
 // -----------------------------------------------------------------------------
 
-describe('width', () => {
-  testConfiguredUnits(mqWithWidthBreakpoints, 'width', 'small');
-
-  it('returns the correct media fragment', () => {
-    expect(mqWithWidthBreakpoints().width('small')).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().width('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-
-  it("throws if 'width' breakpoint map doesn't exist", () => {
-    expect(() => mqWithNoWidthBreakpoints().width('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('minWidth', () => {
-  testConfiguredUnits(mqWithWidthBreakpoints, 'minWidth', 'small');
-
-  it('returns the correct media fragment', () => {
-    expect(mqWithWidthBreakpoints().minWidth('small')).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().minWidth('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-
-  it("throws if 'width' breakpoint map doesn't exist", () => {
-    expect(() => mqWithNoWidthBreakpoints().minWidth('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('maxWidth', () => {
-  testConfiguredUnits(mqWithWidthBreakpoints, 'maxWidth', 'small');
-  testConfigurableSeparation(mqWithWidthBreakpoints, 'maxWidth', 'small');
-
-  it('returns the correct media fragment', () => {
-    expect(mqWithWidthBreakpoints().maxWidth('small')).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().maxWidth('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-
-  it("throws if 'width' breakpoint map doesn't exist", () => {
-    expect(() => mqWithNoWidthBreakpoints().maxWidth('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('height', () => {
-  testConfiguredUnits(mqWithHeightBreakpoints, 'height', 'small');
-
-  it('returns the correct media fragment', () => {
-    expect(mqWithHeightBreakpoints().height('small')).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithHeightBreakpoints().height('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-
-  it("throws if 'height' breakpoint map doesn't exist", () => {
-    expect(() => mqWithNoHeightBreakpoints().height('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('minHeight', () => {
-  testConfiguredUnits(mqWithHeightBreakpoints, 'minHeight', 'small');
-
-  it('returns the correct media fragment', () => {
-    expect(mqWithHeightBreakpoints().minHeight('small')).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().minHeight('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-
-  it("throws if 'height' breakpoint map doesn't exist", () => {
-    expect(() => mqWithNoHeightBreakpoints().minHeight('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('maxHeight', () => {
-  testConfiguredUnits(mqWithHeightBreakpoints, 'maxHeight', 'small');
-  testConfigurableSeparation(mqWithHeightBreakpoints, 'maxHeight', 'small');
-
-  it('returns the correct media fragment', () => {
-    expect(mqWithHeightBreakpoints().maxHeight('small')).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().maxHeight('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-
-  it("throws if 'height' breakpoint map doesn't exist", () => {
-    expect(() => mqWithNoHeightBreakpoints().maxWidth('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
+testRangeQuery('width');
+testRangeQuery('height');
 
 describe('mediaType', () => {
   it('returns the correct default media type if called with no arguments', () => {
-    expect(mqWithWidthBreakpoints().mediaType()).toMatchSnapshot();
-  });
-
-  it('returns the configured media type if passed in as argument', () => {
-    expect(mqWithWidthBreakpoints().mediaType('print')).toMatchSnapshot();
+    expect(
+      mqWithValidBreakpointsForRange('width').mediaType()
+    ).toMatchSnapshot();
   });
 
   it('returns the configured media type if passed in as argument', () => {
     expect(
-      mqWithWidthBreakpoints().mediaType(['print', 'screen'])
+      mqWithValidBreakpointsForRange('width').mediaType('print')
+    ).toMatchSnapshot();
+  });
+
+  it('returns the configured media type if passed in as argument', () => {
+    expect(
+      mqWithValidBreakpointsForRange('width').mediaType(['print', 'screen'])
     ).toMatchSnapshot();
   });
 
   it('throws if arument is not valid media type', () => {
-    expect(() => mqWithWidthBreakpoints().mediaType('xxxx')).toThrowError(
-      InvalidValueError
-    );
+    expect(() =>
+      mqWithValidBreakpointsForRange('width').mediaType('xxxx')
+    ).toThrowError(InvalidValueError);
   });
 });
 
 describe('orientation', () => {
   it('returns the supplied orientation', () => {
-    expect(mqWithWidthBreakpoints().orientation('landscape')).toMatchSnapshot();
+    expect(
+      mqWithValidBreakpointsForRange('width').orientation('landscape')
+    ).toMatchSnapshot();
   });
 
   it('throws if arument is not valid media type', () => {
-    expect(() => mqWithWidthBreakpoints().orientation('xxxx')).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-// -----------------------------------------------------------------------------
-// Media Queries > Width
-// -----------------------------------------------------------------------------
-
-describe('aboveWidth', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithWidthBreakpoints().aboveWidth('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().aboveWidth('xxxx')``).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('belowWidth', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithWidthBreakpoints().belowWidth('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().belowWidth('xxxx')``).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('betweenWidths', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithWidthBreakpoints().betweenWidths('small', 'medium')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it('returns the correct media query with breakpoint order reversed', () => {
-    const result = mqWithWidthBreakpoints().betweenWidths('medium', 'small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if 'from' breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithWidthBreakpoints().betweenWidths('xxxx', 'large')``
+    expect(() =>
+      mqWithValidBreakpointsForRange('width').orientation('xxxx')
     ).toThrowError(InvalidValueError);
-  });
-
-  it("throws if 'to' breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithWidthBreakpoints().betweenWidths('large', 'xxxx')``
-    ).toThrowError(InvalidValueError);
-  });
-
-  it("throws if 'from' and 'to' breakpoints are the same value", () => {
-    expect(
-      () => mqWithWidthBreakpoints().betweenWidths('large', 'large')``
-    ).toThrowError(InvalidValueError);
-  });
-});
-
-describe('atWidthBreakpoint', () => {
-  it('returns the correct query when it is first breakpoint', () => {
-    const result = mqWithWidthBreakpoints().atWidthBreakpoint('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it('returns the correct query when it is last breakpoint', () => {
-    const result = mqWithWidthBreakpoints().atWidthBreakpoint('xLarge')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it('returns the correct query when it is between other breakpoints', () => {
-    const result = mqWithWidthBreakpoints().atWidthBreakpoint('large')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithWidthBreakpoints().atWidthBreakpoint('xxxx')``
-    ).toThrowError(InvalidValueError);
-  });
-});
-
-describe('aboveWidth', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithWidthBreakpoints().aboveWidth('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().aboveWidth('xxxx')``).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('belowWidth', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithWidthBreakpoints().belowWidth('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().belowWidth('xxxx')``).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-describe('atWidth', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithWidthBreakpoints().atWidth('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithWidthBreakpoints().atWidth('xxxx')``).toThrowError(
-      InvalidValueError
-    );
-  });
-});
-
-// -----------------------------------------------------------------------------
-// Media Queries > Height
-// -----------------------------------------------------------------------------
-
-describe('betweenHeights', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithHeightBreakpoints().betweenHeights('small', 'medium')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it('returns the correct media query with breakpoint order reversed', () => {
-    const result = mqWithHeightBreakpoints().betweenHeights('medium', 'small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if 'from' breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithHeightBreakpoints().betweenHeights('xxxx', 'large')``
-    ).toThrowError(InvalidValueError);
-  });
-
-  it("throws if 'to' breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithHeightBreakpoints().betweenHeights('large', 'xxxx')``
-    ).toThrowError(InvalidValueError);
-  });
-
-  it("throws if 'from' and 'to' breakpoints are the same value", () => {
-    expect(
-      () => mqWithHeightBreakpoints().betweenHeights('large', 'large')``
-    ).toThrowError(InvalidValueError);
-  });
-});
-
-describe('atHeightBreakpoint', () => {
-  it('returns the correct query when it is first breakpoint', () => {
-    const result = mqWithHeightBreakpoints().atHeightBreakpoint('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it('returns the correct query when it is last breakpoint', () => {
-    const result = mqWithHeightBreakpoints().atHeightBreakpoint('xLarge')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it('returns the correct query when it is between other breakpoints', () => {
-    const result = mqWithHeightBreakpoints().atHeightBreakpoint('large')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithHeightBreakpoints().atHeightBreakpoint('xxxx')``
-    ).toThrowError(InvalidValueError);
-  });
-});
-
-describe('atHeight', () => {
-  it('returns the correct media query', () => {
-    const result = mqWithHeightBreakpoints().atHeight('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-    expect(result).toMatchSnapshot();
-  });
-
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() => mqWithHeightBreakpoints().atHeight('xxxx')``).toThrowError(
-      InvalidValueError
-    );
   });
 });

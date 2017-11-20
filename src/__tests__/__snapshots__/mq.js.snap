@@ -1,133 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`aboveWidth returns the correct media query 1`] = `
-@media screen and (min-width: 25em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`aboveWidth returns the correct media query 2`] = `
-@media screen and (min-width: 25em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atHeight returns the correct media query 1`] = `
-@media screen and (height: 25em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atHeightBreakpoint returns the correct query when it is between other breakpoints 1`] = `
-@media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atHeightBreakpoint returns the correct query when it is first breakpoint 1`] = `
-@media screen and (min-height: 25em) and (max-height: 56.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atHeightBreakpoint returns the correct query when it is last breakpoint 1`] = `
-@media screen and (min-height: 81.25em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atWidth returns the correct media query 1`] = `
-@media screen and (width: 25em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atWidthBreakpoint returns the correct query when it is between other breakpoints 1`] = `
-@media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atWidthBreakpoint returns the correct query when it is first breakpoint 1`] = `
-@media screen and (min-width: 25em) and (max-width: 56.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`atWidthBreakpoint returns the correct query when it is last breakpoint 1`] = `
-@media screen and (min-width: 81.25em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`belowWidth returns the correct media query 1`] = `
-@media screen and (max-width: 24.999375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`belowWidth returns the correct media query 2`] = `
-@media screen and (max-width: 24.999375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`betweenHeights returns the correct media query 1`] = `
-@media screen and (min-height: 25em) and (max-height: 56.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`betweenHeights returns the correct media query with breakpoint order reversed 1`] = `
-@media screen and (min-height: 25em) and (max-height: 56.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`betweenWidths returns the correct media query 1`] = `
-@media screen and (min-width: 25em) and (max-width: 56.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
-exports[`betweenWidths returns the correct media query with breakpoint order reversed 1`] = `
-@media screen and (min-width: 25em) and (max-width: 56.249375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
-
 exports[`configuration config object adjusts values based on 'basefontSize' 1`] = `
 @media screen and (max-width: 39.999em) {
     background-color: function () {
@@ -136,45 +8,99 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
-exports[`height renders configured units 1`] = `(height: 25rem)`;
+exports[`height range accessors height() doesn't separate units if not configured 1`] = `(height: 25em)`;
 
-exports[`height renders configured units 2`] = `(height: 400px)`;
+exports[`height range accessors height() renders configured units 1`] = `(height: 25rem)`;
 
-exports[`height returns the correct media fragment 1`] = `(height: 25em)`;
+exports[`height range accessors height() renders configured units 2`] = `(height: 400px)`;
 
-exports[`maxHeight doesn't separate units if not configured 1`] = `(max-height: 25em)`;
+exports[`height range accessors height() returns the correct media fragment 1`] = `(height: 25em)`;
 
-exports[`maxHeight renders configured units 1`] = `(max-height: 24.999375rem)`;
+exports[`height range accessors maxHeight() doesn't separate units if not configured 1`] = `(max-height: 25em)`;
 
-exports[`maxHeight renders configured units 2`] = `(max-height: 399px)`;
+exports[`height range accessors maxHeight() renders configured units 1`] = `(max-height: 24.999375rem)`;
 
-exports[`maxHeight returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
+exports[`height range accessors maxHeight() renders configured units 2`] = `(max-height: 399px)`;
 
-exports[`maxWidth doesn't separate units if not configured 1`] = `(max-width: 25em)`;
+exports[`height range accessors maxHeight() returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
 
-exports[`maxWidth renders configured units 1`] = `(max-width: 24.999375rem)`;
+exports[`height range accessors minHeight() doesn't separate units if not configured 1`] = `(min-height: 25em)`;
 
-exports[`maxWidth renders configured units 2`] = `(max-width: 399px)`;
+exports[`height range accessors minHeight() renders configured units 1`] = `(min-height: 25rem)`;
 
-exports[`maxWidth returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
+exports[`height range accessors minHeight() renders configured units 2`] = `(min-height: 400px)`;
+
+exports[`height range accessors minHeight() returns the correct media fragment 1`] = `(min-height: 25em)`;
+
+exports[`height range queries aboveHeight() returns the correct media query 1`] = `
+@media screen and (min-height: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries atHeight() returns the correct media query 1`] = `
+@media screen and (height: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries atHeightBreakpoint() returns the correct query when it is between other breakpoints 1`] = `
+@media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries atHeightBreakpoint() returns the correct query when it is first breakpoint 1`] = `
+@media screen and (min-height: 25em) and (max-height: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries atHeightBreakpoint() returns the correct query when it is last breakpoint 1`] = `
+@media screen and (min-height: 81.25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries belowHeight() returns the correct media query 1`] = `
+@media screen and (max-height: 24.999375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries betweenHeights() returns the correct media query 1`] = `
+@media screen and (min-height: 25em) and (max-height: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`height range queries betweenHeights() returns the correct media query with breakpoint order reversed 1`] = `
+@media screen and (min-height: 25em) and (max-height: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
 
 exports[`mediaType returns the configured media type if passed in as argument 1`] = `print`;
 
 exports[`mediaType returns the configured media type if passed in as argument 2`] = `print, screen`;
 
 exports[`mediaType returns the correct default media type if called with no arguments 1`] = `screen`;
-
-exports[`minHeight renders configured units 1`] = `(min-height: 25rem)`;
-
-exports[`minHeight renders configured units 2`] = `(min-height: 400px)`;
-
-exports[`minHeight returns the correct media fragment 1`] = `(min-height: 25em)`;
-
-exports[`minWidth renders configured units 1`] = `(min-width: 25rem)`;
-
-exports[`minWidth renders configured units 2`] = `(min-width: 400px)`;
-
-exports[`minWidth returns the correct media fragment 1`] = `(min-width: 25em)`;
 
 exports[`orientation returns the supplied orientation 1`] = `(orientation: landscape)`;
 
@@ -202,8 +128,90 @@ exports[`tweaked doesn't effect the original mq 1`] = `
 }
 `;
 
-exports[`width renders configured units 1`] = `(width: 25rem)`;
+exports[`width range accessors maxWidth() doesn't separate units if not configured 1`] = `(max-width: 25em)`;
 
-exports[`width renders configured units 2`] = `(width: 400px)`;
+exports[`width range accessors maxWidth() renders configured units 1`] = `(max-width: 24.999375rem)`;
 
-exports[`width returns the correct media fragment 1`] = `(width: 25em)`;
+exports[`width range accessors maxWidth() renders configured units 2`] = `(max-width: 399px)`;
+
+exports[`width range accessors maxWidth() returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
+
+exports[`width range accessors minWidth() doesn't separate units if not configured 1`] = `(min-width: 25em)`;
+
+exports[`width range accessors minWidth() renders configured units 1`] = `(min-width: 25rem)`;
+
+exports[`width range accessors minWidth() renders configured units 2`] = `(min-width: 400px)`;
+
+exports[`width range accessors minWidth() returns the correct media fragment 1`] = `(min-width: 25em)`;
+
+exports[`width range accessors width() doesn't separate units if not configured 1`] = `(width: 25em)`;
+
+exports[`width range accessors width() renders configured units 1`] = `(width: 25rem)`;
+
+exports[`width range accessors width() renders configured units 2`] = `(width: 400px)`;
+
+exports[`width range accessors width() returns the correct media fragment 1`] = `(width: 25em)`;
+
+exports[`width range queries aboveWidth() returns the correct media query 1`] = `
+@media screen and (min-width: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries atWidth() returns the correct media query 1`] = `
+@media screen and (width: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries atWidthBreakpoint() returns the correct query when it is between other breakpoints 1`] = `
+@media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries atWidthBreakpoint() returns the correct query when it is first breakpoint 1`] = `
+@media screen and (min-width: 25em) and (max-width: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries atWidthBreakpoint() returns the correct query when it is last breakpoint 1`] = `
+@media screen and (min-width: 81.25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries belowWidth() returns the correct media query 1`] = `
+@media screen and (max-width: 24.999375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries betweenWidths() returns the correct media query 1`] = `
+@media screen and (min-width: 25em) and (max-width: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`width range queries betweenWidths() returns the correct media query with breakpoint order reversed 1`] = `
+@media screen and (min-width: 25em) and (max-width: 56.249375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;

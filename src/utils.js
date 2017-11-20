@@ -16,8 +16,7 @@ import {
   nth,
   when,
 } from 'ramda';
-import { css } from 'styled-components';
-import { UNITS, MEDIA_PREFIX, SEPARATOR_VALUES } from './const';
+import { UNITS, SEPARATOR_VALUES } from './const';
 
 // -----------------------------------------------------------------------------
 // Exports
