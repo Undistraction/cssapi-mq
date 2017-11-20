@@ -1,5 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`aspect-ratio range accessors aspectRatio() doesn't separate dimensionsUnits if not configured 1`] = `(aspect-ratio: 2/3)`;
+
+exports[`aspect-ratio range accessors aspectRatio() returns the correct media fragment 1`] = `(aspect-ratio: 2/3)`;
+
+exports[`aspect-ratio range accessors maxAspectRatio() doesn't separate dimensionsUnits if not configured 1`] = `(max-aspect-ratio: 2/3)`;
+
+exports[`aspect-ratio range accessors maxAspectRatio() returns the correct media fragment 1`] = `(max-aspect-ratio: 2/3)`;
+
+exports[`aspect-ratio range accessors minAspectRatio() doesn't separate dimensionsUnits if not configured 1`] = `(min-aspect-ratio: 2/3)`;
+
+exports[`aspect-ratio range accessors minAspectRatio() returns the correct media fragment 1`] = `(min-aspect-ratio: 2/3)`;
+
+exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media query 1`] = `
+@media screen and (min-aspect-ratio: 2/3) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries atAspectRatio() returns the correct media query 1`] = `
+@media screen and (aspect-ratio: 2/3) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query when it is between other breakpoints 1`] = `
+@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query when it is first breakpoint 1`] = `
+@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query when it is last breakpoint 1`] = `
+@media screen and (min-aspect-ratio: 16/9) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries belowAspectRatio() returns the correct media query 1`] = `
+@media screen and (max-aspect-ratio: 2/3) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query 1`] = `
+@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query with breakpoint order reversed 1`] = `
+@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`configuration config object adjusts values based on 'basefontSize' 1`] = `
 @media screen and (max-width: 39.999em) {
     background-color: function () {
@@ -106,25 +182,13 @@ exports[`orientation returns the supplied orientation 1`] = `(orientation: lands
 
 exports[`resolution range accessors maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
 
-exports[`resolution range accessors maxResolution() renders configured dimensionsUnits 1`] = `(max-resolution: 71dpi)`;
-
-exports[`resolution range accessors maxResolution() renders configured dimensionsUnits 2`] = `(max-resolution: 71dpi)`;
-
 exports[`resolution range accessors maxResolution() returns the correct media fragment 1`] = `(max-resolution: 71dpi)`;
 
 exports[`resolution range accessors minResolution() doesn't separate dimensionsUnits if not configured 1`] = `(min-resolution: 72dpi)`;
 
-exports[`resolution range accessors minResolution() renders configured dimensionsUnits 1`] = `(min-resolution: 72dpi)`;
-
-exports[`resolution range accessors minResolution() renders configured dimensionsUnits 2`] = `(min-resolution: 72dpi)`;
-
 exports[`resolution range accessors minResolution() returns the correct media fragment 1`] = `(min-resolution: 72dpi)`;
 
 exports[`resolution range accessors resolution() doesn't separate dimensionsUnits if not configured 1`] = `(resolution: 72dpi)`;
-
-exports[`resolution range accessors resolution() renders configured dimensionsUnits 1`] = `(resolution: 72dpi)`;
-
-exports[`resolution range accessors resolution() renders configured dimensionsUnits 2`] = `(resolution: 72dpi)`;
 
 exports[`resolution range accessors resolution() returns the correct media fragment 1`] = `(resolution: 72dpi)`;
 

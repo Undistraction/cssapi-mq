@@ -12,6 +12,7 @@ import {
 
 import dimensionsOutput from './output/dimensionsOutput';
 import resolutionOutput from './output/resolutionOutput';
+import aspectRatioOutput from './output/aspectRatioOutput';
 
 import { MEDIA_TYPES, UNITS } from './const';
 
@@ -28,7 +29,6 @@ const configure = (breakpoints, config) => {
   validateBreakpointSets(breakpoints);
   const configWithDefaults = merge(defaultConfig, config);
   validateConfig(configWithDefaults);
-
   const renderFeatures = () =>
     mergeAll([
       buildRangedFeature(
@@ -47,6 +47,12 @@ const configure = (breakpoints, config) => {
         'resolution',
         resolutionOutput(config),
         breakpoints.resolution,
+        configWithDefaults
+      ),
+      buildRangedFeature(
+        'aspect-ratio',
+        aspectRatioOutput(config),
+        breakpoints.aspectRatio,
         configWithDefaults
       ),
     ]);

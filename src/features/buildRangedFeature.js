@@ -1,4 +1,5 @@
 import { findIndex, when, always, compose } from 'ramda';
+import camelcase from 'camelcase';
 
 import { css } from 'styled-components';
 
@@ -22,7 +23,6 @@ const buildFeatureItem = (
 ) => breakpoint => {
   return renderFeature(name, parser(breakpoint, shouldSeparate));
 };
-
 export default (
   name,
   output,
@@ -131,10 +131,10 @@ export default (
       renderQueryDefinition(mediaType(config.mediaType), feature(breakpoint)),
       css(stringParts, ...interpolationValues)
     );
-  const titleizedName = name[0].toUpperCase() + name.slice(1);
+  const titleizedName = name[0].toUpperCase() + camelcase(name.slice(1));
 
   exports = {
-    [name]: feature,
+    [camelcase(name)]: feature,
     [`min${[titleizedName]}`]: minFeature,
     [`max${[titleizedName]}`]: maxFeature,
     [`above${[titleizedName]}`]: aboveFeature,

@@ -1,3 +1,4 @@
+import camelcase from 'camelcase';
 import './helpers/toEqualCSS';
 import styledMQ from '../mq';
 import { InvalidValueError } from '../errors';
@@ -21,15 +22,24 @@ const validResolutionBreakpoints = {
   xLarge: 600,
 };
 
+const validAspectRatioBreakpoints = {
+  small: '2/3',
+  medium: '1/1',
+  large: '3/2',
+  xLarge: '16/9',
+};
+
 const validBreakpoints = {
   width: validDimensionBreakpoints,
   height: validDimensionBreakpoints,
   resolution: validResolutionBreakpoints,
+  aspectRatio: validAspectRatioBreakpoints,
 };
 
 const validBreakpointsForRange = name => {
+  const camelisedName = camelcase(name);
   const o = {};
-  o[name] = validBreakpoints[name];
+  o[camelisedName] = validBreakpoints[camelisedName];
   return o;
 };
 
@@ -69,79 +79,80 @@ const testConfigurableSeparation = (name, method, ...args) => {
   });
 };
 
-const testRangeQuery = name => {
+const testRangeQuery = (name, testUnits = false) => {
   describe(`${name} range`, () => {
-    const capitalizedName = name[0].toUpperCase() + name.slice(1);
+    const capitalizedName = name[0].toUpperCase() + camelcase(name).slice(1);
+    const camelisedName = camelcase(name);
 
     describe('accessors', () => {
       // Define accessor names
-      const min = `min${capitalizedName}`;
-      const max = `max${capitalizedName}`;
+      const minValue = `min${capitalizedName}`;
+      const maxValue = `max${capitalizedName}`;
 
-      describe(`${name}()`, () => {
-        testConfiguredUnits(name, name, 'small');
-        testConfigurableSeparation(name, name, 'small');
+      describe(`${camelisedName}()`, () => {
+        if (testUnits) testConfiguredUnits(name, camelisedName, 'small');
+        testConfigurableSeparation(name, camelisedName, 'small');
 
         it('returns the correct media fragment', () => {
           expect(
-            mqWithValidBreakpointsForRange(name)[name]('small')
+            mqWithValidBreakpointsForRange(name)[camelisedName]('small')
           ).toMatchSnapshot();
         });
 
         it("throws if breakpoint doesn't exist", () => {
           expect(() =>
-            mqWithValidBreakpointsForRange(name)[name]('xxxx')
+            mqWithValidBreakpointsForRange(name)[camelisedName]('xxxx')
           ).toThrowError(InvalidValueError);
         });
 
         it(`throws if ${name} breakpoint map doesn't exist`, () => {
-          expect(() => mqWithNoBreakpoints()[name]('xxxx')).toThrowError(
+          expect(() =>
+            mqWithNoBreakpoints()[camelisedName]('xxxx')
+          ).toThrowError(InvalidValueError);
+        });
+      });
+
+      describe(`${minValue}()`, () => {
+        if (testUnits) testConfiguredUnits(name, minValue, 'small');
+        testConfigurableSeparation(name, minValue, 'small');
+
+        it('returns the correct media fragment', () => {
+          expect(
+            mqWithValidBreakpointsForRange(name)[minValue]('small')
+          ).toMatchSnapshot();
+        });
+
+        it("throws if breakpoint doesn't exist", () => {
+          expect(() =>
+            mqWithValidBreakpointsForRange(name)[minValue]('xxxx')
+          ).toThrowError(InvalidValueError);
+        });
+
+        it(`throws if ${name} breakpoint map doesn't exist`, () => {
+          expect(() => mqWithNoBreakpoints()[minValue]('xxxx')).toThrowError(
             InvalidValueError
           );
         });
       });
 
-      describe(`${min}()`, () => {
-        testConfiguredUnits(name, min, 'small');
-        testConfigurableSeparation(name, min, 'small');
+      describe(`${maxValue}()`, () => {
+        if (testUnits) testConfiguredUnits(name, maxValue, 'small');
+        testConfigurableSeparation(name, maxValue, 'small');
 
         it('returns the correct media fragment', () => {
           expect(
-            mqWithValidBreakpointsForRange(name)[min]('small')
+            mqWithValidBreakpointsForRange(name)[maxValue]('small')
           ).toMatchSnapshot();
         });
 
         it("throws if breakpoint doesn't exist", () => {
           expect(() =>
-            mqWithValidBreakpointsForRange(name)[min]('xxxx')
+            mqWithValidBreakpointsForRange(name)[maxValue]('xxxx')
           ).toThrowError(InvalidValueError);
         });
 
         it(`throws if ${name} breakpoint map doesn't exist`, () => {
-          expect(() => mqWithNoBreakpoints()[min]('xxxx')).toThrowError(
-            InvalidValueError
-          );
-        });
-      });
-
-      describe(`${max}()`, () => {
-        testConfiguredUnits(name, max, 'small');
-        testConfigurableSeparation(name, max, 'small');
-
-        it('returns the correct media fragment', () => {
-          expect(
-            mqWithValidBreakpointsForRange(name)[max]('small')
-          ).toMatchSnapshot();
-        });
-
-        it("throws if breakpoint doesn't exist", () => {
-          expect(() =>
-            mqWithValidBreakpointsForRange(name)[max]('xxxx')
-          ).toThrowError(InvalidValueError);
-        });
-
-        it(`throws if ${name} breakpoint map doesn't exist`, () => {
-          expect(() => mqWithNoBreakpoints()[max]('xxxx')).toThrowError(
+          expect(() => mqWithNoBreakpoints()[maxValue]('xxxx')).toThrowError(
             InvalidValueError
           );
         });
@@ -456,9 +467,10 @@ describe('tweaked', () => {
 // Media Fragments
 // -----------------------------------------------------------------------------
 
-testRangeQuery('width');
-testRangeQuery('height');
+testRangeQuery('width', true);
+testRangeQuery('height', true);
 testRangeQuery('resolution');
+testRangeQuery('aspect-ratio');
 
 describe('mediaType', () => {
   it('returns the correct default media type if called with no arguments', () => {

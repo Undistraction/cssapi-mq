@@ -6,11 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
   },
-  "files": [
-    "dist",
-    "src",
-    "lib"
-  ],
+  "files": ["dist", "src", "lib"],
   "keywords": [
     "styled-components",
     "media-queries",
@@ -58,6 +54,7 @@
   "dependencies": {
     "ramda": "^0.25.0",
     "react": "^16.1.0",
-    "styled-components": "^2.2.3"
+    "styled-components": "^2.2.3",
+    "camelcase": "^4.1.0"
   }
 }
