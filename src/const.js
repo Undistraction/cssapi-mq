@@ -41,7 +41,7 @@ export const MEDIA_TYPES = Object.freeze({
 });
 
 // -----------------------------------------------------------------------------
-// MEDIA FEATURES
+// LINEAR FEATURES
 // -----------------------------------------------------------------------------
 
 export const ORIENTATION = Object.freeze(['portrait', 'landscape']);
@@ -62,7 +62,7 @@ export const DISPLAY_MODE = Object.freeze(
   'browser'
 );
 
-export const FEATURES = {
+export const LINEAR_FEATURES = {
   orientation: ORIENTATION,
   scan: SCAN,
   grid: GRID,

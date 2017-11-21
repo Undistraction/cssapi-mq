@@ -22,7 +22,7 @@ import dimensionsOutput from './output/dimensionsOutput';
 import resolutionOutput from './output/resolutionOutput';
 import aspectRatioOutput from './output/aspectRatioOutput';
 
-import { MEDIA_TYPES, UNITS, FEATURES } from './const';
+import { MEDIA_TYPES, UNITS, LINEAR_FEATURES } from './const';
 
 const defaultConfig = {
   baseFontSize: 16,
@@ -32,7 +32,7 @@ const defaultConfig = {
   errorIfNoBreakpointDefined: true,
 };
 
-const toFeatures = compose(
+const toLinearFeatures = compose(
   map(([key, value]) => {
     const o = {};
     o[key] = buildFeature(key, value);
@@ -47,7 +47,8 @@ const configure = (breakpoints, config) => {
   validateBreakpoints(breakpoints);
   validateBreakpointSets(breakpoints);
 
-  const renderFeatures = () => mergeAll(toFeatures(FEATURES));
+  const renderLinearFeatures = () =>
+    mergeAll(toLinearFeatures(LINEAR_FEATURES));
 
   const renderRangeFeatures = () =>
     mergeAll([
@@ -101,7 +102,7 @@ const configure = (breakpoints, config) => {
 
   const exports = {
     mediaType: buildMediaType(configWithDefaults.defaultMediaType),
-    ...renderFeatures(),
+    ...renderLinearFeatures(),
     ...renderRangeFeatures(),
   };
 
