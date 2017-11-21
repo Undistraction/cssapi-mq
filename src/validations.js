@@ -26,13 +26,14 @@ import {
   invalidUnitErrorMessage,
   shouldSeparateQueriesErrorMessage,
   invalidFeatureErrorMessage,
+  invalidMediaTypeErrorMessage,
 } from './errors';
 
-const populatedObject = both(complement(isEmpty), isObject);
-const baseFontSizeIsValid = both(isNumber, gt(__, 0));
-const mediaTypeIsValid = contains(__, values(MEDIA_TYPES));
-const breakpointMapNameIsValid = contains(__, values(BREAKPOINT_MAP_NAMES));
-const dimensionsUnitIsValid = contains(__, values(UNITS.DIMENSIONS));
+const isPopulatedObject = both(complement(isEmpty), isObject);
+const isBaseFontSizeValid = both(isNumber, gt(__, 0));
+const isMediaTypeValid = contains(__, values(MEDIA_TYPES));
+const isBreakpointMapNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
+const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
 
 const validationsByFeature = {
   width: isNumber,
@@ -42,10 +43,10 @@ const validationsByFeature = {
 };
 
 // Validate a map of breakpoint sets.
-const breakpointMapNamesAreValid = all(t => breakpointMapNameIsValid(t));
+const breakpointMapNamesAreValid = all(t => isBreakpointMapNameValid(t));
 // Validate a set of breakpoints.
 const validateBreakpointSet = (name, breakpoints) => {
-  if (!populatedObject(breakpoints))
+  if (!isPopulatedObject(breakpoints))
     throwError(emptyBreakpointSetErrorMessage(name));
   if (!compose(all(validationsByFeature[name]), values)(breakpoints))
     throwError(invalidBreakpointValueErrorMessage(values(breakpoints)));
@@ -55,7 +56,13 @@ const validateBreakpointSet = (name, breakpoints) => {
 // Exports
 // -----------------------------------------------------------------------------
 
-export const mediaTypesAreValid = all(t => mediaTypeIsValid(t));
+export const areMediaTypesValid = all(t => isMediaTypeValid(t));
+
+export const validateMediaTypes = mediaTypes => {
+  if (!areMediaTypesValid(mediaTypes)) {
+    throwError(invalidMediaTypeErrorMessage(mediaTypes));
+  }
+};
 
 export const validateBreakpointMapNames = breakpointMap => {
   if (!breakpointMap || !breakpointMapNamesAreValid(breakpointMap)) {
@@ -64,7 +71,7 @@ export const validateBreakpointMapNames = breakpointMap => {
 };
 
 export const validateBreakpoints = breakpoints => {
-  if (!populatedObject(breakpoints))
+  if (!isPopulatedObject(breakpoints))
     throwError(emptyBreakpointMapErrorMessage());
 
   validateBreakpointMapNames(breakpoints);
@@ -81,13 +88,13 @@ export const validateConfig = ({
   dimensionsUnit,
   shouldSeparateQueries,
 }) => {
-  if (!baseFontSizeIsValid(baseFontSize))
+  if (!isBaseFontSizeValid(baseFontSize))
     throwError(invalidBaseFontSizeErrorMessage(baseFontSize));
 
-  if (!mediaTypesAreValid(ensureArray(defaultMediaType)))
+  if (!areMediaTypesValid(ensureArray(defaultMediaType)))
     throwError(invalidDefaultMediaTypeErrorMessage(defaultMediaType));
 
-  if (!dimensionsUnitIsValid(dimensionsUnit)) {
+  if (!isDimensionsUnitValid(dimensionsUnit)) {
     throwError(invalidUnitErrorMessage(dimensionsUnit));
   }
 

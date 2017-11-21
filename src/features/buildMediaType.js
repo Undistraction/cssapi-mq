@@ -1,10 +1,8 @@
-import { mediaTypesAreValid } from '../validations';
-import { ensureArray } from '../utils';
-import { throwError, invalidMediaTypeErrorMessage } from '../errors';
+import { validateMediaTypes } from '../validations';
+import { toCommaSeparatedList, ensureArray } from '../utils';
 
 export default defaultMediaType => (mediaTypes = [defaultMediaType]) => {
   const mediaTypesArray = ensureArray(mediaTypes);
-  if (!mediaTypesAreValid(mediaTypesArray))
-    throwError(invalidMediaTypeErrorMessage(mediaTypesArray));
-  return mediaTypesArray.join(', ');
+  validateMediaTypes(mediaTypesArray);
+  return toCommaSeparatedList(mediaTypesArray);
 };
