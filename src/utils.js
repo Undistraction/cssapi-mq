@@ -1,6 +1,5 @@
 import {
   inc,
-  is,
   compose,
   map,
   zipObj,
@@ -11,22 +10,14 @@ import {
   findIndex,
   propEq,
   nth,
-  gte,
   when,
-  test,
 } from 'ramda';
+
+import { isString } from './utils/value';
 
 // -----------------------------------------------------------------------------
 // Exports
 // -----------------------------------------------------------------------------
-
-export const isBoolean = is(Boolean);
-export const isNumber = is(Number);
-export const isObject = is(Object);
-export const isString = is(String);
-// {number} / {number}
-export const isRatioString = test(/^\d+ ?\/ ?\d+$/);
-export const isPositiveInteger = compose(Number.isInteger, gte(0));
 
 export const propEqName = propEq('name');
 export const ensureArray = when(isString, mediaTypes => [mediaTypes]);

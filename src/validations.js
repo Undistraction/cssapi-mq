@@ -12,13 +12,9 @@ import {
   map,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
-import {
-  ensureArray,
-  isNumber,
-  isObject,
-  isBoolean,
-  isRatioString,
-} from './utils';
+import { ensureArray } from './utils';
+
+import { isNumber, isObject, isBoolean, isRatioString } from './utils/value';
 import {
   throwError,
   emptyBreakpointMapErrorMessage,
