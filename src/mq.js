@@ -21,6 +21,8 @@ import {
 import dimensionsOutput from './output/dimensionsOutput';
 import resolutionOutput from './output/resolutionOutput';
 import aspectRatioOutput from './output/aspectRatioOutput';
+import colorOutput from './output/colorOutput';
+import monochromeOutput from './output/monochromeOutput';
 
 import { MEDIA_TYPES, UNITS, LINEAR_FEATURES } from './const';
 
@@ -74,6 +76,24 @@ const configure = (breakpoints, config) => {
         'aspect-ratio',
         aspectRatioOutput(config),
         breakpoints.aspectRatio,
+        configWithDefaults
+      ),
+      buildRangedFeature(
+        'color',
+        colorOutput(config),
+        breakpoints.color,
+        configWithDefaults
+      ),
+      buildRangedFeature(
+        'color-index',
+        colorOutput(config),
+        breakpoints.colorIndex,
+        configWithDefaults
+      ),
+      buildRangedFeature(
+        'monochrome',
+        monochromeOutput(config),
+        breakpoints.monochrome,
         configWithDefaults
       ),
     ]);

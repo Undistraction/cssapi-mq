@@ -14,7 +14,7 @@ import {
 import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
 import { ensureArray } from './utils';
 
-import { isNumber, isObject, isBoolean, isRatioString } from './utils/value';
+import { isNumber, isObject, isBoolean } from './utils/value';
 import {
   throwError,
   emptyBreakpointMapErrorMessage,
@@ -29,17 +29,26 @@ import {
   invalidMediaTypeErrorMessage,
 } from './errors';
 
+import dimensionValidator from './validators/dimensionValidator';
+import resolutionValidator from './validators/resolutionValidator';
+import aspectRatioValidator from './validators/aspectRatioValidator';
+import colorValidator from './validators/colorValidator';
+import monochromeValidator from './validators/monochromeValidator';
+
 const isPopulatedObject = both(complement(isEmpty), isObject);
 const isBaseFontSizeValid = both(isNumber, gt(__, 0));
 const isMediaTypeValid = contains(__, values(MEDIA_TYPES));
 const isBreakpointMapNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
 
-const validationsByFeature = {
-  width: isNumber,
-  height: isNumber,
-  resolution: isNumber,
-  aspectRatio: isRatioString,
+const validatorsByFeature = {
+  width: dimensionValidator,
+  height: dimensionValidator,
+  resolution: resolutionValidator,
+  aspectRatio: aspectRatioValidator,
+  color: colorValidator,
+  colorIndex: colorValidator,
+  monochrome: monochromeValidator,
 };
 
 // Validate a map of breakpoint sets.
@@ -48,8 +57,11 @@ const breakpointMapNamesAreValid = all(t => isBreakpointMapNameValid(t));
 const validateBreakpointSet = (name, breakpoints) => {
   if (!isPopulatedObject(breakpoints))
     throwError(emptyBreakpointSetErrorMessage(name));
-  if (!compose(all(validationsByFeature[name]), values)(breakpoints))
-    throwError(invalidBreakpointValueErrorMessage(values(breakpoints)));
+  const validator = validatorsByFeature[name];
+  if (!compose(all(validator.validate), values)(breakpoints))
+    throwError(
+      invalidBreakpointValueErrorMessage(validator.message, values(breakpoints))
+    );
 };
 
 // -----------------------------------------------------------------------------

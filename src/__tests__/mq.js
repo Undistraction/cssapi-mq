@@ -55,11 +55,28 @@ const validAspectRatioBreakpoints = {
   xLarge: '16/9',
 };
 
+const colorBreakpoints = {
+  small: 1,
+  medium: 4,
+  large: 5,
+  xLarge: 6,
+};
+
+const monochromeBreakpoints = {
+  small: 0,
+  medium: 4,
+  large: 8,
+  xLarge: 16,
+};
+
 const validBreakpoints = {
   width: validDimensionBreakpoints,
   height: validDimensionBreakpoints,
   resolution: validResolutionBreakpoints,
   aspectRatio: validAspectRatioBreakpoints,
+  color: colorBreakpoints,
+  colorIndex: colorBreakpoints,
+  monochrome: monochromeBreakpoints,
 };
 
 // -----------------------------------------------------------------------------
@@ -79,8 +96,9 @@ const validBreakpointsForRange = name => {
   return o;
 };
 
-const mqWithValidBreakpointsForRange = (name, config = {}) =>
-  styledMQ.configure(validBreakpointsForRange(name), config);
+const mqWithValidBreakpointsForRange = (name, config = {}) => {
+  return styledMQ.configure(validBreakpointsForRange(name), config);
+};
 
 const validBreakpointKeysForRange = name => {
   const camelisedName = camelcase(name);
@@ -248,23 +266,32 @@ const testMediaTypes = (name, validValuesMap) => {
 };
 
 const testRangeFeature = (name, { perMethodTests = [] } = {}) => {
+  const camelisedName = camelcase(name);
   describe(`${name}`, () => {
     describe('range features', () => {
       // Define accessor names
-      const valueMethod = camelcase(name);
+      const valueMethod = camelisedName;
       const minValueMethod = camelcase('min', name);
       const maxValueMethod = camelcase('max', name);
 
       describe(`${valueMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, valueMethod);
+        runPerMethodTestsForFeature(perMethodTests, camelisedName, valueMethod);
       });
 
       describe(`${minValueMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, minValueMethod);
+        runPerMethodTestsForFeature(
+          perMethodTests,
+          camelisedName,
+          minValueMethod
+        );
       });
 
       describe(`${maxValueMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, maxValueMethod);
+        runPerMethodTestsForFeature(
+          perMethodTests,
+          camelisedName,
+          maxValueMethod
+        );
       });
     });
   });
@@ -360,80 +387,88 @@ describe('configuration', () => {
   });
 
   describe('config object', () => {
-    it("adjusts values based on 'basefontSize'", () => {
-      const result = styledMQ
-        .configure(validBreakpointsForRange('width'), { baseFontSize: 10 })
-        .belowWidth('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
-      expect(result).toMatchSnapshot();
+    describe('baseFontSize', () => {
+      it("adjusts values based on 'basefontSize'", () => {
+        const result = styledMQ
+          .configure(validBreakpointsForRange('width'), { baseFontSize: 10 })
+          .belowWidth('small')`
+          background-color: ${() => 'GhostWhite'};
+        `;
+        expect(result).toMatchSnapshot();
+      });
+
+      it("throws if 'baseFontSize' is not a positive number", () => {
+        const config = { baseFontSize: 'xxxx' };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).toThrowError(InvalidValueError);
+      });
+
+      it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
+        const config = { baseFontSize: 12 };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).not.toThrowError(InvalidValueError);
+      });
     });
 
-    it("throws if 'baseFontSize' is not a positive number", () => {
-      const config = { baseFontSize: 'xxxx' };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).toThrowError(InvalidValueError);
+    describe('defaultMediaType', () => {
+      it("throws if 'defaultMediaType' is not valid", () => {
+        const config = { defaultMediaType: 'xxxx' };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).toThrowError(InvalidValueError);
+      });
+
+      it("doesn't throw an error if 'defaultMediaType' is valid", () => {
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), {
+            defaultMediaType: 'all',
+          })
+        ).not.toThrowError(InvalidValueError);
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), {
+            defaultMediaType: '',
+          })
+        ).not.toThrowError(InvalidValueError);
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), {
+            defaultMediaType: ['screen', 'print'],
+          })
+        ).not.toThrowError(InvalidValueError);
+      });
     });
 
-    it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
-      const config = { baseFontSize: 12 };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).not.toThrowError(InvalidValueError);
+    describe('dimensionsUnit', () => {
+      it("throws if 'dimensionsUnit' is not valid", () => {
+        const config = { dimensionsUnit: 'xxxx' };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).toThrowError(InvalidValueError);
+      });
+
+      it("doesn't throw an error if 'dimensionsUnit' is valid", () => {
+        const config = { dimensionsUnit: 'px' };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).not.toThrowError(InvalidValueError);
+      });
     });
 
-    it("throws if 'defaultMediaType' is not valid", () => {
-      const config = { defaultMediaType: 'xxxx' };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).toThrowError(InvalidValueError);
-    });
+    describe('shouldSeparateQueries', () => {
+      it("throws if 'shouldSeparateQueries' is not a boolean", () => {
+        const config = { shouldSeparateQueries: 'xxxx' };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).toThrowError(InvalidValueError);
+      });
 
-    it("doesn't throw an error if 'defaultMediaType' is valid", () => {
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), {
-          defaultMediaType: 'all',
-        })
-      ).not.toThrowError(InvalidValueError);
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), {
-          defaultMediaType: '',
-        })
-      ).not.toThrowError(InvalidValueError);
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), {
-          defaultMediaType: ['screen', 'print'],
-        })
-      ).not.toThrowError(InvalidValueError);
-    });
-
-    it("throws if 'dimensionsUnit' is not valid", () => {
-      const config = { dimensionsUnit: 'xxxx' };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).toThrowError(InvalidValueError);
-    });
-
-    it("doesn't throw an error if 'dimensionsUnit' is valid", () => {
-      const config = { dimensionsUnit: 'px' };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).not.toThrowError(InvalidValueError);
-    });
-
-    it("throws if 'shouldSeparateQueries' is not a boolean", () => {
-      const config = { shouldSeparateQueries: 'xxxx' };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).toThrowError(InvalidValueError);
-    });
-
-    it("doesn't throw an error if 'shouldSeparateQueries' is a boolean", () => {
-      const config = { shouldSeparateQueries: false };
-      expect(() =>
-        styledMQ.configure(validBreakpointsForRange('width'), config)
-      ).not.toThrowError(InvalidValueError);
+      it("doesn't throw an error if 'shouldSeparateQueries' is a boolean", () => {
+        const config = { shouldSeparateQueries: false };
+        expect(() =>
+          styledMQ.configure(validBreakpointsForRange('width'), config)
+        ).not.toThrowError(InvalidValueError);
+      });
     });
   });
 });
@@ -557,6 +592,27 @@ testRangeFeature('aspect-ratio', {
     featureReturnsCorrectValue,
   ],
 });
+testRangeFeature('color', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+  ],
+});
+testRangeFeature('color-index', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+  ],
+});
+testRangeFeature('monochrome', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+  ],
+});
 
 // -----------------------------------------------------------------------------
 // Features
@@ -581,6 +637,27 @@ testRangeQueries('resolution', {
   ],
 });
 testRangeQueries('aspect-ratio', {
+  perMethodTests: [
+    queryThrowsIfMissingBreakpoint,
+    queryReturnsCorrectValueSingleBreakpoint,
+  ],
+});
+
+testRangeQueries('color', {
+  perMethodTests: [
+    queryThrowsIfMissingBreakpoint,
+    queryReturnsCorrectValueSingleBreakpoint,
+  ],
+});
+
+testRangeQueries('color-index', {
+  perMethodTests: [
+    queryThrowsIfMissingBreakpoint,
+    queryReturnsCorrectValueSingleBreakpoint,
+  ],
+});
+
+testRangeQueries('monochrome', {
   perMethodTests: [
     queryThrowsIfMissingBreakpoint,
     queryReturnsCorrectValueSingleBreakpoint,

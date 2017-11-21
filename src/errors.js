@@ -44,13 +44,14 @@ export const mssingBreakpointMapErrorMessage = name =>
   `There is no breakpoint map for ${name}`;
 
 export const missingBreakpointErrorMessage = (
-  breakpoints,
+  name,
   breakpointMapName,
-  name
-) =>
-  `There is no '${breakpointMapName}' breakpoint defined called '${
+  breakpointMaps
+) => {
+  return `There is no '${breakpointMapName}' breakpoint defined called '${
     name
-  }', only: '${keys(breakpoints)}' are defined.`;
+  }', only: '${keys(breakpointMaps)}' are defined.`;
+};
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
   `You must supply two different breakpoints to 'widthBetween' but both were: '${
@@ -62,10 +63,8 @@ export const invalidMediaTypeErrorMessage = value =>
     MEDIA_TYPES
   }) but you supplied: '${value}'`;
 
-export const invalidBreakpointValueErrorMessage = breakpoints =>
-  `You must supply a unitless number for each breakpoint but you supplied ${JSON.stringify(
-    breakpoints
-  )}`;
+export const invalidBreakpointValueErrorMessage = (message, breakpoints) =>
+  `${message} but you supplied ${JSON.stringify(breakpoints)}`;
 
 export const invalidBaseFontSizeErrorMessage = value =>
   `'baseFontSize' must be a number, but you supplied '${value}'`;

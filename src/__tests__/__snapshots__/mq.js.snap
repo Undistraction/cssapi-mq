@@ -230,7 +230,467 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`configuration config object adjusts values based on 'basefontSize' 1`] = `
+exports[`color range features color() returns the correct media fragment 1`] = `(color: 1)`;
+
+exports[`color range features maxColor() returns the correct media fragment 1`] = `(max-color: 1)`;
+
+exports[`color range features minColor() returns the correct media fragment 1`] = `(min-color: 1)`;
+
+exports[`color range queries aboveColor() returns the correct media query for 'large' 1`] = `
+@media screen and (min-color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries aboveColor() returns the correct media query for 'medium' 1`] = `
+@media screen and (min-color: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries aboveColor() returns the correct media query for 'small' 1`] = `
+@media screen and (min-color: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries aboveColor() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (min-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColor() returns the correct media query for 'large' 1`] = `
+@media screen and (color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColor() returns the correct media query for 'medium' 1`] = `
+@media screen and (color: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColor() returns the correct media query for 'small' 1`] = `
+@media screen and (color: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColor() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColorBreakpoint() returns the correct media query for 'large' 1`] = `
+@media screen and (color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColorBreakpoint() returns the correct media query for 'medium' 1`] = `
+@media screen and (color: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColorBreakpoint() returns the correct media query for 'small' 1`] = `
+@media screen and (color: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries atColorBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries belowColor() returns the correct media query for 'large' 1`] = `
+@media screen and (max-color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries belowColor() returns the correct media query for 'medium' 1`] = `
+@media screen and (max-color: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries belowColor() returns the correct media query for 'small' 1`] = `
+@media screen and (max-color: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries belowColor() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'large' and 'medium' 1`] = `
+@media screen and (min-color: 4) and (max-color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'large' and 'small' 1`] = `
+@media screen and (min-color: 1) and (max-color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'large' and 'xLarge' 1`] = `
+@media screen and (min-color: 5) and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'medium' and 'large' 1`] = `
+@media screen and (min-color: 4) and (max-color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'medium' and 'small' 1`] = `
+@media screen and (min-color: 1) and (max-color: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+@media screen and (min-color: 4) and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'small' and 'large' 1`] = `
+@media screen and (min-color: 1) and (max-color: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'small' and 'medium' 1`] = `
+@media screen and (min-color: 1) and (max-color: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'small' and 'xLarge' 1`] = `
+@media screen and (min-color: 1) and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'xLarge' and 'large' 1`] = `
+@media screen and (min-color: 5) and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+@media screen and (min-color: 4) and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color range queries betweenColors() returns the correct media query for 'xLarge' and 'small' 1`] = `
+@media screen and (min-color: 1) and (max-color: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range features colorIndex() returns the correct media fragment 1`] = `(color-index: 1)`;
+
+exports[`color-index range features maxColorIndex() returns the correct media fragment 1`] = `(max-color-index: 1)`;
+
+exports[`color-index range features minColorIndex() returns the correct media fragment 1`] = `(min-color-index: 1)`;
+
+exports[`color-index range queries aboveColorIndex() returns the correct media query for 'large' 1`] = `
+@media screen and (min-color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries aboveColorIndex() returns the correct media query for 'medium' 1`] = `
+@media screen and (min-color-index: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries aboveColorIndex() returns the correct media query for 'small' 1`] = `
+@media screen and (min-color-index: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries aboveColorIndex() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (min-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndex() returns the correct media query for 'large' 1`] = `
+@media screen and (color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndex() returns the correct media query for 'medium' 1`] = `
+@media screen and (color-index: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndex() returns the correct media query for 'small' 1`] = `
+@media screen and (color-index: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndex() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'large' 1`] = `
+@media screen and (color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'medium' 1`] = `
+@media screen and (color-index: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'small' 1`] = `
+@media screen and (color-index: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries belowColorIndex() returns the correct media query for 'large' 1`] = `
+@media screen and (max-color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries belowColorIndex() returns the correct media query for 'medium' 1`] = `
+@media screen and (max-color-index: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries belowColorIndex() returns the correct media query for 'small' 1`] = `
+@media screen and (max-color-index: 1) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries belowColorIndex() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'large' and 'medium' 1`] = `
+@media screen and (min-color-index: 4) and (max-color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'large' and 'small' 1`] = `
+@media screen and (min-color-index: 1) and (max-color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'large' and 'xLarge' 1`] = `
+@media screen and (min-color-index: 5) and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'medium' and 'large' 1`] = `
+@media screen and (min-color-index: 4) and (max-color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'medium' and 'small' 1`] = `
+@media screen and (min-color-index: 1) and (max-color-index: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+@media screen and (min-color-index: 4) and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'small' and 'large' 1`] = `
+@media screen and (min-color-index: 1) and (max-color-index: 5) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'small' and 'medium' 1`] = `
+@media screen and (min-color-index: 1) and (max-color-index: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'small' and 'xLarge' 1`] = `
+@media screen and (min-color-index: 1) and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'xLarge' and 'large' 1`] = `
+@media screen and (min-color-index: 5) and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+@media screen and (min-color-index: 4) and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'xLarge' and 'small' 1`] = `
+@media screen and (min-color-index: 1) and (max-color-index: 6) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`configuration config object baseFontSize adjusts values based on 'basefontSize' 1`] = `
 @media screen and (max-width: 39.999em) {
     background-color: function () {
         return 'GhostWhite';
@@ -503,6 +963,236 @@ exports[`mediaType returns the supplied mediaType for 'screen' 1`] = `screen`;
 exports[`mediaType returns the supplied mediaType for 'speech' 1`] = `speech`;
 
 exports[`mediaType supports multiple values 1`] = `screen, speech,`;
+
+exports[`monochrome range features maxMonochrome() returns the correct media fragment 1`] = `(max-monochrome: 0)`;
+
+exports[`monochrome range features minMonochrome() returns the correct media fragment 1`] = `(min-monochrome: 0)`;
+
+exports[`monochrome range features monochrome() returns the correct media fragment 1`] = `(monochrome: 0)`;
+
+exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'large' 1`] = `
+@media screen and (min-monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'medium' 1`] = `
+@media screen and (min-monochrome: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'small' 1`] = `
+@media screen and (min-monochrome: 0) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (min-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochrome() returns the correct media query for 'large' 1`] = `
+@media screen and (monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochrome() returns the correct media query for 'medium' 1`] = `
+@media screen and (monochrome: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochrome() returns the correct media query for 'small' 1`] = `
+@media screen and (monochrome: 0) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochrome() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'large' 1`] = `
+@media screen and (monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'medium' 1`] = `
+@media screen and (monochrome: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'small' 1`] = `
+@media screen and (monochrome: 0) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries belowMonochrome() returns the correct media query for 'large' 1`] = `
+@media screen and (max-monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries belowMonochrome() returns the correct media query for 'medium' 1`] = `
+@media screen and (max-monochrome: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries belowMonochrome() returns the correct media query for 'small' 1`] = `
+@media screen and (max-monochrome: 0) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries belowMonochrome() returns the correct media query for 'xLarge' 1`] = `
+@media screen and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'large' and 'medium' 1`] = `
+@media screen and (min-monochrome: 4) and (max-monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'large' and 'small' 1`] = `
+@media screen and (min-monochrome: 0) and (max-monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'large' and 'xLarge' 1`] = `
+@media screen and (min-monochrome: 8) and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'medium' and 'large' 1`] = `
+@media screen and (min-monochrome: 4) and (max-monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'medium' and 'small' 1`] = `
+@media screen and (min-monochrome: 0) and (max-monochrome: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+@media screen and (min-monochrome: 4) and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'small' and 'large' 1`] = `
+@media screen and (min-monochrome: 0) and (max-monochrome: 8) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'small' and 'medium' 1`] = `
+@media screen and (min-monochrome: 0) and (max-monochrome: 4) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'small' and 'xLarge' 1`] = `
+@media screen and (min-monochrome: 0) and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'xLarge' and 'large' 1`] = `
+@media screen and (min-monochrome: 8) and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+@media screen and (min-monochrome: 4) and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'xLarge' and 'small' 1`] = `
+@media screen and (min-monochrome: 0) and (max-monochrome: 16) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
 
 exports[`orientation() linear feature returns the supplied orientation for 'landscape' 1`] = `(orientation: landscape)`;
 

@@ -1,4 +1,4 @@
-import { findIndex, when, always, compose } from 'ramda';
+import { findIndex, when, always, compose, isNil } from 'ramda';
 import camelcase from 'camelcase';
 
 import { css } from 'styled-components';
@@ -28,15 +28,18 @@ export default (
     errorIfNoBreakpointDefined = true,
   } = {}
 ) => {
+  const camelisedName = camelcase(name);
+
   // ---------------------------------------------------------------------------
   // UTILS
   // ---------------------------------------------------------------------------
 
   const getBreakpointNamed = breakpoint => {
-    if (!breakpoints) throwError(mssingBreakpointMapErrorMessage(name));
+    if (!breakpoints)
+      throwError(mssingBreakpointMapErrorMessage(camelisedName));
     const value = breakpoints[breakpoint];
-    if (!value)
-      throwError(missingBreakpointErrorMessage(breakpoint, breakpoints));
+    if (isNil(value))
+      throwError(missingBreakpointErrorMessage(breakpoint, name, breakpoints));
     return value;
   };
 
