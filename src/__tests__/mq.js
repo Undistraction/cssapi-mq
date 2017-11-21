@@ -3,7 +3,17 @@ import camelcase from 'camelcase';
 import './helpers/toEqualCSS';
 import styledMQ from '../mq';
 import { InvalidValueError } from '../errors';
-import { SCANS, ORIENTATIONS, MEDIA_TYPES } from '../const';
+import {
+  MEDIA_TYPES,
+  ORIENTATION,
+  SCAN,
+  GRID,
+  UPDATE,
+  OVERFLOW_BLOCK,
+  OVERFLOW_INLINE,
+  COLOR_GAMUT,
+  DISPLAY_MODE,
+} from '../const';
 
 // Register serializer for use by Jest in generating snapshots. Without a serializer the snapshots are difficult to read.
 import cssSerialiser from './helpers/cssSerialiser';
@@ -294,18 +304,20 @@ const testRangeQuery = (name, testUnits = false) => {
   });
 };
 
-const testFeature = (name, validValues, config = {}) =>
+const testFeature = (name, validValuesMap, config = {}) => {
+  const validValues = values(validValuesMap);
+  const camelisedName = camelcase(name);
   describe(name, () => {
     if (config.default) {
       it('returns the correct default media type if called with no arguments', () => {
         expect(
-          mqWithValidBreakpointsForRange('width')[name]()
+          mqWithValidBreakpointsForRange('width')[camelisedName]()
         ).toMatchSnapshot();
       });
     } else {
       it('throws if no argument is supplied', () => {
         expect(() =>
-          mqWithValidBreakpointsForRange('width')[name]()
+          mqWithValidBreakpointsForRange('width')[camelisedName]()
         ).toThrowError(InvalidValueError);
       });
     }
@@ -313,7 +325,7 @@ const testFeature = (name, validValues, config = {}) =>
     for (const value of validValues) {
       it(`returns the supplied ${name} for '${value}'`, () => {
         expect(
-          mqWithValidBreakpointsForRange('width')[name](value)
+          mqWithValidBreakpointsForRange('width')[camelisedName](value)
         ).toMatchSnapshot();
       });
     }
@@ -321,17 +333,20 @@ const testFeature = (name, validValues, config = {}) =>
     if (config.multiple) {
       it('supports multiple values', () => {
         expect(
-          mqWithValidBreakpointsForRange('width')[name](drop(2, validValues))
+          mqWithValidBreakpointsForRange('width')[camelisedName](
+            drop(2, validValues)
+          )
         ).toMatchSnapshot();
       });
     }
 
     it('throws if argument is not valid media type', () => {
       expect(() =>
-        mqWithValidBreakpointsForRange('width')[name]('xxxx')
+        mqWithValidBreakpointsForRange('width')[camelisedName]('xxxx')
       ).toThrowError(InvalidValueError);
     });
   });
+};
 
 // -----------------------------------------------------------------------------
 // Configuration
@@ -508,13 +523,19 @@ describe('tweaked', () => {
 // Media Fragments
 // -----------------------------------------------------------------------------
 
-testRangeQuery('width', true);
-testRangeQuery('height', true);
-testRangeQuery('resolution');
-testRangeQuery('aspect-ratio');
-testFeature('orientation', values(ORIENTATIONS));
-testFeature('scan', values(SCANS));
 testFeature('mediaType', values(MEDIA_TYPES), {
   default: 'all',
   multiple: true,
 });
+testRangeQuery('width', true);
+testRangeQuery('height', true);
+testRangeQuery('resolution');
+testRangeQuery('aspect-ratio');
+testFeature('orientation', ORIENTATION);
+testFeature('scan', SCAN);
+testFeature('grid', GRID);
+testFeature('update', UPDATE);
+testFeature('overflow-block', OVERFLOW_BLOCK);
+testFeature('overflow-inline', OVERFLOW_INLINE);
+testFeature('color-gamut', COLOR_GAMUT);
+testFeature('display-mode', DISPLAY_MODE);

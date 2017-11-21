@@ -1,5 +1,5 @@
 import { __, partial, both, always, subtract, when } from 'ramda';
-import { separatorValueForUnit, appendUnit } from '../units';
+import { separatorValueForUnit, appendUnit } from '../utils/units';
 import { UNITS } from '../const';
 
 const prepareUnitlessValue = (shouldSeparateQueries, unit, shouldSeparate) => {

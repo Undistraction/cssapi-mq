@@ -44,9 +44,9 @@ export const MEDIA_TYPES = Object.freeze({
 // MEDIA FEATURES
 // -----------------------------------------------------------------------------
 
-export const ORIENTATIONS = Object.freeze(['portrait', 'landscape']);
-export const SCANS = Object.freeze(['interlace', 'progressive']);
-export const GRIDS = Object.freeze([0, 1]);
+export const ORIENTATION = Object.freeze(['portrait', 'landscape']);
+export const SCAN = Object.freeze(['interlace', 'progressive']);
+export const GRID = Object.freeze([0, 1]);
 export const UPDATE = Object.freeze(['none', 'slow', 'fast']);
 export const OVERFLOW_BLOCK = Object.freeze([
   'none',
@@ -61,3 +61,14 @@ export const DISPLAY_MODE = Object.freeze(
   'minimal-ui',
   'browser'
 );
+
+export const FEATURES = {
+  orientation: ORIENTATION,
+  scan: SCAN,
+  grid: GRID,
+  update: UPDATE,
+  overflowBlock: OVERFLOW_BLOCK,
+  overflowInline: OVERFLOW_INLINE,
+  colorGamut: COLOR_GAMUR,
+  displayMode: DISPLAY_MODE,
+};

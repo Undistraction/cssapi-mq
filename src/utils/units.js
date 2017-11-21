@@ -1,5 +1,5 @@
 import { __, divide, contains } from 'ramda';
-import { UNITS, SEPARATOR_VALUES } from './const';
+import { UNITS, SEPARATOR_VALUES } from '../const';
 
 export const separatorValueForUnit = unit => SEPARATOR_VALUES[unit];
 

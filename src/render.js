@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { MEDIA_PREFIX } from './const';
 
-export const renderFeature = (feature, value) => `(${feature}: ${value})`;
+export const renderFeature = (name, value) => `(${name}: ${value})`;
 
 export const renderQueryDefinition = (...elements) =>
   `${MEDIA_PREFIX} ${elements.join(' and ')}`;

@@ -1,9 +1,16 @@
-import { partial, mergeDeepLeft, merge, mergeAll } from 'ramda';
+import {
+  compose,
+  toPairs,
+  partial,
+  mergeDeepLeft,
+  merge,
+  mergeAll,
+  map,
+} from 'ramda';
 
 import buildRangedFeature from './features/buildRangedFeature';
 import buildMediaType from './features/buildMediaType';
-import buildScan from './features/buildScan';
-import buildOrientation from './features/buildOrientation';
+import buildFeature from './features/buildFeature';
 
 import {
   validateBreakpointSets,
@@ -15,7 +22,7 @@ import dimensionsOutput from './output/dimensionsOutput';
 import resolutionOutput from './output/resolutionOutput';
 import aspectRatioOutput from './output/aspectRatioOutput';
 
-import { MEDIA_TYPES, UNITS } from './const';
+import { MEDIA_TYPES, UNITS, FEATURES } from './const';
 
 const defaultConfig = {
   baseFontSize: 16,
@@ -25,12 +32,24 @@ const defaultConfig = {
   errorIfNoBreakpointDefined: true,
 };
 
+const toFeatures = compose(
+  map(([key, value]) => {
+    const o = {};
+    o[key] = buildFeature(key, value);
+    return o;
+  }),
+  toPairs
+);
+
 const configure = (breakpoints, config) => {
   const configWithDefaults = merge(defaultConfig, config);
   validateConfig(configWithDefaults);
   validateBreakpoints(breakpoints);
   validateBreakpointSets(breakpoints);
-  const renderFeatures = () =>
+
+  const renderFeatures = () => mergeAll(toFeatures(FEATURES));
+
+  const renderRangeFeatures = () =>
     mergeAll([
       buildRangedFeature(
         'width',
@@ -82,9 +101,8 @@ const configure = (breakpoints, config) => {
 
   const exports = {
     mediaType: buildMediaType(configWithDefaults.defaultMediaType),
-    orientation: buildOrientation(),
-    scan: buildScan(),
     ...renderFeatures(),
+    ...renderRangeFeatures(),
   };
 
   exports.tweak = partial(tweak, [exports]);

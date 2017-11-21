@@ -16,13 +16,9 @@ import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
 import { renderQuery, renderQueryDefinition, renderFeature } from '../render';
 
-const buildFeatureItem = (
-  name,
-  parser,
-  shouldSeparate = false
-) => breakpoint => {
-  return renderFeature(name, parser(breakpoint, shouldSeparate));
-};
+const buildFeatureItem = (name, parser, shouldSeparate = false) => breakpoint =>
+  renderFeature(name, parser(breakpoint, shouldSeparate));
+
 export default (
   name,
   output,

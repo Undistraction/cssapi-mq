@@ -1,11 +1,5 @@
 import { keys, values } from 'ramda';
-import {
-  MEDIA_TYPES,
-  BREAKPOINT_MAP_NAMES,
-  ORIENTATIONS,
-  UNITS,
-  SCANS,
-} from './const';
+import { MEDIA_TYPES, BREAKPOINT_MAP_NAMES, UNITS } from './const';
 
 // Horrible hackery to get round issues with Babel extending builtins.
 // This is the only way to have a custom error.
@@ -87,8 +81,5 @@ export const invalidUnitErrorMessage = value =>
 export const shouldSeparateQueriesErrorMessage = value =>
   `'shouldSeparateQueries' must be a boolean but was '${value}'`;
 
-export const invalidOrientationErrorMessage = value => `
-  orientation must be one of: '${ORIENTATIONS}' but was: '${value}'`;
-
-export const invalidScanErrorMessage = value => `
-  scan must be one of: '${SCANS}' but was: '${value}'`;
+export const invalidFeatureErrorMessage = (name, value, possibleValues) => `
+  '${name}' must be one of: '${possibleValues}' but was: '${value}'`;

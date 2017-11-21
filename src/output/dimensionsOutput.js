@@ -1,5 +1,5 @@
 import { __, partial, both, always, subtract, when } from 'ramda';
-import { toDimensionOutput, separatorValueForUnit } from '../units';
+import { toDimensionOutput, separatorValueForUnit } from '../utils/units';
 import { UNITS } from '../const';
 
 const toUnit = (dimensionsUnit, baseFontSize) =>

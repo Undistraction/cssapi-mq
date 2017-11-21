@@ -84,6 +84,10 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
+exports[`grid returns the supplied grid for '0' 1`] = `(grid: 0)`;
+
+exports[`grid returns the supplied grid for '1' 1`] = `(grid: 1)`;
+
 exports[`height range accessors height() doesn't separate dimensionsUnits if not configured 1`] = `(height: 25em)`;
 
 exports[`height range accessors height() renders configured dimensionsUnits 1`] = `(height: 25rem)`;
@@ -190,6 +194,12 @@ exports[`orientation returns the supplied orientation for 'landscape' 1`] = `(or
 
 exports[`orientation returns the supplied orientation for 'portrait' 1`] = `(orientation: portrait)`;
 
+exports[`overflow-block returns the supplied overflow-block for 'none' 1`] = `(overflowBlock: none)`;
+
+exports[`overflow-block returns the supplied overflow-block for 'optional-paged' 1`] = `(overflowBlock: optional-paged)`;
+
+exports[`overflow-block returns the supplied overflow-block for 'scroll' 1`] = `(overflowBlock: scroll)`;
+
 exports[`resolution range accessors maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
 
 exports[`resolution range accessors maxResolution() returns the correct media fragment 1`] = `(max-resolution: 71dpi)`;
@@ -293,6 +303,12 @@ exports[`tweaked doesn't effect the original mq 1`] = `
     }; ;
 }
 `;
+
+exports[`update returns the supplied update for 'fast' 1`] = `(update: fast)`;
+
+exports[`update returns the supplied update for 'none' 1`] = `(update: none)`;
+
+exports[`update returns the supplied update for 'slow' 1`] = `(update: slow)`;
 
 exports[`width range accessors maxWidth() doesn't separate dimensionsUnits if not configured 1`] = `(max-width: 25em)`;
 
