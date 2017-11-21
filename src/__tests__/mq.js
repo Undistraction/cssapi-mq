@@ -12,7 +12,6 @@ import {
 import camelcase from 'camelcase';
 import './helpers/toEqualCSS';
 import styledMQ from '../mq';
-import { InvalidValueError } from '../errors';
 import {
   MEDIA_TYPES,
   ORIENTATION,
@@ -83,9 +82,9 @@ const validBreakpoints = {
 // Internal
 // -----------------------------------------------------------------------------
 
-const runPerMethodTestsForFeature = (tests, name, method) => {
+const runPerMethodTestsForFeature = (tests, name, method, config) => {
   for (const test of tests) {
-    test(name, method);
+    test(name, method, config);
   }
 };
 
@@ -149,6 +148,14 @@ const featureThrowsForMissingBreakpoint = (name, method) => {
   });
 };
 
+const featureThrowsForMissingArgument = (name, method) => {
+  it('throws if no argument is supplied', () => {
+    expect(() =>
+      mqWithValidBreakpointsForRange(name)[method]()
+    ).toThrowErrorMatchingSnapshot();
+  });
+};
+
 const featureThrowsForMissingBreakpointSet = (name, method) => {
   it(`throws if ${name} breakpoint map doesn't exist`, () => {
     expect(() =>
@@ -157,11 +164,17 @@ const featureThrowsForMissingBreakpointSet = (name, method) => {
   });
 };
 
-const featureReturnsCorrectValue = (name, method) => {
-  it('returns the correct media fragment', () => {
+const featureReturnsCorrectValueForBreakpoint = (name, method) => {
+  it('returns the correct media fragment with existing breakpoint', () => {
     expect(
       mqWithValidBreakpointsForRange(name)[method]('small')
     ).toMatchSnapshot();
+  });
+};
+
+const featureReturnsCorrectValueNoArguments = (name, method) => {
+  it('returns the correct media fragment with no argument', () => {
+    expect(mqWithValidBreakpointsForRange(name)[method]()).toMatchSnapshot();
   });
 };
 
@@ -310,7 +323,10 @@ const testLinearFeature = (
   });
 };
 
-const testRangedFeature = (name, { perMethodTests = [] } = {}) => {
+const testRangedFeature = (
+  name,
+  { perMethodTests = [], allowNoArgument = false } = {}
+) => {
   const camelisedName = camelcase(name);
   describe(`${name}`, () => {
     describe('range features', () => {
@@ -320,7 +336,20 @@ const testRangedFeature = (name, { perMethodTests = [] } = {}) => {
       const maxValueMethod = camelcase('max', name);
 
       describe(`${valueMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, camelisedName, valueMethod);
+        runPerMethodTestsForFeature(
+          perMethodTests,
+          camelisedName,
+          valueMethod,
+          {
+            allowNoArgument,
+          }
+        );
+
+        if (allowNoArgument) {
+          featureReturnsCorrectValueNoArguments(camelisedName, valueMethod);
+        } else {
+          featureThrowsForMissingArgument(camelisedName, valueMethod);
+        }
       });
 
       describe(`${minValueMethod}()`, () => {
@@ -329,6 +358,7 @@ const testRangedFeature = (name, { perMethodTests = [] } = {}) => {
           camelisedName,
           minValueMethod
         );
+        featureThrowsForMissingArgument(camelisedName, minValueMethod);
       });
 
       describe(`${maxValueMethod}()`, () => {
@@ -337,6 +367,7 @@ const testRangedFeature = (name, { perMethodTests = [] } = {}) => {
           camelisedName,
           maxValueMethod
         );
+        featureThrowsForMissingArgument(camelisedName, maxValueMethod);
       });
     });
   });
@@ -576,7 +607,7 @@ testRangedFeature('width', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
     testConfigurableSeparation,
     testConfigurableUnits,
   ],
@@ -585,7 +616,7 @@ testRangedFeature('height', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
     testConfigurableSeparation,
     testConfigurableUnits,
   ],
@@ -594,7 +625,7 @@ testRangedFeature('resolution', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
     testConfigurableSeparation,
   ],
 });
@@ -602,29 +633,32 @@ testRangedFeature('aspect-ratio', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
   ],
 });
 testRangedFeature('color', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
   ],
+  allowNoArgument: true,
 });
 testRangedFeature('color-index', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
   ],
+  allowNoArgument: true,
 });
 testRangedFeature('monochrome', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValue,
+    featureReturnsCorrectValueForBreakpoint,
   ],
+  allowNoArgument: true,
 });
 
 // -----------------------------------------------------------------------------

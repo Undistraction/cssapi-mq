@@ -16,14 +16,19 @@ import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
 import { renderQuery, renderQueryDefinition, renderFeature } from '../render';
 
-const buildFeatureItem = (name, parser, shouldSeparate = false) => breakpoint =>
-  renderFeature(name, parser(breakpoint, shouldSeparate));
+const buildFeatureItem = (name, parser, config) => breakpoint => {
+  return renderFeature(name, parser(breakpoint, config));
+};
 
 export default (
   name,
   output,
   breakpoints = {},
-  { defaultMediaType = MEDIA_TYPES.SCREEN, onlyNamedBreakpoints = true } = {}
+  {
+    defaultMediaType = MEDIA_TYPES.SCREEN,
+    onlyNamedBreakpoints = true,
+    allowNoArgument = false,
+  } = {}
 ) => {
   const camelisedName = camelcase(name);
 
@@ -40,10 +45,15 @@ export default (
     return value;
   };
 
-  const parseValue = (value, shouldSeparate = false) => {
+  const parseValue = (
+    value,
+    { shouldSeparate = false, noArgs = false } = {}
+  ) => {
+    const nilValueAllowedToPass = v => isNil(v) && noArgs;
+
     // If we only support named breakpoints use the value to look up a
     // breakpoint.
-    if (onlyNamedBreakpoints) {
+    if (onlyNamedBreakpoints && !nilValueAllowedToPass(value)) {
       value = getBreakpointNamed(value);
     }
     return compose(output.toUnit, output.prepare(shouldSeparate))(value);
@@ -62,9 +72,13 @@ export default (
   // API
   // ---------------------------------------------------------------------------
 
-  const feature = buildFeatureItem(name, parseValue);
+  const feature = buildFeatureItem(name, parseValue, {
+    noArgs: allowNoArgument,
+  });
   const minFeature = buildFeatureItem(`min-${name}`, parseValue);
-  const maxFeature = buildFeatureItem(`max-${name}`, parseValue, true);
+  const maxFeature = buildFeatureItem(`max-${name}`, parseValue, {
+    shouldSeparate: true,
+  });
 
   const aboveFeature = (from, config = defaultAPIConfig) => (
     stringParts,

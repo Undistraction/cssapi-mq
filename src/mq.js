@@ -71,19 +71,19 @@ const configure = (breakpoints, config) => {
         'color',
         colorOutput(config),
         breakpoints.color,
-        configWithDefaults
+        merge(configWithDefaults, { allowNoArgument: true })
       ),
       buildRangedFeature(
         'color-index',
         colorOutput(config),
         breakpoints.colorIndex,
-        configWithDefaults
+        merge(configWithDefaults, { allowNoArgument: true })
       ),
       buildRangedFeature(
         'monochrome',
         monochromeOutput(config),
         breakpoints.monochrome,
-        configWithDefaults
+        merge(configWithDefaults, { allowNoArgument: true })
       ),
     ]);
 

@@ -1,22 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`aspect-ratio range features aspectRatio() returns the correct media fragment 1`] = `(aspect-ratio: 2/3)`;
+exports[`aspect-ratio range features aspectRatio() returns the correct media fragment with existing breakpoint 1`] = `(aspect-ratio: 2/3)`;
 
 exports[`aspect-ratio range features aspectRatio() throws if aspectRatio breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`aspect-ratio range features aspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
-exports[`aspect-ratio range features maxAspectRatio() returns the correct media fragment 1`] = `(max-aspect-ratio: 2/3)`;
+exports[`aspect-ratio range features aspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`aspect-ratio range features maxAspectRatio() returns the correct media fragment with existing breakpoint 1`] = `(max-aspect-ratio: 2/3)`;
 
 exports[`aspect-ratio range features maxAspectRatio() throws if aspectRatio breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`aspect-ratio range features maxAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
-exports[`aspect-ratio range features minAspectRatio() returns the correct media fragment 1`] = `(min-aspect-ratio: 2/3)`;
+exports[`aspect-ratio range features maxAspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`aspect-ratio range features minAspectRatio() returns the correct media fragment with existing breakpoint 1`] = `(min-aspect-ratio: 2/3)`;
 
 exports[`aspect-ratio range features minAspectRatio() throws if aspectRatio breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`aspect-ratio range features minAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`aspect-ratio range features minAspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media query for 'large' 1`] = `
 @media screen and (min-aspect-ratio: 3/2) {
@@ -256,23 +262,29 @@ exports[`aspect-ratio range queries betweenAspectRatios() throws if 'from' break
 
 exports[`aspect-ratio range queries betweenAspectRatios() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
-exports[`color range features color() returns the correct media fragment 1`] = `(color: 1)`;
+exports[`color range features color() returns the correct media fragment with existing breakpoint 1`] = `(color: 1)`;
+
+exports[`color range features color() returns the correct media fragment with no argument 1`] = `(color)`;
 
 exports[`color range features color() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color range features color() throws if color breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`color range features maxColor() returns the correct media fragment 1`] = `(max-color: 1)`;
+exports[`color range features maxColor() returns the correct media fragment with existing breakpoint 1`] = `(max-color: 1)`;
 
 exports[`color range features maxColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color range features maxColor() throws if color breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`color range features minColor() returns the correct media fragment 1`] = `(min-color: 1)`;
+exports[`color range features maxColor() throws if no argument is supplied 1`] = `There is no 'color' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`color range features minColor() returns the correct media fragment with existing breakpoint 1`] = `(min-color: 1)`;
 
 exports[`color range features minColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color range features minColor() throws if color breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+
+exports[`color range features minColor() throws if no argument is supplied 1`] = `There is no 'color' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color range queries aboveColor() returns the correct media query for 'large' 1`] = `
 @media screen and (min-color: 5) {
@@ -512,23 +524,29 @@ exports[`color range queries betweenColors() throws if 'from' breakpoint doesn't
 
 exports[`color range queries betweenColors() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
-exports[`color-index range features colorIndex() returns the correct media fragment 1`] = `(color-index: 1)`;
+exports[`color-index range features colorIndex() returns the correct media fragment with existing breakpoint 1`] = `(color-index: 1)`;
+
+exports[`color-index range features colorIndex() returns the correct media fragment with no argument 1`] = `(color-index)`;
 
 exports[`color-index range features colorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color-index range features colorIndex() throws if colorIndex breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`color-index range features maxColorIndex() returns the correct media fragment 1`] = `(max-color-index: 1)`;
+exports[`color-index range features maxColorIndex() returns the correct media fragment with existing breakpoint 1`] = `(max-color-index: 1)`;
 
 exports[`color-index range features maxColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color-index range features maxColorIndex() throws if colorIndex breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`color-index range features minColorIndex() returns the correct media fragment 1`] = `(min-color-index: 1)`;
+exports[`color-index range features maxColorIndex() throws if no argument is supplied 1`] = `There is no 'color-index' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`color-index range features minColorIndex() returns the correct media fragment with existing breakpoint 1`] = `(min-color-index: 1)`;
 
 exports[`color-index range features minColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color-index range features minColorIndex() throws if colorIndex breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+
+exports[`color-index range features minColorIndex() throws if no argument is supplied 1`] = `There is no 'color-index' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color-index range queries aboveColorIndex() returns the correct media query for 'large' 1`] = `
 @media screen and (min-color-index: 5) {
@@ -826,11 +844,13 @@ exports[`height range features height() renders configured dimensionsUnits 1`] =
 
 exports[`height range features height() renders configured dimensionsUnits 2`] = `(height: 400px)`;
 
-exports[`height range features height() returns the correct media fragment 1`] = `(height: 25em)`;
+exports[`height range features height() returns the correct media fragment with existing breakpoint 1`] = `(height: 25em)`;
 
 exports[`height range features height() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range features height() throws if height breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+
+exports[`height range features height() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range features maxHeight() doesn't separate dimensionsUnits if not configured 1`] = `(max-height: 25em)`;
 
@@ -838,11 +858,13 @@ exports[`height range features maxHeight() renders configured dimensionsUnits 1`
 
 exports[`height range features maxHeight() renders configured dimensionsUnits 2`] = `(max-height: 399px)`;
 
-exports[`height range features maxHeight() returns the correct media fragment 1`] = `(max-height: 24.999375em)`;
+exports[`height range features maxHeight() returns the correct media fragment with existing breakpoint 1`] = `(max-height: 24.999375em)`;
 
 exports[`height range features maxHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range features maxHeight() throws if height breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+
+exports[`height range features maxHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range features minHeight() doesn't separate dimensionsUnits if not configured 1`] = `(min-height: 25em)`;
 
@@ -850,11 +872,13 @@ exports[`height range features minHeight() renders configured dimensionsUnits 1`
 
 exports[`height range features minHeight() renders configured dimensionsUnits 2`] = `(min-height: 400px)`;
 
-exports[`height range features minHeight() returns the correct media fragment 1`] = `(min-height: 25em)`;
+exports[`height range features minHeight() returns the correct media fragment with existing breakpoint 1`] = `(min-height: 25em)`;
 
 exports[`height range features minHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range features minHeight() throws if height breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+
+exports[`height range features minHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range queries aboveHeight() returns the correct media query for 'large' 1`] = `
 @media screen and (min-height: 68.75em) {
@@ -1110,19 +1134,25 @@ exports[`mediaType supports multiple values 1`] = `screen, speech,`;
 
 exports[`mediaType throws if argument is not valid media type 1`] = `'mediaType'must be one of 'all,print,screen,speech,' but you supplied: 'xxxx'.`;
 
-exports[`monochrome range features maxMonochrome() returns the correct media fragment 1`] = `(max-monochrome: 0)`;
+exports[`monochrome range features maxMonochrome() returns the correct media fragment with existing breakpoint 1`] = `(max-monochrome: 0)`;
 
 exports[`monochrome range features maxMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`monochrome range features maxMonochrome() throws if monochrome breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`monochrome range features minMonochrome() returns the correct media fragment 1`] = `(min-monochrome: 0)`;
+exports[`monochrome range features maxMonochrome() throws if no argument is supplied 1`] = `There is no 'monochrome' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`monochrome range features minMonochrome() returns the correct media fragment with existing breakpoint 1`] = `(min-monochrome: 0)`;
 
 exports[`monochrome range features minMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`monochrome range features minMonochrome() throws if monochrome breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`monochrome range features monochrome() returns the correct media fragment 1`] = `(monochrome: 0)`;
+exports[`monochrome range features minMonochrome() throws if no argument is supplied 1`] = `There is no 'monochrome' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`monochrome range features monochrome() returns the correct media fragment with existing breakpoint 1`] = `(monochrome: 0)`;
+
+exports[`monochrome range features monochrome() returns the correct media fragment with no argument 1`] = `(monochrome)`;
 
 exports[`monochrome range features monochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
@@ -1394,25 +1424,31 @@ exports[`overflowInline() linear feature throws if no argument is supplied 1`] =
 
 exports[`resolution range features maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
 
-exports[`resolution range features maxResolution() returns the correct media fragment 1`] = `(max-resolution: 71dpi)`;
+exports[`resolution range features maxResolution() returns the correct media fragment with existing breakpoint 1`] = `(max-resolution: 71dpi)`;
 
 exports[`resolution range features maxResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`resolution range features maxResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`resolution range features maxResolution() throws if resolution breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features minResolution() doesn't separate dimensionsUnits if not configured 1`] = `(min-resolution: 72dpi)`;
 
-exports[`resolution range features minResolution() returns the correct media fragment 1`] = `(min-resolution: 72dpi)`;
+exports[`resolution range features minResolution() returns the correct media fragment with existing breakpoint 1`] = `(min-resolution: 72dpi)`;
 
 exports[`resolution range features minResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`resolution range features minResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`resolution range features minResolution() throws if resolution breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features resolution() doesn't separate dimensionsUnits if not configured 1`] = `(resolution: 72dpi)`;
 
-exports[`resolution range features resolution() returns the correct media fragment 1`] = `(resolution: 72dpi)`;
+exports[`resolution range features resolution() returns the correct media fragment with existing breakpoint 1`] = `(resolution: 72dpi)`;
 
 exports[`resolution range features resolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`resolution range features resolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`resolution range features resolution() throws if resolution breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
@@ -1710,9 +1746,11 @@ exports[`width range features maxWidth() renders configured dimensionsUnits 1`] 
 
 exports[`width range features maxWidth() renders configured dimensionsUnits 2`] = `(max-width: 399px)`;
 
-exports[`width range features maxWidth() returns the correct media fragment 1`] = `(max-width: 24.999375em)`;
+exports[`width range features maxWidth() returns the correct media fragment with existing breakpoint 1`] = `(max-width: 24.999375em)`;
 
 exports[`width range features maxWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`width range features maxWidth() throws if width breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
@@ -1722,9 +1760,11 @@ exports[`width range features minWidth() renders configured dimensionsUnits 1`] 
 
 exports[`width range features minWidth() renders configured dimensionsUnits 2`] = `(min-width: 400px)`;
 
-exports[`width range features minWidth() returns the correct media fragment 1`] = `(min-width: 25em)`;
+exports[`width range features minWidth() returns the correct media fragment with existing breakpoint 1`] = `(min-width: 25em)`;
 
 exports[`width range features minWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`width range features minWidth() throws if width breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
@@ -1734,9 +1774,11 @@ exports[`width range features width() renders configured dimensionsUnits 1`] = `
 
 exports[`width range features width() renders configured dimensionsUnits 2`] = `(width: 400px)`;
 
-exports[`width range features width() returns the correct media fragment 1`] = `(width: 25em)`;
+exports[`width range features width() returns the correct media fragment with existing breakpoint 1`] = `(width: 25em)`;
 
 exports[`width range features width() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
+
+exports[`width range features width() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`width range features width() throws if width breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
