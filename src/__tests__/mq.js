@@ -48,6 +48,16 @@ const validBreakpoints = {
   aspectRatio: validAspectRatioBreakpoints,
 };
 
+// -----------------------------------------------------------------------------
+// Internal
+// -----------------------------------------------------------------------------
+
+const runPerMethodTests = (tests, name, method) => {
+  for (const test of tests) {
+    test(name, method);
+  }
+};
+
 const validBreakpointsForRange = name => {
   const camelisedName = camelcase(name);
   const o = {};
@@ -65,112 +75,156 @@ const mqWithTweakedBreakpointsForRange = name =>
 
 const mqWithNoBreakpoints = () => styledMQ.configure({});
 
-const testConfiguredUnits = (name, method, ...args) => {
+// -----------------------------------------------------------------------------
+// Shared Tests
+// -----------------------------------------------------------------------------
+
+const testConfigurableUnits = (name, method) => {
   it('renders configured dimensionsUnits', () => {
     expect(
       mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'rem' })[method](
-        ...args
+        'small'
       )
     ).toMatchSnapshot();
 
     expect(
       mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'px' })[method](
-        ...args
+        'small'
       )
     ).toMatchSnapshot();
   });
 };
 
-const testConfigurableSeparation = (name, method, ...args) => {
+const testConfigurableSeparation = (name, method) => {
   it("doesn't separate dimensionsUnits if not configured", () => {
     expect(
       mqWithValidBreakpointsForRange(name, { shouldSeparateQueries: false })[
         method
-      ](...args)
+      ]('small')
     ).toMatchSnapshot();
   });
 };
 
-const testRangeQuery = (name, testUnits = false) => {
-  describe(`${name} range`, () => {
+const featureThrowsForMissingBreakpoint = (name, method) => {
+  it("throws if breakpoint doesn't exist", () => {
+    expect(() =>
+      mqWithValidBreakpointsForRange(name)[method]('xxxx')
+    ).toThrowError(InvalidValueError);
+  });
+};
+
+const featureReturnsCorrectValue = (name, method) => {
+  it('returns the correct media fragment', () => {
+    expect(
+      mqWithValidBreakpointsForRange(name)[method]('small')
+    ).toMatchSnapshot();
+  });
+};
+
+const featureThrowsForMissingBreakpointSet = (name, method) => {
+  it(`throws if ${name} breakpoint map doesn't exist`, () => {
+    expect(() => mqWithNoBreakpoints()[method]('xxxx')).toThrowError(
+      InvalidValueError
+    );
+  });
+};
+
+// -----------------------------------------------------------------------------
+// Test Types
+// -----------------------------------------------------------------------------
+
+const testMediaTypes = (name, validValuesMap) => {
+  const validValues = values(validValuesMap);
+  const camelisedName = camelcase(name);
+  describe(name, () => {
+    it('returns the correct default media type if called with no arguments', () => {
+      expect(
+        mqWithValidBreakpointsForRange('width')[camelisedName]()
+      ).toMatchSnapshot();
+    });
+
+    for (const value of validValues) {
+      it(`returns the supplied ${name} for '${value}'`, () => {
+        expect(
+          mqWithValidBreakpointsForRange('width')[camelisedName](value)
+        ).toMatchSnapshot();
+      });
+    }
+
+    it('supports multiple values', () => {
+      expect(
+        mqWithValidBreakpointsForRange('width')[camelisedName](
+          drop(2, validValues)
+        )
+      ).toMatchSnapshot();
+    });
+
+    it('throws if argument is not valid media type', () => {
+      expect(() =>
+        mqWithValidBreakpointsForRange('width')[camelisedName]('xxxx')
+      ).toThrowError(InvalidValueError);
+    });
+  });
+};
+
+const testRangeFeature = (name, { perMethodTests = [] } = {}) => {
+  describe(`${name}`, () => {
     const capitalizedName = name[0].toUpperCase() + camelcase(name).slice(1);
     const camelisedName = camelcase(name);
 
-    describe('accessors', () => {
+    describe('range features', () => {
       // Define accessor names
-      const minValue = `min${capitalizedName}`;
-      const maxValue = `max${capitalizedName}`;
+      const vaueMethod = camelisedName;
+      const minValueMethod = `min${capitalizedName}`;
+      const maxValueMethod = `max${capitalizedName}`;
 
       describe(`${camelisedName}()`, () => {
-        if (testUnits) testConfiguredUnits(name, camelisedName, 'small');
-        testConfigurableSeparation(name, camelisedName, 'small');
-
-        it('returns the correct media fragment', () => {
-          expect(
-            mqWithValidBreakpointsForRange(name)[camelisedName]('small')
-          ).toMatchSnapshot();
-        });
-
-        it("throws if breakpoint doesn't exist", () => {
-          expect(() =>
-            mqWithValidBreakpointsForRange(name)[camelisedName]('xxxx')
-          ).toThrowError(InvalidValueError);
-        });
-
-        it(`throws if ${name} breakpoint map doesn't exist`, () => {
-          expect(() =>
-            mqWithNoBreakpoints()[camelisedName]('xxxx')
-          ).toThrowError(InvalidValueError);
-        });
+        runPerMethodTests(perMethodTests, name, vaueMethod);
       });
 
-      describe(`${minValue}()`, () => {
-        if (testUnits) testConfiguredUnits(name, minValue, 'small');
-        testConfigurableSeparation(name, minValue, 'small');
-
-        it('returns the correct media fragment', () => {
-          expect(
-            mqWithValidBreakpointsForRange(name)[minValue]('small')
-          ).toMatchSnapshot();
-        });
-
-        it("throws if breakpoint doesn't exist", () => {
-          expect(() =>
-            mqWithValidBreakpointsForRange(name)[minValue]('xxxx')
-          ).toThrowError(InvalidValueError);
-        });
-
-        it(`throws if ${name} breakpoint map doesn't exist`, () => {
-          expect(() => mqWithNoBreakpoints()[minValue]('xxxx')).toThrowError(
-            InvalidValueError
-          );
-        });
+      describe(`${minValueMethod}()`, () => {
+        runPerMethodTests(perMethodTests, name, minValueMethod);
       });
 
-      describe(`${maxValue}()`, () => {
-        if (testUnits) testConfiguredUnits(name, maxValue, 'small');
-        testConfigurableSeparation(name, maxValue, 'small');
-
-        it('returns the correct media fragment', () => {
-          expect(
-            mqWithValidBreakpointsForRange(name)[maxValue]('small')
-          ).toMatchSnapshot();
-        });
-
-        it("throws if breakpoint doesn't exist", () => {
-          expect(() =>
-            mqWithValidBreakpointsForRange(name)[maxValue]('xxxx')
-          ).toThrowError(InvalidValueError);
-        });
-
-        it(`throws if ${name} breakpoint map doesn't exist`, () => {
-          expect(() => mqWithNoBreakpoints()[maxValue]('xxxx')).toThrowError(
-            InvalidValueError
-          );
-        });
+      describe(`${maxValueMethod}()`, () => {
+        runPerMethodTests(perMethodTests, name, maxValueMethod);
       });
     });
-    describe('queries', () => {
+  });
+};
+
+const testLinearFeature = (name, validValuesMap) => {
+  const validValues = values(validValuesMap);
+  const camelisedName = camelcase(name);
+  describe(name, () => {
+    describe('linear feature', () => {
+      it('throws if no argument is supplied', () => {
+        expect(() =>
+          mqWithValidBreakpointsForRange('width')[camelisedName]()
+        ).toThrowError(InvalidValueError);
+      });
+
+      for (const value of validValues) {
+        it(`returns the supplied ${name} for '${value}'`, () => {
+          expect(
+            mqWithValidBreakpointsForRange('width')[camelisedName](value)
+          ).toMatchSnapshot();
+        });
+      }
+
+      it('throws if argument is not valid media type', () => {
+        expect(() =>
+          mqWithValidBreakpointsForRange('width')[camelisedName]('xxxx')
+        ).toThrowError(InvalidValueError);
+      });
+    });
+  });
+};
+
+const testRangeQueries = name => {
+  describe(`${name}`, () => {
+    describe('range queries', () => {
+      const capitalizedName = name[0].toUpperCase() + camelcase(name).slice(1);
       // Define accessor names
       const above = `above${capitalizedName}`;
       const below = `below${capitalizedName}`;
@@ -181,8 +235,8 @@ const testRangeQuery = (name, testUnits = false) => {
       describe(`${above}()`, () => {
         it('returns the correct media query', () => {
           const result = mqWithValidBreakpointsForRange(name)[above]('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -196,8 +250,8 @@ const testRangeQuery = (name, testUnits = false) => {
       describe(`${below}()`, () => {
         it('returns the correct media query', () => {
           const result = mqWithValidBreakpointsForRange(name)[below]('small')`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -214,8 +268,8 @@ const testRangeQuery = (name, testUnits = false) => {
             'small',
             'medium'
           )`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -224,8 +278,8 @@ const testRangeQuery = (name, testUnits = false) => {
             'medium',
             'small'
           )`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -254,8 +308,8 @@ const testRangeQuery = (name, testUnits = false) => {
       describe(`${at}()`, () => {
         it('returns the correct media query', () => {
           const result = mqWithValidBreakpointsForRange(name)[at]('small')`
-              background-color: ${() => 'GhostWhite'};
-            `;
+          background-color: ${() => 'GhostWhite'};
+        `;
           expect(result).toMatchSnapshot();
         });
 
@@ -271,8 +325,8 @@ const testRangeQuery = (name, testUnits = false) => {
           const result = mqWithValidBreakpointsForRange(name)[atBreakpoint](
             'small'
           )`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -280,8 +334,8 @@ const testRangeQuery = (name, testUnits = false) => {
           const result = mqWithValidBreakpointsForRange(name)[atBreakpoint](
             'xLarge'
           )`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -289,8 +343,8 @@ const testRangeQuery = (name, testUnits = false) => {
           const result = mqWithValidBreakpointsForRange(name)[atBreakpoint](
             'large'
           )`
-        background-color: ${() => 'GhostWhite'};
-      `;
+    background-color: ${() => 'GhostWhite'};
+  `;
           expect(result).toMatchSnapshot();
         });
 
@@ -300,50 +354,6 @@ const testRangeQuery = (name, testUnits = false) => {
           ).toThrowError(InvalidValueError);
         });
       });
-    });
-  });
-};
-
-const testFeature = (name, validValuesMap, config = {}) => {
-  const validValues = values(validValuesMap);
-  const camelisedName = camelcase(name);
-  describe(name, () => {
-    if (config.default) {
-      it('returns the correct default media type if called with no arguments', () => {
-        expect(
-          mqWithValidBreakpointsForRange('width')[camelisedName]()
-        ).toMatchSnapshot();
-      });
-    } else {
-      it('throws if no argument is supplied', () => {
-        expect(() =>
-          mqWithValidBreakpointsForRange('width')[camelisedName]()
-        ).toThrowError(InvalidValueError);
-      });
-    }
-
-    for (const value of validValues) {
-      it(`returns the supplied ${name} for '${value}'`, () => {
-        expect(
-          mqWithValidBreakpointsForRange('width')[camelisedName](value)
-        ).toMatchSnapshot();
-      });
-    }
-
-    if (config.multiple) {
-      it('supports multiple values', () => {
-        expect(
-          mqWithValidBreakpointsForRange('width')[camelisedName](
-            drop(2, validValues)
-          )
-        ).toMatchSnapshot();
-      });
-    }
-
-    it('throws if argument is not valid media type', () => {
-      expect(() =>
-        mqWithValidBreakpointsForRange('width')[camelisedName]('xxxx')
-      ).toThrowError(InvalidValueError);
     });
   });
 };
@@ -520,22 +530,65 @@ describe('tweaked', () => {
 });
 
 // -----------------------------------------------------------------------------
-// Media Fragments
+// Media Type
 // -----------------------------------------------------------------------------
 
-testFeature('mediaType', values(MEDIA_TYPES), {
-  default: 'all',
-  multiple: true,
+testMediaTypes('mediaType', values(MEDIA_TYPES));
+
+// -----------------------------------------------------------------------------
+// Features
+// -----------------------------------------------------------------------------
+
+// Linear
+testLinearFeature('orientation', ORIENTATION);
+testLinearFeature('scan', SCAN);
+testLinearFeature('grid', GRID);
+testLinearFeature('update', UPDATE);
+testLinearFeature('overflow-block', OVERFLOW_BLOCK);
+testLinearFeature('overflow-inline', OVERFLOW_INLINE);
+testLinearFeature('color-gamut', COLOR_GAMUT);
+testLinearFeature('display-mode', DISPLAY_MODE);
+
+// Range
+testRangeFeature('width', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+    testConfigurableSeparation,
+    testConfigurableUnits,
+  ],
 });
-testRangeQuery('width', true);
-testRangeQuery('height', true);
-testRangeQuery('resolution');
-testRangeQuery('aspect-ratio');
-testFeature('orientation', ORIENTATION);
-testFeature('scan', SCAN);
-testFeature('grid', GRID);
-testFeature('update', UPDATE);
-testFeature('overflow-block', OVERFLOW_BLOCK);
-testFeature('overflow-inline', OVERFLOW_INLINE);
-testFeature('color-gamut', COLOR_GAMUT);
-testFeature('display-mode', DISPLAY_MODE);
+testRangeFeature('height', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+    testConfigurableSeparation,
+    testConfigurableUnits,
+  ],
+});
+testRangeFeature('resolution', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+    testConfigurableSeparation,
+  ],
+});
+testRangeFeature('aspect-ratio', {
+  perMethodTests: [
+    featureThrowsForMissingBreakpointSet,
+    featureThrowsForMissingBreakpoint,
+    featureReturnsCorrectValue,
+  ],
+});
+
+// -----------------------------------------------------------------------------
+// Features
+// -----------------------------------------------------------------------------
+
+testRangeQueries('width');
+testRangeQueries('height');
+testRangeQueries('resolution');
+testRangeQueries('aspect-ratio');
