@@ -53,22 +53,48 @@ export const OVERFLOW_BLOCK = Object.freeze([
   'scroll',
   'optional-paged',
 ]);
-export const OVERFLOW_INLINE = Object.freeze('none', 'scroll');
-export const COLOR_GAMUR = Object.freeze('srgb', 'p3', 'rec2020');
-export const DISPLAY_MODE = Object.freeze(
+export const OVERFLOW_INLINE = Object.freeze(['none', 'scroll']);
+export const COLOR_GAMUT = Object.freeze(['srgb', 'p3', 'rec2020']);
+export const DISPLAY_MODE = Object.freeze([
   'fullscreen',
   'standalone',
   'minimal-ui',
-  'browser'
-);
+  'browser',
+]);
 
-export const LINEAR_FEATURES = {
-  orientation: ORIENTATION,
-  scan: SCAN,
-  grid: GRID,
-  update: UPDATE,
-  overflowBlock: OVERFLOW_BLOCK,
-  overflowInline: OVERFLOW_INLINE,
-  colorGamut: COLOR_GAMUR,
-  displayMode: DISPLAY_MODE,
-};
+export const LINEAR_FEATURES = [
+  {
+    name: 'orientation',
+    validValues: ORIENTATION,
+  },
+  {
+    name: 'scan',
+    validValues: SCAN,
+  },
+  {
+    name: 'grid',
+    validValues: GRID,
+    allowNoArgument: true,
+  },
+  {
+    name: 'update',
+    validValues: UPDATE,
+    allowNoArgument: true,
+  },
+  {
+    name: 'overflowBlock',
+    validValues: OVERFLOW_BLOCK,
+  },
+  {
+    name: 'overflowInline',
+    validValues: OVERFLOW_INLINE,
+  },
+  {
+    name: 'colorGamut',
+    validValues: COLOR_GAMUT,
+  },
+  {
+    name: 'displayMode',
+    validValues: DISPLAY_MODE,
+  },
+];

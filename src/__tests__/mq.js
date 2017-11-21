@@ -96,9 +96,8 @@ const validBreakpointsForRange = name => {
   return o;
 };
 
-const mqWithValidBreakpointsForRange = (name, config = {}) => {
-  return styledMQ.configure(validBreakpointsForRange(name), config);
-};
+const mqWithValidBreakpointsForRange = (name, config = {}) =>
+  styledMQ.configure(validBreakpointsForRange(name), config);
 
 const validBreakpointKeysForRange = name => {
   const camelisedName = camelcase(name);
@@ -146,15 +145,15 @@ const featureThrowsForMissingBreakpoint = (name, method) => {
   it("throws if breakpoint doesn't exist", () => {
     expect(() =>
       mqWithValidBreakpointsForRange(name)[method]('xxxx')
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 };
 
 const featureThrowsForMissingBreakpointSet = (name, method) => {
   it(`throws if ${name} breakpoint map doesn't exist`, () => {
-    expect(() => mqWithNoBreakpoints()[method]('xxxx')).toThrowError(
-      InvalidValueError
-    );
+    expect(() =>
+      mqWithNoBreakpoints()[method]('xxxx')
+    ).toThrowErrorMatchingSnapshot();
   });
 };
 
@@ -170,7 +169,7 @@ const queryThrowsIfMissingBreakpoint = (name, method) => {
   it("throws if breakpoint doesn't exist", () => {
     expect(
       () => mqWithValidBreakpointsForRange(name)[method]('xxxx')``
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 };
 
@@ -209,7 +208,7 @@ const queryThrowsWithBothBreakpointsTheSame = (name, method) => {
   it("throws if 'from' and 'to' breakpoints are the same value", () => {
     expect(
       () => mqWithValidBreakpointsForRange(name)[method]('large', 'large')``
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 };
 
@@ -217,13 +216,13 @@ const queryThrowsIfMissingEitherBreakpoint = (name, method) => {
   it("throws if 'from' breakpoint doesn't exist", () => {
     expect(
       () => mqWithValidBreakpointsForRange(name)[method]('xxxx', 'large')``
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 
   it("throws if 'to' breakpoint doesn't exist", () => {
     expect(
       () => mqWithValidBreakpointsForRange(name)[method]('large', 'xxxx')``
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 };
 
@@ -260,12 +259,58 @@ const testMediaTypes = (name, validValuesMap) => {
     it('throws if argument is not valid media type', () => {
       expect(() =>
         mqWithValidBreakpointsForRange('width')[methodName]('xxxx')
-      ).toThrowError(InvalidValueError);
+      ).toThrowErrorMatchingSnapshot();
     });
   });
 };
 
-const testRangeFeature = (name, { perMethodTests = [] } = {}) => {
+const testLinearFeature = (
+  name,
+  validValuesMap,
+  { allowNoArgument = false } = {}
+) => {
+  const validValues = values(validValuesMap);
+  const methodName = camelcase(name);
+  describe(`${methodName}()`, () => {
+    describe('linear feature', () => {
+      if (allowNoArgument) {
+        it("doesn't throw if no argument is supplied", () => {
+          expect(() =>
+            mqWithValidBreakpointsForRange('width')[methodName]()
+          ).not.toThrow();
+        });
+
+        it(`returns a valueless ${name}`, () => {
+          expect(
+            mqWithValidBreakpointsForRange('width')[methodName]()
+          ).toMatchSnapshot();
+        });
+      } else {
+        it('throws if no argument is supplied', () => {
+          expect(() =>
+            mqWithValidBreakpointsForRange('width')[methodName]()
+          ).toThrowErrorMatchingSnapshot();
+        });
+      }
+
+      it('throws if argument is not valid value', () => {
+        expect(() =>
+          mqWithValidBreakpointsForRange('width')[methodName]('xxxx')
+        ).toThrowErrorMatchingSnapshot();
+      });
+
+      for (const value of validValues) {
+        it(`returns the supplied ${name} for '${value}'`, () => {
+          expect(
+            mqWithValidBreakpointsForRange('width')[methodName](value)
+          ).toMatchSnapshot();
+        });
+      }
+    });
+  });
+};
+
+const testRangedFeature = (name, { perMethodTests = [] } = {}) => {
   const camelisedName = camelcase(name);
   describe(`${name}`, () => {
     describe('range features', () => {
@@ -292,34 +337,6 @@ const testRangeFeature = (name, { perMethodTests = [] } = {}) => {
           camelisedName,
           maxValueMethod
         );
-      });
-    });
-  });
-};
-
-const testLinearFeature = (name, validValuesMap) => {
-  const validValues = values(validValuesMap);
-  const methodName = camelcase(name);
-  describe(`${methodName}()`, () => {
-    describe('linear feature', () => {
-      it('throws if no argument is supplied', () => {
-        expect(() =>
-          mqWithValidBreakpointsForRange('width')[methodName]()
-        ).toThrowError(InvalidValueError);
-      });
-
-      for (const value of validValues) {
-        it(`returns the supplied ${name} for '${value}'`, () => {
-          expect(
-            mqWithValidBreakpointsForRange('width')[methodName](value)
-          ).toMatchSnapshot();
-        });
-      }
-
-      it('throws if argument is not valid media type', () => {
-        expect(() =>
-          mqWithValidBreakpointsForRange('width')[methodName]('xxxx')
-        ).toThrowError(InvalidValueError);
       });
     });
   });
@@ -365,25 +382,21 @@ const testRangeQueries = (name, { perMethodTests = [] } = {}) => {
 
 describe('configuration', () => {
   it('throws if no breakpoints are supplied', () => {
-    expect(() => styledMQ.configure()).toThrowError(InvalidValueError);
+    expect(() => styledMQ.configure()).toThrowErrorMatchingSnapshot();
   });
 
   it('throws if no breakpoint sets are supplied', () => {
-    expect(() => styledMQ.configure({})).toThrowError(InvalidValueError);
+    expect(() => styledMQ.configure({})).toThrowErrorMatchingSnapshot();
   });
 
   it('throws if invalid breakpoint value is supplied', () => {
-    expect(() => styledMQ.configure({ width: { small: 'xxx' } })).toThrowError(
-      InvalidValueError
-    );
+    expect(() =>
+      styledMQ.configure({ width: { small: 'xxx' } })
+    ).toThrowErrorMatchingSnapshot();
   });
 
   it("doesn't throw an error with default configuration", () => {
-    expect(() =>
-      mqWithValidBreakpointsForRange('width').not.toThrowError(
-        InvalidValueError
-      )
-    );
+    expect(() => mqWithValidBreakpointsForRange('width').not.toThrow());
   });
 
   describe('config object', () => {
@@ -401,14 +414,14 @@ describe('configuration', () => {
         const config = { baseFontSize: 'xxxx' };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).toThrowError(InvalidValueError);
+        ).toThrowErrorMatchingSnapshot();
       });
 
       it("doesn't throw an error if 'baseFontSize' is a positive number", () => {
         const config = { baseFontSize: 12 };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).not.toThrowError(InvalidValueError);
+        ).not.toThrow();
       });
     });
 
@@ -417,7 +430,7 @@ describe('configuration', () => {
         const config = { defaultMediaType: 'xxxx' };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).toThrowError(InvalidValueError);
+        ).toThrowErrorMatchingSnapshot();
       });
 
       it("doesn't throw an error if 'defaultMediaType' is valid", () => {
@@ -425,17 +438,17 @@ describe('configuration', () => {
           styledMQ.configure(validBreakpointsForRange('width'), {
             defaultMediaType: 'all',
           })
-        ).not.toThrowError(InvalidValueError);
+        ).not.toThrow();
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), {
             defaultMediaType: '',
           })
-        ).not.toThrowError(InvalidValueError);
+        ).not.toThrow();
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), {
             defaultMediaType: ['screen', 'print'],
           })
-        ).not.toThrowError(InvalidValueError);
+        ).not.toThrow();
       });
     });
 
@@ -444,14 +457,14 @@ describe('configuration', () => {
         const config = { dimensionsUnit: 'xxxx' };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).toThrowError(InvalidValueError);
+        ).toThrowErrorMatchingSnapshot();
       });
 
       it("doesn't throw an error if 'dimensionsUnit' is valid", () => {
         const config = { dimensionsUnit: 'px' };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).not.toThrowError(InvalidValueError);
+        ).not.toThrow();
       });
     });
 
@@ -460,14 +473,14 @@ describe('configuration', () => {
         const config = { shouldSeparateQueries: 'xxxx' };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).toThrowError(InvalidValueError);
+        ).toThrowErrorMatchingSnapshot();
       });
 
       it("doesn't throw an error if 'shouldSeparateQueries' is a boolean", () => {
         const config = { shouldSeparateQueries: false };
         expect(() =>
           styledMQ.configure(validBreakpointsForRange('width'), config)
-        ).not.toThrowError(InvalidValueError);
+        ).not.toThrow();
       });
     });
   });
@@ -479,21 +492,21 @@ describe('configuration', () => {
 
 describe('tweakpoints', () => {
   it('throws if no breakpoints are supplied', () => {
-    expect(() => mqWithValidBreakpointsForRange('width').tweak()).toThrowError(
-      InvalidValueError
-    );
+    expect(() =>
+      mqWithValidBreakpointsForRange('width').tweak()
+    ).toThrowErrorMatchingSnapshot();
   });
 
   it('throws if no breakpoint sets are supplied', () => {
     expect(() =>
       mqWithValidBreakpointsForRange('width').tweak({})
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 
   it('throws if invalid breakpoint value is supplied', () => {
     expect(() =>
       mqWithValidBreakpointsForRange('width').tweak({ width: { small: 'xxx' } })
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
   });
 });
 
@@ -525,7 +538,7 @@ describe('tweaked', () => {
         mqWithTweakedBreakpointsForRange('width').aboveWidth('alpha')`
       background-color: ${() => 'GhostWhite'};
     `
-    ).toThrowError(InvalidValueError);
+    ).toThrowErrorMatchingSnapshot();
 
     // Make sure the upper limit is 'medium', not 'alpha'
     expect(
@@ -551,15 +564,15 @@ testMediaTypes('mediaType', values(MEDIA_TYPES));
 // Linear
 testLinearFeature('orientation', ORIENTATION);
 testLinearFeature('scan', SCAN);
-testLinearFeature('grid', GRID);
-testLinearFeature('update', UPDATE);
+testLinearFeature('grid', GRID, { allowNoArgument: true });
+testLinearFeature('update', UPDATE, { allowNoArgument: true });
 testLinearFeature('overflow-block', OVERFLOW_BLOCK);
 testLinearFeature('overflow-inline', OVERFLOW_INLINE);
 testLinearFeature('color-gamut', COLOR_GAMUT);
 testLinearFeature('display-mode', DISPLAY_MODE);
 
 // Range
-testRangeFeature('width', {
+testRangedFeature('width', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
@@ -568,7 +581,7 @@ testRangeFeature('width', {
     testConfigurableUnits,
   ],
 });
-testRangeFeature('height', {
+testRangedFeature('height', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
@@ -577,7 +590,7 @@ testRangeFeature('height', {
     testConfigurableUnits,
   ],
 });
-testRangeFeature('resolution', {
+testRangedFeature('resolution', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
@@ -585,28 +598,28 @@ testRangeFeature('resolution', {
     testConfigurableSeparation,
   ],
 });
-testRangeFeature('aspect-ratio', {
+testRangedFeature('aspect-ratio', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
     featureReturnsCorrectValue,
   ],
 });
-testRangeFeature('color', {
+testRangedFeature('color', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
     featureReturnsCorrectValue,
   ],
 });
-testRangeFeature('color-index', {
+testRangedFeature('color-index', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,
     featureReturnsCorrectValue,
   ],
 });
-testRangeFeature('monochrome', {
+testRangedFeature('monochrome', {
   perMethodTests: [
     featureThrowsForMissingBreakpointSet,
     featureThrowsForMissingBreakpoint,

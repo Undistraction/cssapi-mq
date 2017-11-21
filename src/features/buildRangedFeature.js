@@ -1,4 +1,4 @@
-import { findIndex, when, always, compose, isNil } from 'ramda';
+import { findIndex, compose, isNil } from 'ramda';
 import camelcase from 'camelcase';
 
 import { css } from 'styled-components';
@@ -23,10 +23,7 @@ export default (
   name,
   output,
   breakpoints = {},
-  {
-    defaultMediaType = MEDIA_TYPES.SCREEN,
-    errorIfNoBreakpointDefined = true,
-  } = {}
+  { defaultMediaType = MEDIA_TYPES.SCREEN, onlyNamedBreakpoints = true } = {}
 ) => {
   const camelisedName = camelcase(name);
 
@@ -43,14 +40,14 @@ export default (
     return value;
   };
 
-  const breakpointIfNeeded = when(
-    always(errorIfNoBreakpointDefined),
-    getBreakpointNamed
-  );
-  const parseValue = (value, shouldSeparate = false) =>
-    compose(output.toUnit, output.prepare(shouldSeparate), breakpointIfNeeded)(
-      value
-    );
+  const parseValue = (value, shouldSeparate = false) => {
+    // If we only support named breakpoints use the value to look up a
+    // breakpoint.
+    if (onlyNamedBreakpoints) {
+      value = getBreakpointNamed(value);
+    }
+    return compose(output.toUnit, output.prepare(shouldSeparate))(value);
+  };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };
   const mediaType = buildMediaType(defaultMediaType);

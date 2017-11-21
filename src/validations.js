@@ -10,6 +10,7 @@ import {
   gt,
   toPairs,
   map,
+  and,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
 import { ensureArray } from './utils';
@@ -20,7 +21,7 @@ import {
   emptyBreakpointMapErrorMessage,
   emptyBreakpointSetErrorMessage,
   invalidBreakpointNamesErrorMessage,
-  invalidBreakpointValueErrorMessage,
+  invalidBreakpointSetValueErrorMessage,
   invalidBaseFontSizeErrorMessage,
   invalidDefaultMediaTypeErrorMessage,
   invalidUnitErrorMessage,
@@ -38,8 +39,9 @@ import monochromeValidator from './validators/monochromeValidator';
 const isPopulatedObject = both(complement(isEmpty), isObject);
 const isBaseFontSizeValid = both(isNumber, gt(__, 0));
 const isMediaTypeValid = contains(__, values(MEDIA_TYPES));
-const isBreakpointMapNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
+const isBreakpointSetNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
+const includesValue = list => complement(contains(__, values(list)));
 
 const validatorsByFeature = {
   width: dimensionValidator,
@@ -51,17 +53,25 @@ const validatorsByFeature = {
   monochrome: monochromeValidator,
 };
 
-// Validate a map of breakpoint sets.
-const breakpointMapNamesAreValid = all(t => isBreakpointMapNameValid(t));
-// Validate a set of breakpoints.
-const validateBreakpointSet = (name, breakpoints) => {
-  if (!isPopulatedObject(breakpoints))
-    throwError(emptyBreakpointSetErrorMessage(name));
+const validateBreakpointSetValues = (name, breakpointSet) => {
   const validator = validatorsByFeature[name];
-  if (!compose(all(validator.validate), values)(breakpoints))
+  if (!compose(all(validator.validate), values)(breakpointSet))
     throwError(
-      invalidBreakpointValueErrorMessage(validator.message, values(breakpoints))
+      invalidBreakpointSetValueErrorMessage(
+        validator.message,
+        values(breakpointSet)
+      )
     );
+};
+
+// Validate a map of breakpoint sets.
+const breakpointSetNamesAreValid = all(t => isBreakpointSetNameValid(t));
+
+// Validate a set of breakpoints.
+const validateBreakpointSet = (name, breakpointSet) => {
+  if (!isPopulatedObject(breakpointSet))
+    throwError(emptyBreakpointSetErrorMessage(name));
+  validateBreakpointSetValues(name, breakpointSet);
 };
 
 // -----------------------------------------------------------------------------
@@ -76,18 +86,21 @@ export const validateMediaTypes = mediaTypes => {
   }
 };
 
-export const validateBreakpointMapNames = breakpointMap => {
-  if (!breakpointMap || !breakpointMapNamesAreValid(breakpointMap)) {
+export const validateBreakpointSetNames = breakpointMap => {
+  if (!breakpointSetNamesAreValid(breakpointMap)) {
     throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
   }
 };
 
-export const validateBreakpoints = breakpoints => {
-  if (!isPopulatedObject(breakpoints))
-    throwError(emptyBreakpointMapErrorMessage());
-
-  validateBreakpointMapNames(breakpoints);
+const validateBreakpointsMap = breakpointMap => {
+  if (!isPopulatedObject(breakpointMap))
+    throwError(emptyBreakpointMapErrorMessage(breakpointMap));
 };
+
+export const validateBreakpoints = and(
+  validateBreakpointSetNames,
+  validateBreakpointsMap
+);
 
 export const validateBreakpointSets = compose(
   map(([name, value]) => validateBreakpointSet(name, value)),
@@ -116,6 +129,6 @@ export const validateConfig = ({
 };
 
 export const validateFeature = (name, value, possibleValues) => {
-  if (!contains(__, values(possibleValues))(value))
+  if (includesValue(possibleValues)(value))
     throwError(invalidFeatureErrorMessage(name, value, possibleValues));
 };

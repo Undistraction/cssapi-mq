@@ -26,9 +26,10 @@ export const throwError = message => {
   throw new InvalidValueError(message);
 };
 
-export const emptyBreakpointMapErrorMessage = () => `
-  You must supply atleast one set of breakpoints, but the you supplied an empty object to 'configure().'
-`;
+export const emptyBreakpointMapErrorMessage = breakpointMap => `
+  You must supply at least one set of breakpoints to 'configure()', but the you supplied '${JSON.stringify(
+    breakpointMap
+  )}'.`;
 
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   `You must supply valid breakpoint map keys. Valid values are: '${
@@ -47,11 +48,10 @@ export const missingBreakpointErrorMessage = (
   name,
   breakpointMapName,
   breakpointMaps
-) => {
-  return `There is no '${breakpointMapName}' breakpoint defined called '${
+) =>
+  `There is no '${breakpointMapName}' breakpoint defined called '${
     name
   }', only: '${keys(breakpointMaps)}' are defined.`;
-};
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
   `You must supply two different breakpoints to 'widthBetween' but both were: '${
@@ -59,11 +59,11 @@ export const sameBreakpointsForBetweenErrorMessage = name =>
   }'.`;
 
 export const invalidMediaTypeErrorMessage = value =>
-  `You must supply valid media types from: ('${
-    MEDIA_TYPES
-  }) but you supplied: '${value}'`;
+  `'mediaType' must be one of '${values(MEDIA_TYPES)}' but you supplied: '${
+    value
+  }'.`;
 
-export const invalidBreakpointValueErrorMessage = (message, breakpoints) =>
+export const invalidBreakpointSetValueErrorMessage = (message, breakpoints) =>
   `${message} but you supplied ${JSON.stringify(breakpoints)}`;
 
 export const invalidBaseFontSizeErrorMessage = value =>
@@ -72,13 +72,13 @@ export const invalidBaseFontSizeErrorMessage = value =>
 export const invalidDefaultMediaTypeErrorMessage = value =>
   `'defaultMediaType' must be one of '${values(MEDIA_TYPES)}' but was '${
     value
-  }'`;
+  }'.`;
 
 export const invalidUnitErrorMessage = value =>
-  `'unit' must be one of '${values(UNITS.DIMENSIONS)}' but was '${value}'`;
+  `'unit' must be one of '${values(UNITS.DIMENSIONS)}' but was '${value}'.`;
 
 export const shouldSeparateQueriesErrorMessage = value =>
-  `'shouldSeparateQueries' must be a boolean but was '${value}'`;
+  `'shouldSeparateQueries' must be a boolean but was '${value}'.`;
 
 export const invalidFeatureErrorMessage = (name, value, possibleValues) => `
-  '${name}' must be one of: '${possibleValues}' but was: '${value}'`;
+  '${name}' must be one of: '${possibleValues}' but was: '${value}'.`;

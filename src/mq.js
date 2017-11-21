@@ -1,12 +1,4 @@
-import {
-  compose,
-  toPairs,
-  partial,
-  mergeDeepLeft,
-  merge,
-  mergeAll,
-  map,
-} from 'ramda';
+import { partial, mergeDeepLeft, merge, mergeAll, map } from 'ramda';
 
 import buildRangedFeature from './features/buildRangedFeature';
 import buildMediaType from './features/buildMediaType';
@@ -31,17 +23,14 @@ const defaultConfig = {
   defaultMediaType: MEDIA_TYPES.SCREEN,
   dimensionsUnit: UNITS.DIMENSIONS.EM,
   shouldSeparateQueries: true,
-  errorIfNoBreakpointDefined: true,
+  onlyNamedBreakpoints: true,
 };
 
-const toLinearFeatures = compose(
-  map(([key, value]) => {
-    const o = {};
-    o[key] = buildFeature(key, value);
-    return o;
-  }),
-  toPairs
-);
+const toLinearFeatures = map(({ name, validValues, allowNoArgument }) => {
+  const o = {};
+  o[name] = buildFeature(name, validValues, allowNoArgument);
+  return o;
+});
 
 const configure = (breakpoints, config) => {
   const configWithDefaults = merge(defaultConfig, config);
