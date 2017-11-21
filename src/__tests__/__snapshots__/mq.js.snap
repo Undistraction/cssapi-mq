@@ -238,9 +238,9 @@ exports[`configuration config object adjusts values based on 'basefontSize' 1`] 
 }
 `;
 
-exports[`grid linear feature returns the supplied grid for '0' 1`] = `(grid: 0)`;
+exports[`grid() linear feature returns the supplied grid for '0' 1`] = `(grid: 0)`;
 
-exports[`grid linear feature returns the supplied grid for '1' 1`] = `(grid: 1)`;
+exports[`grid() linear feature returns the supplied grid for '1' 1`] = `(grid: 1)`;
 
 exports[`height range features height() doesn't separate dimensionsUnits if not configured 1`] = `(height: 25em)`;
 
@@ -504,15 +504,15 @@ exports[`mediaType returns the supplied mediaType for 'speech' 1`] = `speech`;
 
 exports[`mediaType supports multiple values 1`] = `screen, speech,`;
 
-exports[`orientation linear feature returns the supplied orientation for 'landscape' 1`] = `(orientation: landscape)`;
+exports[`orientation() linear feature returns the supplied orientation for 'landscape' 1`] = `(orientation: landscape)`;
 
-exports[`orientation linear feature returns the supplied orientation for 'portrait' 1`] = `(orientation: portrait)`;
+exports[`orientation() linear feature returns the supplied orientation for 'portrait' 1`] = `(orientation: portrait)`;
 
-exports[`overflow-block linear feature returns the supplied overflow-block for 'none' 1`] = `(overflowBlock: none)`;
+exports[`overflowBlock() linear feature returns the supplied overflow-block for 'none' 1`] = `(overflowBlock: none)`;
 
-exports[`overflow-block linear feature returns the supplied overflow-block for 'optional-paged' 1`] = `(overflowBlock: optional-paged)`;
+exports[`overflowBlock() linear feature returns the supplied overflow-block for 'optional-paged' 1`] = `(overflowBlock: optional-paged)`;
 
-exports[`overflow-block linear feature returns the supplied overflow-block for 'scroll' 1`] = `(overflowBlock: scroll)`;
+exports[`overflowBlock() linear feature returns the supplied overflow-block for 'scroll' 1`] = `(overflowBlock: scroll)`;
 
 exports[`resolution range features maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
 
@@ -750,9 +750,9 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`scan linear feature returns the supplied scan for 'interlace' 1`] = `(scan: interlace)`;
+exports[`scan() linear feature returns the supplied scan for 'interlace' 1`] = `(scan: interlace)`;
 
-exports[`scan linear feature returns the supplied scan for 'progressive' 1`] = `(scan: progressive)`;
+exports[`scan() linear feature returns the supplied scan for 'progressive' 1`] = `(scan: progressive)`;
 
 exports[`tweaked adds includes both old breakpoints and added tweakpoints 1`] = `
 @media screen and (min-width: 18.75em) {
@@ -778,11 +778,11 @@ exports[`tweaked doesn't effect the original mq 1`] = `
 }
 `;
 
-exports[`update linear feature returns the supplied update for 'fast' 1`] = `(update: fast)`;
+exports[`update() linear feature returns the supplied update for 'fast' 1`] = `(update: fast)`;
 
-exports[`update linear feature returns the supplied update for 'none' 1`] = `(update: none)`;
+exports[`update() linear feature returns the supplied update for 'none' 1`] = `(update: none)`;
 
-exports[`update linear feature returns the supplied update for 'slow' 1`] = `(update: slow)`;
+exports[`update() linear feature returns the supplied update for 'slow' 1`] = `(update: slow)`;
 
 exports[`width range features maxWidth() doesn't separate dimensionsUnits if not configured 1`] = `(max-width: 25em)`;
 

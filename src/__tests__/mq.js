@@ -32,6 +32,7 @@ expect.addSnapshotSerializer(cssSerialiser);
 
 const permutations = compose(sequence(of), flip(repeat));
 const filterIfPairSame = filter(pair => pair[0] !== pair[1]);
+const pluralise = value => `${value}s`;
 
 const validDimensionBreakpoints = {
   small: 400,
@@ -155,7 +156,7 @@ const queryThrowsIfMissingBreakpoint = (name, method) => {
   });
 };
 
-const queryReturnsCorrectValueSingleArg = (name, method) => {
+const queryReturnsCorrectValueSingleBreakpoint = (name, method) => {
   for (const breakpointName of validBreakpointKeysForRange(name)) {
     it(`returns the correct media query for '${breakpointName}'`, () => {
       const result = mqWithValidBreakpointsForRange(name)[method](
@@ -168,7 +169,7 @@ const queryReturnsCorrectValueSingleArg = (name, method) => {
   }
 };
 
-const queryReturnsCorrectValueMultipleArg = (name, method) => {
+const queryReturnsCorrectValueWithTwoBreakpoints = (name, method) => {
   const possibleBreakpointCombinations = filterIfPairSame(
     permutations(2, validBreakpointKeysForRange(name))
   );
@@ -186,31 +187,53 @@ const queryReturnsCorrectValueMultipleArg = (name, method) => {
   }
 };
 
+const queryThrowsWithBothBreakpointsTheSame = (name, method) => {
+  it("throws if 'from' and 'to' breakpoints are the same value", () => {
+    expect(
+      () => mqWithValidBreakpointsForRange(name)[method]('large', 'large')``
+    ).toThrowError(InvalidValueError);
+  });
+};
+
+const queryThrowsIfMissingEitherBreakpoint = (name, method) => {
+  it("throws if 'from' breakpoint doesn't exist", () => {
+    expect(
+      () => mqWithValidBreakpointsForRange(name)[method]('xxxx', 'large')``
+    ).toThrowError(InvalidValueError);
+  });
+
+  it("throws if 'to' breakpoint doesn't exist", () => {
+    expect(
+      () => mqWithValidBreakpointsForRange(name)[method]('large', 'xxxx')``
+    ).toThrowError(InvalidValueError);
+  });
+};
+
 // -----------------------------------------------------------------------------
 // Test Types
 // -----------------------------------------------------------------------------
 
 const testMediaTypes = (name, validValuesMap) => {
   const validValues = values(validValuesMap);
-  const camelisedName = camelcase(name);
+  const methodName = camelcase(name);
   describe(name, () => {
     it('returns the correct default media type if called with no arguments', () => {
       expect(
-        mqWithValidBreakpointsForRange('width')[camelisedName]()
+        mqWithValidBreakpointsForRange('width')[methodName]()
       ).toMatchSnapshot();
     });
 
     for (const value of validValues) {
       it(`returns the supplied ${name} for '${value}'`, () => {
         expect(
-          mqWithValidBreakpointsForRange('width')[camelisedName](value)
+          mqWithValidBreakpointsForRange('width')[methodName](value)
         ).toMatchSnapshot();
       });
     }
 
     it('supports multiple values', () => {
       expect(
-        mqWithValidBreakpointsForRange('width')[camelisedName](
+        mqWithValidBreakpointsForRange('width')[methodName](
           drop(2, validValues)
         )
       ).toMatchSnapshot();
@@ -218,7 +241,7 @@ const testMediaTypes = (name, validValuesMap) => {
 
     it('throws if argument is not valid media type', () => {
       expect(() =>
-        mqWithValidBreakpointsForRange('width')[camelisedName]('xxxx')
+        mqWithValidBreakpointsForRange('width')[methodName]('xxxx')
       ).toThrowError(InvalidValueError);
     });
   });
@@ -226,17 +249,14 @@ const testMediaTypes = (name, validValuesMap) => {
 
 const testRangeFeature = (name, { perMethodTests = [] } = {}) => {
   describe(`${name}`, () => {
-    const capitalizedName = name[0].toUpperCase() + camelcase(name).slice(1);
-    const camelisedName = camelcase(name);
-
     describe('range features', () => {
       // Define accessor names
-      const vaueMethod = camelisedName;
-      const minValueMethod = `min${capitalizedName}`;
-      const maxValueMethod = `max${capitalizedName}`;
+      const valueMethod = camelcase(name);
+      const minValueMethod = camelcase('min', name);
+      const maxValueMethod = camelcase('max', name);
 
-      describe(`${camelisedName}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, vaueMethod);
+      describe(`${valueMethod}()`, () => {
+        runPerMethodTestsForFeature(perMethodTests, name, valueMethod);
       });
 
       describe(`${minValueMethod}()`, () => {
@@ -252,26 +272,26 @@ const testRangeFeature = (name, { perMethodTests = [] } = {}) => {
 
 const testLinearFeature = (name, validValuesMap) => {
   const validValues = values(validValuesMap);
-  const camelisedName = camelcase(name);
-  describe(name, () => {
+  const methodName = camelcase(name);
+  describe(`${methodName}()`, () => {
     describe('linear feature', () => {
       it('throws if no argument is supplied', () => {
         expect(() =>
-          mqWithValidBreakpointsForRange('width')[camelisedName]()
+          mqWithValidBreakpointsForRange('width')[methodName]()
         ).toThrowError(InvalidValueError);
       });
 
       for (const value of validValues) {
         it(`returns the supplied ${name} for '${value}'`, () => {
           expect(
-            mqWithValidBreakpointsForRange('width')[camelisedName](value)
+            mqWithValidBreakpointsForRange('width')[methodName](value)
           ).toMatchSnapshot();
         });
       }
 
       it('throws if argument is not valid media type', () => {
         expect(() =>
-          mqWithValidBreakpointsForRange('width')[camelisedName]('xxxx')
+          mqWithValidBreakpointsForRange('width')[methodName]('xxxx')
         ).toThrowError(InvalidValueError);
       });
     });
@@ -281,12 +301,11 @@ const testLinearFeature = (name, validValuesMap) => {
 const testRangeQueries = (name, { perMethodTests = [] } = {}) => {
   describe(`${name}`, () => {
     describe('range queries', () => {
-      const capitalizedName = name[0].toUpperCase() + camelcase(name).slice(1);
-      const aboveMethod = `above${capitalizedName}`;
-      const belowMethod = `below${capitalizedName}`;
-      const betweenMethod = `between${capitalizedName}s`;
-      const atMethod = `at${capitalizedName}`;
-      const atBreakpointMethod = `at${capitalizedName}Breakpoint`;
+      const aboveMethod = camelcase('above', name);
+      const belowMethod = camelcase('below', name);
+      const betweenMethod = camelcase('between', pluralise(name));
+      const atMethod = camelcase('at', name);
+      const atBreakpointMethod = camelcase('at', name, 'Breakpoint');
 
       describe(`${aboveMethod}()`, () => {
         runPerMethodTestsForFeature(perMethodTests, name, aboveMethod);
@@ -297,37 +316,9 @@ const testRangeQueries = (name, { perMethodTests = [] } = {}) => {
       });
 
       describe(`${betweenMethod}()`, () => {
-        queryReturnsCorrectValueMultipleArg(name, betweenMethod);
-
-        it("throws if 'from' breakpoint doesn't exist", () => {
-          expect(
-            () =>
-              mqWithValidBreakpointsForRange(name)[betweenMethod](
-                'xxxx',
-                'large'
-              )``
-          ).toThrowError(InvalidValueError);
-        });
-
-        it("throws if 'to' breakpoint doesn't exist", () => {
-          expect(
-            () =>
-              mqWithValidBreakpointsForRange(name)[betweenMethod](
-                'large',
-                'xxxx'
-              )``
-          ).toThrowError(InvalidValueError);
-        });
-
-        it("throws if 'from' and 'to' breakpoints are the same value", () => {
-          expect(
-            () =>
-              mqWithValidBreakpointsForRange(name)[betweenMethod](
-                'large',
-                'large'
-              )``
-          ).toThrowError(InvalidValueError);
-        });
+        queryReturnsCorrectValueWithTwoBreakpoints(name, betweenMethod);
+        queryThrowsIfMissingEitherBreakpoint(name, betweenMethod);
+        queryThrowsWithBothBreakpointsTheSame(name, betweenMethod);
       });
 
       describe(`${atMethod}()`, () => {
@@ -574,24 +565,24 @@ testRangeFeature('aspect-ratio', {
 testRangeQueries('width', {
   perMethodTests: [
     queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleArg,
+    queryReturnsCorrectValueSingleBreakpoint,
   ],
 });
 testRangeQueries('height', {
   perMethodTests: [
     queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleArg,
+    queryReturnsCorrectValueSingleBreakpoint,
   ],
 });
 testRangeQueries('resolution', {
   perMethodTests: [
     queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleArg,
+    queryReturnsCorrectValueSingleBreakpoint,
   ],
 });
 testRangeQueries('aspect-ratio', {
   perMethodTests: [
     queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleArg,
+    queryReturnsCorrectValueSingleBreakpoint,
   ],
 });
