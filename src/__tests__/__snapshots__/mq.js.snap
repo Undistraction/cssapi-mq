@@ -1,30 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`aspect-ratio range features aspectRatio() returns the correct media fragment with existing breakpoint 1`] = `(aspect-ratio: 2/3)`;
+exports[`aspect-ratio range features aspectRatio() returns the correct feature when called with existing breakpoint 1`] = `(aspect-ratio: 2/3)`;
 
-exports[`aspect-ratio range features aspectRatio() throws if aspectRatio breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`aspect-ratio range features aspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`aspect-ratio range features aspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`aspect-ratio range features aspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range features maxAspectRatio() returns the correct media fragment with existing breakpoint 1`] = `(max-aspect-ratio: 2/3)`;
+exports[`aspect-ratio range features maxAspectRatio() returns the correct feature when called with existing breakpoint 1`] = `(max-aspect-ratio: 2/3)`;
 
-exports[`aspect-ratio range features maxAspectRatio() throws if aspectRatio breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`aspect-ratio range features maxAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`aspect-ratio range features maxAspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`aspect-ratio range features maxAspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range features minAspectRatio() returns the correct media fragment with existing breakpoint 1`] = `(min-aspect-ratio: 2/3)`;
+exports[`aspect-ratio range features minAspectRatio() returns the correct feature when called with existing breakpoint 1`] = `(min-aspect-ratio: 2/3)`;
 
-exports[`aspect-ratio range features minAspectRatio() throws if aspectRatio breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`aspect-ratio range features minAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`aspect-ratio range features minAspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`aspect-ratio range features minAspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media query for 'large' 1`] = `
+exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -32,7 +26,7 @@ exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media
 }
 `;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media query for 'medium' 1`] = `
+exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
@@ -40,7 +34,7 @@ exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media
 }
 `;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media query for 'small' 1`] = `
+exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) {
     background-color: function () {
         return 'GhostWhite';
@@ -48,7 +42,7 @@ exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media
 }
 `;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media query for 'xLarge' 1`] = `
+exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -58,7 +52,7 @@ exports[`aspect-ratio range queries aboveAspectRatio() returns the correct media
 
 exports[`aspect-ratio range queries aboveAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct media query for 'large' 1`] = `
+exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -66,7 +60,7 @@ exports[`aspect-ratio range queries atAspectRatio() returns the correct media qu
 }
 `;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct media query for 'medium' 1`] = `
+exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
@@ -74,7 +68,7 @@ exports[`aspect-ratio range queries atAspectRatio() returns the correct media qu
 }
 `;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct media query for 'small' 1`] = `
+exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (aspect-ratio: 2/3) {
     background-color: function () {
         return 'GhostWhite';
@@ -82,7 +76,7 @@ exports[`aspect-ratio range queries atAspectRatio() returns the correct media qu
 }
 `;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct media query for 'xLarge' 1`] = `
+exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -92,7 +86,7 @@ exports[`aspect-ratio range queries atAspectRatio() returns the correct media qu
 
 exports[`aspect-ratio range queries atAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -100,7 +94,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 }
 `;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -108,7 +102,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 }
 `;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
@@ -116,7 +110,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 }
 `;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -126,7 +120,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 
 exports[`aspect-ratio range queries atAspectRatioBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct media query for 'large' 1`] = `
+exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -134,7 +128,7 @@ exports[`aspect-ratio range queries belowAspectRatio() returns the correct media
 }
 `;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct media query for 'medium' 1`] = `
+exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
@@ -142,7 +136,7 @@ exports[`aspect-ratio range queries belowAspectRatio() returns the correct media
 }
 `;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct media query for 'small' 1`] = `
+exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-aspect-ratio: 2/3) {
     background-color: function () {
         return 'GhostWhite';
@@ -150,7 +144,7 @@ exports[`aspect-ratio range queries belowAspectRatio() returns the correct media
 }
 `;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct media query for 'xLarge' 1`] = `
+exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -160,7 +154,7 @@ exports[`aspect-ratio range queries belowAspectRatio() returns the correct media
 
 exports[`aspect-ratio range queries belowAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -168,7 +162,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -176,7 +170,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -184,7 +178,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -192,7 +186,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
@@ -200,7 +194,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -208,7 +202,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
@@ -216,7 +210,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
@@ -224,7 +218,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -232,7 +226,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -240,7 +234,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -248,7 +242,7 @@ exports[`aspect-ratio range queries betweenAspectRatios() returns the correct me
 }
 `;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
@@ -262,31 +256,25 @@ exports[`aspect-ratio range queries betweenAspectRatios() throws if 'from' break
 
 exports[`aspect-ratio range queries betweenAspectRatios() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range features color() returns the correct media fragment with existing breakpoint 1`] = `(color: 1)`;
+exports[`color range features color() returns the correct feature when called with existing breakpoint 1`] = `(color: 1)`;
 
-exports[`color range features color() returns the correct media fragment with no argument 1`] = `(color)`;
+exports[`color range features color() returns the correct feature when called with no arguments 1`] = `(color)`;
 
-exports[`color range features color() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`color range features color() throws if 'color' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`color range features color() throws if color breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`color range features maxColor() returns the correct feature when called with existing breakpoint 1`] = `(max-color: 1)`;
 
-exports[`color range features maxColor() returns the correct media fragment with existing breakpoint 1`] = `(max-color: 1)`;
-
-exports[`color range features maxColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`color range features maxColor() throws if color breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`color range features maxColor() throws if 'color' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`color range features maxColor() throws if no argument is supplied 1`] = `There is no 'color' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range features minColor() returns the correct media fragment with existing breakpoint 1`] = `(min-color: 1)`;
+exports[`color range features minColor() returns the correct feature when called with existing breakpoint 1`] = `(min-color: 1)`;
 
-exports[`color range features minColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`color range features minColor() throws if color breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`color range features minColor() throws if 'color' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`color range features minColor() throws if no argument is supplied 1`] = `There is no 'color' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries aboveColor() returns the correct media query for 'large' 1`] = `
+exports[`color range queries aboveColor() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -294,7 +282,7 @@ exports[`color range queries aboveColor() returns the correct media query for 'l
 }
 `;
 
-exports[`color range queries aboveColor() returns the correct media query for 'medium' 1`] = `
+exports[`color range queries aboveColor() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-color: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -302,7 +290,7 @@ exports[`color range queries aboveColor() returns the correct media query for 'm
 }
 `;
 
-exports[`color range queries aboveColor() returns the correct media query for 'small' 1`] = `
+exports[`color range queries aboveColor() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-color: 1) {
     background-color: function () {
         return 'GhostWhite';
@@ -310,7 +298,7 @@ exports[`color range queries aboveColor() returns the correct media query for 's
 }
 `;
 
-exports[`color range queries aboveColor() returns the correct media query for 'xLarge' 1`] = `
+exports[`color range queries aboveColor() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -320,7 +308,7 @@ exports[`color range queries aboveColor() returns the correct media query for 'x
 
 exports[`color range queries aboveColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries atColor() returns the correct media query for 'large' 1`] = `
+exports[`color range queries atColor() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -328,7 +316,7 @@ exports[`color range queries atColor() returns the correct media query for 'larg
 }
 `;
 
-exports[`color range queries atColor() returns the correct media query for 'medium' 1`] = `
+exports[`color range queries atColor() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (color: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -336,7 +324,7 @@ exports[`color range queries atColor() returns the correct media query for 'medi
 }
 `;
 
-exports[`color range queries atColor() returns the correct media query for 'small' 1`] = `
+exports[`color range queries atColor() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (color: 1) {
     background-color: function () {
         return 'GhostWhite';
@@ -344,7 +332,7 @@ exports[`color range queries atColor() returns the correct media query for 'smal
 }
 `;
 
-exports[`color range queries atColor() returns the correct media query for 'xLarge' 1`] = `
+exports[`color range queries atColor() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -354,7 +342,7 @@ exports[`color range queries atColor() returns the correct media query for 'xLar
 
 exports[`color range queries atColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries atColorBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-color: 5) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -362,7 +350,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 }
 `;
 
-exports[`color range queries atColorBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-color: 4) and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -370,7 +358,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 }
 `;
 
-exports[`color range queries atColorBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-color: 1) and (max-color: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -378,7 +366,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 }
 `;
 
-exports[`color range queries atColorBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -388,7 +376,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 
 exports[`color range queries atColorBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries belowColor() returns the correct media query for 'large' 1`] = `
+exports[`color range queries belowColor() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -396,7 +384,7 @@ exports[`color range queries belowColor() returns the correct media query for 'l
 }
 `;
 
-exports[`color range queries belowColor() returns the correct media query for 'medium' 1`] = `
+exports[`color range queries belowColor() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-color: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -404,7 +392,7 @@ exports[`color range queries belowColor() returns the correct media query for 'm
 }
 `;
 
-exports[`color range queries belowColor() returns the correct media query for 'small' 1`] = `
+exports[`color range queries belowColor() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-color: 1) {
     background-color: function () {
         return 'GhostWhite';
@@ -412,7 +400,7 @@ exports[`color range queries belowColor() returns the correct media query for 's
 }
 `;
 
-exports[`color range queries belowColor() returns the correct media query for 'xLarge' 1`] = `
+exports[`color range queries belowColor() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -422,7 +410,7 @@ exports[`color range queries belowColor() returns the correct media query for 'x
 
 exports[`color range queries belowColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries betweenColors() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-color: 4) and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -430,7 +418,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-color: 1) and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -438,7 +426,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-color: 5) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -446,7 +434,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-color: 4) and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -454,7 +442,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-color: 1) and (max-color: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -462,7 +450,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-color: 4) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -470,7 +458,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-color: 1) and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -478,7 +466,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-color: 1) and (max-color: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -486,7 +474,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-color: 1) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -494,7 +482,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-color: 5) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -502,7 +490,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-color: 4) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -510,7 +498,7 @@ exports[`color range queries betweenColors() returns the correct media query for
 }
 `;
 
-exports[`color range queries betweenColors() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-color: 1) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -524,31 +512,25 @@ exports[`color range queries betweenColors() throws if 'from' breakpoint doesn't
 
 exports[`color range queries betweenColors() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range features colorIndex() returns the correct media fragment with existing breakpoint 1`] = `(color-index: 1)`;
+exports[`color-index range features colorIndex() returns the correct feature when called with existing breakpoint 1`] = `(color-index: 1)`;
 
-exports[`color-index range features colorIndex() returns the correct media fragment with no argument 1`] = `(color-index)`;
+exports[`color-index range features colorIndex() returns the correct feature when called with no arguments 1`] = `(color-index)`;
 
-exports[`color-index range features colorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`color-index range features colorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`color-index range features colorIndex() throws if colorIndex breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`color-index range features maxColorIndex() returns the correct feature when called with existing breakpoint 1`] = `(max-color-index: 1)`;
 
-exports[`color-index range features maxColorIndex() returns the correct media fragment with existing breakpoint 1`] = `(max-color-index: 1)`;
-
-exports[`color-index range features maxColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`color-index range features maxColorIndex() throws if colorIndex breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`color-index range features maxColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`color-index range features maxColorIndex() throws if no argument is supplied 1`] = `There is no 'color-index' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range features minColorIndex() returns the correct media fragment with existing breakpoint 1`] = `(min-color-index: 1)`;
+exports[`color-index range features minColorIndex() returns the correct feature when called with existing breakpoint 1`] = `(min-color-index: 1)`;
 
-exports[`color-index range features minColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`color-index range features minColorIndex() throws if colorIndex breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`color-index range features minColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`color-index range features minColorIndex() throws if no argument is supplied 1`] = `There is no 'color-index' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries aboveColorIndex() returns the correct media query for 'large' 1`] = `
+exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -556,7 +538,7 @@ exports[`color-index range queries aboveColorIndex() returns the correct media q
 }
 `;
 
-exports[`color-index range queries aboveColorIndex() returns the correct media query for 'medium' 1`] = `
+exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -564,7 +546,7 @@ exports[`color-index range queries aboveColorIndex() returns the correct media q
 }
 `;
 
-exports[`color-index range queries aboveColorIndex() returns the correct media query for 'small' 1`] = `
+exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-color-index: 1) {
     background-color: function () {
         return 'GhostWhite';
@@ -572,7 +554,7 @@ exports[`color-index range queries aboveColorIndex() returns the correct media q
 }
 `;
 
-exports[`color-index range queries aboveColorIndex() returns the correct media query for 'xLarge' 1`] = `
+exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -582,7 +564,7 @@ exports[`color-index range queries aboveColorIndex() returns the correct media q
 
 exports[`color-index range queries aboveColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries atColorIndex() returns the correct media query for 'large' 1`] = `
+exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -590,7 +572,7 @@ exports[`color-index range queries atColorIndex() returns the correct media quer
 }
 `;
 
-exports[`color-index range queries atColorIndex() returns the correct media query for 'medium' 1`] = `
+exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -598,7 +580,7 @@ exports[`color-index range queries atColorIndex() returns the correct media quer
 }
 `;
 
-exports[`color-index range queries atColorIndex() returns the correct media query for 'small' 1`] = `
+exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (color-index: 1) {
     background-color: function () {
         return 'GhostWhite';
@@ -606,7 +588,7 @@ exports[`color-index range queries atColorIndex() returns the correct media quer
 }
 `;
 
-exports[`color-index range queries atColorIndex() returns the correct media query for 'xLarge' 1`] = `
+exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -616,7 +598,7 @@ exports[`color-index range queries atColorIndex() returns the correct media quer
 
 exports[`color-index range queries atColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-color-index: 5) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -624,7 +606,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 }
 `;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-color-index: 4) and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -632,7 +614,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 }
 `;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -640,7 +622,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 }
 `;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -650,7 +632,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 
 exports[`color-index range queries atColorIndexBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries belowColorIndex() returns the correct media query for 'large' 1`] = `
+exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -658,7 +640,7 @@ exports[`color-index range queries belowColorIndex() returns the correct media q
 }
 `;
 
-exports[`color-index range queries belowColorIndex() returns the correct media query for 'medium' 1`] = `
+exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -666,7 +648,7 @@ exports[`color-index range queries belowColorIndex() returns the correct media q
 }
 `;
 
-exports[`color-index range queries belowColorIndex() returns the correct media query for 'small' 1`] = `
+exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-color-index: 1) {
     background-color: function () {
         return 'GhostWhite';
@@ -674,7 +656,7 @@ exports[`color-index range queries belowColorIndex() returns the correct media q
 }
 `;
 
-exports[`color-index range queries belowColorIndex() returns the correct media query for 'xLarge' 1`] = `
+exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -684,7 +666,7 @@ exports[`color-index range queries belowColorIndex() returns the correct media q
 
 exports[`color-index range queries belowColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-color-index: 4) and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -692,7 +674,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -700,7 +682,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-color-index: 5) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -708,7 +690,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-color-index: 4) and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -716,7 +698,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -724,7 +706,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-color-index: 4) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -732,7 +714,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
@@ -740,7 +722,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -748,7 +730,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -756,7 +738,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-color-index: 5) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -764,7 +746,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-color-index: 4) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -772,7 +754,7 @@ exports[`color-index range queries betweenColorIndexs() returns the correct medi
 }
 `;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-color-index: 1) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
@@ -838,49 +820,43 @@ exports[`grid() linear feature returns the supplied grid for '1' 1`] = `(grid: 1
 
 exports[`grid() linear feature throws if argument is not valid value 1`] = `'grid'must be one of: '0,1' but was: 'xxxx'.`;
 
-exports[`height range features height() doesn't separate dimensionsUnits if not configured 1`] = `(height: 25em)`;
+exports[`height range features height() doesn't separate values if not configured to do so 1`] = `(height: 25em)`;
 
 exports[`height range features height() renders configured dimensionsUnits 1`] = `(height: 25rem)`;
 
 exports[`height range features height() renders configured dimensionsUnits 2`] = `(height: 400px)`;
 
-exports[`height range features height() returns the correct media fragment with existing breakpoint 1`] = `(height: 25em)`;
+exports[`height range features height() returns the correct feature when called with existing breakpoint 1`] = `(height: 25em)`;
 
-exports[`height range features height() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`height range features height() throws if height breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`height range features height() throws if 'height' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`height range features height() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range features maxHeight() doesn't separate dimensionsUnits if not configured 1`] = `(max-height: 25em)`;
+exports[`height range features maxHeight() doesn't separate values if not configured to do so 1`] = `(max-height: 25em)`;
 
 exports[`height range features maxHeight() renders configured dimensionsUnits 1`] = `(max-height: 24.999375rem)`;
 
 exports[`height range features maxHeight() renders configured dimensionsUnits 2`] = `(max-height: 399px)`;
 
-exports[`height range features maxHeight() returns the correct media fragment with existing breakpoint 1`] = `(max-height: 24.999375em)`;
+exports[`height range features maxHeight() returns the correct feature when called with existing breakpoint 1`] = `(max-height: 24.999375em)`;
 
-exports[`height range features maxHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`height range features maxHeight() throws if height breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`height range features maxHeight() throws if 'height' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`height range features maxHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range features minHeight() doesn't separate dimensionsUnits if not configured 1`] = `(min-height: 25em)`;
+exports[`height range features minHeight() doesn't separate values if not configured to do so 1`] = `(min-height: 25em)`;
 
 exports[`height range features minHeight() renders configured dimensionsUnits 1`] = `(min-height: 25rem)`;
 
 exports[`height range features minHeight() renders configured dimensionsUnits 2`] = `(min-height: 400px)`;
 
-exports[`height range features minHeight() returns the correct media fragment with existing breakpoint 1`] = `(min-height: 25em)`;
+exports[`height range features minHeight() returns the correct feature when called with existing breakpoint 1`] = `(min-height: 25em)`;
 
-exports[`height range features minHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`height range features minHeight() throws if height breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`height range features minHeight() throws if 'height' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`height range features minHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries aboveHeight() returns the correct media query for 'large' 1`] = `
+exports[`height range queries aboveHeight() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-height: 68.75em) {
     background-color: function () {
         return 'GhostWhite';
@@ -888,7 +864,7 @@ exports[`height range queries aboveHeight() returns the correct media query for 
 }
 `;
 
-exports[`height range queries aboveHeight() returns the correct media query for 'medium' 1`] = `
+exports[`height range queries aboveHeight() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-height: 56.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -896,7 +872,7 @@ exports[`height range queries aboveHeight() returns the correct media query for 
 }
 `;
 
-exports[`height range queries aboveHeight() returns the correct media query for 'small' 1`] = `
+exports[`height range queries aboveHeight() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-height: 25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -904,7 +880,7 @@ exports[`height range queries aboveHeight() returns the correct media query for 
 }
 `;
 
-exports[`height range queries aboveHeight() returns the correct media query for 'xLarge' 1`] = `
+exports[`height range queries aboveHeight() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-height: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -914,7 +890,7 @@ exports[`height range queries aboveHeight() returns the correct media query for 
 
 exports[`height range queries aboveHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries atHeight() returns the correct media query for 'large' 1`] = `
+exports[`height range queries atHeight() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (height: 68.75em) {
     background-color: function () {
         return 'GhostWhite';
@@ -922,7 +898,7 @@ exports[`height range queries atHeight() returns the correct media query for 'la
 }
 `;
 
-exports[`height range queries atHeight() returns the correct media query for 'medium' 1`] = `
+exports[`height range queries atHeight() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (height: 56.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -930,7 +906,7 @@ exports[`height range queries atHeight() returns the correct media query for 'me
 }
 `;
 
-exports[`height range queries atHeight() returns the correct media query for 'small' 1`] = `
+exports[`height range queries atHeight() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (height: 25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -938,7 +914,7 @@ exports[`height range queries atHeight() returns the correct media query for 'sm
 }
 `;
 
-exports[`height range queries atHeight() returns the correct media query for 'xLarge' 1`] = `
+exports[`height range queries atHeight() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (height: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -948,7 +924,7 @@ exports[`height range queries atHeight() returns the correct media query for 'xL
 
 exports[`height range queries atHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries atHeightBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -956,7 +932,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 }
 `;
 
-exports[`height range queries atHeightBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-height: 56.25em) and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -964,7 +940,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 }
 `;
 
-exports[`height range queries atHeightBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -972,7 +948,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 }
 `;
 
-exports[`height range queries atHeightBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-height: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -982,7 +958,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 
 exports[`height range queries atHeightBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries belowHeight() returns the correct media query for 'large' 1`] = `
+exports[`height range queries belowHeight() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -990,7 +966,7 @@ exports[`height range queries belowHeight() returns the correct media query for 
 }
 `;
 
-exports[`height range queries belowHeight() returns the correct media query for 'medium' 1`] = `
+exports[`height range queries belowHeight() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-height: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -998,7 +974,7 @@ exports[`height range queries belowHeight() returns the correct media query for 
 }
 `;
 
-exports[`height range queries belowHeight() returns the correct media query for 'small' 1`] = `
+exports[`height range queries belowHeight() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-height: 24.999375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1006,7 +982,7 @@ exports[`height range queries belowHeight() returns the correct media query for 
 }
 `;
 
-exports[`height range queries belowHeight() returns the correct media query for 'xLarge' 1`] = `
+exports[`height range queries belowHeight() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1016,7 +992,7 @@ exports[`height range queries belowHeight() returns the correct media query for 
 
 exports[`height range queries belowHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-height: 56.25em) and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1024,7 +1000,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1032,7 +1008,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1040,7 +1016,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-height: 56.25em) and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1048,7 +1024,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1056,7 +1032,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-height: 56.25em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1064,7 +1040,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1072,7 +1048,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1080,7 +1056,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1088,7 +1064,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1096,7 +1072,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-height: 56.25em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1104,7 +1080,7 @@ exports[`height range queries betweenHeights() returns the correct media query f
 }
 `;
 
-exports[`height range queries betweenHeights() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-height: 25em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1134,31 +1110,25 @@ exports[`mediaType supports multiple values 1`] = `screen, speech,`;
 
 exports[`mediaType throws if argument is not valid media type 1`] = `'mediaType'must be one of 'all, print, screen, speech, ' but you supplied: 'xxxx'.`;
 
-exports[`monochrome range features maxMonochrome() returns the correct media fragment with existing breakpoint 1`] = `(max-monochrome: 0)`;
+exports[`monochrome range features maxMonochrome() returns the correct feature when called with existing breakpoint 1`] = `(max-monochrome: 0)`;
 
-exports[`monochrome range features maxMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`monochrome range features maxMonochrome() throws if monochrome breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`monochrome range features maxMonochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`monochrome range features maxMonochrome() throws if no argument is supplied 1`] = `There is no 'monochrome' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range features minMonochrome() returns the correct media fragment with existing breakpoint 1`] = `(min-monochrome: 0)`;
+exports[`monochrome range features minMonochrome() returns the correct feature when called with existing breakpoint 1`] = `(min-monochrome: 0)`;
 
-exports[`monochrome range features minMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
-
-exports[`monochrome range features minMonochrome() throws if monochrome breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`monochrome range features minMonochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`monochrome range features minMonochrome() throws if no argument is supplied 1`] = `There is no 'monochrome' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range features monochrome() returns the correct media fragment with existing breakpoint 1`] = `(monochrome: 0)`;
+exports[`monochrome range features monochrome() returns the correct feature when called with existing breakpoint 1`] = `(monochrome: 0)`;
 
-exports[`monochrome range features monochrome() returns the correct media fragment with no argument 1`] = `(monochrome)`;
+exports[`monochrome range features monochrome() returns the correct feature when called with no arguments 1`] = `(monochrome)`;
 
-exports[`monochrome range features monochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`monochrome range features monochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`monochrome range features monochrome() throws if monochrome breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'large' 1`] = `
+exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1166,7 +1136,7 @@ exports[`monochrome range queries aboveMonochrome() returns the correct media qu
 }
 `;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'medium' 1`] = `
+exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -1174,7 +1144,7 @@ exports[`monochrome range queries aboveMonochrome() returns the correct media qu
 }
 `;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'small' 1`] = `
+exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-monochrome: 0) {
     background-color: function () {
         return 'GhostWhite';
@@ -1182,7 +1152,7 @@ exports[`monochrome range queries aboveMonochrome() returns the correct media qu
 }
 `;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct media query for 'xLarge' 1`] = `
+exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1192,7 +1162,7 @@ exports[`monochrome range queries aboveMonochrome() returns the correct media qu
 
 exports[`monochrome range queries aboveMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries atMonochrome() returns the correct media query for 'large' 1`] = `
+exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1200,7 +1170,7 @@ exports[`monochrome range queries atMonochrome() returns the correct media query
 }
 `;
 
-exports[`monochrome range queries atMonochrome() returns the correct media query for 'medium' 1`] = `
+exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -1208,7 +1178,7 @@ exports[`monochrome range queries atMonochrome() returns the correct media query
 }
 `;
 
-exports[`monochrome range queries atMonochrome() returns the correct media query for 'small' 1`] = `
+exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (monochrome: 0) {
     background-color: function () {
         return 'GhostWhite';
@@ -1216,7 +1186,7 @@ exports[`monochrome range queries atMonochrome() returns the correct media query
 }
 `;
 
-exports[`monochrome range queries atMonochrome() returns the correct media query for 'xLarge' 1`] = `
+exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1226,7 +1196,7 @@ exports[`monochrome range queries atMonochrome() returns the correct media query
 
 exports[`monochrome range queries atMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-monochrome: 8) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1234,7 +1204,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 }
 `;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-monochrome: 4) and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1242,7 +1212,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 }
 `;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -1250,7 +1220,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 }
 `;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1260,7 +1230,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 
 exports[`monochrome range queries atMonochromeBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries belowMonochrome() returns the correct media query for 'large' 1`] = `
+exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1268,7 +1238,7 @@ exports[`monochrome range queries belowMonochrome() returns the correct media qu
 }
 `;
 
-exports[`monochrome range queries belowMonochrome() returns the correct media query for 'medium' 1`] = `
+exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -1276,7 +1246,7 @@ exports[`monochrome range queries belowMonochrome() returns the correct media qu
 }
 `;
 
-exports[`monochrome range queries belowMonochrome() returns the correct media query for 'small' 1`] = `
+exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-monochrome: 0) {
     background-color: function () {
         return 'GhostWhite';
@@ -1284,7 +1254,7 @@ exports[`monochrome range queries belowMonochrome() returns the correct media qu
 }
 `;
 
-exports[`monochrome range queries belowMonochrome() returns the correct media query for 'xLarge' 1`] = `
+exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1294,7 +1264,7 @@ exports[`monochrome range queries belowMonochrome() returns the correct media qu
 
 exports[`monochrome range queries belowMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-monochrome: 4) and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1302,7 +1272,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1310,7 +1280,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-monochrome: 8) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1318,7 +1288,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-monochrome: 4) and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1326,7 +1296,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -1334,7 +1304,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-monochrome: 4) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1342,7 +1312,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
@@ -1350,7 +1320,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
@@ -1358,7 +1328,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1366,7 +1336,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-monochrome: 8) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1374,7 +1344,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-monochrome: 4) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1382,7 +1352,7 @@ exports[`monochrome range queries betweenMonochromes() returns the correct media
 }
 `;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-monochrome: 0) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
@@ -1422,37 +1392,31 @@ exports[`overflowInline() linear feature throws if argument is not valid value 1
 
 exports[`overflowInline() linear feature throws if no argument is supplied 1`] = `'overflowInline'must be one of: 'none,scroll' but was: 'undefined'.`;
 
-exports[`resolution range features maxResolution() doesn't separate dimensionsUnits if not configured 1`] = `(max-resolution: 72dpi)`;
+exports[`resolution range features maxResolution() doesn't separate values if not configured to do so 1`] = `(max-resolution: 72dpi)`;
 
-exports[`resolution range features maxResolution() returns the correct media fragment with existing breakpoint 1`] = `(max-resolution: 71dpi)`;
+exports[`resolution range features maxResolution() returns the correct feature when called with existing breakpoint 1`] = `(max-resolution: 71dpi)`;
 
-exports[`resolution range features maxResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`resolution range features maxResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features maxResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range features maxResolution() throws if resolution breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`resolution range features minResolution() doesn't separate values if not configured to do so 1`] = `(min-resolution: 72dpi)`;
 
-exports[`resolution range features minResolution() doesn't separate dimensionsUnits if not configured 1`] = `(min-resolution: 72dpi)`;
+exports[`resolution range features minResolution() returns the correct feature when called with existing breakpoint 1`] = `(min-resolution: 72dpi)`;
 
-exports[`resolution range features minResolution() returns the correct media fragment with existing breakpoint 1`] = `(min-resolution: 72dpi)`;
-
-exports[`resolution range features minResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`resolution range features minResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features minResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range features minResolution() throws if resolution breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`resolution range features resolution() doesn't separate values if not configured to do so 1`] = `(resolution: 72dpi)`;
 
-exports[`resolution range features resolution() doesn't separate dimensionsUnits if not configured 1`] = `(resolution: 72dpi)`;
+exports[`resolution range features resolution() returns the correct feature when called with existing breakpoint 1`] = `(resolution: 72dpi)`;
 
-exports[`resolution range features resolution() returns the correct media fragment with existing breakpoint 1`] = `(resolution: 72dpi)`;
-
-exports[`resolution range features resolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`resolution range features resolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features resolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range features resolution() throws if resolution breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`resolution range queries aboveResolution() returns the correct media query for 'large' 1`] = `
+exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-resolution: 300dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1460,7 +1424,7 @@ exports[`resolution range queries aboveResolution() returns the correct media qu
 }
 `;
 
-exports[`resolution range queries aboveResolution() returns the correct media query for 'medium' 1`] = `
+exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-resolution: 150dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1468,7 +1432,7 @@ exports[`resolution range queries aboveResolution() returns the correct media qu
 }
 `;
 
-exports[`resolution range queries aboveResolution() returns the correct media query for 'small' 1`] = `
+exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-resolution: 72dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1476,7 +1440,7 @@ exports[`resolution range queries aboveResolution() returns the correct media qu
 }
 `;
 
-exports[`resolution range queries aboveResolution() returns the correct media query for 'xLarge' 1`] = `
+exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-resolution: 600dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1486,7 +1450,7 @@ exports[`resolution range queries aboveResolution() returns the correct media qu
 
 exports[`resolution range queries aboveResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries atResolution() returns the correct media query for 'large' 1`] = `
+exports[`resolution range queries atResolution() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (resolution: 300dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1494,7 +1458,7 @@ exports[`resolution range queries atResolution() returns the correct media query
 }
 `;
 
-exports[`resolution range queries atResolution() returns the correct media query for 'medium' 1`] = `
+exports[`resolution range queries atResolution() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (resolution: 150dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1502,7 +1466,7 @@ exports[`resolution range queries atResolution() returns the correct media query
 }
 `;
 
-exports[`resolution range queries atResolution() returns the correct media query for 'small' 1`] = `
+exports[`resolution range queries atResolution() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (resolution: 72dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1510,7 +1474,7 @@ exports[`resolution range queries atResolution() returns the correct media query
 }
 `;
 
-exports[`resolution range queries atResolution() returns the correct media query for 'xLarge' 1`] = `
+exports[`resolution range queries atResolution() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (resolution: 600dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1520,7 +1484,7 @@ exports[`resolution range queries atResolution() returns the correct media query
 
 exports[`resolution range queries atResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1528,7 +1492,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 }
 `;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1536,7 +1500,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 }
 `;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1544,7 +1508,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 }
 `;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-resolution: 600dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1554,7 +1518,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 
 exports[`resolution range queries atResolutionBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries belowResolution() returns the correct media query for 'large' 1`] = `
+exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1562,7 +1526,7 @@ exports[`resolution range queries belowResolution() returns the correct media qu
 }
 `;
 
-exports[`resolution range queries belowResolution() returns the correct media query for 'medium' 1`] = `
+exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-resolution: 149dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1570,7 +1534,7 @@ exports[`resolution range queries belowResolution() returns the correct media qu
 }
 `;
 
-exports[`resolution range queries belowResolution() returns the correct media query for 'small' 1`] = `
+exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-resolution: 71dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1578,7 +1542,7 @@ exports[`resolution range queries belowResolution() returns the correct media qu
 }
 `;
 
-exports[`resolution range queries belowResolution() returns the correct media query for 'xLarge' 1`] = `
+exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1588,7 +1552,7 @@ exports[`resolution range queries belowResolution() returns the correct media qu
 
 exports[`resolution range queries belowResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1596,7 +1560,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1604,7 +1568,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1612,7 +1576,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1620,7 +1584,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1628,7 +1592,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-resolution: 150dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1636,7 +1600,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1644,7 +1608,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1652,7 +1616,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1660,7 +1624,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1668,7 +1632,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-resolution: 150dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1676,7 +1640,7 @@ exports[`resolution range queries betweenResolutions() returns the correct media
 }
 `;
 
-exports[`resolution range queries betweenResolutions() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-resolution: 72dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
@@ -1740,49 +1704,97 @@ exports[`update() linear feature returns the supplied update for 'slow' 1`] = `(
 
 exports[`update() linear feature throws if argument is not valid value 1`] = `'update'must be one of: 'none,slow,fast' but was: 'xxxx'.`;
 
-exports[`width range features maxWidth() doesn't separate dimensionsUnits if not configured 1`] = `(max-width: 25em)`;
+exports[`width range features maxWidth() doesn't separate values if not configured to do so 1`] = `(max-width: 25em)`;
 
 exports[`width range features maxWidth() renders configured dimensionsUnits 1`] = `(max-width: 24.999375rem)`;
 
 exports[`width range features maxWidth() renders configured dimensionsUnits 2`] = `(max-width: 399px)`;
 
-exports[`width range features maxWidth() returns the correct media fragment with existing breakpoint 1`] = `(max-width: 24.999375em)`;
+exports[`width range features maxWidth() returns the correct feature when called with existing breakpoint 1`] = `(max-width: 24.999375em)`;
 
-exports[`width range features maxWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`width range features maxWidth() throws if 'width' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`width range features maxWidth() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range features maxWidth() throws if width breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid '-555px' 1`] = `There is no 'width' breakpoint defined called '-555px', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range features minWidth() doesn't separate dimensionsUnits if not configured 1`] = `(min-width: 25em)`;
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid '0' 1`] = `There is no 'width' breakpoint defined called '0', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid '0px' 1`] = `There is no 'width' breakpoint defined called '0px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid '78' 1`] = `There is no 'width' breakpoint defined called '78', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid '163px' 1`] = `There is no 'width' breakpoint defined called '163px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid '4999' 1`] = `There is no 'width' breakpoint defined called '4999', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid 'null' 1`] = `There is no 'width' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() doesn't separate values if not configured to do so 1`] = `(min-width: 25em)`;
 
 exports[`width range features minWidth() renders configured dimensionsUnits 1`] = `(min-width: 25rem)`;
 
 exports[`width range features minWidth() renders configured dimensionsUnits 2`] = `(min-width: 400px)`;
 
-exports[`width range features minWidth() returns the correct media fragment with existing breakpoint 1`] = `(min-width: 25em)`;
+exports[`width range features minWidth() returns the correct feature when called with existing breakpoint 1`] = `(min-width: 25em)`;
 
-exports[`width range features minWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`width range features minWidth() throws if 'width' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`width range features minWidth() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range features minWidth() throws if width breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid '-555px' 1`] = `There is no 'width' breakpoint defined called '-555px', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range features width() doesn't separate dimensionsUnits if not configured 1`] = `(width: 25em)`;
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid '0' 1`] = `There is no 'width' breakpoint defined called '0', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid '0px' 1`] = `There is no 'width' breakpoint defined called '0px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid '78' 1`] = `There is no 'width' breakpoint defined called '78', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid '163px' 1`] = `There is no 'width' breakpoint defined called '163px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid '4999' 1`] = `There is no 'width' breakpoint defined called '4999', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid 'null' 1`] = `There is no 'width' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() doesn't separate values if not configured to do so 1`] = `(width: 25em)`;
 
 exports[`width range features width() renders configured dimensionsUnits 1`] = `(width: 25rem)`;
 
 exports[`width range features width() renders configured dimensionsUnits 2`] = `(width: 400px)`;
 
-exports[`width range features width() returns the correct media fragment with existing breakpoint 1`] = `(width: 25em)`;
+exports[`width range features width() returns the correct feature when called with existing breakpoint 1`] = `(width: 25em)`;
 
-exports[`width range features width() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`width range features width() throws if 'width' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`width range features width() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range features width() throws if width breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+exports[`width range features width() throws if supplied breakpoint value is invalid '-555px' 1`] = `There is no 'width' breakpoint defined called '-555px', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries aboveWidth() returns the correct media query for 'large' 1`] = `
+exports[`width range features width() throws if supplied breakpoint value is invalid '0' 1`] = `There is no 'width' breakpoint defined called '0', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid '0px' 1`] = `There is no 'width' breakpoint defined called '0px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid '78' 1`] = `There is no 'width' breakpoint defined called '78', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid '163px' 1`] = `There is no 'width' breakpoint defined called '163px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid '4999' 1`] = `There is no 'width' breakpoint defined called '4999', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid 'null' 1`] = `There is no 'width' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range queries aboveWidth() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-width: 68.75em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1790,7 +1802,7 @@ exports[`width range queries aboveWidth() returns the correct media query for 'l
 }
 `;
 
-exports[`width range queries aboveWidth() returns the correct media query for 'medium' 1`] = `
+exports[`width range queries aboveWidth() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-width: 56.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1798,7 +1810,7 @@ exports[`width range queries aboveWidth() returns the correct media query for 'm
 }
 `;
 
-exports[`width range queries aboveWidth() returns the correct media query for 'small' 1`] = `
+exports[`width range queries aboveWidth() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-width: 25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1806,7 +1818,7 @@ exports[`width range queries aboveWidth() returns the correct media query for 's
 }
 `;
 
-exports[`width range queries aboveWidth() returns the correct media query for 'xLarge' 1`] = `
+exports[`width range queries aboveWidth() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-width: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1816,7 +1828,7 @@ exports[`width range queries aboveWidth() returns the correct media query for 'x
 
 exports[`width range queries aboveWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries atWidth() returns the correct media query for 'large' 1`] = `
+exports[`width range queries atWidth() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (width: 68.75em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1824,7 +1836,7 @@ exports[`width range queries atWidth() returns the correct media query for 'larg
 }
 `;
 
-exports[`width range queries atWidth() returns the correct media query for 'medium' 1`] = `
+exports[`width range queries atWidth() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (width: 56.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1832,7 +1844,7 @@ exports[`width range queries atWidth() returns the correct media query for 'medi
 }
 `;
 
-exports[`width range queries atWidth() returns the correct media query for 'small' 1`] = `
+exports[`width range queries atWidth() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (width: 25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1840,7 +1852,7 @@ exports[`width range queries atWidth() returns the correct media query for 'smal
 }
 `;
 
-exports[`width range queries atWidth() returns the correct media query for 'xLarge' 1`] = `
+exports[`width range queries atWidth() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (width: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1850,7 +1862,7 @@ exports[`width range queries atWidth() returns the correct media query for 'xLar
 
 exports[`width range queries atWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries atWidthBreakpoint() returns the correct media query for 'large' 1`] = `
+exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1858,7 +1870,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 }
 `;
 
-exports[`width range queries atWidthBreakpoint() returns the correct media query for 'medium' 1`] = `
+exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (min-width: 56.25em) and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1866,7 +1878,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 }
 `;
 
-exports[`width range queries atWidthBreakpoint() returns the correct media query for 'small' 1`] = `
+exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1874,7 +1886,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 }
 `;
 
-exports[`width range queries atWidthBreakpoint() returns the correct media query for 'xLarge' 1`] = `
+exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (min-width: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1884,7 +1896,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 
 exports[`width range queries atWidthBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries belowWidth() returns the correct media query for 'large' 1`] = `
+exports[`width range queries belowWidth() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1892,7 +1904,7 @@ exports[`width range queries belowWidth() returns the correct media query for 'l
 }
 `;
 
-exports[`width range queries belowWidth() returns the correct media query for 'medium' 1`] = `
+exports[`width range queries belowWidth() returns the correct query for breakpoint 'medium' 1`] = `
 @media screen and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1900,7 +1912,7 @@ exports[`width range queries belowWidth() returns the correct media query for 'm
 }
 `;
 
-exports[`width range queries belowWidth() returns the correct media query for 'small' 1`] = `
+exports[`width range queries belowWidth() returns the correct query for breakpoint 'small' 1`] = `
 @media screen and (max-width: 24.999375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1908,7 +1920,7 @@ exports[`width range queries belowWidth() returns the correct media query for 's
 }
 `;
 
-exports[`width range queries belowWidth() returns the correct media query for 'xLarge' 1`] = `
+exports[`width range queries belowWidth() returns the correct query for breakpoint 'xLarge' 1`] = `
 @media screen and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1918,7 +1930,7 @@ exports[`width range queries belowWidth() returns the correct media query for 'x
 
 exports[`width range queries belowWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'large' and 'medium' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'medium' 1`] = `
 @media screen and (min-width: 56.25em) and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1926,7 +1938,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'large' and 'small' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'small' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1934,7 +1946,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'large' and 'xLarge' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `
 @media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1942,7 +1954,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'medium' and 'large' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'large' 1`] = `
 @media screen and (min-width: 56.25em) and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1950,7 +1962,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'medium' and 'small' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'small' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1958,7 +1970,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'medium' and 'xLarge' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `
 @media screen and (min-width: 56.25em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1966,7 +1978,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'small' and 'large' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'large' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1974,7 +1986,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'small' and 'medium' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'medium' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1982,7 +1994,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'small' and 'xLarge' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1990,7 +2002,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'xLarge' and 'large' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `
 @media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -1998,7 +2010,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'xLarge' and 'medium' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `
 @media screen and (min-width: 56.25em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -2006,7 +2018,7 @@ exports[`width range queries betweenWidths() returns the correct media query for
 }
 `;
 
-exports[`width range queries betweenWidths() returns the correct media query for 'xLarge' and 'small' 1`] = `
+exports[`width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `
 @media screen and (min-width: 25em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';

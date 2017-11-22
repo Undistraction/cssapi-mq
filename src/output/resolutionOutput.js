@@ -1,18 +1,22 @@
-import { __, partial, both, always, subtract, when } from 'ramda';
+import { __, always, subtract, when } from 'ramda';
 import { separatorValueForUnit, appendUnit } from '../utils/units';
 import { UNITS } from '../const';
 
-const prepareUnitlessValue = (shouldSeparateQueries, unit, shouldSeparate) => {
-  return when(
-    both(always(shouldSeparate), always(shouldSeparateQueries)),
+const prepareUnitlessValue = (value, shouldSeparateQueries, unit) =>
+  when(
+    always(shouldSeparateQueries),
     subtract(__, separatorValueForUnit(unit))
-  );
-};
+  )(value);
 
-export default ({ shouldSeparateQueries = true } = {}) => ({
-  prepare: partial(prepareUnitlessValue, [
-    shouldSeparateQueries,
-    UNITS.RESOLUTION.DPI,
-  ]),
-  toUnit: value => appendUnit(value, UNITS.RESOLUTION.DPI),
-});
+export default ({ shouldSeparateQueries = true } = {}) => (
+  value,
+  shouldSeparate
+) => {
+  const preparedValue = prepareUnitlessValue(
+    value,
+    shouldSeparateQueries && shouldSeparate,
+    UNITS.RESOLUTION.DPI
+  );
+
+  return appendUnit(preparedValue, UNITS.RESOLUTION.DPI);
+};

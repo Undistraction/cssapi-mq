@@ -1,4 +1,1 @@
-export default () => ({
-  prepare: () => value => value,
-  toUnit: value => value,
-});
+export default () => value => value;

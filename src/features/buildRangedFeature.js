@@ -20,6 +20,8 @@ const buildFeatureItem = (name, parser, config) => breakpoint => {
   return renderFeature(name, parser(breakpoint, config));
 };
 
+const nilValueAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
+
 export default (
   name,
   output,
@@ -49,14 +51,13 @@ export default (
     value,
     { shouldSeparate = false, noArgs = false } = {}
   ) => {
-    const nilValueAllowedToPass = v => isNil(v) && noArgs;
-
     // If we only support named breakpoints use the value to look up a
     // breakpoint.
-    if (onlyNamedBreakpoints && !nilValueAllowedToPass(value)) {
+    if (onlyNamedBreakpoints && !nilValueAllowedToPass(value, noArgs)) {
       value = getBreakpointNamed(value);
     }
-    return compose(output.toUnit, output.prepare(shouldSeparate))(value);
+    const outputValue = output(value, shouldSeparate);
+    return outputValue;
   };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };

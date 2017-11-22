@@ -1,7 +1,10 @@
 import camelcase from 'camelcase';
 import runTests from './runTests';
 
-export default (name, { perMethodTests = [] } = {}) => {
+export default (
+  name,
+  { tests = [], validExplicitValues = [], invalidNonExplicitValues = [] } = {}
+) => {
   const camelisedName = camelcase(name);
   describe(`${name}`, () => {
     describe('range features', () => {
@@ -11,15 +14,24 @@ export default (name, { perMethodTests = [] } = {}) => {
       const maxValueMethod = camelcase('max', name);
 
       describe(`${valueMethod}()`, () => {
-        runTests(perMethodTests.value, camelisedName, valueMethod);
+        runTests(tests.value, camelisedName, valueMethod, {
+          validExplicitValues,
+          invalidNonExplicitValues,
+        });
       });
 
       describe(`${minValueMethod}()`, () => {
-        runTests(perMethodTests.minValue, camelisedName, minValueMethod);
+        runTests(tests.minValue, camelisedName, minValueMethod, {
+          validExplicitValues,
+          invalidNonExplicitValues,
+        });
       });
 
       describe(`${maxValueMethod}()`, () => {
-        runTests(perMethodTests.maxValue, camelisedName, maxValueMethod);
+        runTests(tests.maxValue, camelisedName, maxValueMethod, {
+          validExplicitValues,
+          invalidNonExplicitValues,
+        });
       });
     });
   });

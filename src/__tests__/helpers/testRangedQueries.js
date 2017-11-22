@@ -3,7 +3,7 @@ import runTests from './runTests';
 
 const pluralise = value => `${value}s`;
 
-export default (name, { perMethodTests = [] } = {}) => {
+export default (name, { tests = [] } = {}) => {
   describe(`${name}`, () => {
     describe('range queries', () => {
       const aboveMethod = camelcase('above', name);
@@ -13,23 +13,23 @@ export default (name, { perMethodTests = [] } = {}) => {
       const atBreakpointMethod = camelcase('at', name, 'Breakpoint');
 
       describe(`${aboveMethod}()`, () => {
-        runTests(perMethodTests.above, name, aboveMethod);
+        runTests(tests.above, name, aboveMethod);
       });
 
       describe(`${belowMethod}()`, () => {
-        runTests(perMethodTests.below, name, belowMethod);
+        runTests(tests.below, name, belowMethod);
       });
 
       describe(`${betweenMethod}()`, () => {
-        runTests(perMethodTests.between, name, betweenMethod);
+        runTests(tests.between, name, betweenMethod);
       });
 
       describe(`${atMethod}()`, () => {
-        runTests(perMethodTests.at, name, atMethod);
+        runTests(tests.at, name, atMethod);
       });
 
       describe(`${atBreakpointMethod}()`, () => {
-        runTests(perMethodTests.atBreakpoint, name, atBreakpointMethod);
+        runTests(tests.atBreakpoint, name, atBreakpointMethod);
       });
     });
   });

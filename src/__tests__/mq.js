@@ -109,7 +109,7 @@ const mqWithNoBreakpoints = () => styledMQ.configure({});
 // Shared Tests
 // -----------------------------------------------------------------------------
 
-const testConfigurableUnits = (name, method) => {
+const configOutputsConfiguredDimensionUnits = (name, method) => {
   it('renders configured dimensionsUnits', () => {
     expect(
       mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'rem' })[method](
@@ -125,8 +125,8 @@ const testConfigurableUnits = (name, method) => {
   });
 };
 
-const testConfigurableSeparation = (name, method) => {
-  it("doesn't separate dimensionsUnits if not configured", () => {
+const configSeparatesValuesWhenSet = (name, method) => {
+  it("doesn't separate values if not configured to do so", () => {
     expect(
       mqWithValidBreakpointsForRange(name, { shouldSeparateQueries: false })[
         method
@@ -135,12 +135,18 @@ const testConfigurableSeparation = (name, method) => {
   });
 };
 
-const featureThrowsForMissingBreakpoint = (name, method) => {
-  it("throws if breakpoint doesn't exist", () => {
-    expect(() =>
-      mqWithValidBreakpointsForRange(name)[method]('xxxx')
-    ).toThrowErrorMatchingSnapshot();
-  });
+const featureThrowsForInvalidBreakpoint = (
+  name,
+  method,
+  { invalidNonExplicitValues } = {}
+) => {
+  for (const value of invalidNonExplicitValues) {
+    it(`throws if supplied breakpoint value is invalid '${value}'`, () => {
+      expect(() =>
+        mqWithValidBreakpointsForRange(name)[method](value)
+      ).toThrowErrorMatchingSnapshot();
+    });
+  }
 };
 
 const featureThrowsForMissingArgument = (name, method) => {
@@ -152,7 +158,7 @@ const featureThrowsForMissingArgument = (name, method) => {
 };
 
 const featureThrowsForMissingBreakpointSet = (name, method) => {
-  it(`throws if ${name} breakpoint map doesn't exist`, () => {
+  it(`throws if '${name}' breakpoint map doesn't exist`, () => {
     expect(() =>
       mqWithNoBreakpoints()[method]('xxxx')
     ).toThrowErrorMatchingSnapshot();
@@ -160,15 +166,33 @@ const featureThrowsForMissingBreakpointSet = (name, method) => {
 };
 
 const featureReturnsCorrectValueForBreakpoint = (name, method) => {
-  it('returns the correct media fragment with existing breakpoint', () => {
+  it('returns the correct feature when called with existing breakpoint', () => {
     expect(
       mqWithValidBreakpointsForRange(name)[method]('small')
     ).toMatchSnapshot();
   });
 };
 
+const featureReturnsCorrectValueForValidExpicitValue = (
+  name,
+  method,
+  { validExplicitValues } = {}
+) => {
+  for (const value of validExplicitValues) {
+    it(`returns the correct feature when called with a valid explicit value of '${
+      value
+    }'`, () => {
+      expect(
+        mqWithValidBreakpointsForRange(name, { onlyNamedBreakpoints: false })[
+          method
+        ](value)
+      ).toMatchSnapshot();
+    });
+  }
+};
+
 const featureReturnsCorrectValueNoArguments = (name, method) => {
-  it('returns the correct media fragment with no argument', () => {
+  it('returns the correct feature when called with no arguments', () => {
     expect(mqWithValidBreakpointsForRange(name)[method]()).toMatchSnapshot();
   });
 };
@@ -183,7 +207,7 @@ const queryThrowsIfMissingBreakpoint = (name, method) => {
 
 const queryReturnsCorrectValueSingleBreakpoint = (name, method) => {
   for (const breakpointName of validBreakpointKeysForRange(name)) {
-    it(`returns the correct media query for '${breakpointName}'`, () => {
+    it(`returns the correct query for breakpoint '${breakpointName}'`, () => {
       const result = mqWithValidBreakpointsForRange(name)[method](
         breakpointName
       )`
@@ -199,9 +223,9 @@ const queryReturnsCorrectValueWithTwoBreakpoints = (name, method) => {
     permutations(2, validBreakpointKeysForRange(name))
   );
   for (const breakpointNames of possibleBreakpointCombinations) {
-    it(`returns the correct media query for '${breakpointNames[0]}' and '${
-      breakpointNames[1]
-    }'`, () => {
+    it(`returns the correct query for breakpoints '${
+      breakpointNames[0]
+    }' and '${breakpointNames[1]}'`, () => {
       const result = mqWithValidBreakpointsForRange(name)[method](
         ...breakpointNames
       )`
@@ -515,169 +539,166 @@ testLinearFeature('display-mode', DISPLAY_MODE);
 
 // Range
 testRangedFeature('width', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
+      featureThrowsForInvalidBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
-      testConfigurableUnits,
+      configSeparatesValuesWhenSet,
+      configOutputsConfiguredDimensionUnits,
       featureThrowsForMissingArgument,
+      // featureReturnsCorrectValueForValidExpicitValue,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
+      featureThrowsForInvalidBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
-      testConfigurableUnits,
+      configSeparatesValuesWhenSet,
+      configOutputsConfiguredDimensionUnits,
       featureThrowsForMissingArgument,
+      // featureReturnsCorrectValueForValidExpicitValue,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
+      featureThrowsForInvalidBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
-      testConfigurableUnits,
+      configSeparatesValuesWhenSet,
+      configOutputsConfiguredDimensionUnits,
       featureThrowsForMissingArgument,
+      // featureReturnsCorrectValueForValidExpicitValue,
     ],
   },
+  invalidNonExplicitValues: [
+    'xxxx',
+    0,
+    78,
+    4999,
+    '0px',
+    '163px',
+    '-555px',
+    null,
+    undefined,
+  ],
+  validExplicitValues: [0, 78, 4999, '0px', '163px', '-555px'],
 });
 testRangedFeature('height', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
-      testConfigurableUnits,
+      configSeparatesValuesWhenSet,
+      configOutputsConfiguredDimensionUnits,
       featureThrowsForMissingArgument,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
-      testConfigurableUnits,
+      configSeparatesValuesWhenSet,
+      configOutputsConfiguredDimensionUnits,
       featureThrowsForMissingArgument,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
-      testConfigurableUnits,
+      configSeparatesValuesWhenSet,
+      configOutputsConfiguredDimensionUnits,
       featureThrowsForMissingArgument,
     ],
   },
 });
 testRangedFeature('resolution', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
+      configSeparatesValuesWhenSet,
       featureThrowsForMissingArgument,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
+      configSeparatesValuesWhenSet,
       featureThrowsForMissingArgument,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
-      testConfigurableSeparation,
+      configSeparatesValuesWhenSet,
       featureThrowsForMissingArgument,
     ],
   },
 });
 testRangedFeature('aspect-ratio', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
   },
 });
 testRangedFeature('color', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureReturnsCorrectValueNoArguments,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
   },
 });
 testRangedFeature('color-index', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureReturnsCorrectValueNoArguments,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
   },
 });
 testRangedFeature('monochrome', {
-  perMethodTests: {
+  tests: {
     value: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureReturnsCorrectValueNoArguments,
     ],
     minValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
     maxValue: [
       featureThrowsForMissingBreakpointSet,
-      featureThrowsForMissingBreakpoint,
       featureReturnsCorrectValueForBreakpoint,
       featureThrowsForMissingArgument,
     ],
@@ -689,7 +710,7 @@ testRangedFeature('monochrome', {
 // -----------------------------------------------------------------------------
 
 testRangedQueries('width', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
@@ -714,7 +735,7 @@ testRangedQueries('width', {
   },
 });
 testRangedQueries('height', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
@@ -739,7 +760,7 @@ testRangedQueries('height', {
   },
 });
 testRangedQueries('resolution', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
@@ -764,7 +785,7 @@ testRangedQueries('resolution', {
   },
 });
 testRangedQueries('aspect-ratio', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
@@ -790,7 +811,7 @@ testRangedQueries('aspect-ratio', {
 });
 
 testRangedQueries('color', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
@@ -816,7 +837,7 @@ testRangedQueries('color', {
 });
 
 testRangedQueries('color-index', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
@@ -842,7 +863,7 @@ testRangedQueries('color-index', {
 });
 
 testRangedQueries('monochrome', {
-  perMethodTests: {
+  tests: {
     above: [
       queryThrowsIfMissingBreakpoint,
       queryReturnsCorrectValueSingleBreakpoint,
