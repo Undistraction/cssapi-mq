@@ -93,7 +93,7 @@ exports[`aspect-ratio range queries atAspectRatio() returns the correct media qu
 exports[`aspect-ratio range queries atAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (aspect-ratio: 3/2) {
+@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -101,7 +101,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 `;
 
 exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (aspect-ratio: 1/1) {
+@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -109,7 +109,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 `;
 
 exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (aspect-ratio: 2/3) {
+@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -117,7 +117,7 @@ exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correc
 `;
 
 exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (aspect-ratio: 16/9) {
+@media screen and (min-aspect-ratio: 16/9) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -355,7 +355,7 @@ exports[`color range queries atColor() returns the correct media query for 'xLar
 exports[`color range queries atColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color range queries atColorBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (color: 5) {
+@media screen and (min-color: 5) and (max-color: 6) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -363,7 +363,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 `;
 
 exports[`color range queries atColorBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (color: 4) {
+@media screen and (min-color: 4) and (max-color: 5) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -371,7 +371,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 `;
 
 exports[`color range queries atColorBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (color: 1) {
+@media screen and (min-color: 1) and (max-color: 4) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -379,7 +379,7 @@ exports[`color range queries atColorBreakpoint() returns the correct media query
 `;
 
 exports[`color range queries atColorBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (color: 6) {
+@media screen and (min-color: 6) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -617,7 +617,7 @@ exports[`color-index range queries atColorIndex() returns the correct media quer
 exports[`color-index range queries atColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (color-index: 5) {
+@media screen and (min-color-index: 5) and (max-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -625,7 +625,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 `;
 
 exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (color-index: 4) {
+@media screen and (min-color-index: 4) and (max-color-index: 5) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -633,7 +633,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 `;
 
 exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (color-index: 1) {
+@media screen and (min-color-index: 1) and (max-color-index: 4) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -641,7 +641,7 @@ exports[`color-index range queries atColorIndexBreakpoint() returns the correct 
 `;
 
 exports[`color-index range queries atColorIndexBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (color-index: 6) {
+@media screen and (min-color-index: 6) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -949,7 +949,7 @@ exports[`height range queries atHeight() returns the correct media query for 'xL
 exports[`height range queries atHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`height range queries atHeightBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (height: 68.75em) {
+@media screen and (min-height: 68.75em) and (max-height: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -957,7 +957,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 `;
 
 exports[`height range queries atHeightBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (height: 56.25em) {
+@media screen and (min-height: 56.25em) and (max-height: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -965,7 +965,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 `;
 
 exports[`height range queries atHeightBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (height: 25em) {
+@media screen and (min-height: 25em) and (max-height: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -973,7 +973,7 @@ exports[`height range queries atHeightBreakpoint() returns the correct media que
 `;
 
 exports[`height range queries atHeightBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (height: 81.25em) {
+@media screen and (min-height: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1227,7 +1227,7 @@ exports[`monochrome range queries atMonochrome() returns the correct media query
 exports[`monochrome range queries atMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (monochrome: 8) {
+@media screen and (min-monochrome: 8) and (max-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1235,7 +1235,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 `;
 
 exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (monochrome: 4) {
+@media screen and (min-monochrome: 4) and (max-monochrome: 8) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1243,7 +1243,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 `;
 
 exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (monochrome: 0) {
+@media screen and (min-monochrome: 0) and (max-monochrome: 4) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1251,7 +1251,7 @@ exports[`monochrome range queries atMonochromeBreakpoint() returns the correct m
 `;
 
 exports[`monochrome range queries atMonochromeBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (monochrome: 16) {
+@media screen and (min-monochrome: 16) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1521,7 +1521,7 @@ exports[`resolution range queries atResolution() returns the correct media query
 exports[`resolution range queries atResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (resolution: 300dpi) {
+@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1529,7 +1529,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 `;
 
 exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (resolution: 150dpi) {
+@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1537,7 +1537,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 `;
 
 exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (resolution: 72dpi) {
+@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1545,7 +1545,7 @@ exports[`resolution range queries atResolutionBreakpoint() returns the correct m
 `;
 
 exports[`resolution range queries atResolutionBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (resolution: 600dpi) {
+@media screen and (min-resolution: 600dpi) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1851,7 +1851,7 @@ exports[`width range queries atWidth() returns the correct media query for 'xLar
 exports[`width range queries atWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small,medium,large,xLarge' are defined.`;
 
 exports[`width range queries atWidthBreakpoint() returns the correct media query for 'large' 1`] = `
-@media screen and (width: 68.75em) {
+@media screen and (min-width: 68.75em) and (max-width: 81.249375em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1859,7 +1859,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 `;
 
 exports[`width range queries atWidthBreakpoint() returns the correct media query for 'medium' 1`] = `
-@media screen and (width: 56.25em) {
+@media screen and (min-width: 56.25em) and (max-width: 68.749375em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1867,7 +1867,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 `;
 
 exports[`width range queries atWidthBreakpoint() returns the correct media query for 'small' 1`] = `
-@media screen and (width: 25em) {
+@media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -1875,7 +1875,7 @@ exports[`width range queries atWidthBreakpoint() returns the correct media query
 `;
 
 exports[`width range queries atWidthBreakpoint() returns the correct media query for 'xLarge' 1`] = `
-@media screen and (width: 81.25em) {
+@media screen and (min-width: 81.25em) {
     background-color: function () {
         return 'GhostWhite';
     }; ;

@@ -23,6 +23,8 @@ import {
   COLOR_GAMUT,
   DISPLAY_MODE,
 } from '../const';
+import testRangedFeature from './helpers/testRangedFeature';
+import testRangedQueries from './helpers/testRangedQueries';
 
 // Register serializer for use by Jest in generating snapshots. Without a serializer the snapshots are difficult to read.
 import cssSerialiser from './helpers/cssSerialiser';
@@ -31,7 +33,6 @@ expect.addSnapshotSerializer(cssSerialiser);
 
 const permutations = compose(sequence(of), flip(repeat));
 const filterIfPairSame = filter(pair => pair[0] !== pair[1]);
-const pluralise = value => `${value}s`;
 
 const validDimensionBreakpoints = {
   small: 400,
@@ -81,12 +82,6 @@ const validBreakpoints = {
 // -----------------------------------------------------------------------------
 // Internal
 // -----------------------------------------------------------------------------
-
-const runPerMethodTestsForFeature = (tests, name, method, config) => {
-  for (const test of tests) {
-    test(name, method, config);
-  }
-};
 
 const validBreakpointsForRange = name => {
   const camelisedName = camelcase(name);
@@ -323,90 +318,6 @@ const testLinearFeature = (
   });
 };
 
-const testRangedFeature = (
-  name,
-  { perMethodTests = [], allowNoArgument = false } = {}
-) => {
-  const camelisedName = camelcase(name);
-  describe(`${name}`, () => {
-    describe('range features', () => {
-      // Define accessor names
-      const valueMethod = camelisedName;
-      const minValueMethod = camelcase('min', name);
-      const maxValueMethod = camelcase('max', name);
-
-      describe(`${valueMethod}()`, () => {
-        runPerMethodTestsForFeature(
-          perMethodTests,
-          camelisedName,
-          valueMethod,
-          {
-            allowNoArgument,
-          }
-        );
-
-        if (allowNoArgument) {
-          featureReturnsCorrectValueNoArguments(camelisedName, valueMethod);
-        } else {
-          featureThrowsForMissingArgument(camelisedName, valueMethod);
-        }
-      });
-
-      describe(`${minValueMethod}()`, () => {
-        runPerMethodTestsForFeature(
-          perMethodTests,
-          camelisedName,
-          minValueMethod
-        );
-        featureThrowsForMissingArgument(camelisedName, minValueMethod);
-      });
-
-      describe(`${maxValueMethod}()`, () => {
-        runPerMethodTestsForFeature(
-          perMethodTests,
-          camelisedName,
-          maxValueMethod
-        );
-        featureThrowsForMissingArgument(camelisedName, maxValueMethod);
-      });
-    });
-  });
-};
-
-const testRangeQueries = (name, { perMethodTests = [] } = {}) => {
-  describe(`${name}`, () => {
-    describe('range queries', () => {
-      const aboveMethod = camelcase('above', name);
-      const belowMethod = camelcase('below', name);
-      const betweenMethod = camelcase('between', pluralise(name));
-      const atMethod = camelcase('at', name);
-      const atBreakpointMethod = camelcase('at', name, 'Breakpoint');
-
-      describe(`${aboveMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, aboveMethod);
-      });
-
-      describe(`${belowMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, belowMethod);
-      });
-
-      describe(`${betweenMethod}()`, () => {
-        queryReturnsCorrectValueWithTwoBreakpoints(name, betweenMethod);
-        queryThrowsIfMissingEitherBreakpoint(name, betweenMethod);
-        queryThrowsWithBothBreakpointsTheSame(name, betweenMethod);
-      });
-
-      describe(`${atMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, atMethod);
-      });
-
-      describe(`${atBreakpointMethod}()`, () => {
-        runPerMethodTestsForFeature(perMethodTests, name, atMethod);
-      });
-    });
-  });
-};
-
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
@@ -604,109 +515,354 @@ testLinearFeature('display-mode', DISPLAY_MODE);
 
 // Range
 testRangedFeature('width', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-    testConfigurableSeparation,
-    testConfigurableUnits,
-  ],
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      testConfigurableUnits,
+      featureThrowsForMissingArgument,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      testConfigurableUnits,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      testConfigurableUnits,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 testRangedFeature('height', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-    testConfigurableSeparation,
-    testConfigurableUnits,
-  ],
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      testConfigurableUnits,
+      featureThrowsForMissingArgument,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      testConfigurableUnits,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      testConfigurableUnits,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 testRangedFeature('resolution', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-    testConfigurableSeparation,
-  ],
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      featureThrowsForMissingArgument,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      testConfigurableSeparation,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 testRangedFeature('aspect-ratio', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-  ],
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 testRangedFeature('color', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-  ],
-  allowNoArgument: true,
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureReturnsCorrectValueNoArguments,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 testRangedFeature('color-index', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-  ],
-  allowNoArgument: true,
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureReturnsCorrectValueNoArguments,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 testRangedFeature('monochrome', {
-  perMethodTests: [
-    featureThrowsForMissingBreakpointSet,
-    featureThrowsForMissingBreakpoint,
-    featureReturnsCorrectValueForBreakpoint,
-  ],
-  allowNoArgument: true,
+  perMethodTests: {
+    value: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureReturnsCorrectValueNoArguments,
+    ],
+    minValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+    maxValue: [
+      featureThrowsForMissingBreakpointSet,
+      featureThrowsForMissingBreakpoint,
+      featureReturnsCorrectValueForBreakpoint,
+      featureThrowsForMissingArgument,
+    ],
+  },
 });
 
 // -----------------------------------------------------------------------------
 // Features
 // -----------------------------------------------------------------------------
 
-testRangeQueries('width', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('width', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
-testRangeQueries('height', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('height', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
-testRangeQueries('resolution', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('resolution', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
-testRangeQueries('aspect-ratio', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('aspect-ratio', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
 
-testRangeQueries('color', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('color', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
 
-testRangeQueries('color-index', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('color-index', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
 
-testRangeQueries('monochrome', {
-  perMethodTests: [
-    queryThrowsIfMissingBreakpoint,
-    queryReturnsCorrectValueSingleBreakpoint,
-  ],
+testRangedQueries('monochrome', {
+  perMethodTests: {
+    above: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    below: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    between: [
+      queryReturnsCorrectValueWithTwoBreakpoints,
+      queryThrowsIfMissingEitherBreakpoint,
+      queryThrowsWithBothBreakpointsTheSame,
+    ],
+    at: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+    atBreakpoint: [
+      queryThrowsIfMissingBreakpoint,
+      queryReturnsCorrectValueSingleBreakpoint,
+    ],
+  },
 });
