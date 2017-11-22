@@ -2,6 +2,16 @@ import { keys } from 'ramda';
 import camelcase from 'camelcase';
 import styledMQ from '../mq';
 
+export const genericInvalidValues = [
+  '',
+  null,
+  undefined,
+  true,
+  false,
+  [],
+  undefined,
+];
+
 export const validDimensionBreakpointsUnitless = {
   small: 400,
   medium: 900,
@@ -14,6 +24,13 @@ export const validResolutionBreakpointsUnitless = {
   medium: 150,
   large: 300,
   xLarge: 600,
+};
+
+export const validResolutionBreakpointsUnited = {
+  small: '72dpi',
+  medium: '150dpi',
+  large: '300dpi',
+  xLarge: '600dpi',
 };
 
 export const validAspectRatioBreakpoints = {

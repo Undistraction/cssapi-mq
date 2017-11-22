@@ -26,10 +26,13 @@ describe('mediaTypes', () => {
       mqWithValidBreakpointsForRange('width').mediaType(drop(2, validValues))
     ).toMatchSnapshot();
   });
+  const invalidMediaTypes = ['', true, false, 'xxxx', 444, {}, []];
 
-  it('throws if argument is not valid media type', () => {
-    expect(() =>
-      mqWithValidBreakpointsForRange('width').mediaType('xxxx')
-    ).toThrowErrorMatchingSnapshot();
-  });
+  for (const value of invalidMediaTypes) {
+    it(`throws if argument is '${value}'`, () => {
+      expect(() =>
+        mqWithValidBreakpointsForRange('width').mediaType(value)
+      ).toThrowErrorMatchingSnapshot();
+    });
+  }
 });

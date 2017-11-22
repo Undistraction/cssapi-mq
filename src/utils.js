@@ -9,9 +9,9 @@ import {
   propEq,
   nth,
   when,
+  complement,
+  is,
 } from 'ramda';
-
-import { isString } from './utils/value';
 
 // -----------------------------------------------------------------------------
 // Internal
@@ -25,7 +25,9 @@ const zipToNameAndValue = zipObj(['name', 'value']);
 // -----------------------------------------------------------------------------
 
 export const propEqName = propEq('name');
-export const ensureArray = when(isString, mediaTypes => [mediaTypes]);
+export const ensureArray = when(complement(is(Array)), mediaTypes => [
+  mediaTypes,
+]);
 export const toBreakpointArray = compose(map(zipToNameAndValue), toPairs);
 // TODO: This should be internal
 const findBreakpointIndex = (breakpoint, breakpointsArray) =>

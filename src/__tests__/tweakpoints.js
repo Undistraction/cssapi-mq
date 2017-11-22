@@ -6,7 +6,7 @@ import {
 
 expect.addSnapshotSerializer(cssSerialiser);
 
-describe('tweakpoints', () => {
+describe('tweak()', () => {
   it('throws if no breakpoints are supplied', () => {
     expect(() =>
       mqWithValidBreakpointsForRange('width').tweak()
@@ -30,8 +30,8 @@ describe('tweakpoints', () => {
 // Tweaked
 // -----------------------------------------------------------------------------
 
-describe('tweaked', () => {
-  it('adds includes both old breakpoints and added tweakpoints', () => {
+describe('tweaked()', () => {
+  it('includes original breakpoints and added tweakpoints', () => {
     expect(
       mqWithTweakedBreakpointsForRange('width').tweaked.aboveWidth('alpha')`
       background-color: ${() => 'GhostWhite'};

@@ -72,7 +72,7 @@ export const invalidBreakpointSetValueErrorMessage = (message, breakpoints) =>
   `${message} but you supplied ${objectToString(breakpoints)}`;
 
 export const invalidBaseFontSizeErrorMessage = value =>
-  `'baseFontSize' must be a number, but you supplied '${value}'`;
+  `'baseFontSize' must be a positive number, but you supplied '${value}'`;
 
 export const invalidDefaultMediaTypeErrorMessage = value =>
   `'defaultMediaType' must be one of '${valuesToCommaSeparatedList(

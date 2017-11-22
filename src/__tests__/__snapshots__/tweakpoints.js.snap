@@ -1,24 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tweaked adds includes both old breakpoints and added tweakpoints 1`] = `
-@media screen and (min-width: 18.75em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
+exports[`tweak() throws if invalid breakpoint value is supplied 1`] = `You must supply a dimension as a unitless number but you supplied ["xxx"]`;
 
-exports[`tweaked adds includes both old breakpoints and added tweakpoints 2`] = `
-@media screen and (min-width: 68.75em) and (max-width: 18.749375em) {
-    background-color: function () {
-        return 'GhostWhite';
-    }; ;
-}
-`;
+exports[`tweak() throws if no breakpoint sets are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`tweaked doesn't effect the original mq 1`] = `There is no 'width' breakpoint defined called 'alpha', only: 'small, medium, large, xLarge' are defined.`;
+exports[`tweak() throws if no breakpoints are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied 'undefined'.`;
 
-exports[`tweaked doesn't effect the original mq 2`] = `
+exports[`tweaked() doesn't effect the original mq 1`] = `There is no 'width' breakpoint defined called 'alpha', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`tweaked() doesn't effect the original mq 2`] = `
 @media screen and (min-width: 25em) and (max-width: 56.249375em) {
     background-color: function () {
         return 'GhostWhite';
@@ -26,8 +16,18 @@ exports[`tweaked doesn't effect the original mq 2`] = `
 }
 `;
 
-exports[`tweakpoints throws if invalid breakpoint value is supplied 1`] = `You must supply a dimension as a unitless number but you supplied ["xxx"]`;
+exports[`tweaked() includes original breakpoints and added tweakpoints 1`] = `
+@media screen and (min-width: 18.75em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
 
-exports[`tweakpoints throws if no breakpoint sets are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`tweakpoints throws if no breakpoints are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied 'undefined'.`;
+exports[`tweaked() includes original breakpoints and added tweakpoints 2`] = `
+@media screen and (min-width: 68.75em) and (max-width: 18.749375em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;

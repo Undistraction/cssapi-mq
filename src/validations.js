@@ -4,18 +4,19 @@ import {
   both,
   complement,
   contains,
-  isEmpty,
   values,
   all,
   gt,
   toPairs,
   map,
   and,
+  flip,
+  isEmpty,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
 import { ensureArray } from './utils';
 
-import { isNumber, isObject, isBoolean } from './utils/value';
+import { isNumber, isBoolean, isPopulatedObject } from './utils/value';
 import {
   throwError,
   emptyBreakpointMapErrorMessage,
@@ -36,12 +37,12 @@ import aspectRatioValidator from './validators/aspectRatioValidator';
 import colorValidator from './validators/colorValidator';
 import monochromeValidator from './validators/monochromeValidator';
 
-const isPopulatedObject = both(complement(isEmpty), isObject);
 const isBaseFontSizeValid = both(isNumber, gt(__, 0));
-const isMediaTypeValid = contains(__, values(MEDIA_TYPES));
+const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
 const isBreakpointSetNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
+const areBreakpointSetNamesValid = all(t => isBreakpointSetNameValid(t));
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
-const includesValue = list => complement(contains(__, values(list)));
+const doesListIncludeValue = list => complement(contains(__, values(list)));
 
 export const validatorsByFeature = {
   width: dimensionValidator,
@@ -54,7 +55,6 @@ export const validatorsByFeature = {
 };
 
 // Validate a map of breakpoint sets.
-const breakpointSetNamesAreValid = all(t => isBreakpointSetNameValid(t));
 
 // -----------------------------------------------------------------------------
 // Exports
@@ -82,7 +82,10 @@ const validateBreakpointSet = (name, breakpointSet) => {
   validateBreakpointSetValues(name, breakpointSet);
 };
 
-export const areMediaTypesValid = all(t => isMediaTypeValid(t));
+export const areMediaTypesValid = both(
+  all(isMediaTypeValid),
+  complement(isEmpty)
+);
 
 export const validateMediaTypes = mediaTypes => {
   if (!areMediaTypesValid(mediaTypes)) {
@@ -91,7 +94,7 @@ export const validateMediaTypes = mediaTypes => {
 };
 
 export const validateBreakpointSetNames = breakpointMap => {
-  if (!breakpointSetNamesAreValid(breakpointMap)) {
+  if (!areBreakpointSetNamesValid(breakpointMap)) {
     throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
   }
 };
@@ -120,7 +123,10 @@ export const validateConfig = ({
   if (!isBaseFontSizeValid(baseFontSize))
     throwError(invalidBaseFontSizeErrorMessage(baseFontSize));
 
-  if (!areMediaTypesValid(ensureArray(defaultMediaType)))
+  if (
+    defaultMediaType !== null &&
+    !areMediaTypesValid(ensureArray(defaultMediaType))
+  )
     throwError(invalidDefaultMediaTypeErrorMessage(defaultMediaType));
 
   if (!isDimensionsUnitValid(dimensionsUnit)) {
@@ -128,11 +134,11 @@ export const validateConfig = ({
   }
 
   if (!isBoolean(shouldSeparateQueries)) {
-    throwError(shouldSeparateQueriesErrorMessage());
+    throwError(shouldSeparateQueriesErrorMessage(shouldSeparateQueries));
   }
 };
 
 export const validateFeature = (name, value, possibleValues) => {
-  if (includesValue(possibleValues)(value))
+  if (doesListIncludeValue(possibleValues)(value))
     throwError(invalidFeatureErrorMessage(name, value, possibleValues));
 };

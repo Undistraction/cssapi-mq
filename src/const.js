@@ -37,7 +37,6 @@ export const MEDIA_TYPES = Object.freeze({
   PRINT: 'print',
   SCREEN: 'screen',
   SPEECH: 'speech',
-  NONE: '',
 });
 
 // -----------------------------------------------------------------------------

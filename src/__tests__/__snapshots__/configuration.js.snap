@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `
+@media screen and (max-height: 39.999em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for width 1`] = `
+@media screen and (max-width: 39.999em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number '' 1`] = `'baseFontSize'must be a positive number, but you supplied ''`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number '-20' 1`] = `'baseFontSize'must be a positive number, but you supplied '-20'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'false' 1`] = `'baseFontSize'must be a positive number, but you supplied 'false'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'null' 1`] = `'baseFontSize'must be a positive number, but you supplied 'null'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'true' 1`] = `'baseFontSize'must be a positive number, but you supplied 'true'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'undefined' 1`] = `'baseFontSize'must be a positive number, but you supplied 'undefined'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'xxxx' 1`] = `'baseFontSize'must be a positive number, but you supplied 'xxxx'`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was ''.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '' 2`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was ''.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '[object Object]' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '[object Object]'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '444' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '444'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is 'false' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was 'false'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is 'true' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was 'true'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is 'undefined' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was 'undefined'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is 'xxxx' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was 'xxxx'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is '' 1`] = `'unit'must be one of 'em, rem, px' but was ''.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is '' 2`] = `'unit'must be one of 'em, rem, px' but was ''.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is '[object Object]' 1`] = `'unit'must be one of 'em, rem, px' but was '[object Object]'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is '444' 1`] = `'unit'must be one of 'em, rem, px' but was '444'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'false' 1`] = `'unit'must be one of 'em, rem, px' but was 'false'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'null' 1`] = `'unit'must be one of 'em, rem, px' but was 'null'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'true' 1`] = `'unit'must be one of 'em, rem, px' but was 'true'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'undefined' 1`] = `'unit'must be one of 'em, rem, px' but was 'undefined'.`;
+
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'xxxx' 1`] = `'unit'must be one of 'em, rem, px' but was 'xxxx'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '' 1`] = `'shouldSeparateQueries'must be a boolean but was ''.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '' 2`] = `'shouldSeparateQueries'must be a boolean but was ''.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '[object Object]' 1`] = `'shouldSeparateQueries'must be a boolean but was '[object Object]'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '444' 1`] = `'shouldSeparateQueries'must be a boolean but was '444'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'null' 1`] = `'shouldSeparateQueries'must be a boolean but was 'null'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'undefined' 1`] = `'shouldSeparateQueries'must be a boolean but was 'undefined'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'xxxx' 1`] = `'shouldSeparateQueries'must be a boolean but was 'xxxx'.`;
+
+exports[`configure() throws if invalid breakpoint set value is supplied 1`] = `You must supply a dimension as a unitless number but you supplied ["xxx"]`;
+
+exports[`configure() throws if no breakpoint sets are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
+
+exports[`configure() throws if no breakpoints are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied 'undefined'.`;
