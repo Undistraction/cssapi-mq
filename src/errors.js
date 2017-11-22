@@ -1,5 +1,10 @@
-import { keys, values } from 'ramda';
+import { keys, values, compose } from 'ramda';
 import { MEDIA_TYPES, BREAKPOINT_MAP_NAMES, UNITS } from './const';
+import { toCommaSeparatedList } from './utils';
+
+const keysToCommaSeparatedList = compose(toCommaSeparatedList, keys);
+const valuesToCommaSeparatedList = compose(toCommaSeparatedList, values);
+const objectToString = JSON.stringify;
 
 // Horrible hackery to get round issues with Babel extending builtins.
 // This is the only way to have a custom error.
@@ -27,7 +32,7 @@ export const throwError = message => {
 };
 
 export const emptyBreakpointMapErrorMessage = breakpointMap => `
-  You must supply at least one set of breakpoints to 'configure()', but the you supplied '${JSON.stringify(
+  You must supply at least one set of breakpoints to 'configure()', but the you supplied '${objectToString(
     breakpointMap
   )}'.`;
 
@@ -37,7 +42,7 @@ export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   }'. but you supplied: '${breakpointMap}'.`;
 
 export const emptyBreakpointSetErrorMessage = breakpointMapName =>
-  `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${JSON.stringify(
+  `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${objectToString(
     breakpointMapName
   )}' map.`;
 
@@ -51,7 +56,7 @@ export const missingBreakpointErrorMessage = (
 ) =>
   `There is no '${breakpointMapName}' breakpoint defined called '${
     name
-  }', only: '${keys(breakpointMaps)}' are defined.`;
+  }', only: '${keysToCommaSeparatedList(breakpointMaps)}' are defined.`;
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
   `You must supply two different breakpoints to 'widthBetween' but both were: '${
@@ -59,23 +64,25 @@ export const sameBreakpointsForBetweenErrorMessage = name =>
   }'.`;
 
 export const invalidMediaTypeErrorMessage = value =>
-  `'mediaType' must be one of '${values(MEDIA_TYPES)}' but you supplied: '${
-    value
-  }'.`;
+  `'mediaType' must be one of '${valuesToCommaSeparatedList(
+    MEDIA_TYPES
+  )}' but you supplied: '${value}'.`;
 
 export const invalidBreakpointSetValueErrorMessage = (message, breakpoints) =>
-  `${message} but you supplied ${JSON.stringify(breakpoints)}`;
+  `${message} but you supplied ${objectToString(breakpoints)}`;
 
 export const invalidBaseFontSizeErrorMessage = value =>
   `'baseFontSize' must be a number, but you supplied '${value}'`;
 
 export const invalidDefaultMediaTypeErrorMessage = value =>
-  `'defaultMediaType' must be one of '${values(MEDIA_TYPES)}' but was '${
-    value
-  }'.`;
+  `'defaultMediaType' must be one of '${valuesToCommaSeparatedList(
+    MEDIA_TYPES
+  )}' but was '${value}'.`;
 
 export const invalidUnitErrorMessage = value =>
-  `'unit' must be one of '${values(UNITS.DIMENSIONS)}' but was '${value}'.`;
+  `'unit' must be one of '${valuesToCommaSeparatedList(
+    UNITS.DIMENSIONS
+  )}' but was '${value}'.`;
 
 export const shouldSeparateQueriesErrorMessage = value =>
   `'shouldSeparateQueries' must be a boolean but was '${value}'.`;
