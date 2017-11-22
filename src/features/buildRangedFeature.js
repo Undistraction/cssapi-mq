@@ -1,7 +1,7 @@
-import { findIndex, compose, isNil } from 'ramda';
+import { findIndex, isNil } from 'ramda';
 import camelcase from 'camelcase';
-
 import { css } from 'styled-components';
+import { getValidatorForFeature } from '../validations';
 
 import { MEDIA_TYPES } from '../const';
 import {
@@ -16,11 +16,14 @@ import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
 import { renderQuery, renderQueryDefinition, renderFeature } from '../render';
 
-const buildFeatureItem = (name, parser, config) => breakpoint => {
-  return renderFeature(name, parser(breakpoint, config));
-};
+const buildFeatureItem = (name, parser, config) => breakpoint =>
+  renderFeature(name, parser(breakpoint, config));
 
-const nilValueAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
+const nilValueAndAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
+
+// const valueIsBreakpointKey = value => {
+//   !isNil(isNil) && !isNumber(value);
+// };
 
 export default (
   name,
@@ -33,6 +36,7 @@ export default (
   } = {}
 ) => {
   const camelisedName = camelcase(name);
+  const validator = getValidatorForFeature(name);
 
   // ---------------------------------------------------------------------------
   // UTILS
@@ -47,17 +51,25 @@ export default (
     return value;
   };
 
-  const parseValue = (
+  const outputValue = (
     value,
     { shouldSeparate = false, noArgs = false } = {}
   ) => {
     // If we only support named breakpoints use the value to look up a
     // breakpoint.
-    if (onlyNamedBreakpoints && !nilValueAllowedToPass(value, noArgs)) {
-      value = getBreakpointNamed(value);
+
+    if (nilValueAndAllowedToPass(value, noArgs)) {
+      return output(value, shouldSeparate);
     }
-    const outputValue = output(value, shouldSeparate);
-    return outputValue;
+
+    if (onlyNamedBreakpoints) {
+      value = getBreakpointNamed(value);
+      return output(value, shouldSeparate);
+    }
+
+    if (validator.validateExplicit(value)) {
+      return output(value, shouldSeparate);
+    }
   };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };
@@ -73,11 +85,11 @@ export default (
   // API
   // ---------------------------------------------------------------------------
 
-  const feature = buildFeatureItem(name, parseValue, {
+  const feature = buildFeatureItem(name, outputValue, {
     noArgs: allowNoArgument,
   });
-  const minFeature = buildFeatureItem(`min-${name}`, parseValue);
-  const maxFeature = buildFeatureItem(`max-${name}`, parseValue, {
+  const minFeature = buildFeatureItem(`min-${name}`, outputValue);
+  const maxFeature = buildFeatureItem(`max-${name}`, outputValue, {
     shouldSeparate: true,
   });
 

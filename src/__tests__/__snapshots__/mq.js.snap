@@ -826,11 +826,47 @@ exports[`height range features height() renders configured dimensionsUnits 1`] =
 
 exports[`height range features height() renders configured dimensionsUnits 2`] = `(height: 400px)`;
 
+exports[`height range features height() returns the correct feature when called with a valid explicit value of '-555px' 1`] = `(height: -34.6875em)`;
+
+exports[`height range features height() returns the correct feature when called with a valid explicit value of '0' 1`] = `(height: 0em)`;
+
+exports[`height range features height() returns the correct feature when called with a valid explicit value of '0px' 1`] = `(height: 0em)`;
+
+exports[`height range features height() returns the correct feature when called with a valid explicit value of '78' 1`] = `(height: 4.875em)`;
+
+exports[`height range features height() returns the correct feature when called with a valid explicit value of '163px' 1`] = `(height: 10.1875em)`;
+
+exports[`height range features height() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(height: 312.4375em)`;
+
 exports[`height range features height() returns the correct feature when called with existing breakpoint 1`] = `(height: 25em)`;
 
 exports[`height range features height() throws if 'height' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`height range features height() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid '-555px' 1`] = `There is no 'height' breakpoint defined called '-555px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid '0' 1`] = `There is no 'height' breakpoint defined called '0', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid '0px' 1`] = `There is no 'height' breakpoint defined called '0px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid '78' 1`] = `There is no 'height' breakpoint defined called '78', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid '163px' 1`] = `There is no 'height' breakpoint defined called '163px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid '4999' 1`] = `There is no 'height' breakpoint defined called '4999', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid 'null' 1`] = `There is no 'height' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'height' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features height() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`height range features maxHeight() doesn't separate values if not configured to do so 1`] = `(max-height: 25em)`;
 
@@ -838,11 +874,47 @@ exports[`height range features maxHeight() renders configured dimensionsUnits 1`
 
 exports[`height range features maxHeight() renders configured dimensionsUnits 2`] = `(max-height: 399px)`;
 
+exports[`height range features maxHeight() returns the correct feature when called with a valid explicit value of '-555px' 1`] = `(max-height: -34.688125em)`;
+
+exports[`height range features maxHeight() returns the correct feature when called with a valid explicit value of '0' 1`] = `(max-height: -0.000625em)`;
+
+exports[`height range features maxHeight() returns the correct feature when called with a valid explicit value of '0px' 1`] = `(max-height: -0.000625em)`;
+
+exports[`height range features maxHeight() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-height: 4.874375em)`;
+
+exports[`height range features maxHeight() returns the correct feature when called with a valid explicit value of '163px' 1`] = `(max-height: 10.186875em)`;
+
+exports[`height range features maxHeight() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(max-height: 312.436875em)`;
+
 exports[`height range features maxHeight() returns the correct feature when called with existing breakpoint 1`] = `(max-height: 24.999375em)`;
 
 exports[`height range features maxHeight() throws if 'height' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`height range features maxHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid '-555px' 1`] = `There is no 'height' breakpoint defined called '-555px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid '0' 1`] = `There is no 'height' breakpoint defined called '0', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid '0px' 1`] = `There is no 'height' breakpoint defined called '0px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid '78' 1`] = `There is no 'height' breakpoint defined called '78', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid '163px' 1`] = `There is no 'height' breakpoint defined called '163px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid '4999' 1`] = `There is no 'height' breakpoint defined called '4999', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid 'null' 1`] = `There is no 'height' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'height' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features maxHeight() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`height range features minHeight() doesn't separate values if not configured to do so 1`] = `(min-height: 25em)`;
 
@@ -850,11 +922,47 @@ exports[`height range features minHeight() renders configured dimensionsUnits 1`
 
 exports[`height range features minHeight() renders configured dimensionsUnits 2`] = `(min-height: 400px)`;
 
+exports[`height range features minHeight() returns the correct feature when called with a valid explicit value of '-555px' 1`] = `(min-height: -34.6875em)`;
+
+exports[`height range features minHeight() returns the correct feature when called with a valid explicit value of '0' 1`] = `(min-height: 0em)`;
+
+exports[`height range features minHeight() returns the correct feature when called with a valid explicit value of '0px' 1`] = `(min-height: 0em)`;
+
+exports[`height range features minHeight() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-height: 4.875em)`;
+
+exports[`height range features minHeight() returns the correct feature when called with a valid explicit value of '163px' 1`] = `(min-height: 10.1875em)`;
+
+exports[`height range features minHeight() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(min-height: 312.4375em)`;
+
 exports[`height range features minHeight() returns the correct feature when called with existing breakpoint 1`] = `(min-height: 25em)`;
 
 exports[`height range features minHeight() throws if 'height' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`height range features minHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid '-555px' 1`] = `There is no 'height' breakpoint defined called '-555px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid '0' 1`] = `There is no 'height' breakpoint defined called '0', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid '0px' 1`] = `There is no 'height' breakpoint defined called '0px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid '78' 1`] = `There is no 'height' breakpoint defined called '78', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid '163px' 1`] = `There is no 'height' breakpoint defined called '163px', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid '4999' 1`] = `There is no 'height' breakpoint defined called '4999', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid 'null' 1`] = `There is no 'height' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'height' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`height range features minHeight() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`height range queries aboveHeight() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-height: 68.75em) {
@@ -1394,13 +1502,43 @@ exports[`overflowInline() linear feature throws if no argument is supplied 1`] =
 
 exports[`resolution range features maxResolution() doesn't separate values if not configured to do so 1`] = `(max-resolution: 72dpi)`;
 
+exports[`resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '-555dpi' 1`] = `(max-resolution: NaNdpi)`;
+
+exports[`resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '0' 1`] = `(max-resolution: -1dpi)`;
+
+exports[`resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '0dpi' 1`] = `(max-resolution: NaNdpi)`;
+
+exports[`resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-resolution: 77dpi)`;
+
+exports[`resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '163dpi' 1`] = `(max-resolution: NaNdpi)`;
+
+exports[`resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(max-resolution: 4998dpi)`;
+
 exports[`resolution range features maxResolution() returns the correct feature when called with existing breakpoint 1`] = `(max-resolution: 71dpi)`;
 
 exports[`resolution range features maxResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features maxResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
+exports[`resolution range features maxResolution() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'resolution' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features maxResolution() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features maxResolution() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
 exports[`resolution range features minResolution() doesn't separate values if not configured to do so 1`] = `(min-resolution: 72dpi)`;
+
+exports[`resolution range features minResolution() returns the correct feature when called with a valid explicit value of '-555dpi' 1`] = `(min-resolution: -555dpidpi)`;
+
+exports[`resolution range features minResolution() returns the correct feature when called with a valid explicit value of '0' 1`] = `(min-resolution: 0dpi)`;
+
+exports[`resolution range features minResolution() returns the correct feature when called with a valid explicit value of '0dpi' 1`] = `(min-resolution: 0dpidpi)`;
+
+exports[`resolution range features minResolution() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-resolution: 78dpi)`;
+
+exports[`resolution range features minResolution() returns the correct feature when called with a valid explicit value of '163dpi' 1`] = `(min-resolution: 163dpidpi)`;
+
+exports[`resolution range features minResolution() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(min-resolution: 4999dpi)`;
 
 exports[`resolution range features minResolution() returns the correct feature when called with existing breakpoint 1`] = `(min-resolution: 72dpi)`;
 
@@ -1408,13 +1546,37 @@ exports[`resolution range features minResolution() throws if 'resolution' breakp
 
 exports[`resolution range features minResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
+exports[`resolution range features minResolution() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'resolution' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features minResolution() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features minResolution() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
 exports[`resolution range features resolution() doesn't separate values if not configured to do so 1`] = `(resolution: 72dpi)`;
+
+exports[`resolution range features resolution() returns the correct feature when called with a valid explicit value of '-555dpi' 1`] = `(resolution: -555dpidpi)`;
+
+exports[`resolution range features resolution() returns the correct feature when called with a valid explicit value of '0' 1`] = `(resolution: 0dpi)`;
+
+exports[`resolution range features resolution() returns the correct feature when called with a valid explicit value of '0dpi' 1`] = `(resolution: 0dpidpi)`;
+
+exports[`resolution range features resolution() returns the correct feature when called with a valid explicit value of '78' 1`] = `(resolution: 78dpi)`;
+
+exports[`resolution range features resolution() returns the correct feature when called with a valid explicit value of '163dpi' 1`] = `(resolution: 163dpidpi)`;
+
+exports[`resolution range features resolution() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(resolution: 4999dpi)`;
 
 exports[`resolution range features resolution() returns the correct feature when called with existing breakpoint 1`] = `(resolution: 72dpi)`;
 
 exports[`resolution range features resolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 
 exports[`resolution range features resolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features resolution() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'resolution' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features resolution() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`resolution range features resolution() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-resolution: 300dpi) {
@@ -1710,6 +1872,18 @@ exports[`width range features maxWidth() renders configured dimensionsUnits 1`] 
 
 exports[`width range features maxWidth() renders configured dimensionsUnits 2`] = `(max-width: 399px)`;
 
+exports[`width range features maxWidth() returns the correct feature when called with a valid explicit value of '-555px' 1`] = `(max-width: -34.688125em)`;
+
+exports[`width range features maxWidth() returns the correct feature when called with a valid explicit value of '0' 1`] = `(max-width: -0.000625em)`;
+
+exports[`width range features maxWidth() returns the correct feature when called with a valid explicit value of '0px' 1`] = `(max-width: -0.000625em)`;
+
+exports[`width range features maxWidth() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-width: 4.874375em)`;
+
+exports[`width range features maxWidth() returns the correct feature when called with a valid explicit value of '163px' 1`] = `(max-width: 10.186875em)`;
+
+exports[`width range features maxWidth() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(max-width: 312.436875em)`;
+
 exports[`width range features maxWidth() returns the correct feature when called with existing breakpoint 1`] = `(max-width: 24.999375em)`;
 
 exports[`width range features maxWidth() throws if 'width' breakpoint map doesn't exist 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
@@ -1734,11 +1908,29 @@ exports[`width range features maxWidth() throws if supplied breakpoint value is 
 
 exports[`width range features maxWidth() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
+exports[`width range features maxWidth() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'width' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features maxWidth() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
 exports[`width range features minWidth() doesn't separate values if not configured to do so 1`] = `(min-width: 25em)`;
 
 exports[`width range features minWidth() renders configured dimensionsUnits 1`] = `(min-width: 25rem)`;
 
 exports[`width range features minWidth() renders configured dimensionsUnits 2`] = `(min-width: 400px)`;
+
+exports[`width range features minWidth() returns the correct feature when called with a valid explicit value of '-555px' 1`] = `(min-width: -34.6875em)`;
+
+exports[`width range features minWidth() returns the correct feature when called with a valid explicit value of '0' 1`] = `(min-width: 0em)`;
+
+exports[`width range features minWidth() returns the correct feature when called with a valid explicit value of '0px' 1`] = `(min-width: 0em)`;
+
+exports[`width range features minWidth() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-width: 4.875em)`;
+
+exports[`width range features minWidth() returns the correct feature when called with a valid explicit value of '163px' 1`] = `(min-width: 10.1875em)`;
+
+exports[`width range features minWidth() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(min-width: 312.4375em)`;
 
 exports[`width range features minWidth() returns the correct feature when called with existing breakpoint 1`] = `(min-width: 25em)`;
 
@@ -1764,11 +1956,29 @@ exports[`width range features minWidth() throws if supplied breakpoint value is 
 
 exports[`width range features minWidth() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
+exports[`width range features minWidth() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'width' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features minWidth() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
 exports[`width range features width() doesn't separate values if not configured to do so 1`] = `(width: 25em)`;
 
 exports[`width range features width() renders configured dimensionsUnits 1`] = `(width: 25rem)`;
 
 exports[`width range features width() renders configured dimensionsUnits 2`] = `(width: 400px)`;
+
+exports[`width range features width() returns the correct feature when called with a valid explicit value of '-555px' 1`] = `(width: -34.6875em)`;
+
+exports[`width range features width() returns the correct feature when called with a valid explicit value of '0' 1`] = `(width: 0em)`;
+
+exports[`width range features width() returns the correct feature when called with a valid explicit value of '0px' 1`] = `(width: 0em)`;
+
+exports[`width range features width() returns the correct feature when called with a valid explicit value of '78' 1`] = `(width: 4.875em)`;
+
+exports[`width range features width() returns the correct feature when called with a valid explicit value of '163px' 1`] = `(width: 10.1875em)`;
+
+exports[`width range features width() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(width: 312.4375em)`;
 
 exports[`width range features width() returns the correct feature when called with existing breakpoint 1`] = `(width: 25em)`;
 
@@ -1793,6 +2003,12 @@ exports[`width range features width() throws if supplied breakpoint value is inv
 exports[`width range features width() throws if supplied breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`width range features width() throws if supplied breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied explicit breakpoint value is invalid 'null' 1`] = `There is no 'width' breakpoint defined called 'null', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied explicit breakpoint value is invalid 'undefined' 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
+
+exports[`width range features width() throws if supplied explicit breakpoint value is invalid 'xxxx' 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`width range queries aboveWidth() returns the correct query for breakpoint 'large' 1`] = `
 @media screen and (min-width: 68.75em) {

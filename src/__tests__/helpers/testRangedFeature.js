@@ -3,7 +3,12 @@ import runTests from './runTests';
 
 export default (
   name,
-  { tests = [], validExplicitValues = [], invalidNonExplicitValues = [] } = {}
+  {
+    tests = [],
+    validExplicitValues = [],
+    invalidNonExplicitValues = [],
+    invalidExplicitValues = [],
+  } = {}
 ) => {
   const camelisedName = camelcase(name);
   describe(`${name}`, () => {
@@ -15,22 +20,25 @@ export default (
 
       describe(`${valueMethod}()`, () => {
         runTests(tests.value, camelisedName, valueMethod, {
-          validExplicitValues,
           invalidNonExplicitValues,
+          invalidExplicitValues,
+          validExplicitValues,
         });
       });
 
       describe(`${minValueMethod}()`, () => {
         runTests(tests.minValue, camelisedName, minValueMethod, {
-          validExplicitValues,
           invalidNonExplicitValues,
+          invalidExplicitValues,
+          validExplicitValues,
         });
       });
 
       describe(`${maxValueMethod}()`, () => {
         runTests(tests.maxValue, camelisedName, maxValueMethod, {
-          validExplicitValues,
           invalidNonExplicitValues,
+          invalidExplicitValues,
+          validExplicitValues,
         });
       });
     });

@@ -1,4 +1,4 @@
-import { __, divide, contains } from 'ramda';
+import { __, divide, multiply, contains } from 'ramda';
 import { UNITS, SEPARATOR_VALUES } from '../const';
 
 export const separatorValueForUnit = unit => SEPARATOR_VALUES[unit];
@@ -10,5 +10,14 @@ export const unitIsRemOrEm = contains(__, [
   UNITS.DIMENSIONS.REM,
 ]);
 
+export const pxToRemOrEmValue = (value, baseFontSize) =>
+  divide(value, baseFontSize);
+
+export const remOrEmToPxValue = (value, baseFontSize) =>
+  multiply(value, baseFontSize);
+
 export const toDimensionOutput = (unit, baseFontSize, value) =>
-  appendUnit(unitIsRemOrEm(unit) ? divide(value, baseFontSize) : value, unit);
+  appendUnit(
+    unitIsRemOrEm(unit) ? pxToRemOrEmValue(value, baseFontSize) : value,
+    unit
+  );

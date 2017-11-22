@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mediaTypes returns the correct default media type if called with no arguments 1`] = `screen`;
+
+exports[`mediaTypes returns the supplied mediaTypes for '' 1`] = ``;
+
+exports[`mediaTypes returns the supplied mediaTypes for 'all' 1`] = `all`;
+
+exports[`mediaTypes returns the supplied mediaTypes for 'print' 1`] = `print`;
+
+exports[`mediaTypes returns the supplied mediaTypes for 'screen' 1`] = `screen`;
+
+exports[`mediaTypes returns the supplied mediaTypes for 'speech' 1`] = `speech`;
+
+exports[`mediaTypes supports multiple values 1`] = `screen, speech,`;
+
+exports[`mediaTypes throws if argument is not valid media type 1`] = `'mediaType'must be one of 'all, print, screen, speech, ' but you supplied: 'xxxx'.`;

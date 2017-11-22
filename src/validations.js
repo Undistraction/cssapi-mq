@@ -43,7 +43,7 @@ const isBreakpointSetNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
 const includesValue = list => complement(contains(__, values(list)));
 
-const validatorsByFeature = {
+export const validatorsByFeature = {
   width: dimensionValidator,
   height: dimensionValidator,
   resolution: resolutionValidator,
@@ -53,9 +53,20 @@ const validatorsByFeature = {
   monochrome: monochromeValidator,
 };
 
+// Validate a map of breakpoint sets.
+const breakpointSetNamesAreValid = all(t => isBreakpointSetNameValid(t));
+
+// -----------------------------------------------------------------------------
+// Exports
+// -----------------------------------------------------------------------------
+
+export const getValidatorForFeature = feature => validatorsByFeature[feature];
+
 const validateBreakpointSetValues = (name, breakpointSet) => {
   const validator = validatorsByFeature[name];
-  if (!compose(all(validator.validate), values)(breakpointSet))
+  if (
+    !compose(all(getValidatorForFeature(name).validate), values)(breakpointSet)
+  )
     throwError(
       invalidBreakpointSetValueErrorMessage(
         validator.message,
@@ -64,19 +75,12 @@ const validateBreakpointSetValues = (name, breakpointSet) => {
     );
 };
 
-// Validate a map of breakpoint sets.
-const breakpointSetNamesAreValid = all(t => isBreakpointSetNameValid(t));
-
 // Validate a set of breakpoints.
 const validateBreakpointSet = (name, breakpointSet) => {
   if (!isPopulatedObject(breakpointSet))
     throwError(emptyBreakpointSetErrorMessage(name));
   validateBreakpointSetValues(name, breakpointSet);
 };
-
-// -----------------------------------------------------------------------------
-// Exports
-// -----------------------------------------------------------------------------
 
 export const areMediaTypesValid = all(t => isMediaTypeValid(t));
 

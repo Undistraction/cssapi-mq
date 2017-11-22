@@ -1,5 +1,10 @@
 import { __, partial, always, subtract, when } from 'ramda';
-import { toDimensionOutput, separatorValueForUnit } from '../utils/units';
+import {
+  toDimensionOutput,
+  separatorValueForUnit,
+  remOrEmToPxValue,
+  unitIsRemOrEm,
+} from '../utils/units';
 import { UNITS } from '../const';
 
 const toUnit = (dimensionsUnit, baseFontSize) =>
@@ -18,8 +23,18 @@ export default (
     shouldSeparateQueries = true,
   } = {}
 ) => (value, shouldSeparate) => {
+  const captures = /^(-?\d+(?:.\d+)?)(rem|em|px)?$/.exec(value);
+  const valueOnly = captures[1];
+  const unit = captures[2];
+
+  let unitlessValue = captures ? valueOnly : value;
+
+  if (captures && unitIsRemOrEm(unit)) {
+    unitlessValue = remOrEmToPxValue(valueOnly);
+  }
+
   const preparedValue = prepareUnitlessValue(
-    value,
+    unitlessValue,
     shouldSeparateQueries && shouldSeparate,
     dimensionsUnit
   );
