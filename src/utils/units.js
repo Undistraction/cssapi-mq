@@ -1,9 +1,21 @@
-import { __, divide, multiply, contains } from 'ramda';
+import {
+  __,
+  divide,
+  multiply,
+  contains,
+  join,
+  view,
+  compose,
+  lensIndex,
+  isNil,
+  none,
+  complement,
+} from 'ramda';
 import { UNITS, SEPARATOR_VALUES } from '../const';
 
 export const separatorValueForUnit = unit => SEPARATOR_VALUES[unit];
 
-export const appendUnit = (value, unit) => `${value}${unit}`;
+export const appendUnit = (value, unit) => join('', [value, unit]);
 
 export const unitIsRemOrEm = contains(__, [
   UNITS.DIMENSIONS.EM,
@@ -22,27 +34,27 @@ export const toDimensionOutput = (unit, baseFontSize, value) =>
     unit
   );
 
-export const numericPartOfUnitedNumber = value => {
+export const elementsOfUnitedNumber = value => {
   const captures = /^(-?\d+(?:.\d+)?)([a-z]+)?$/.exec(value);
-  if (!captures || !captures[1]) {
+  if (none(complement(isNil), [captures, captures[1], captures[2]])) {
     throw new Error(`You can't get the numeric portion of '${value}'`);
   }
-  return Number(captures[1]);
+  return [Number(captures[1]), captures[2]];
 };
 
-export const unitPartOfUnitedNumber = value => {
-  const captures = /^(-?\d+(?:.\d+)?)([a-z]+)?$/.exec(value);
-  if (!captures || !captures[2]) {
-    throw new Error(`You can't get the unit portion of '${value}'`);
-  }
-  return captures[2];
-};
+export const numericPartOfUnitedNumber = compose(
+  view(lensIndex(0)),
+  elementsOfUnitedNumber
+);
+
+export const unitPartOfUnitedNumber = compose(
+  view(lensIndex(1)),
+  elementsOfUnitedNumber
+);
 
 export const unitedDimensionToUnitlessPixelValue = (value, baseFontSize) => {
-  const number = numericPartOfUnitedNumber(value);
-  const unit = unitPartOfUnitedNumber(value);
-  if (unitIsRemOrEm(unit)) return remOrEmToPxValue(number, baseFontSize);
-  return number;
+  const [number, unit] = elementsOfUnitedNumber(value);
+  return unitIsRemOrEm(unit) ? remOrEmToPxValue(number, baseFontSize) : number;
 };
 
 export const unitedResolutionToUnitlessValue = value =>

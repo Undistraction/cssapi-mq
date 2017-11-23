@@ -68,7 +68,7 @@ export default (
       return output(value, shouldSeparate);
     }
 
-    if (validator.validateExplicit(value)) {
+    if (validator.validate(value)) {
       return output(value, shouldSeparate);
     }
   };

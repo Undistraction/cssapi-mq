@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tweak() throws if invalid breakpoint value is supplied 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied ["xxx"]`;
+exports[`tweak() throws if invalid breakpoint value is supplied 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied ["xxx"]`;
 
 exports[`tweak() throws if no breakpoint sets are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 

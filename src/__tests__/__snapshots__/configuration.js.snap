@@ -53,125 +53,125 @@ exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set 
 
 exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["xxxx"]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [""]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [""]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '' 2`] = `You must supply 'colorIndex' as a postive integer but you supplied [[]]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '' 2`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [[]]`;
 
 exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '[object Object]' 1`] = `
-You must supply 'colorIndex' as a postive integer but you supplied [ {
+You must supply 'colorIndex' as zero or a positive integer but you supplied [ {
 }
 
 ]
 `;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-0.4]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-0.4]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-6]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-6' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-6]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-90' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-90]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-90' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-90]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-99.8]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-99.8]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [0.6]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [0.6]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [44.7]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [44.7]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied ["xxxx"]`;
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied ["xxxx"]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [""]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [""]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '' 2`] = `You must supply 'colorIndex' as a postive integer but you supplied [[]]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '' 2`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [[]]`;
 
 exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '[object Object]' 1`] = `
-You must supply 'colorIndex' as a postive integer but you supplied [ {
+You must supply 'colorIndex' as zero or a positive integer but you supplied [ {
 }
 
 ]
 `;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-0.4]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-0.4]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-6]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-6' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-6]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-90' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-90]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-90' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-90]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-99.8]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [-99.8]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [0.6]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [0.6]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [44.7]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [44.7]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied ["xxxx"]`;
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'colorIndex' as zero or a positive integer but you supplied ["xxxx"]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [""]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [""]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '' 2`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [[]]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '' 2`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [[]]`;
 
 exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '[object Object]' 1`] = `
-You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [ {
+You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [ {
 }
 
 ]
 `;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-0.4' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-0.4]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-0.4' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-0.4]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-6' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-6]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-6' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-6]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-90' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-90]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-90' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-90]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-99.8' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-99.8]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-99.8' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-99.8]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '0' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [0]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '0' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [0]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'NaN' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'NaN' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'false' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [false]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'false' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [false]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'null' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'null' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'true' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [true]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'true' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [true]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'undefined' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'undefined' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied ["xxxx"]`;
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied ["xxxx"]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [""]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [""]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '' 2`] = `You must supply 'monochrome' as a postive integer but you supplied [[]]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '' 2`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [[]]`;
 
 exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '[object Object]' 1`] = `
-You must supply 'monochrome' as a postive integer but you supplied [ {
+You must supply 'monochrome' as zero or a postive integer but you supplied [ {
 }
 
 ]
 `;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-0.4]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [-0.4]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-6' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-6]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-6' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [-6]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-90' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-90]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-90' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [-90]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-99.8]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [-99.8]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [0.6]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [0.6]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [44.7]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [44.7]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'monochrome' as a postive integer but you supplied ["xxxx"]`;
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'monochrome' as zero or a postive integer but you supplied ["xxxx"]`;
 
 exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '' 1`] = `You must supply 'resolution' as a positive number but you supplied [""]`;
 
@@ -202,38 +202,38 @@ exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set v
 
 exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'resolution' as a positive number but you supplied ["xxxx"]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [""]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [""]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '' 2`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [[]]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '' 2`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [[]]`;
 
 exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '[object Object]' 1`] = `
-You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [ {
+You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [ {
 }
 
 ]
 `;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-0.4' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-0.4]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-0.4' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-0.4]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-6' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-6]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-6' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-6]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-90' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-90]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-90' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-90]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-99.8' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-99.8]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-99.8' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [-99.8]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '0' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [0]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '0' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [0]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'NaN' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'NaN' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'false' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [false]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'false' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [false]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'null' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'null' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'true' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [true]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'true' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [true]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'undefined' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'undefined' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied [null]`;
 
-exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied ["xxxx"]`;
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied ["xxxx"]`;
 
 exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `
 @media screen and (max-height: 39.999em) {

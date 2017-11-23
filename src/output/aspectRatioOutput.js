@@ -1,1 +1,3 @@
-export default () => value => value;
+import { identity } from 'ramda';
+
+export default () => identity;

@@ -6,10 +6,6 @@ import {
 
 export default {
   message:
-    'You must supply a dimension as either a unitless number of an em, rem or pixel number',
-  validate: isPositiveNumber,
-  validateExplicit: either(
-    isPositiveNumber,
-    isPositiveNumberWithDimensionsUnit
-  ),
+    "You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px",
+  validate: either(isPositiveNumber, isPositiveNumberWithDimensionsUnit),
 };

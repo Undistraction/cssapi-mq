@@ -71,9 +71,7 @@ const validateBreakpointSetValues = (name, breakpointSet) => {
   const validator = validatorsByFeature[name];
 
   if (
-    !compose(all(getValidatorForFeature(name).validateExplicit), values)(
-      breakpointSet
-    )
+    !compose(all(getValidatorForFeature(name).validate), values)(breakpointSet)
   )
     throwError(
       invalidBreakpointSetValueErrorMessage(

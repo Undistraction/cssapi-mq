@@ -43,15 +43,12 @@ export const isPositiveNumberWithPixelUnit = both(
 
 export const isNumberWithDimensionsUnit = isNumberWithUnit(['rem', 'em', 'px']);
 export const isNumberWithResolutionUnit = isNumberWithUnit(['dpi']);
+
 export const isPositiveNumberWithResolutionUnit = both(
   isNumberWithResolutionUnit,
   compose(isPositiveNumber, numericPartOfUnitedNumber)
 );
 export const isPositiveNumberWithDimensionsUnit = both(
   isNumberWithDimensionsUnit,
-  compose(isPositiveNumber, numericPartOfUnitedNumber)
-);
-export const isPositiveNumberWithResulutionUnit = both(
-  isNumberWithResolutionUnit,
   compose(isPositiveNumber, numericPartOfUnitedNumber)
 );
