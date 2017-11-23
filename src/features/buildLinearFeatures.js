@@ -1,5 +1,5 @@
 import { mergeAll, map } from 'ramda';
-import { LINEAR_FEATURES } from '../const';
+import { LINEAR_FEATURES } from '../features';
 
 import buildFeature from '../features/buildFeature';
 

@@ -1,5 +1,6 @@
 import { keys, values, compose } from 'ramda';
-import { MEDIA_TYPES, BREAKPOINT_MAP_NAMES, UNITS } from './const';
+import { MEDIA_TYPES, UNITS } from './const';
+import { rangedFeatureNames } from './features';
 import { toCommaSeparatedList } from './utils';
 
 const keysToCommaSeparatedList = compose(toCommaSeparatedList, keys);
@@ -38,7 +39,7 @@ export const emptyBreakpointMapErrorMessage = breakpointMap => `
 
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   `You must supply valid breakpoint map keys. Valid values are: '${
-    BREAKPOINT_MAP_NAMES
+    rangedFeatureNames
   }'. but you supplied: '${breakpointMap}'.`;
 
 export const emptyBreakpointSetErrorMessage = breakpointMapName =>

@@ -13,7 +13,8 @@ import {
   flip,
   isEmpty,
 } from 'ramda';
-import { MEDIA_TYPES, UNITS, BREAKPOINT_MAP_NAMES } from './const';
+import { MEDIA_TYPES, UNITS } from './const';
+import { rangedFeatureNames } from './features';
 import { ensureArray } from './utils';
 
 import { isNumber, isBoolean, isPopulatedObject } from './utils/value';
@@ -39,7 +40,7 @@ import monochromeValidator from './validators/monochromeValidator';
 
 const isBaseFontSizeValid = both(isNumber, gt(__, 0));
 const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
-const isBreakpointSetNameValid = contains(__, values(BREAKPOINT_MAP_NAMES));
+const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
 const areBreakpointSetNamesValid = all(t => isBreakpointSetNameValid(t));
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
 const doesListIncludeValue = list => complement(contains(__, values(list)));
