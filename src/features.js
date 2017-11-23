@@ -45,19 +45,19 @@ export const LINEAR_FEATURES = [
     allowNoArgument: true,
   },
   {
-    name: 'overflowBlock',
+    name: 'overflow-block',
     validValues: OVERFLOW_BLOCK,
   },
   {
-    name: 'overflowInline',
+    name: 'overflow-inline',
     validValues: OVERFLOW_INLINE,
   },
   {
-    name: 'colorGamut',
+    name: 'color-gamut',
     validValues: COLOR_GAMUT,
   },
   {
-    name: 'displayMode',
+    name: 'display-mode',
     validValues: DISPLAY_MODE,
   },
 ];

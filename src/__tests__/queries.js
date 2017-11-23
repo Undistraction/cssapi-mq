@@ -1,5 +1,6 @@
 import testRangedQueries from './helpers/testRangedQueries';
 import cssSerialiser from './helpers/cssSerialiser';
+import { RANGED_FEATURES } from '../features';
 
 import {
   queryThrowsIfMissingBreakpoint,
@@ -11,181 +12,23 @@ import {
 
 expect.addSnapshotSerializer(cssSerialiser);
 
-testRangedQueries('width', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
-testRangedQueries('height', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
-testRangedQueries('resolution', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
-testRangedQueries('aspect-ratio', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
+const singleArgumentSharedTest = [
+  queryThrowsIfMissingBreakpoint,
+  queryReturnsCorrectValueSingleBreakpoint,
+];
 
-testRangedQueries('color', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
-
-testRangedQueries('color-index', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
-
-testRangedQueries('monochrome', {
-  tests: {
-    above: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    below: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    between: [
-      queryReturnsCorrectValueWithTwoBreakpoints,
-      queryThrowsIfMissingEitherBreakpoint,
-      queryThrowsWithBothBreakpointsTheSame,
-    ],
-    at: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-    atBreakpoint: [
-      queryThrowsIfMissingBreakpoint,
-      queryReturnsCorrectValueSingleBreakpoint,
-    ],
-  },
-});
+for (const feature of RANGED_FEATURES) {
+  testRangedQueries(feature.name, {
+    tests: {
+      above: [...singleArgumentSharedTest],
+      below: [...singleArgumentSharedTest],
+      between: [
+        queryReturnsCorrectValueWithTwoBreakpoints,
+        queryThrowsIfMissingEitherBreakpoint,
+        queryThrowsWithBothBreakpointsTheSame,
+      ],
+      at: [...singleArgumentSharedTest],
+      atBreakpoint: [...singleArgumentSharedTest],
+    },
+  });
+}

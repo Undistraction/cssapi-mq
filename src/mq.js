@@ -10,6 +10,10 @@ import {
   validateBreakpoints,
 } from './validations';
 
+import { isNumberWithDimensionsUnit } from './utils/value';
+
+import { unitedDimensionToUnitlessPixelValue } from './utils/units';
+
 import { MEDIA_TYPES, UNITS } from './const';
 
 const defaultConfig = {
@@ -30,7 +34,13 @@ const configure = (breakpoints, config = {}) => {
   // Don't expand config vars as we need to pass a single config object around.
   const configWithDefaults = merge(defaultConfig, config);
   validateConfigArgs(breakpoints, configWithDefaults);
-
+  // Ensure we have a unitless value stored for baseFontSize
+  if (isNumberWithDimensionsUnit(configWithDefaults.baseFontSize)) {
+    configWithDefaults.baseFontSize = unitedDimensionToUnitlessPixelValue(
+      configWithDefaults.baseFontSize,
+      16
+    );
+  }
   // ---------------------------------------------------------------------------
   // API
   // ---------------------------------------------------------------------------

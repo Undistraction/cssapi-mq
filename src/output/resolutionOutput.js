@@ -1,5 +1,10 @@
 import { __, always, subtract, when } from 'ramda';
-import { separatorValueForUnit, appendUnit } from '../utils/units';
+import {
+  separatorValueForUnit,
+  appendUnit,
+  unitedResolutionToUnitlessValue,
+} from '../utils/units';
+import { isNumberWithResolutionUnit } from '../utils/value';
 import { UNITS } from '../const';
 
 const prepareUnitlessValue = (value, shouldSeparateQueries, unit) =>
@@ -12,6 +17,10 @@ export default ({ shouldSeparateQueries = true } = {}) => (
   value,
   shouldSeparate
 ) => {
+  if (isNumberWithResolutionUnit(value)) {
+    value = unitedResolutionToUnitlessValue(value);
+  }
+
   const preparedValue = prepareUnitlessValue(
     value,
     shouldSeparateQueries && shouldSeparate,

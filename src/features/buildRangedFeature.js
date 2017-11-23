@@ -36,7 +36,8 @@ export default (
   } = {}
 ) => {
   const camelisedName = camelcase(name);
-  const validator = getValidatorForFeature(name);
+
+  const validator = getValidatorForFeature(camelisedName);
 
   // ---------------------------------------------------------------------------
   // UTILS

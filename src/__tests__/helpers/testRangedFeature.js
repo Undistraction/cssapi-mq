@@ -8,6 +8,7 @@ export default (
     validExplicitValues = [],
     invalidNonExplicitValues = [],
     invalidExplicitValues = [],
+    allowNoArgument = false,
   } = {}
 ) => {
   const camelisedName = camelcase(name);
@@ -23,6 +24,7 @@ export default (
           invalidNonExplicitValues,
           invalidExplicitValues,
           validExplicitValues,
+          allowNoArgument,
         });
       });
 

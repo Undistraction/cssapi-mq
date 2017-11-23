@@ -1,11 +1,33 @@
+import { reject, compose, toString, map, range, zipObj } from 'ramda';
+import camelcase from 'camelcase';
 import styledMQ from '../mq';
 import cssSerialiser from './helpers/cssSerialiser';
 import {
   mqWithValidBreakpointsForRange,
   validBreakpointsForRange,
+  mqWithNoBreakpoints,
+  invalidValues,
+  genericStrings,
+  genericValues,
+  junkValues,
+  genericNumbers,
+  genericPositiveNumbers,
+  positivePixelValues,
+  negativePixelValuesOrZero,
 } from './data';
+import featureValues from './featureValues';
+import { rangedFeatureNames } from '../features';
 
 expect.addSnapshotSerializer(cssSerialiser);
+
+const breakpointNames = compose(map(toString), range(1))(50);
+
+const validBreakpointValuesForFeature = name => ({
+  [name]: zipObj(
+    breakpointNames,
+    featureValues(camelcase(name)).validExplicitValues
+  ),
+});
 
 describe('configure()', () => {
   it('throws if no breakpoints are supplied', () => {
@@ -16,14 +38,33 @@ describe('configure()', () => {
     expect(() => styledMQ.configure({})).toThrowErrorMatchingSnapshot();
   });
 
-  it('throws if invalid breakpoint set value is supplied', () => {
-    expect(() =>
-      styledMQ.configure({ width: { small: 'xxx' } })
-    ).toThrowErrorMatchingSnapshot();
+  it("doesn't throw with default configuration", () => {
+    expect(() => mqWithNoBreakpoints().not.toThrow());
   });
 
-  it("doesn't throw with default configuration", () => {
-    expect(() => mqWithValidBreakpointsForRange('width').not.toThrow());
+  describe('breakpoints', () => {
+    for (const featureName of rangedFeatureNames) {
+      it("doesn't throw if breakpoint set values are valid", () => {
+        expect(() =>
+          styledMQ.configure(validBreakpointValuesForFeature(featureName))
+        ).not.toThrow();
+      });
+    }
+
+    for (const featureName of rangedFeatureNames) {
+      const invalidFeatureValues = featureValues(camelcase(featureName))
+        .invalidExplicitValues;
+
+      for (const invalidValue of invalidFeatureValues) {
+        it(`throws if invalid '${
+          featureName
+        }' breakpoint set value is supplied of '${invalidValue}'`, () => {
+          expect(() =>
+            styledMQ.configure({ [featureName]: { a: invalidValue } })
+          ).toThrowErrorMatchingSnapshot();
+        });
+      }
+    }
   });
 
   describe('config object', () => {
@@ -47,19 +88,12 @@ describe('configure()', () => {
       });
 
       const invalidBaseFontSizes = [
-        '',
-        true,
-        false,
-        null,
-        undefined,
-        -20,
-        'xxxx',
+        ...invalidValues,
+        ...negativePixelValuesOrZero,
       ];
 
       for (const value of invalidBaseFontSizes) {
-        it(`throws if 'baseFontSize' is not a positive number '${
-          value
-        }'`, () => {
+        it(`throws if 'baseFontSize' is '${value}'`, () => {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange('width'), {
               baseFontSize: value,
@@ -68,7 +102,10 @@ describe('configure()', () => {
         });
       }
 
-      const validBaseFontSizes = [1, 33.4, 150];
+      const validBaseFontSizes = [
+        ...genericPositiveNumbers,
+        ...positivePixelValues,
+      ];
 
       for (const value of validBaseFontSizes) {
         it(`doesn't throw an error if 'baseFontSize' is '${value}'`, () => {
@@ -82,16 +119,7 @@ describe('configure()', () => {
     });
 
     describe('defaultMediaType', () => {
-      const invalidDefaultMediaTypes = [
-        '',
-        true,
-        false,
-        undefined,
-        'xxxx',
-        444,
-        {},
-        [],
-      ];
+      const invalidDefaultMediaTypes = reject(v => v === null, genericValues);
       for (const value of invalidDefaultMediaTypes) {
         it(`throws if 'defaultMediaType' is '${value}'`, () => {
           expect(() =>
@@ -115,17 +143,7 @@ describe('configure()', () => {
     });
 
     describe('dimensionsUnit', () => {
-      const invalidDimensionsUnits = [
-        '',
-        true,
-        false,
-        null,
-        undefined,
-        'xxxx',
-        444,
-        {},
-        [],
-      ];
+      const invalidDimensionsUnits = [...invalidValues, ...genericStrings];
       for (const value of invalidDimensionsUnits) {
         it(`throws if 'dimensionsUnit' is '${value}'`, () => {
           const config = { dimensionsUnit: value };
@@ -148,13 +166,9 @@ describe('configure()', () => {
 
     describe('shouldSeparateQueries', () => {
       const invalidShouldSeparateQueriesValues = [
-        '',
-        null,
-        undefined,
-        'xxxx',
-        444,
-        {},
-        [],
+        ...junkValues,
+        ...genericNumbers,
+        genericStrings,
       ];
 
       for (const value of invalidShouldSeparateQueriesValues) {
@@ -168,7 +182,7 @@ describe('configure()', () => {
 
       const validShouldSeparateQueriesValues = [true, false];
       for (const value of validShouldSeparateQueriesValues) {
-        it(`doesn't throw an error if 'shouldSeparateQueries' is a '${
+        it(`doesn't throw an error if 'shouldSeparateQueries' isn't  a '${
           value
         }'`, () => {
           const config = { shouldSeparateQueries: value };

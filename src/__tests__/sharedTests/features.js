@@ -1,14 +1,23 @@
-// Register serializer for use by Jest in generating snapshots. Without a serializer the snapshots are difficult to read.
+import { reject, prepend } from 'ramda';
 import cssSerialiser from '../helpers/cssSerialiser';
-import { mqWithValidBreakpointsForRange, mqWithNoBreakpoints } from '../data';
+import {
+  mqWithValidBreakpointsForRange,
+  mqWithNoBreakpoints,
+  invalidAspectRatioValues,
+} from '../data';
 
 expect.addSnapshotSerializer(cssSerialiser);
+
+const removeNull = reject(v => v === null);
 
 export const featureThrowsForInvalidBreakpoint = (
   name,
   method,
-  { invalidNonExplicitValues } = {}
+  { invalidNonExplicitValues, allowNoArgument = false } = {}
 ) => {
+  if (allowNoArgument)
+    invalidNonExplicitValues = removeNull(invalidAspectRatioValues);
+
   for (const value of invalidNonExplicitValues) {
     it(`throws if supplied breakpoint value is invalid '${value}'`, () => {
       expect(() =>
@@ -45,8 +54,11 @@ export const featureReturnsCorrectValueForBreakpoint = (name, method) => {
 export const featureThrowsForInvalidExplicitBreakpoint = (
   name,
   method,
-  { invalidExplicitValues } = {}
+  { invalidExplicitValues, allowNoArgument = false } = {}
 ) => {
+  if (allowNoArgument)
+    invalidExplicitValues = removeNull(invalidAspectRatioValues);
+
   for (const value of invalidExplicitValues) {
     it(`throws if supplied explicit breakpoint value is invalid '${
       value
@@ -61,8 +73,9 @@ export const featureThrowsForInvalidExplicitBreakpoint = (
 export const featureReturnsCorrectValueForValidExpicitValue = (
   name,
   method,
-  { validExplicitValues } = {}
+  { validExplicitValues, allowNoArgument = false } = {}
 ) => {
+  if (allowNoArgument) validExplicitValues = prepend(null, validExplicitValues);
   for (const value of validExplicitValues) {
     it(`returns the correct feature when called with a valid explicit value of '${
       value
@@ -74,6 +87,18 @@ export const featureReturnsCorrectValueForValidExpicitValue = (
       ).toMatchSnapshot();
     });
   }
+};
+
+export const featureReturnsCorrectValueForValidExpicitValueIncludeNull = (
+  name,
+  method,
+  { validExplicitValues } = {}
+) => {
+  featureReturnsCorrectValueForValidExpicitValue(
+    name,
+    method,
+    prepend(null, validExplicitValues)
+  );
 };
 
 export const featureReturnsCorrectValueNoArguments = (name, method) => {

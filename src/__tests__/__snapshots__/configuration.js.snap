@@ -1,5 +1,240 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '' 2`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '-0.4' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [-0.4]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '-6' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [-6]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '-6/-' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["-6/-"]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '-16/9' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["-16/9"]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '-90' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [-90]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '-99.8' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [-99.8]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '0' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [0]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '0.6' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [0.6]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '0/0' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["0/0"]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '0/9' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["0/9"]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '1/-1' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["1/-1"]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '1/0' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["1/0"]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '44.7' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [44.7]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '78' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [78]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '4999' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [4999]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'NaN' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'false' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [false]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'null' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'true' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [true]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'undefined' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied ["xxxx"]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '' 2`] = `You must supply 'colorIndex' as a postive integer but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply 'colorIndex' as a postive integer but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-0.4]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-6]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-90' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-90]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-99.8]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [0.6]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [44.7]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'color' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied ["xxxx"]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '' 2`] = `You must supply 'colorIndex' as a postive integer but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply 'colorIndex' as a postive integer but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-0.4]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-6]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-90' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-90]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [-99.8]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [0.6]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [44.7]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'colorIndex' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'colorIndex' as a postive integer but you supplied ["xxxx"]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '' 2`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-0.4' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-0.4]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-6' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-6]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-90' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-90]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '-99.8' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-99.8]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of '0' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [0]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'NaN' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'false' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [false]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'null' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'true' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [true]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'undefined' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'height' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied ["xxxx"]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '' 2`] = `You must supply 'monochrome' as a postive integer but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply 'monochrome' as a postive integer but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-0.4' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-0.4]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-6' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-6]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-90' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-90]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '-99.8' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [-99.8]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '0.6' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [0.6]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of '44.7' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [44.7]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'monochrome' as a postive integer but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'monochrome' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'monochrome' as a postive integer but you supplied ["xxxx"]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '' 1`] = `You must supply 'resolution' as a positive number but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '' 2`] = `You must supply 'resolution' as a positive number but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply 'resolution' as a positive number but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '-163dpi' 1`] = `You must supply 'resolution' as a positive number but you supplied ["-163dpi"]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '-555dpi' 1`] = `You must supply 'resolution' as a positive number but you supplied ["-555dpi"]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of '0dpi' 1`] = `You must supply 'resolution' as a positive number but you supplied ["0dpi"]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'NaN' 1`] = `You must supply 'resolution' as a positive number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'false' 1`] = `You must supply 'resolution' as a positive number but you supplied [false]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'null' 1`] = `You must supply 'resolution' as a positive number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'true' 1`] = `You must supply 'resolution' as a positive number but you supplied [true]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'undefined' 1`] = `You must supply 'resolution' as a positive number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'resolution' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply 'resolution' as a positive number but you supplied ["xxxx"]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [""]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '' 2`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [[]]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '[object Object]' 1`] = `
+You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [ {
+}
+
+]
+`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-0.4' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-0.4]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-6' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-6]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-90' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-90]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '-99.8' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [-99.8]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of '0' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [0]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'NaN' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'false' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [false]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'null' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'true' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [true]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'undefined' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied [null]`;
+
+exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a dimension as either a unitless number of an em, rem or pixel number but you supplied ["xxxx"]`;
+
 exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `
 @media screen and (max-height: 39.999em) {
     background-color: function () {
@@ -16,19 +251,27 @@ exports[`configure() config object baseFontSize adjusts values based on 'basefon
 }
 `;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number '' 1`] = `'baseFontSize'must be a positive number, but you supplied ''`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is '' 1`] = `'baseFontSize'must be a positive number, but you supplied ''`;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number '-20' 1`] = `'baseFontSize'must be a positive number, but you supplied '-20'`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is '' 2`] = `'baseFontSize'must be a positive number, but you supplied ''`;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'false' 1`] = `'baseFontSize'must be a positive number, but you supplied 'false'`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is '[object Object]' 1`] = `'baseFontSize'must be a positive number, but you supplied '[object Object]'`;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'null' 1`] = `'baseFontSize'must be a positive number, but you supplied 'null'`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is '-163px' 1`] = `'baseFontSize'must be a positive number, but you supplied '-163px'`;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'true' 1`] = `'baseFontSize'must be a positive number, but you supplied 'true'`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is '-555px' 1`] = `'baseFontSize'must be a positive number, but you supplied '-555px'`;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'undefined' 1`] = `'baseFontSize'must be a positive number, but you supplied 'undefined'`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is '0px' 1`] = `'baseFontSize'must be a positive number, but you supplied '0px'`;
 
-exports[`configure() config object baseFontSize throws if 'baseFontSize' is not a positive number 'xxxx' 1`] = `'baseFontSize'must be a positive number, but you supplied 'xxxx'`;
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is 'NaN' 1`] = `'baseFontSize'must be a positive number, but you supplied 'NaN'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is 'false' 1`] = `'baseFontSize'must be a positive number, but you supplied 'false'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is 'null' 1`] = `'baseFontSize'must be a positive number, but you supplied 'null'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is 'true' 1`] = `'baseFontSize'must be a positive number, but you supplied 'true'`;
+
+exports[`configure() config object baseFontSize throws if 'baseFontSize' is 'undefined' 1`] = `'baseFontSize'must be a positive number, but you supplied 'undefined'`;
 
 exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was ''.`;
 
@@ -36,7 +279,25 @@ exports[`configure() config object defaultMediaType throws if 'defaultMediaType'
 
 exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '[object Object]' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '[object Object]'.`;
 
-exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '444' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '444'.`;
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '-0.4' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '-0.4'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '-6' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '-6'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '-90' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '-90'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '-99.8' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '-99.8'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '0' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '0'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '0.6' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '0.6'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '44.7' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '44.7'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '78' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '78'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is '4999' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was '4999'.`;
+
+exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is 'NaN' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was 'NaN'.`;
 
 exports[`configure() config object defaultMediaType throws if 'defaultMediaType' is 'false' 1`] = `'defaultMediaType'must be one of 'all, print, screen, speech' but was 'false'.`;
 
@@ -52,7 +313,7 @@ exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 
 
 exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is '[object Object]' 1`] = `'unit'must be one of 'em, rem, px' but was '[object Object]'.`;
 
-exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is '444' 1`] = `'unit'must be one of 'em, rem, px' but was '444'.`;
+exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'NaN' 1`] = `'unit'must be one of 'em, rem, px' but was 'NaN'.`;
 
 exports[`configure() config object dimensionsUnit throws if 'dimensionsUnit' is 'false' 1`] = `'unit'must be one of 'em, rem, px' but was 'false'.`;
 
@@ -70,15 +331,31 @@ exports[`configure() config object shouldSeparateQueries throws if 'shouldSepara
 
 exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '[object Object]' 1`] = `'shouldSeparateQueries'must be a boolean but was '[object Object]'.`;
 
-exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '444' 1`] = `'shouldSeparateQueries'must be a boolean but was '444'.`;
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '-0.4' 1`] = `'shouldSeparateQueries'must be a boolean but was '-0.4'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '-6' 1`] = `'shouldSeparateQueries'must be a boolean but was '-6'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '-90' 1`] = `'shouldSeparateQueries'must be a boolean but was '-90'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '-99.8' 1`] = `'shouldSeparateQueries'must be a boolean but was '-99.8'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '0' 1`] = `'shouldSeparateQueries'must be a boolean but was '0'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '0.6' 1`] = `'shouldSeparateQueries'must be a boolean but was '0.6'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '44.7' 1`] = `'shouldSeparateQueries'must be a boolean but was '44.7'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '78' 1`] = `'shouldSeparateQueries'must be a boolean but was '78'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is '4999' 1`] = `'shouldSeparateQueries'must be a boolean but was '4999'.`;
+
+exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'NaN' 1`] = `'shouldSeparateQueries'must be a boolean but was 'NaN'.`;
 
 exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'null' 1`] = `'shouldSeparateQueries'must be a boolean but was 'null'.`;
 
 exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'undefined' 1`] = `'shouldSeparateQueries'must be a boolean but was 'undefined'.`;
 
 exports[`configure() config object shouldSeparateQueries throws if 'shouldSeparateQueries' is 'xxxx' 1`] = `'shouldSeparateQueries'must be a boolean but was 'xxxx'.`;
-
-exports[`configure() throws if invalid breakpoint set value is supplied 1`] = `You must supply a dimension as a unitless number but you supplied ["xxx"]`;
 
 exports[`configure() throws if no breakpoint sets are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
 

@@ -6,18 +6,23 @@ import {
   contains,
   values,
   all,
-  gt,
   toPairs,
   map,
   and,
   flip,
   isEmpty,
+  either,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNames } from './features';
 import { ensureArray } from './utils';
 
-import { isNumber, isBoolean, isPopulatedObject } from './utils/value';
+import {
+  isBoolean,
+  isPopulatedObject,
+  isPositiveNumber,
+  isPositiveNumberWithPixelUnit,
+} from './utils/value';
 import {
   throwError,
   emptyBreakpointMapErrorMessage,
@@ -38,7 +43,6 @@ import aspectRatioValidator from './validators/aspectRatioValidator';
 import colorValidator from './validators/colorValidator';
 import monochromeValidator from './validators/monochromeValidator';
 
-const isBaseFontSizeValid = both(isNumber, gt(__, 0));
 const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
 const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
 const areBreakpointSetNamesValid = all(t => isBreakpointSetNameValid(t));
@@ -65,8 +69,11 @@ export const getValidatorForFeature = feature => validatorsByFeature[feature];
 
 const validateBreakpointSetValues = (name, breakpointSet) => {
   const validator = validatorsByFeature[name];
+
   if (
-    !compose(all(getValidatorForFeature(name).validate), values)(breakpointSet)
+    !compose(all(getValidatorForFeature(name).validateExplicit), values)(
+      breakpointSet
+    )
   )
     throwError(
       invalidBreakpointSetValueErrorMessage(
@@ -121,9 +128,8 @@ export const validateConfig = ({
   dimensionsUnit,
   shouldSeparateQueries,
 }) => {
-  if (!isBaseFontSizeValid(baseFontSize))
+  if (!either(isPositiveNumber, isPositiveNumberWithPixelUnit)(baseFontSize))
     throwError(invalidBaseFontSizeErrorMessage(baseFontSize));
-
   if (
     defaultMediaType !== null &&
     !areMediaTypesValid(ensureArray(defaultMediaType))
