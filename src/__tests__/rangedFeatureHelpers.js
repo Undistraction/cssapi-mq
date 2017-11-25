@@ -1,4 +1,4 @@
-import testRangedQueries from './helpers/testRangedQueries';
+import testRangedFeatureHelpers from './helpers/testRangedFeatureHelpers';
 import cssSerialiser from './helpers/cssSerialiser';
 import { RANGED_FEATURES } from '../features';
 
@@ -8,7 +8,7 @@ import {
   queryReturnsCorrectValueWithTwoBreakpoints,
   queryThrowsIfMissingEitherBreakpoint,
   queryThrowsWithBothBreakpointsTheSame,
-} from './sharedTests/queries';
+} from './sharedTests/rangedFeatureHelpers';
 
 expect.addSnapshotSerializer(cssSerialiser);
 
@@ -18,7 +18,7 @@ const singleArgumentSharedTest = [
 ];
 
 for (const feature of RANGED_FEATURES) {
-  testRangedQueries(feature.name, {
+  testRangedFeatureHelpers(feature.name, {
     tests: {
       above: [...singleArgumentSharedTest],
       below: [...singleArgumentSharedTest],

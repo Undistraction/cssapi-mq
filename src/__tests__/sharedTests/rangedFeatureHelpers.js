@@ -10,8 +10,8 @@ const filterIfPairSame = filter(pair => pair[0] !== pair[1]);
 
 export const queryThrowsIfMissingBreakpoint = (name, method) => {
   it("throws if breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithValidBreakpointsForRange(name)[method]('xxxx')``
+    expect(() =>
+      mqWithValidBreakpointsForRange(name)[method]('xxxx')
     ).toThrowErrorMatchingSnapshot();
   });
 };
@@ -21,9 +21,7 @@ export const queryReturnsCorrectValueSingleBreakpoint = (name, method) => {
     it(`returns the correct query for breakpoint '${breakpointName}'`, () => {
       const result = mqWithValidBreakpointsForRange(name)[method](
         breakpointName
-      )`
-  background-color: ${() => 'GhostWhite'};
-  `;
+      );
       expect(result).toMatchSnapshot();
     });
   }
@@ -39,9 +37,7 @@ export const queryReturnsCorrectValueWithTwoBreakpoints = (name, method) => {
     }' and '${breakpointNames[1]}'`, () => {
       const result = mqWithValidBreakpointsForRange(name)[method](
         ...breakpointNames
-      )`
-  background-color: ${() => 'GhostWhite'};
-  `;
+      );
       expect(result).toMatchSnapshot();
     });
   }
@@ -49,22 +45,22 @@ export const queryReturnsCorrectValueWithTwoBreakpoints = (name, method) => {
 
 export const queryThrowsWithBothBreakpointsTheSame = (name, method) => {
   it("throws if 'from' and 'to' breakpoints are the same value", () => {
-    expect(
-      () => mqWithValidBreakpointsForRange(name)[method]('large', 'large')``
+    expect(() =>
+      mqWithValidBreakpointsForRange(name)[method]('large', 'large')
     ).toThrowErrorMatchingSnapshot();
   });
 };
 
 export const queryThrowsIfMissingEitherBreakpoint = (name, method) => {
   it("throws if 'from' breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithValidBreakpointsForRange(name)[method]('xxxx', 'large')``
+    expect(() =>
+      mqWithValidBreakpointsForRange(name)[method]('xxxx', 'large')
     ).toThrowErrorMatchingSnapshot();
   });
 
   it("throws if 'to' breakpoint doesn't exist", () => {
-    expect(
-      () => mqWithValidBreakpointsForRange(name)[method]('large', 'xxxx')``
+    expect(() =>
+      mqWithValidBreakpointsForRange(name)[method]('large', 'xxxx')
     ).toThrowErrorMatchingSnapshot();
   });
 };

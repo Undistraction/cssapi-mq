@@ -33,36 +33,27 @@ describe('tweak()', () => {
 describe('tweaked()', () => {
   it('includes original breakpoints and added tweakpoints', () => {
     expect(
-      mqWithTweakedBreakpointsForRange('width').tweaked.aboveWidth('alpha')`
-      background-color: ${() => 'GhostWhite'};
-    `
+      mqWithTweakedBreakpointsForRange('width').tweaked.aboveWidth('alpha')
     ).toMatchSnapshot();
 
     expect(
       mqWithTweakedBreakpointsForRange('width').tweaked.betweenWidths(
         'alpha',
         'large'
-      )`
-      background-color: ${() => 'GhostWhite'};
-    `
+      )
     ).toMatchSnapshot();
   });
 
   it("doesn't effect the original mq", () => {
-    expect(
-      () =>
-        mqWithTweakedBreakpointsForRange('width').aboveWidth('alpha')`
-      background-color: ${() => 'GhostWhite'};
-    `
+    expect(() =>
+      mqWithTweakedBreakpointsForRange('width').aboveWidth('alpha')
     ).toThrowErrorMatchingSnapshot();
 
     // Make sure the upper limit is 'medium', not 'alpha'
     expect(
       mqWithTweakedBreakpointsForRange('width').tweaked.atWidthBreakpoint(
         'small'
-      )`
-      background-color: ${() => 'GhostWhite'};
-    `
+      )
     ).toMatchSnapshot();
   });
 });

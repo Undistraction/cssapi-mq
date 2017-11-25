@@ -72,18 +72,14 @@ describe('configure()', () => {
       it("adjusts values based on 'basefontSize' for width", () => {
         const result = mqWithValidBreakpointsForRange('width', {
           baseFontSize: 10,
-        }).belowWidth('small')`
-          background-color: ${() => 'GhostWhite'};
-        `;
+        }).belowWidth('small');
         expect(result).toMatchSnapshot();
       });
 
       it("adjusts values based on 'basefontSize' for height", () => {
         const result = mqWithValidBreakpointsForRange('height', {
           baseFontSize: 10,
-        }).belowHeight('small')`
-          background-color: ${() => 'GhostWhite'};
-        `;
+        }).belowHeight('small');
         expect(result).toMatchSnapshot();
       });
 

@@ -1,6 +1,5 @@
 import { findIndex, isNil } from 'ramda';
 import camelcase from 'camelcase';
-import { css } from 'styled-components';
 import { getValidatorForFeature } from '../validations';
 
 import { MEDIA_TYPES } from '../const';
@@ -14,16 +13,15 @@ import buildMediaType from './buildMediaType';
 
 import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
-import { renderQuery, renderQueryDefinition, renderFeature } from '../render';
+import {
+  renderQueryDefinition,
+  renderFeature,
+} from '../renderers/cssRenderers/queryRenderer';
 
 const buildFeatureItem = (name, parser, config) => breakpoint =>
   renderFeature(name, parser(breakpoint, config));
 
 const nilValueAndAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
-
-// const valueIsBreakpointKey = value => {
-//   !isNil(isNil) && !isNumber(value);
-// };
 
 export default (
   name,
@@ -56,9 +54,8 @@ export default (
     value,
     { shouldSeparate = false, noArgs = false } = {}
   ) => {
-    // If we only support named breakpoints use the value to look up a
-    // breakpoint.
-
+    // TODO clean this up, but order here is vital - we need to return in this
+    // order.
     if (nilValueAndAllowedToPass(value, noArgs)) {
       return valueRenderer(value, shouldSeparate);
     }
@@ -71,6 +68,8 @@ export default (
     if (validator.validate(value)) {
       return valueRenderer(value, shouldSeparate);
     }
+
+    throw new Error(`Supplied value was invalid: '${value}'`);
   };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };
@@ -83,7 +82,7 @@ export default (
     getUpperLimit(orderedBreakpoints, value);
 
   // ---------------------------------------------------------------------------
-  // API
+  // Features
   // ---------------------------------------------------------------------------
 
   const feature = buildFeatureItem(name, configuredValueRenderer, {
@@ -94,68 +93,51 @@ export default (
     shouldSeparate: true,
   });
 
-  const aboveFeature = (from, config = defaultAPIConfig) => (
-    stringParts,
-    ...interpolationValues
-  ) =>
-    renderQuery(
-      renderQueryDefinition(mediaType(config.mediaType), minFeature(from)),
-      css(stringParts, ...interpolationValues)
-    );
+  // ---------------------------------------------------------------------------
+  // Feature Helpers
+  // ---------------------------------------------------------------------------
 
-  const belowFeature = (to, config = defaultAPIConfig) => (
-    stringParts,
-    ...interpolationValues
-  ) =>
-    renderQuery(
-      renderQueryDefinition(mediaType(config.mediaType), maxFeature(to)),
-      css(stringParts, ...interpolationValues)
-    );
+  const aboveFeature = (from, config = defaultAPIConfig) =>
+    renderQueryDefinition(mediaType(config.mediaType), minFeature(from));
 
-  const betweenFeatures = (from, to, config = defaultAPIConfig) => (
-    stringParts,
-    ...interpolationValues
-  ) => {
+  const belowFeature = (to, config = defaultAPIConfig) =>
+    renderQueryDefinition(mediaType(config.mediaType), maxFeature(to));
+
+  const betweenFeatures = (from, to, config = defaultAPIConfig) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
     const fromIndex = indexOfBreakpointNamed(propEqName(from));
     const toIndex = indexOfBreakpointNamed(propEqName(to));
     const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
-    return renderQuery(
-      renderQueryDefinition(
-        mediaType(config.mediaType),
-        minFeature(lower),
-        maxFeature(higher)
-      ),
-      css(stringParts, ...interpolationValues)
+    return renderQueryDefinition(
+      mediaType(config.mediaType),
+      minFeature(lower),
+      maxFeature(higher)
     );
   };
 
-  const atFeatureBreakpoint = (breakpoint, config = defaultAPIConfig) => (
-    stringParts,
-    ...interpolationValues
-  ) => {
+  const atFeatureBreakpoint = (breakpoint, config = defaultAPIConfig) => {
     const breakpointAbove = nextBreakpointAboveNamed(breakpoint);
     if (breakpointAbove) {
-      return betweenFeatures(breakpoint, breakpointAbove, config)(
-        stringParts,
-        ...interpolationValues
-      );
+      return betweenFeatures(breakpoint, breakpointAbove, config);
     }
-    return aboveFeature(breakpoint, config)(
-      stringParts,
-      ...interpolationValues
-    );
+    return aboveFeature(breakpoint, config);
   };
 
-  const atFeature = (breakpoint, config = defaultAPIConfig) => (
-    stringParts,
-    ...interpolationValues
-  ) =>
-    renderQuery(
-      renderQueryDefinition(mediaType(config.mediaType), feature(breakpoint)),
-      css(stringParts, ...interpolationValues)
-    );
+  const atFeature = (breakpoint, config = defaultAPIConfig) =>
+    renderQueryDefinition(mediaType(config.mediaType), feature(breakpoint));
+
   const titleizedName = name[0].toUpperCase() + camelcase(name.slice(1));
+
+  // const query = (...elements) => {
+  //   return renderQuery(
+  //     renderQueryDefinition(
+  //       mediaType(config.mediaType),
+  //       minFeature(lower),
+  //       maxFeature(higher)
+  //     ),
+  //     css(stringParts, ...interpolationValues)
+  //   );
+  // };
 
   exports = {
     [camelcase(name)]: feature,

@@ -1,6 +1,6 @@
 import { isNil } from 'ramda';
 import { validateFeature } from '../validations';
-import { renderFeature } from '../render';
+import { renderFeature } from '../renderers/cssRenderers/queryRenderer';
 
 export default (name, possibleValues, allowNoArgument = false) => value => {
   if (!(isNil(value) && allowNoArgument)) {
