@@ -27,7 +27,7 @@ const nilValueAndAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
 
 export default (
   name,
-  output,
+  valueRenderer,
   breakpoints = {},
   {
     defaultMediaType = MEDIA_TYPES.SCREEN,
@@ -52,7 +52,7 @@ export default (
     return value;
   };
 
-  const outputValue = (
+  const configuredValueRenderer = (
     value,
     { shouldSeparate = false, noArgs = false } = {}
   ) => {
@@ -60,16 +60,16 @@ export default (
     // breakpoint.
 
     if (nilValueAndAllowedToPass(value, noArgs)) {
-      return output(value, shouldSeparate);
+      return valueRenderer(value, shouldSeparate);
     }
 
     if (onlyNamedBreakpoints) {
       value = getBreakpointNamed(value);
-      return output(value, shouldSeparate);
+      return valueRenderer(value, shouldSeparate);
     }
 
     if (validator.validate(value)) {
-      return output(value, shouldSeparate);
+      return valueRenderer(value, shouldSeparate);
     }
   };
 
@@ -86,11 +86,11 @@ export default (
   // API
   // ---------------------------------------------------------------------------
 
-  const feature = buildFeatureItem(name, outputValue, {
+  const feature = buildFeatureItem(name, configuredValueRenderer, {
     noArgs: allowNoArgument,
   });
-  const minFeature = buildFeatureItem(`min-${name}`, outputValue);
-  const maxFeature = buildFeatureItem(`max-${name}`, outputValue, {
+  const minFeature = buildFeatureItem(`min-${name}`, configuredValueRenderer);
+  const maxFeature = buildFeatureItem(`max-${name}`, configuredValueRenderer, {
     shouldSeparate: true,
   });
 

@@ -6,7 +6,7 @@ import buildRangedFeature from './buildRangedFeature';
 const build = (globalConfig, breakpoints, item) => {
   const x = buildRangedFeature(
     item.name,
-    item.output(globalConfig),
+    item.valueRenderer(globalConfig),
     breakpoints[camelcase(item.name)],
     merge(globalConfig, item.config)
   );

@@ -3,9 +3,9 @@ import {
   toDimensionOutput,
   separatorValueForUnit,
   unitedDimensionToUnitlessPixelValue,
-} from '../utils/units';
-import { UNITS } from '../const';
-import { isNumberWithDimensionsUnit } from '../utils/value';
+} from '../../utils/units';
+import { UNITS } from '../../const';
+import { isNumberWithDimensionsUnit } from '../../utils/value';
 
 const toUnit = (dimensionsUnit, baseFontSize) =>
   partial(toDimensionOutput, [dimensionsUnit, baseFontSize]);

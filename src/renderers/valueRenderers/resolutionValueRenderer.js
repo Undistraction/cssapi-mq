@@ -3,9 +3,9 @@ import {
   separatorValueForUnit,
   appendUnit,
   unitedResolutionToUnitlessValue,
-} from '../utils/units';
-import { isNumberWithResolutionUnit } from '../utils/value';
-import { UNITS } from '../const';
+} from '../../utils/units';
+import { isNumberWithResolutionUnit } from '../../utils/value';
+import { UNITS } from '../../const';
 
 const prepareUnitlessValue = (value, shouldSeparateQueries, unit) =>
   when(

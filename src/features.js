@@ -1,11 +1,11 @@
 import { map, prop, compose } from 'ramda';
 import camelcase from 'camelcase';
 
-import dimensionsOutput from './output/dimensionsOutput';
-import resolutionOutput from './output/resolutionOutput';
-import aspectRatioOutput from './output/aspectRatioOutput';
-import colorOutput from './output/colorOutput';
-import monochromeOutput from './output/monochromeOutput';
+import dimensionsValueRenderer from './renderers/valueRenderers/dimensionsValueRenderer';
+import resolutionValueRenderer from './renderers/valueRenderers/resolutionValueRenderer';
+import aspectRatioValueRenderer from './renderers/valueRenderers/aspectRatioValueRenderer';
+import colorValueRenderer from './renderers/valueRenderers/colorValueRenderer';
+import monochromeValueRenderer from './renderers/valueRenderers/monochromeValueRenderer';
 
 export const ORIENTATION = Object.freeze(['portrait', 'landscape']);
 export const SCAN = Object.freeze(['interlace', 'progressive']);
@@ -65,37 +65,37 @@ export const LINEAR_FEATURES = [
 export const RANGED_FEATURES = [
   {
     name: 'width',
-    output: dimensionsOutput,
+    valueRenderer: dimensionsValueRenderer,
   },
   {
     name: 'height',
-    output: dimensionsOutput,
+    valueRenderer: dimensionsValueRenderer,
   },
   {
     name: 'resolution',
-    output: resolutionOutput,
+    valueRenderer: resolutionValueRenderer,
   },
   {
     name: 'aspect-ratio',
-    output: aspectRatioOutput,
+    valueRenderer: aspectRatioValueRenderer,
   },
   {
     name: 'color',
-    output: colorOutput,
+    valueRenderer: colorValueRenderer,
     config: {
       allowNoArgument: true,
     },
   },
   {
     name: 'color-index',
-    output: colorOutput,
+    valueRenderer: colorValueRenderer,
     config: {
       allowNoArgument: true,
     },
   },
   {
     name: 'monochrome',
-    output: monochromeOutput,
+    valueRenderer: monochromeValueRenderer,
     config: {
       allowNoArgument: true,
     },
