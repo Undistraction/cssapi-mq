@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 import { partial, mergeDeepLeft, merge } from 'ramda';
 
 import buildMediaType from './features/buildMediaType';
@@ -11,10 +13,10 @@ import {
 } from './validations';
 
 import { isNumberWithDimensionsUnit } from './utils/value';
-
 import { unitedDimensionToUnitlessPixelValue } from './utils/units';
-
 import { MEDIA_TYPES, UNITS } from './const';
+import renderQuery from './renderers/cssRenderers/styledComponentsRenderer';
+import { renderQueryDefinition } from './renderers/cssRenderers/queryRenderer';
 
 const defaultConfig = {
   baseFontSize: 16,
@@ -53,6 +55,16 @@ const configure = (breakpoints, config = {}) => {
     return mq;
   };
 
+  const query = (...elements) => (stringParts, ...interpolationValues) => {
+    // console.log('QUERY_________________');
+    // console.log('Elements:', elements);
+    // console.log('CSS:', stringParts, interpolationValues);
+    return renderQuery(
+      renderQueryDefinition(...elements),
+      css(stringParts, ...interpolationValues)
+    );
+  };
+
   // ---------------------------------------------------------------------------
   // Export
   // ---------------------------------------------------------------------------
@@ -61,6 +73,7 @@ const configure = (breakpoints, config = {}) => {
     mediaType: buildMediaType(configWithDefaults.defaultMediaType),
     ...buildLinearFeatures(),
     ...buildRangeFeatures(breakpoints, configWithDefaults),
+    query,
   };
 
   exports.tweak = partial(tweak, [exports]);

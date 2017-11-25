@@ -20,6 +20,7 @@ export const isNumber = both(is(Number), complement(equals(NaN)));
 export const isObject = is(Object);
 export const isString = is(String);
 export const isNull = value => value === null;
+export const isUndefined = value => value === undefined;
 
 export const isPopulatedObject = both(complement(isEmpty), isObject);
 export const isRatioString = test(/^[1-9]+[0-9]* ?\/ ?[1-9]+[0-9]*$/);

@@ -1,7 +1,7 @@
 import { values } from 'ramda';
 import camelcase from 'camelcase';
 import { LINEAR_FEATURES } from '../features';
-
+import featureValues from './featureValues';
 import { mqWithValidBreakpointsForRange } from './data';
 import cssSerialiser from './helpers/cssSerialiser';
 
@@ -11,6 +11,7 @@ describe('linear features', () => {
   const testLinearFeature = (
     name,
     validValuesMap,
+    invalidValues,
     { allowNoArgument = false } = {}
   ) => {
     const validValues = values(validValuesMap);
@@ -37,11 +38,13 @@ describe('linear features', () => {
           });
         }
 
-        it('throws if argument is not valid value', () => {
-          expect(() =>
-            mqWithValidBreakpointsForRange('width')[methodName]('xxxx')
-          ).toThrowErrorMatchingSnapshot();
-        });
+        for (const value of invalidValues) {
+          it(`throws if argument is '${value}'`, () => {
+            expect(() =>
+              mqWithValidBreakpointsForRange('width')[methodName](value)
+            ).toThrowErrorMatchingSnapshot();
+          });
+        }
         for (const value of validValues) {
           it(`returns the supplied ${name} for '${value}'`, () => {
             expect(
@@ -55,6 +58,7 @@ describe('linear features', () => {
 
   for (const feature of LINEAR_FEATURES) {
     const { name, validValues, allowNoArgument } = feature;
-    testLinearFeature(name, validValues, { allowNoArgument });
+    const { invalidValues } = featureValues(camelcase(name));
+    testLinearFeature(name, validValues, invalidValues, { allowNoArgument });
   }
 });

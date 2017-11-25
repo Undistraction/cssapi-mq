@@ -144,6 +144,9 @@ export const validateConfig = ({
 };
 
 export const validateFeature = (name, value, possibleValues) => {
+  console.log(name, value, possibleValues);
   if (doesListIncludeValue(possibleValues)(value))
     throwError(invalidFeatureErrorMessage(name, value, possibleValues));
+
+  console.log('No error');
 };

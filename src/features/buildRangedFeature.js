@@ -128,17 +128,6 @@ export default (
 
   const titleizedName = name[0].toUpperCase() + camelcase(name.slice(1));
 
-  // const query = (...elements) => {
-  //   return renderQuery(
-  //     renderQueryDefinition(
-  //       mediaType(config.mediaType),
-  //       minFeature(lower),
-  //       maxFeature(higher)
-  //     ),
-  //     css(stringParts, ...interpolationValues)
-  //   );
-  // };
-
   exports = {
     [camelcase(name)]: feature,
     [`min${[titleizedName]}`]: minFeature,

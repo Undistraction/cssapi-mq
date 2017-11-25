@@ -1,6 +1,7 @@
 import {
   junkValuesNotNull,
   genericValues,
+  invalidValuesNotUndefined,
   invalidValues,
   genericStrings,
   genericPositiveIntegers,
@@ -14,6 +15,8 @@ import {
   positiveResolutionValues,
   genericAspectRatioValues,
   invalidAspectRatioValues,
+  genericNegativeNumbers,
+  genericNumbers,
 } from './data';
 
 const dimensionsValues = {
@@ -39,6 +42,41 @@ const colorAndMonochromeValues = {
 };
 
 const featureValues = {
+  // Linear
+  orientation: {
+    invalidValues: genericValues,
+  },
+  scan: {
+    invalidValues: genericValues,
+  },
+  grid: {
+    invalidValues: [
+      ...invalidValuesNotUndefined,
+      ...genericStrings,
+      ...genericNegativeNumbers,
+      2,
+    ],
+  },
+  update: {
+    invalidValues: [
+      ...invalidValuesNotUndefined,
+      ...genericStrings,
+      ...genericNumbers,
+    ],
+  },
+  overflowBlock: {
+    invalidValues: genericValues,
+  },
+  overflowInline: {
+    invalidValues: genericValues,
+  },
+  colorGamut: {
+    invalidValues: genericValues,
+  },
+  displayMode: {
+    invalidValues: genericValues,
+  },
+  // Ranged
   width: {
     ...dimensionsValues,
   },

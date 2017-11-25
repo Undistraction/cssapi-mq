@@ -7,9 +7,15 @@ import styledMQ from '../mq';
 // -----------------------------------------------------------------------------
 
 export const junkValuesNotNull = [undefined, NaN, '', [], {}];
+export const junkValuesNotUndefined = [null, NaN, '', [], {}];
 export const junkValues = [null, ...junkValuesNotNull];
 export const booleanValues = [true, false];
 export const invalidValues = [...junkValues, ...booleanValues];
+export const invalidValuesNotNull = [...junkValuesNotNull, ...booleanValues];
+export const invalidValuesNotUndefined = [
+  ...junkValuesNotUndefined,
+  ...booleanValues,
+];
 export const genericStrings = ['xxxx'];
 export const genericPositiveIntegers = [78, 4999];
 export const genericPositiveIntegersIncludingZero = [
@@ -104,6 +110,12 @@ export const genericNumbers = [
 
 export const genericValues = [
   ...invalidValues,
+  ...genericStrings,
+  ...genericNumbers,
+];
+
+export const genericValuesNotNull = [
+  ...invalidValuesNotNull,
   ...genericStrings,
   ...genericNumbers,
 ];
