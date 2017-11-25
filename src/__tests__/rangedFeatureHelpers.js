@@ -17,18 +17,20 @@ const singleArgumentSharedTest = [
   queryReturnsCorrectValueSingleBreakpoint,
 ];
 
-for (const feature of RANGED_FEATURES) {
-  testRangedFeatureHelpers(feature.name, {
-    tests: {
-      above: [...singleArgumentSharedTest],
-      below: [...singleArgumentSharedTest],
-      between: [
-        queryReturnsCorrectValueWithTwoBreakpoints,
-        queryThrowsIfMissingEitherBreakpoint,
-        queryThrowsWithBothBreakpointsTheSame,
-      ],
-      at: [...singleArgumentSharedTest],
-      atBreakpoint: [...singleArgumentSharedTest],
-    },
-  });
-}
+describe('ranged feature helpers', () => {
+  for (const feature of RANGED_FEATURES) {
+    testRangedFeatureHelpers(feature.name, {
+      tests: {
+        above: [...singleArgumentSharedTest],
+        below: [...singleArgumentSharedTest],
+        between: [
+          queryReturnsCorrectValueWithTwoBreakpoints,
+          queryThrowsIfMissingEitherBreakpoint,
+          queryThrowsWithBothBreakpointsTheSame,
+        ],
+        at: [...singleArgumentSharedTest],
+        atBreakpoint: [...singleArgumentSharedTest],
+      },
+    });
+  }
+});

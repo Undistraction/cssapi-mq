@@ -1,491 +1,491 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1)`;
+exports[`ranged feature helpers aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1)`;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3)`;
+exports[`ranged feature helpers aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3)`;
 
-exports[`aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries aboveAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries aboveAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers aspect-ratio range queries aboveAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'large' 1`] = `@media screen and (aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'large' 1`] = `@media screen and (aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (aspect-ratio: 1/1)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (aspect-ratio: 1/1)`;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'small' 1`] = `@media screen and (aspect-ratio: 2/3)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'small' 1`] = `@media screen and (aspect-ratio: 2/3)`;
 
-exports[`aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries atAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1)`;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatioBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries atAspectRatioBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers aspect-ratio range queries atAspectRatioBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-aspect-ratio: 1/1)`;
+exports[`ranged feature helpers aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-aspect-ratio: 1/1)`;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-aspect-ratio: 2/3)`;
+exports[`ranged feature helpers aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-aspect-ratio: 2/3)`;
 
-exports[`aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries belowAspectRatio() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries belowAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers aspect-ratio range queries belowAspectRatio() throws if breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/2)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/2)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 1/1)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-aspect-ratio: 3/2) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 16/9)`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 16/9)`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`aspect-ratio range queries betweenAspectRatios() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers aspect-ratio range queries betweenAspectRatios() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries aboveColor() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color: 5)`;
+exports[`ranged feature helpers color range queries aboveColor() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color: 5)`;
 
-exports[`color range queries aboveColor() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color: 4)`;
+exports[`ranged feature helpers color range queries aboveColor() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color: 4)`;
 
-exports[`color range queries aboveColor() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color: 1)`;
+exports[`ranged feature helpers color range queries aboveColor() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color: 1)`;
 
-exports[`color range queries aboveColor() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color: 6)`;
+exports[`ranged feature helpers color range queries aboveColor() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color: 6)`;
 
-exports[`color range queries aboveColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color range queries aboveColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries atColor() returns the correct query for breakpoint 'large' 1`] = `@media screen and (color: 5)`;
+exports[`ranged feature helpers color range queries atColor() returns the correct query for breakpoint 'large' 1`] = `@media screen and (color: 5)`;
 
-exports[`color range queries atColor() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (color: 4)`;
+exports[`ranged feature helpers color range queries atColor() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (color: 4)`;
 
-exports[`color range queries atColor() returns the correct query for breakpoint 'small' 1`] = `@media screen and (color: 1)`;
+exports[`ranged feature helpers color range queries atColor() returns the correct query for breakpoint 'small' 1`] = `@media screen and (color: 1)`;
 
-exports[`color range queries atColor() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (color: 6)`;
+exports[`ranged feature helpers color range queries atColor() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (color: 6)`;
 
-exports[`color range queries atColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color range queries atColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color: 5) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries atColorBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color: 5) and (max-color: 6)`;
 
-exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color: 4) and (max-color: 5)`;
+exports[`ranged feature helpers color range queries atColorBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color: 4) and (max-color: 5)`;
 
-exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 4)`;
+exports[`ranged feature helpers color range queries atColorBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 4)`;
 
-exports[`color range queries atColorBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color: 6)`;
+exports[`ranged feature helpers color range queries atColorBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color: 6)`;
 
-exports[`color range queries atColorBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color range queries atColorBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries belowColor() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-color: 5)`;
+exports[`ranged feature helpers color range queries belowColor() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-color: 5)`;
 
-exports[`color range queries belowColor() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-color: 4)`;
+exports[`ranged feature helpers color range queries belowColor() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-color: 4)`;
 
-exports[`color range queries belowColor() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-color: 1)`;
+exports[`ranged feature helpers color range queries belowColor() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-color: 1)`;
 
-exports[`color range queries belowColor() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-color: 6)`;
+exports[`ranged feature helpers color range queries belowColor() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-color: 6)`;
 
-exports[`color range queries belowColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color range queries belowColor() throws if breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-color: 4) and (max-color: 5)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-color: 4) and (max-color: 5)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 5)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 5)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-color: 5) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-color: 5) and (max-color: 6)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-color: 4) and (max-color: 5)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-color: 4) and (max-color: 5)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 4)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 4)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-color: 4) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-color: 4) and (max-color: 6)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-color: 1) and (max-color: 5)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-color: 1) and (max-color: 5)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-color: 1) and (max-color: 4)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-color: 1) and (max-color: 4)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-color: 1) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-color: 1) and (max-color: 6)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-color: 5) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-color: 5) and (max-color: 6)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-color: 4) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-color: 4) and (max-color: 6)`;
 
-exports[`color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 6)`;
+exports[`ranged feature helpers color range queries betweenColors() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-color: 1) and (max-color: 6)`;
 
-exports[`color range queries betweenColors() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers color range queries betweenColors() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`color range queries betweenColors() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color range queries betweenColors() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color range queries betweenColors() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color range queries betweenColors() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries aboveColorIndex() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color-index: 5)`;
 
-exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color-index: 4)`;
+exports[`ranged feature helpers color-index range queries aboveColorIndex() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color-index: 4)`;
 
-exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color-index: 1)`;
+exports[`ranged feature helpers color-index range queries aboveColorIndex() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color-index: 1)`;
 
-exports[`color-index range queries aboveColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries aboveColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color-index: 6)`;
 
-exports[`color-index range queries aboveColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color-index range queries aboveColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'large' 1`] = `@media screen and (color-index: 5)`;
+exports[`ranged feature helpers color-index range queries atColorIndex() returns the correct query for breakpoint 'large' 1`] = `@media screen and (color-index: 5)`;
 
-exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (color-index: 4)`;
+exports[`ranged feature helpers color-index range queries atColorIndex() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (color-index: 4)`;
 
-exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'small' 1`] = `@media screen and (color-index: 1)`;
+exports[`ranged feature helpers color-index range queries atColorIndex() returns the correct query for breakpoint 'small' 1`] = `@media screen and (color-index: 1)`;
 
-exports[`color-index range queries atColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (color-index: 6)`;
+exports[`ranged feature helpers color-index range queries atColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (color-index: 6)`;
 
-exports[`color-index range queries atColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color-index range queries atColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color-index: 5) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-color-index: 5) and (max-color-index: 6)`;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 5)`;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 4)`;
+exports[`ranged feature helpers color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 4)`;
 
-exports[`color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries atColorIndexBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-color-index: 6)`;
 
-exports[`color-index range queries atColorIndexBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color-index range queries atColorIndexBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries belowColorIndex() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-color-index: 5)`;
 
-exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-color-index: 4)`;
+exports[`ranged feature helpers color-index range queries belowColorIndex() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-color-index: 4)`;
 
-exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-color-index: 1)`;
+exports[`ranged feature helpers color-index range queries belowColorIndex() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-color-index: 1)`;
 
-exports[`color-index range queries belowColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries belowColorIndex() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-color-index: 6)`;
 
-exports[`color-index range queries belowColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color-index range queries belowColorIndex() throws if breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 5)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 5)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-color-index: 5) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-color-index: 5) and (max-color-index: 6)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 5)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 4)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 4)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 6)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 5)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 5)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 4)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 4)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 6)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-color-index: 5) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-color-index: 5) and (max-color-index: 6)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-color-index: 4) and (max-color-index: 6)`;
 
-exports[`color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 6)`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-color-index: 1) and (max-color-index: 6)`;
 
-exports[`color-index range queries betweenColorIndexs() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`color-index range queries betweenColorIndexs() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`color-index range queries betweenColorIndexs() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers color-index range queries betweenColorIndexs() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries aboveHeight() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-height: 68.75em)`;
+exports[`ranged feature helpers height range queries aboveHeight() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-height: 68.75em)`;
 
-exports[`height range queries aboveHeight() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-height: 56.25em)`;
+exports[`ranged feature helpers height range queries aboveHeight() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-height: 56.25em)`;
 
-exports[`height range queries aboveHeight() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-height: 25em)`;
+exports[`ranged feature helpers height range queries aboveHeight() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-height: 25em)`;
 
-exports[`height range queries aboveHeight() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-height: 81.25em)`;
+exports[`ranged feature helpers height range queries aboveHeight() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-height: 81.25em)`;
 
-exports[`height range queries aboveHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers height range queries aboveHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries atHeight() returns the correct query for breakpoint 'large' 1`] = `@media screen and (height: 68.75em)`;
+exports[`ranged feature helpers height range queries atHeight() returns the correct query for breakpoint 'large' 1`] = `@media screen and (height: 68.75em)`;
 
-exports[`height range queries atHeight() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (height: 56.25em)`;
+exports[`ranged feature helpers height range queries atHeight() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (height: 56.25em)`;
 
-exports[`height range queries atHeight() returns the correct query for breakpoint 'small' 1`] = `@media screen and (height: 25em)`;
+exports[`ranged feature helpers height range queries atHeight() returns the correct query for breakpoint 'small' 1`] = `@media screen and (height: 25em)`;
 
-exports[`height range queries atHeight() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (height: 81.25em)`;
+exports[`ranged feature helpers height range queries atHeight() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (height: 81.25em)`;
 
-exports[`height range queries atHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers height range queries atHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-height: 68.75em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries atHeightBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-height: 68.75em) and (max-height: 81.249375em)`;
 
-exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 68.749375em)`;
+exports[`ranged feature helpers height range queries atHeightBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 68.749375em)`;
 
-exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 56.249375em)`;
+exports[`ranged feature helpers height range queries atHeightBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 56.249375em)`;
 
-exports[`height range queries atHeightBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-height: 81.25em)`;
+exports[`ranged feature helpers height range queries atHeightBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-height: 81.25em)`;
 
-exports[`height range queries atHeightBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers height range queries atHeightBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries belowHeight() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-height: 68.749375em)`;
+exports[`ranged feature helpers height range queries belowHeight() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-height: 68.749375em)`;
 
-exports[`height range queries belowHeight() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-height: 56.249375em)`;
+exports[`ranged feature helpers height range queries belowHeight() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-height: 56.249375em)`;
 
-exports[`height range queries belowHeight() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-height: 24.999375em)`;
+exports[`ranged feature helpers height range queries belowHeight() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-height: 24.999375em)`;
 
-exports[`height range queries belowHeight() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries belowHeight() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-height: 81.249375em)`;
 
-exports[`height range queries belowHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers height range queries belowHeight() throws if breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 68.749375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 68.749375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 68.749375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 68.749375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-height: 68.75em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-height: 68.75em) and (max-height: 81.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 68.749375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 68.749375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 56.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 56.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 81.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-height: 25em) and (max-height: 68.749375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-height: 25em) and (max-height: 68.749375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-height: 25em) and (max-height: 56.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-height: 25em) and (max-height: 56.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-height: 25em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-height: 25em) and (max-height: 81.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-height: 68.75em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-height: 68.75em) and (max-height: 81.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-height: 56.25em) and (max-height: 81.249375em)`;
 
-exports[`height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 81.249375em)`;
+exports[`ranged feature helpers height range queries betweenHeights() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-height: 25em) and (max-height: 81.249375em)`;
 
-exports[`height range queries betweenHeights() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers height range queries betweenHeights() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`height range queries betweenHeights() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers height range queries betweenHeights() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`height range queries betweenHeights() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers height range queries betweenHeights() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-monochrome: 8)`;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-monochrome: 4)`;
+exports[`ranged feature helpers monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-monochrome: 4)`;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-monochrome: 0)`;
+exports[`ranged feature helpers monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-monochrome: 0)`;
 
-exports[`monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries aboveMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-monochrome: 16)`;
 
-exports[`monochrome range queries aboveMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers monochrome range queries aboveMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'large' 1`] = `@media screen and (monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries atMonochrome() returns the correct query for breakpoint 'large' 1`] = `@media screen and (monochrome: 8)`;
 
-exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (monochrome: 4)`;
+exports[`ranged feature helpers monochrome range queries atMonochrome() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (monochrome: 4)`;
 
-exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'small' 1`] = `@media screen and (monochrome: 0)`;
+exports[`ranged feature helpers monochrome range queries atMonochrome() returns the correct query for breakpoint 'small' 1`] = `@media screen and (monochrome: 0)`;
 
-exports[`monochrome range queries atMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries atMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (monochrome: 16)`;
 
-exports[`monochrome range queries atMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers monochrome range queries atMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-monochrome: 8) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-monochrome: 8) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 8)`;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 4)`;
+exports[`ranged feature helpers monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 4)`;
 
-exports[`monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries atMonochromeBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-monochrome: 16)`;
 
-exports[`monochrome range queries atMonochromeBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers monochrome range queries atMonochromeBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries belowMonochrome() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-monochrome: 8)`;
 
-exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-monochrome: 4)`;
+exports[`ranged feature helpers monochrome range queries belowMonochrome() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-monochrome: 4)`;
 
-exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-monochrome: 0)`;
+exports[`ranged feature helpers monochrome range queries belowMonochrome() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-monochrome: 0)`;
 
-exports[`monochrome range queries belowMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries belowMonochrome() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-monochrome: 16)`;
 
-exports[`monochrome range queries belowMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers monochrome range queries belowMonochrome() throws if breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 8)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 8)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-monochrome: 8) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-monochrome: 8) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 8)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 4)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 4)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 8)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 8)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 4)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 4)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-monochrome: 8) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-monochrome: 8) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-monochrome: 4) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 16)`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-monochrome: 0) and (max-monochrome: 16)`;
 
-exports[`monochrome range queries betweenMonochromes() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`monochrome range queries betweenMonochromes() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`monochrome range queries betweenMonochromes() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers monochrome range queries betweenMonochromes() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-resolution: 300dpi)`;
+exports[`ranged feature helpers resolution range queries aboveResolution() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-resolution: 300dpi)`;
 
-exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-resolution: 150dpi)`;
+exports[`ranged feature helpers resolution range queries aboveResolution() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-resolution: 150dpi)`;
 
-exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-resolution: 72dpi)`;
+exports[`ranged feature helpers resolution range queries aboveResolution() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-resolution: 72dpi)`;
 
-exports[`resolution range queries aboveResolution() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-resolution: 600dpi)`;
+exports[`ranged feature helpers resolution range queries aboveResolution() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-resolution: 600dpi)`;
 
-exports[`resolution range queries aboveResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers resolution range queries aboveResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries atResolution() returns the correct query for breakpoint 'large' 1`] = `@media screen and (resolution: 300dpi)`;
+exports[`ranged feature helpers resolution range queries atResolution() returns the correct query for breakpoint 'large' 1`] = `@media screen and (resolution: 300dpi)`;
 
-exports[`resolution range queries atResolution() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (resolution: 150dpi)`;
+exports[`ranged feature helpers resolution range queries atResolution() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (resolution: 150dpi)`;
 
-exports[`resolution range queries atResolution() returns the correct query for breakpoint 'small' 1`] = `@media screen and (resolution: 72dpi)`;
+exports[`ranged feature helpers resolution range queries atResolution() returns the correct query for breakpoint 'small' 1`] = `@media screen and (resolution: 72dpi)`;
 
-exports[`resolution range queries atResolution() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (resolution: 600dpi)`;
+exports[`ranged feature helpers resolution range queries atResolution() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (resolution: 600dpi)`;
 
-exports[`resolution range queries atResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers resolution range queries atResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi)`;
+exports[`ranged feature helpers resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi)`;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi)`;
+exports[`ranged feature helpers resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi)`;
 
-exports[`resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-resolution: 600dpi)`;
+exports[`ranged feature helpers resolution range queries atResolutionBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-resolution: 600dpi)`;
 
-exports[`resolution range queries atResolutionBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers resolution range queries atResolutionBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-resolution: 299dpi)`;
+exports[`ranged feature helpers resolution range queries belowResolution() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-resolution: 299dpi)`;
 
-exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-resolution: 149dpi)`;
+exports[`ranged feature helpers resolution range queries belowResolution() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-resolution: 149dpi)`;
 
-exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-resolution: 71dpi)`;
+exports[`ranged feature helpers resolution range queries belowResolution() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-resolution: 71dpi)`;
 
-exports[`resolution range queries belowResolution() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries belowResolution() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries belowResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers resolution range queries belowResolution() throws if breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 299dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 299dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 299dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 299dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 299dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 149dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-resolution: 300dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-resolution: 150dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 599dpi)`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-resolution: 72dpi) and (max-resolution: 599dpi)`;
 
-exports[`resolution range queries betweenResolutions() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`resolution range queries betweenResolutions() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`resolution range queries betweenResolutions() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers resolution range queries betweenResolutions() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries aboveWidth() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-width: 68.75em)`;
+exports[`ranged feature helpers width range queries aboveWidth() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-width: 68.75em)`;
 
-exports[`width range queries aboveWidth() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-width: 56.25em)`;
+exports[`ranged feature helpers width range queries aboveWidth() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-width: 56.25em)`;
 
-exports[`width range queries aboveWidth() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-width: 25em)`;
+exports[`ranged feature helpers width range queries aboveWidth() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-width: 25em)`;
 
-exports[`width range queries aboveWidth() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-width: 81.25em)`;
+exports[`ranged feature helpers width range queries aboveWidth() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-width: 81.25em)`;
 
-exports[`width range queries aboveWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers width range queries aboveWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries atWidth() returns the correct query for breakpoint 'large' 1`] = `@media screen and (width: 68.75em)`;
+exports[`ranged feature helpers width range queries atWidth() returns the correct query for breakpoint 'large' 1`] = `@media screen and (width: 68.75em)`;
 
-exports[`width range queries atWidth() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (width: 56.25em)`;
+exports[`ranged feature helpers width range queries atWidth() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (width: 56.25em)`;
 
-exports[`width range queries atWidth() returns the correct query for breakpoint 'small' 1`] = `@media screen and (width: 25em)`;
+exports[`ranged feature helpers width range queries atWidth() returns the correct query for breakpoint 'small' 1`] = `@media screen and (width: 25em)`;
 
-exports[`width range queries atWidth() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (width: 81.25em)`;
+exports[`ranged feature helpers width range queries atWidth() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (width: 81.25em)`;
 
-exports[`width range queries atWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers width range queries atWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-width: 68.75em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries atWidthBreakpoint() returns the correct query for breakpoint 'large' 1`] = `@media screen and (min-width: 68.75em) and (max-width: 81.249375em)`;
 
-exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 68.749375em)`;
+exports[`ranged feature helpers width range queries atWidthBreakpoint() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 68.749375em)`;
 
-exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 56.249375em)`;
+exports[`ranged feature helpers width range queries atWidthBreakpoint() returns the correct query for breakpoint 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 56.249375em)`;
 
-exports[`width range queries atWidthBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-width: 81.25em)`;
+exports[`ranged feature helpers width range queries atWidthBreakpoint() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (min-width: 81.25em)`;
 
-exports[`width range queries atWidthBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers width range queries atWidthBreakpoint() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries belowWidth() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-width: 68.749375em)`;
+exports[`ranged feature helpers width range queries belowWidth() returns the correct query for breakpoint 'large' 1`] = `@media screen and (max-width: 68.749375em)`;
 
-exports[`width range queries belowWidth() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-width: 56.249375em)`;
+exports[`ranged feature helpers width range queries belowWidth() returns the correct query for breakpoint 'medium' 1`] = `@media screen and (max-width: 56.249375em)`;
 
-exports[`width range queries belowWidth() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-width: 24.999375em)`;
+exports[`ranged feature helpers width range queries belowWidth() returns the correct query for breakpoint 'small' 1`] = `@media screen and (max-width: 24.999375em)`;
 
-exports[`width range queries belowWidth() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries belowWidth() returns the correct query for breakpoint 'xLarge' 1`] = `@media screen and (max-width: 81.249375em)`;
 
-exports[`width range queries belowWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers width range queries belowWidth() throws if breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 68.749375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'medium' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 68.749375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 68.749375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 68.749375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-width: 68.75em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'large' and 'xLarge' 1`] = `@media screen and (min-width: 68.75em) and (max-width: 81.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 68.749375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'large' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 68.749375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 56.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 56.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'medium' and 'xLarge' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 81.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-width: 25em) and (max-width: 68.749375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'large' 1`] = `@media screen and (min-width: 25em) and (max-width: 68.749375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-width: 25em) and (max-width: 56.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'medium' 1`] = `@media screen and (min-width: 25em) and (max-width: 56.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-width: 25em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'small' and 'xLarge' 1`] = `@media screen and (min-width: 25em) and (max-width: 81.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-width: 68.75em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'large' 1`] = `@media screen and (min-width: 68.75em) and (max-width: 81.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'medium' 1`] = `@media screen and (min-width: 56.25em) and (max-width: 81.249375em)`;
 
-exports[`width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 81.249375em)`;
+exports[`ranged feature helpers width range queries betweenWidths() returns the correct query for breakpoints 'xLarge' and 'small' 1`] = `@media screen and (min-width: 25em) and (max-width: 81.249375em)`;
 
-exports[`width range queries betweenWidths() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
+exports[`ranged feature helpers width range queries betweenWidths() throws if 'from' and 'to' breakpoints are the same value 1`] = `You must supply two different breakpoints to 'widthBetween' but both were: 'large'.`;
 
-exports[`width range queries betweenWidths() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers width range queries betweenWidths() throws if 'from' breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
 
-exports[`width range queries betweenWidths() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
+exports[`ranged feature helpers width range queries betweenWidths() throws if 'to' breakpoint doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: 'small, medium, large, xLarge' are defined.`;
