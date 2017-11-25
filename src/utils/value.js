@@ -19,6 +19,7 @@ export const isBoolean = is(Boolean);
 export const isNumber = both(is(Number), complement(equals(NaN)));
 export const isObject = is(Object);
 export const isString = is(String);
+export const isArray = is(Array);
 export const isNull = value => value === null;
 export const isUndefined = value => value === undefined;
 

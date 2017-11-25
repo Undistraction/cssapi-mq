@@ -14,7 +14,7 @@ import buildMediaType from './buildMediaType';
 import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
 import {
-  renderQueryDefinition,
+  joinAnd,
   renderFeature,
 } from '../renderers/cssRenderers/queryRenderer';
 
@@ -97,22 +97,16 @@ export default (
   // Feature Helpers
   // ---------------------------------------------------------------------------
 
-  const aboveFeature = (from, config = defaultAPIConfig) =>
-    renderQueryDefinition(mediaType(config.mediaType), minFeature(from));
+  const aboveFeature = from => minFeature(from);
 
-  const belowFeature = (to, config = defaultAPIConfig) =>
-    renderQueryDefinition(mediaType(config.mediaType), maxFeature(to));
+  const belowFeature = to => maxFeature(to);
 
   const betweenFeatures = (from, to, config = defaultAPIConfig) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
     const fromIndex = indexOfBreakpointNamed(propEqName(from));
     const toIndex = indexOfBreakpointNamed(propEqName(to));
     const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from];
-    return renderQueryDefinition(
-      mediaType(config.mediaType),
-      minFeature(lower),
-      maxFeature(higher)
-    );
+    return joinAnd([minFeature(lower), maxFeature(higher)]);
   };
 
   const atFeatureBreakpoint = (breakpoint, config = defaultAPIConfig) => {
@@ -123,8 +117,7 @@ export default (
     return aboveFeature(breakpoint, config);
   };
 
-  const atFeature = (breakpoint, config = defaultAPIConfig) =>
-    renderQueryDefinition(mediaType(config.mediaType), feature(breakpoint));
+  const atFeature = breakpoint => feature(breakpoint);
 
   const titleizedName = name[0].toUpperCase() + camelcase(name.slice(1));
 

@@ -235,9 +235,9 @@ exports[`configure() breakpoints throws if invalid 'width' breakpoint set value 
 
 exports[`configure() breakpoints throws if invalid 'width' breakpoint set value is supplied of 'xxxx' 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied ["xxxx"]`;
 
-exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `@media screen and (max-height: 39.999em)`;
+exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `(max-height: 39.999em)`;
 
-exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for width 1`] = `@media screen and (max-width: 39.999em)`;
+exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for width 1`] = `(max-width: 39.999em)`;
 
 exports[`configure() config object baseFontSize throws if 'baseFontSize' is '' 1`] = `'baseFontSize'must be a positive number, but you supplied ''`;
 

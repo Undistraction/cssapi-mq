@@ -90,3 +90,6 @@ export const shouldSeparateQueriesErrorMessage = value =>
 
 export const invalidFeatureErrorMessage = (name, value, possibleValues) => `
   '${name}' must be one of: '${possibleValues}' but was: '${value}'.`;
+
+export const queryNoElementsErrorMessage =
+  "You must supply at least one argument to 'query()' to build a valid media query";

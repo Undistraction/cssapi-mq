@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`query and renders query with multiple features anded together 1`] = `
+@media screen and (min-width: 25em) and (orientation: landscape) and (grid) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query and renders query with two features anded together 1`] = `
+@media (min-width: 25em) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query mixed allows mixed  queries and not queries (both and and or) 1`] = `
+@media screen,(color),screen and (orientation: landscape),not (grid), not (width: 68.75em) and (orientation: portrait) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query mixed allows mixed not queries (both and and or) 1`] = `
+@media not screen, not (color), not screen and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query mixed allows mixed queries (both and and or) 1`] = `
+@media screen,(color),screen and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not negates anded queries 1`] = `
+@media not screen and (color) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not negates ored queries 1`] = `
+@media not screen, not (color), not (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query or renders query with multiple features ored together 1`] = `
+@media screen,(min-width: 25em),(orientation: landscape),(grid) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query or renders query with two features ored together 1`] = `
+@media (min-width: 25em),(orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query renders query with single feature 1`] = `
+@media (min-width: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query throws with no arguments 1`] = `You must supply at least one argument to 'query()' to build a valid media query`;

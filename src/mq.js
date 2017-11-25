@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { partial, mergeDeepLeft, merge } from 'ramda';
+import { partial, mergeDeepLeft, merge, isEmpty } from 'ramda';
 
 import buildMediaType from './features/buildMediaType';
 import buildLinearFeatures from './features/buildLinearFeatures';
@@ -16,7 +16,11 @@ import { isNumberWithDimensionsUnit } from './utils/value';
 import { unitedDimensionToUnitlessPixelValue } from './utils/units';
 import { MEDIA_TYPES, UNITS } from './const';
 import renderQuery from './renderers/cssRenderers/styledComponentsRenderer';
-import { renderQueryDefinition } from './renderers/cssRenderers/queryRenderer';
+import {
+  renderQueryDefinition,
+  renderNotQueryDefinition,
+} from './renderers/cssRenderers/queryRenderer';
+import { throwError, queryNoElementsErrorMessage } from './errors';
 
 const defaultConfig = {
   baseFontSize: 16,
@@ -55,15 +59,19 @@ const configure = (breakpoints, config = {}) => {
     return mq;
   };
 
-  const query = (...elements) => (stringParts, ...interpolationValues) => {
-    // console.log('QUERY_________________');
-    // console.log('Elements:', elements);
-    // console.log('CSS:', stringParts, interpolationValues);
-    return renderQuery(
-      renderQueryDefinition(...elements),
-      css(stringParts, ...interpolationValues)
-    );
+  const query = (...elements) => {
+    if (isEmpty(elements)) {
+      throwError(queryNoElementsErrorMessage);
+    }
+
+    return (stringParts, ...interpolationValues) =>
+      renderQuery(
+        renderQueryDefinition(...elements),
+        css(stringParts, ...interpolationValues)
+      );
   };
+
+  const not = (...elements) => renderNotQueryDefinition(...elements);
 
   // ---------------------------------------------------------------------------
   // Export
@@ -74,6 +82,7 @@ const configure = (breakpoints, config = {}) => {
     ...buildLinearFeatures(),
     ...buildRangeFeatures(breakpoints, configWithDefaults),
     query,
+    not,
   };
 
   exports.tweak = partial(tweak, [exports]);
