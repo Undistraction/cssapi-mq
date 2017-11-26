@@ -93,3 +93,18 @@ export const invalidFeatureErrorMessage = (name, value, possibleValues) => `
 
 export const queryNoElementsErrorMessage =
   "You must supply at least one argument to 'query()' to build a valid media query";
+
+export const queryElementIsValidTypeErrorMessage = value =>
+  `You must only supply strings or arrays to 'query()' but you supplied '${
+    value
+  }'`;
+
+export const queryChildElementIsValidTypeErrorMessage = value =>
+  `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '${JSON.stringify(
+    value
+  )}'`;
+
+export const queryNoNestedArraysErrorMessage = value =>
+  `You must not supply any nested arrays to 'query()' but you supplied '${
+    value
+  }'`;

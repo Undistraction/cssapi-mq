@@ -5,7 +5,7 @@ import {
   isRatioString,
 } from '../../utils/value';
 
-describe.only('utils', () => {
+describe('utils', () => {
   describe('isNumberWithUnit', () => {
     const validValues = [
       '14em',

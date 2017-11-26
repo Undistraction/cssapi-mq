@@ -101,7 +101,7 @@ export default (
 
   const belowFeature = to => maxFeature(to);
 
-  const betweenFeatures = (from, to, config = defaultAPIConfig) => {
+  const betweenFeatures = (from, to) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from));
     const fromIndex = indexOfBreakpointNamed(propEqName(from));
     const toIndex = indexOfBreakpointNamed(propEqName(to));

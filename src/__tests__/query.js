@@ -1,10 +1,14 @@
-import { mqWithValidBreakpointsForRange } from './data';
+import {
+  mqWithValidBreakpointsForRange,
+  booleanValues,
+  genericNumbers,
+} from './data';
 import cssSerialiser from './helpers/cssSerialiser';
 
 expect.addSnapshotSerializer(cssSerialiser);
 
 describe('query', () => {
-  it.only('throws with no arguments', () => {
+  it('throws with no arguments', () => {
     const mq = mqWithValidBreakpointsForRange('width');
     const { query } = mq;
     expect(
@@ -14,6 +18,27 @@ describe('query', () => {
       `
     ).toThrowErrorMatchingSnapshot();
   });
+
+  const invalidValues = [
+    ...booleanValues,
+    ...genericNumbers,
+    null,
+    undefined,
+    NaN,
+    {},
+  ];
+  for (const value of invalidValues) {
+    it(`throws with invalid argument ${value}`, () => {
+      const mq = mqWithValidBreakpointsForRange('width');
+      const { query } = mq;
+      expect(
+        () =>
+          query(value)`
+          background-color: ${() => 'GhostWhite'};
+        `
+      ).toThrowErrorMatchingSnapshot();
+    });
+  }
 
   it('renders query with single feature', () => {
     // @media (min-width: 25em) {

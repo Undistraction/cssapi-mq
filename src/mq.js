@@ -60,9 +60,7 @@ const configure = (breakpoints, config = {}) => {
   };
 
   const query = (...elements) => {
-    if (isEmpty(elements)) {
-      throwError(queryNoElementsErrorMessage);
-    }
+    if (isEmpty(elements)) throwError(queryNoElementsErrorMessage);
 
     return (stringParts, ...interpolationValues) =>
       renderQuery(
@@ -71,7 +69,9 @@ const configure = (breakpoints, config = {}) => {
       );
   };
 
-  const not = (...elements) => renderNotQueryDefinition(...elements);
+  const not = (...elements) => ({
+    not: renderNotQueryDefinition(...elements),
+  });
 
   // ---------------------------------------------------------------------------
   // Export
