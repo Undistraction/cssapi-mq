@@ -176,7 +176,7 @@ describe('query', () => {
       ).toMatchSnapshot();
     });
 
-    it.only('allows mixed queries and not queries (both and and or)', () => {
+    it('allows mixed queries and not queries (both and and or)', () => {
       // @media not screen, not (color), not screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
       const { grid, atWidth, query, not, colorGamut, orientation } = mq;

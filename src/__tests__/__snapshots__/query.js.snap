@@ -17,7 +17,7 @@ exports[`query and renders query with two features anded together 1`] = `
 `;
 
 exports[`query mixed allows mixed not queries (both and and or) 1`] = `
-@media not (display-mode: fullscreen), not (color-gamut: rec2020), not (grid: 0) and (orientation: landscape) {
+@media not screen and (display-mode: fullscreen), not screen and (color-gamut: rec2020), not screen and (grid: 0) and (orientation: landscape) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -33,7 +33,7 @@ exports[`query mixed allows mixed queries (both and and or) 1`] = `
 `;
 
 exports[`query mixed allows mixed queries and not queries (both and and or) 1`] = `
-@media (grid),(color-gamut: rec2020),(grid: 1) and (orientation: landscape),not (grid), not (width: 68.75em) and (orientation: portrait) {
+@media (grid),(color-gamut: rec2020),(grid: 1) and (orientation: landscape),not screen and (grid), not screen and (width: 68.75em) and (orientation: portrait) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -41,7 +41,7 @@ exports[`query mixed allows mixed queries and not queries (both and and or) 1`] 
 `;
 
 exports[`query not negates anded queries 1`] = `
-@media not (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape) {
+@media not screen and (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
@@ -49,7 +49,7 @@ exports[`query not negates anded queries 1`] = `
 `;
 
 exports[`query not negates ored queries 1`] = `
-@media not (display-mode: fullscreen), not (color-gamut: p3), not (orientation: landscape) {
+@media not screen and (display-mode: fullscreen), not screen and (color-gamut: p3), not screen and (orientation: landscape) {
     background-color: function () {
         return 'GhostWhite';
     }; ;
