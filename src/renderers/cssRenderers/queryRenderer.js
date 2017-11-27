@@ -33,6 +33,8 @@ export const prefixWithNot = concat('not ');
 export const containsArrays = any(isArray);
 export const expandNegationObject = negationObject => negationObject.not;
 
+export const ensureMediaType = (defaultMediaType, ...elements) => {};
+
 const queryElementIsValidType = element => {
   if (
     either(isNull, complement(either(isArrayOrString, isNegationObject)))(
@@ -78,8 +80,10 @@ export const renderQueryDefinition = (...elements) => {
   return join(' ', [MEDIA_PREFIX, elements]);
 };
 
-export const renderNotQueryDefinition = (...elements) => {
-  validateDefinition(elements);
+export const renderNotQueryDefinition = (defaultMediaType, ...elements) => {
+  validateDefinition(...elements);
+  //elements = ensureMediaType(defaultMediaType, elements);
+
   return compose(
     joinComma,
     map(compose(prefixWithNot, when(isArray, joinAnd)))

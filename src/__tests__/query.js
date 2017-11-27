@@ -66,10 +66,10 @@ describe('query', () => {
     it('renders query with multiple features anded together', () => {
       // @media screen and (min-width: 25em) and (orientation: landscape) and (grid) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { query, mediaType, grid, minWidth, orientation } = mq;
+      const { query, colorGamut, grid, minWidth, orientation } = mq;
       expect(
         query([
-          mediaType('screen'),
+          colorGamut('srgb'),
           minWidth('small'),
           orientation('landscape'),
           grid(),
@@ -95,10 +95,10 @@ describe('query', () => {
     it('renders query with multiple features ored together', () => {
       // @media screen,(min-width: 25em),(orientation: landscape),(grid) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { query, minWidth, orientation, mediaType, grid } = mq;
+      const { query, minWidth, orientation, colorGamut, grid } = mq;
       expect(
         query(
-          mediaType('screen'),
+          colorGamut('srgb'),
           minWidth('small'),
           orientation('landscape'),
           grid()
@@ -113,9 +113,15 @@ describe('query', () => {
     it('negates anded queries', () => {
       // @media not screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { mediaType, query, not, color, orientation } = mq;
+      const { displayMode, query, not, colorGamut, orientation } = mq;
       expect(
-        query(not([mediaType(), color(), orientation('landscape')]))`
+        query(
+          not([
+            displayMode('fullscreen'),
+            colorGamut('p3'),
+            orientation('landscape'),
+          ])
+        )`
             background-color: ${() => 'GhostWhite'};
           `
       ).toMatchSnapshot();
@@ -124,9 +130,15 @@ describe('query', () => {
     it('negates ored queries', () => {
       // @media not screen, not (color), not (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { mediaType, query, not, color, orientation } = mq;
+      const { displayMode, query, not, colorGamut, orientation } = mq;
       expect(
-        query(not(mediaType(), color(), orientation('landscape')))`
+        query(
+          not(
+            displayMode('fullscreen'),
+            colorGamut('p3'),
+            orientation('landscape')
+          )
+        )`
             background-color: ${() => 'GhostWhite'};
           `
       ).toMatchSnapshot();
@@ -137,9 +149,12 @@ describe('query', () => {
     it('allows mixed queries (both and and or)', () => {
       // @media  screen, (color), screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { mediaType, query, color, orientation } = mq;
+      const { displayMode, query, colorGamut, orientation } = mq;
       expect(
-        query(mediaType(), color(), [mediaType(), orientation('landscape')])`
+        query(displayMode('fullscreen'), colorGamut('rec2020'), [
+          displayMode('standalone'),
+          orientation('landscape'),
+        ])`
               background-color: ${() => 'GhostWhite'};
             `
       ).toMatchSnapshot();
@@ -148,25 +163,28 @@ describe('query', () => {
     it('allows mixed not queries (both and and or)', () => {
       // @media not screen, not (color), not screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { mediaType, query, not, color, orientation } = mq;
+      const { displayMode, query, not, colorGamut, orientation, grid } = mq;
       expect(
         query(
-          not(mediaType(), color(), [mediaType(), orientation('landscape')])
+          not(displayMode('fullscreen'), colorGamut('rec2020'), [
+            grid(0),
+            orientation('landscape'),
+          ])
         )`
               background-color: ${() => 'GhostWhite'};
             `
       ).toMatchSnapshot();
     });
 
-    it('allows mixed queries and not queries (both and and or)', () => {
+    it.only('allows mixed queries and not queries (both and and or)', () => {
       // @media not screen, not (color), not screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
-      const { mediaType, grid, atWidth, query, not, color, orientation } = mq;
+      const { grid, atWidth, query, not, colorGamut, orientation } = mq;
       expect(
         query(
-          mediaType(),
-          color(),
-          [mediaType(), orientation('landscape')],
+          grid(),
+          colorGamut('rec2020'),
+          [grid(1), orientation('landscape')],
           not(grid(), [atWidth('large'), orientation('portrait')])
         )`
               background-color: ${() => 'GhostWhite'};

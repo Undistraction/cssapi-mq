@@ -70,7 +70,10 @@ const configure = (breakpoints, config = {}) => {
   };
 
   const not = (...elements) => ({
-    not: renderNotQueryDefinition(...elements),
+    not: renderNotQueryDefinition(
+      configWithDefaults.defaultMediaType,
+      ...elements
+    ),
   });
 
   // ---------------------------------------------------------------------------
