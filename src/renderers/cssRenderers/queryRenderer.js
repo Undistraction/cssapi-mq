@@ -33,7 +33,13 @@ export const prefixWithNot = concat('not ');
 export const containsArrays = any(isArray);
 export const expandNegationObject = negationObject => negationObject.not;
 
-export const ensureMediaType = (defaultMediaType, ...elements) => {};
+export const ensureMediaType = (defaultMediaType, ...elements) =>
+  map(element => {
+    if (isArray(element)) {
+      return [defaultMediaType, ...element];
+    }
+    return joinAnd([defaultMediaType, element]);
+  })(elements);
 
 const queryElementIsValidType = element => {
   if (
@@ -82,7 +88,7 @@ export const renderQueryDefinition = (...elements) => {
 
 export const renderNotQueryDefinition = (defaultMediaType, ...elements) => {
   validateDefinition(...elements);
-  //elements = ensureMediaType(defaultMediaType, elements);
+  elements = ensureMediaType(defaultMediaType, ...elements);
 
   return compose(
     joinComma,
