@@ -1,4 +1,4 @@
-import { findIndex, isNil } from 'ramda';
+import { findIndex, isNil, both, always } from 'ramda';
 import camelcase from 'camelcase';
 import { getValidatorForFeature } from '../validations';
 
@@ -10,18 +10,22 @@ import {
   mssingBreakpointMapErrorMessage,
 } from '../errors';
 
-import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
+import {
+  getUpperLimit,
+  propEqName,
+  toBreakpointArray,
+} from '../utils/breakpoints';
 
 import {
   joinAnd,
   renderFeature,
 } from '../renderers/cssRenderers/queryRenderer';
 
-const buildFeatureItem = (name, parser, config) => breakpoint => {
-  return renderFeature(name, parser(breakpoint, config));
-};
+const buildFeatureItem = (name, parser, config) => breakpoint =>
+  renderFeature(name, parser(breakpoint, config));
 
-const nilValueAndAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
+const nilValueAndAllowedToPass = (value, noArgs) =>
+  both(isNil, always(noArgs))(value);
 
 export default (
   name,

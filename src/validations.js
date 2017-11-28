@@ -19,7 +19,7 @@ import {
 } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNames } from './features';
-import { ensureArray } from './utils';
+import { ensureArray } from './utils/array';
 
 import {
   isBoolean,

@@ -1,7 +1,7 @@
 import { keys, values, compose } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNames } from './features';
-import { toCommaSeparatedList } from './utils';
+import { toCommaSeparatedList } from './utils/string';
 
 const keysToCommaSeparatedList = compose(toCommaSeparatedList, keys);
 const valuesToCommaSeparatedList = compose(toCommaSeparatedList, values);
