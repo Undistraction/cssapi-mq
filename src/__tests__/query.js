@@ -143,6 +143,69 @@ describe('query', () => {
           `
       ).toMatchSnapshot();
     });
+
+    describe('with media type', () => {
+      it('renders single uquery with media type without adding default media type', () => {
+        // @media (min-width: 25em) {
+        const mq = mqWithValidBreakpointsForRange('width');
+        const { query, not, displayMode, mediaType } = mq;
+        expect(
+          query(not(mediaType(), displayMode('fullscreen')))`
+              background-color: ${() => 'GhostWhite'};
+            `
+        ).toMatchSnapshot();
+      });
+
+      it('negates anded queries without adding default media type', () => {
+        // @media not screen and (color) and (orientation: landscape) {
+        const mq = mqWithValidBreakpointsForRange('width');
+        const {
+          mediaType,
+          displayMode,
+          query,
+          not,
+          colorGamut,
+          orientation,
+        } = mq;
+        expect(
+          query(
+            not([
+              mediaType(),
+              displayMode('fullscreen'),
+              colorGamut('p3'),
+              orientation('landscape'),
+            ])
+          )`
+              background-color: ${() => 'GhostWhite'};
+            `
+        ).toMatchSnapshot();
+      });
+
+      it('negates ored queries without adding default media type', () => {
+        // @media not screen, not (color), not (orientation: landscape) {
+        const mq = mqWithValidBreakpointsForRange('width');
+        const {
+          mediaType,
+          displayMode,
+          query,
+          not,
+          colorGamut,
+          orientation,
+        } = mq;
+        expect(
+          query(
+            not(
+              mediaType(),
+              displayMode('fullscreen'),
+              colorGamut('p3'),
+              orientation('landscape')
+            )
+          )`
+              background-color: ${() => 'GhostWhite'};
+            `
+        ).toMatchSnapshot();
+      });
+    });
   });
 
   describe('mixed', () => {
@@ -176,7 +239,7 @@ describe('query', () => {
       ).toMatchSnapshot();
     });
 
-    it.only('allows mixed queries and not queries (both and and or)', () => {
+    it('allows mixed queries and not queries (both and and or)', () => {
       // @media not screen, not (color), not screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');
       const { grid, atWidth, query, not, colorGamut, orientation } = mq;

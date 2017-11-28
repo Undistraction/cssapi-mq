@@ -56,6 +56,30 @@ exports[`query not negates ored queries 1`] = `
 }
 `;
 
+exports[`query not with media type negates anded queries without adding default media type 1`] = `
+@media not screen and (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not with media type negates ored queries without adding default media type 1`] = `
+@media not screen, not screen and (display-mode: fullscreen), not screen and (color-gamut: p3), not screen and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not with media type renders single uquery with media type without adding default media type 1`] = `
+@media not screen, not screen and (display-mode: fullscreen) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
 exports[`query or renders query with multiple features ored together 1`] = `
 @media (color-gamut: srgb),(min-width: 25em),(orientation: landscape),(grid) {
     background-color: function () {

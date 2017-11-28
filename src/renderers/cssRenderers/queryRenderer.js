@@ -1,4 +1,5 @@
 import {
+  __,
   reject,
   concat,
   compose,
@@ -12,10 +13,12 @@ import {
   all,
   both,
   has,
+  contains,
   complement,
+  values,
 } from 'ramda';
 import { isArray, isString, isObject, isNull } from '../../utils/value';
-import { MEDIA_PREFIX } from '../../const';
+import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const';
 import {
   throwError,
   queryNoNestedArraysErrorMessage,
@@ -28,15 +31,24 @@ const isArrayOrString = either(isArray, isString);
 const isNegationObject = both(isObject, has('not'));
 
 export const joinAnd = join(' and ');
-export const joinComma = join(', ');
-export const prefixWithNot = concat('not ');
-export const containsArrays = any(isArray);
-export const expandNegationObject = negationObject => negationObject.not;
+const joinComma = join(', ');
+const prefixWithNot = concat('not ');
+const containsArrays = any(isArray);
+const expandNegationObject = negationObject => negationObject.not;
+const containsMediaType = contains(__, values(MEDIA_TYPES));
+const arrayContainsMediaType = any(containsMediaType);
 
 export const ensureMediaType = (defaultMediaType, ...elements) =>
   map(element => {
     if (isArray(element)) {
+      // Only add prefix if no media type is declared
+      if (arrayContainsMediaType(element)) {
+        return element;
+      }
       return [defaultMediaType, ...element];
+    }
+    if (containsMediaType(element)) {
+      return element;
     }
     return joinAnd([defaultMediaType, element]);
   })(elements);

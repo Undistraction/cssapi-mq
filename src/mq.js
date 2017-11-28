@@ -9,7 +9,7 @@ import buildRangeFeatures from './features/buildRangedFeatures';
 import {
   validateBreakpointSets,
   validateConfig,
-  validateBreakpoints,
+  validateBreakpointMap,
 } from './validations';
 
 import { isNumberWithDimensionsUnit } from './utils/value';
@@ -32,7 +32,7 @@ const defaultConfig = {
 
 const validateConfigArgs = (breakpoints, config) => {
   validateConfig(config);
-  validateBreakpoints(breakpoints);
+  if (breakpoints) validateBreakpointMap(breakpoints);
   validateBreakpointSets(breakpoints);
 };
 
@@ -52,7 +52,7 @@ const configure = (breakpoints, config = {}) => {
   // ---------------------------------------------------------------------------
 
   const tweak = (mq, tweakpoints) => {
-    validateBreakpoints(tweakpoints);
+    if (breakpoints) validateBreakpointMap(tweakpoints);
     validateBreakpointSets(tweakpoints);
     const mergedBreakpoints = mergeDeepLeft(breakpoints, tweakpoints);
     mq.tweaked = configure(mergedBreakpoints, configWithDefaults);

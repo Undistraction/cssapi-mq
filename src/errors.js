@@ -32,15 +32,10 @@ export const throwError = message => {
   throw new InvalidValueError(message);
 };
 
-export const emptyBreakpointMapErrorMessage = breakpointMap => `
-  You must supply at least one set of breakpoints to 'configure()', but the you supplied '${objectToString(
-    breakpointMap
-  )}'.`;
-
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
-  `You must supply valid breakpoint map keys. Valid values are: '${
+  `You supplied a breakpoint set with an invalid name. Valid values are: '${
     rangedFeatureNames
-  }'. but you supplied: '${breakpointMap}'.`;
+  }'. but you supplied: '${objectToString(breakpointMap)}'.`;
 
 export const emptyBreakpointSetErrorMessage = breakpointMapName =>
   `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${objectToString(
@@ -100,7 +95,7 @@ export const queryElementIsValidTypeErrorMessage = value =>
   }'`;
 
 export const queryChildElementIsValidTypeErrorMessage = value =>
-  `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '${JSON.stringify(
+  `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '${objectToString(
     value
   )}'`;
 

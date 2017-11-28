@@ -8,7 +8,7 @@ import {
   all,
   toPairs,
   map,
-  and,
+  keys,
   flip,
   isEmpty,
   either,
@@ -45,7 +45,12 @@ import monochromeValidator from './validators/monochromeValidator';
 
 const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
 const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
-const areBreakpointSetNamesValid = all(t => isBreakpointSetNameValid(t));
+const areBreakpointSetNamesValid = v => {
+  const a = all(t => {
+    return isBreakpointSetNameValid(t);
+  })(v);
+  return a;
+};
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
 const doesListIncludeValue = list => complement(contains(__, values(list)));
 
@@ -99,21 +104,11 @@ export const validateMediaTypes = mediaTypes => {
   }
 };
 
-export const validateBreakpointSetNames = breakpointMap => {
-  if (!areBreakpointSetNamesValid(breakpointMap)) {
+export const validateBreakpointMap = breakpointMap => {
+  if (!areBreakpointSetNamesValid(keys(breakpointMap))) {
     throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
   }
 };
-
-const validateBreakpointsMap = breakpointMap => {
-  if (!isPopulatedObject(breakpointMap))
-    throwError(emptyBreakpointMapErrorMessage(breakpointMap));
-};
-
-export const validateBreakpoints = and(
-  validateBreakpointSetNames,
-  validateBreakpointsMap
-);
 
 export const validateBreakpointSets = compose(
   map(([name, value]) => validateBreakpointSet(name, value)),

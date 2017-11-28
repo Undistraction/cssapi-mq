@@ -30,19 +30,17 @@ const validBreakpointValuesForFeature = name => ({
 });
 
 describe('configure()', () => {
-  it('throws if no breakpoints are supplied', () => {
-    expect(() => styledMQ.configure()).toThrowErrorMatchingSnapshot();
-  });
-
-  it('throws if no breakpoint sets are supplied', () => {
-    expect(() => styledMQ.configure({})).toThrowErrorMatchingSnapshot();
-  });
-
   it("doesn't throw with default configuration", () => {
     expect(() => mqWithNoBreakpoints().not.toThrow());
   });
 
   describe('breakpoints', () => {
+    it('throws if invalid breakpoint set name is supplied', () => {
+      expect(() =>
+        styledMQ.configure({ xxxx: { small: 100 } })
+      ).toThrowErrorMatchingSnapshot();
+    });
+
     for (const featureName of rangedFeatureNames) {
       it("doesn't throw if breakpoint set values are valid", () => {
         expect(() =>
