@@ -32,6 +32,8 @@ export const throwError = message => {
   throw new InvalidValueError(message);
 };
 
+export const composeError = message => compose(throwError, message);
+
 export const invalidBreakpointsErrorMessage = breakpoints =>
   `The breakpoints object must be an object, but you supplied '${objectToString(
     breakpoints
@@ -93,7 +95,7 @@ export const invalidUnitErrorMessage = value =>
 export const shouldSeparateQueriesErrorMessage = value =>
   `'shouldSeparateQueries' must be a boolean but was '${value}'.`;
 
-export const invalidFeatureErrorMessage = (name, value, possibleValues) => `
+export const invalidFeatureErrorMessage = (name, possibleValues, value) => `
   '${name}' must be one of: '${possibleValues}' but was: '${value}'.`;
 
 export const queryNoElementsErrorMessage =
