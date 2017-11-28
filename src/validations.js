@@ -11,11 +11,12 @@ import {
   keys,
   flip,
   isEmpty,
-  either,
+  unless,
 } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNames } from './features';
 import { ensureArray } from './utils';
+import { neither } from './utils/logic';
 
 import {
   isBoolean,
@@ -24,7 +25,6 @@ import {
   isPositiveNumberWithPixelUnit,
   isObject,
   isArray,
-  isNaN,
 } from './utils/value';
 import {
   throwError,
@@ -49,14 +49,10 @@ import monochromeValidator from './validators/features/monochromeValidator';
 
 const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
 const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
-const areBreakpointSetNamesValid = v => {
-  const a = all(t => {
-    return isBreakpointSetNameValid(t);
-  })(v);
-  return a;
-};
+const areBreakpointSetNamesValid = all(isBreakpointSetNameValid);
 const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
 const doesListIncludeValue = list => complement(contains(__, values(list)));
+const areMediaTypesValid = both(all(isMediaTypeValid), complement(isEmpty));
 
 export const validatorsByFeature = {
   width: dimensionValidator,
@@ -97,11 +93,6 @@ const validateBreakpointSet = (name, breakpointSet) => {
   validateBreakpointSetValues(name, breakpointSet);
 };
 
-export const areMediaTypesValid = both(
-  all(isMediaTypeValid),
-  complement(isEmpty)
-);
-
 export const validateMediaTypes = mediaTypes => {
   if (!areMediaTypesValid(mediaTypes)) {
     throwError(invalidMediaTypeErrorMessage(mediaTypes));
@@ -115,11 +106,7 @@ const validateBreakpointSetNames = breakpointMap => {
 };
 
 const validateBreakpointObject = breakpointMap => {
-  if (
-    isNaN(breakpointMap) ||
-    isArray(breakpointMap) ||
-    !isObject(breakpointMap)
-  ) {
+  if (isArray(breakpointMap) || !isObject(breakpointMap)) {
     throwError(invalidBreakpointsErrorMessage(breakpointMap));
   }
 
@@ -143,8 +130,9 @@ export const validateConfig = ({
   dimensionsUnit,
   shouldSeparateQueries,
 }) => {
-  if (!either(isPositiveNumber, isPositiveNumberWithPixelUnit)(baseFontSize))
+  if (neither(isPositiveNumber, isPositiveNumberWithPixelUnit)(baseFontSize))
     throwError(invalidBaseFontSizeErrorMessage(baseFontSize));
+
   if (
     defaultMediaType !== null &&
     !areMediaTypesValid(ensureArray(defaultMediaType))

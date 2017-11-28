@@ -1,4 +1,6 @@
-import { complement, any } from 'ramda';
+import { complement, compose, and, or, both, either } from 'ramda';
 
-// eslint-disable-next-line import/prefer-default-export
-export const neither = complement(any);
+export const nand = complement(and);
+export const nor = complement(or);
+export const notBoth = compose(complement, both);
+export const neither = compose(complement, either);

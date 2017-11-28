@@ -11,9 +11,11 @@ import {
   complement,
   isEmpty,
   equals,
+  values,
 } from 'ramda';
 
 import { numericPartOfUnitedNumber } from './units';
+import { DIMENSIONS_UNITS, RESOLUTION_UNIT } from '../const';
 
 export const isBoolean = is(Boolean);
 export const isNumber = both(is(Number), complement(equals(NaN)));
@@ -21,7 +23,6 @@ export const isObject = is(Object);
 export const isString = is(String);
 export const isArray = is(Array);
 export const isNull = value => value === null;
-export const isNaN = value => value === NaN;
 export const isUndefined = value => value === undefined;
 
 export const isPopulatedObject = both(complement(isEmpty), isObject);
@@ -37,21 +38,23 @@ export const isNumberWithUnit = curry((units, value) => {
   const regex = `^-?\\d+(?:.\\d+)?(?:${join('|', units)})$`;
   return new RegExp(regex).test(value);
 });
-export const isNumberWithPixelUnit = isNumberWithUnit(['px']);
-
-export const isPositiveNumberWithPixelUnit = both(
-  isNumberWithPixelUnit,
-  compose(isPositiveNumber, numericPartOfUnitedNumber)
+export const isNumericPartOfUnitValuePositive = compose(
+  isPositiveNumber,
+  numericPartOfUnitedNumber
 );
-
-export const isNumberWithDimensionsUnit = isNumberWithUnit(['rem', 'em', 'px']);
-export const isNumberWithResolutionUnit = isNumberWithUnit(['dpi']);
-
+export const isPositiveNumberWithPixelUnit = both(
+  isNumberWithUnit([DIMENSIONS_UNITS.PX]),
+  isNumericPartOfUnitValuePositive
+);
+export const isNumberWithDimensionsUnit = isNumberWithUnit(
+  values(DIMENSIONS_UNITS)
+);
+export const isNumberWithResolutionUnit = isNumberWithUnit([RESOLUTION_UNIT]);
 export const isPositiveNumberWithResolutionUnit = both(
   isNumberWithResolutionUnit,
-  compose(isPositiveNumber, numericPartOfUnitedNumber)
+  isNumericPartOfUnitValuePositive
 );
 export const isPositiveNumberWithDimensionsUnit = both(
   isNumberWithDimensionsUnit,
-  compose(isPositiveNumber, numericPartOfUnitedNumber)
+  isNumericPartOfUnitValuePositive
 );

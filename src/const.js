@@ -17,6 +17,8 @@ export const DIMENSIONS_UNITS = Object.freeze({
   PX: 'px',
 });
 
+export const RESOLUTION_UNIT = 'dpi';
+
 export const UNITS = Object.freeze({
   DIMENSIONS: DIMENSIONS_UNITS,
   RESOLUTION: Object.freeze({ DPI: 'dpi' }),
