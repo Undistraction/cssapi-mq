@@ -9,7 +9,6 @@ import {
   missingBreakpointErrorMessage,
   mssingBreakpointMapErrorMessage,
 } from '../errors';
-import buildMediaType from './buildMediaType';
 
 import { getUpperLimit, propEqName, toBreakpointArray } from '../utils';
 
@@ -18,8 +17,9 @@ import {
   renderFeature,
 } from '../renderers/cssRenderers/queryRenderer';
 
-const buildFeatureItem = (name, parser, config) => breakpoint =>
-  renderFeature(name, parser(breakpoint, config));
+const buildFeatureItem = (name, parser, config) => breakpoint => {
+  return renderFeature(name, parser(breakpoint, config));
+};
 
 const nilValueAndAllowedToPass = (value, noArgs) => isNil(value) && noArgs;
 
@@ -73,7 +73,6 @@ export default (
   };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };
-  const mediaType = buildMediaType(defaultMediaType);
 
   const orderedBreakpoints = toBreakpointArray(breakpoints);
   const indexOfBreakpointNamed = value => findIndex(value, orderedBreakpoints);

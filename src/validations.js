@@ -22,9 +22,13 @@ import {
   isPopulatedObject,
   isPositiveNumber,
   isPositiveNumberWithPixelUnit,
+  isObject,
+  isArray,
+  isNaN,
 } from './utils/value';
 import {
   throwError,
+  invalidBreakpointsErrorMessage,
   emptyBreakpointMapErrorMessage,
   emptyBreakpointSetErrorMessage,
   invalidBreakpointNamesErrorMessage,
@@ -37,11 +41,11 @@ import {
   invalidMediaTypeErrorMessage,
 } from './errors';
 
-import dimensionValidator from './validators/dimensionValidator';
-import resolutionValidator from './validators/resolutionValidator';
-import aspectRatioValidator from './validators/aspectRatioValidator';
-import colorValidator from './validators/colorValidator';
-import monochromeValidator from './validators/monochromeValidator';
+import dimensionValidator from './validators/features/dimensionValidator';
+import resolutionValidator from './validators/features/resolutionValidator';
+import aspectRatioValidator from './validators/features/aspectRatioValidator';
+import colorValidator from './validators/features/colorValidator';
+import monochromeValidator from './validators/features/monochromeValidator';
 
 const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
 const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
@@ -104,10 +108,28 @@ export const validateMediaTypes = mediaTypes => {
   }
 };
 
-export const validateBreakpointMap = breakpointMap => {
+const validateBreakpointSetNames = breakpointMap => {
   if (!areBreakpointSetNamesValid(keys(breakpointMap))) {
     throwError(invalidBreakpointNamesErrorMessage(breakpointMap));
   }
+};
+
+const validateBreakpointObject = breakpointMap => {
+  if (
+    isNaN(breakpointMap) ||
+    isArray(breakpointMap) ||
+    !isObject(breakpointMap)
+  ) {
+    throwError(invalidBreakpointsErrorMessage(breakpointMap));
+  }
+
+  if (!isPopulatedObject(breakpointMap))
+    throwError(emptyBreakpointMapErrorMessage(breakpointMap));
+};
+
+export const validateBreakpointMap = v => {
+  validateBreakpointObject(v);
+  validateBreakpointSetNames(v);
 };
 
 export const validateBreakpointSets = compose(

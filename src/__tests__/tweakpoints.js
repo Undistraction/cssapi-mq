@@ -7,18 +7,6 @@ import {
 expect.addSnapshotSerializer(cssSerialiser);
 
 describe('tweak()', () => {
-  it('throws if no breakpoints are supplied', () => {
-    expect(() =>
-      mqWithValidBreakpointsForRange('width').tweak()
-    ).toThrowErrorMatchingSnapshot();
-  });
-
-  it('throws if no breakpoint sets are supplied', () => {
-    expect(() =>
-      mqWithValidBreakpointsForRange('width').tweak({})
-    ).toThrowErrorMatchingSnapshot();
-  });
-
   it('throws if invalid breakpoint value is supplied', () => {
     expect(() =>
       mqWithValidBreakpointsForRange('width').tweak({ width: { small: 'xxx' } })

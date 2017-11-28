@@ -32,6 +32,16 @@ export const throwError = message => {
   throw new InvalidValueError(message);
 };
 
+export const invalidBreakpointsErrorMessage = breakpoints =>
+  `The breakpoints object must be an object, but you supplied '${objectToString(
+    breakpoints
+  )}'`;
+
+export const emptyBreakpointMapErrorMessage = breakpointMap => `
+  You must not supply an empty object of breakpoints 'configure()', but the you supplied '${objectToString(
+    breakpointMap
+  )}'.`;
+
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   `You supplied a breakpoint set with an invalid name. Valid values are: '${
     rangedFeatureNames

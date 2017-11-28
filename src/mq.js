@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { partial, mergeDeepLeft, merge, isEmpty } from 'ramda';
+import { partial, mergeDeepLeft, merge, isEmpty, complement } from 'ramda';
 
 import buildMediaType from './features/buildMediaType';
 import buildLinearFeatures from './features/buildLinearFeatures';
@@ -12,7 +12,7 @@ import {
   validateBreakpointMap,
 } from './validations';
 
-import { isNumberWithDimensionsUnit } from './utils/value';
+import { isNumberWithDimensionsUnit, isUndefined } from './utils/value';
 import { unitedDimensionToUnitlessPixelValue } from './utils/units';
 import { MEDIA_TYPES, UNITS } from './const';
 import renderQuery from './renderers/cssRenderers/styledComponentsRenderer';
@@ -32,13 +32,14 @@ const defaultConfig = {
 
 const validateConfigArgs = (breakpoints, config) => {
   validateConfig(config);
-  if (breakpoints) validateBreakpointMap(breakpoints);
+  if (complement(isUndefined)(breakpoints)) validateBreakpointMap(breakpoints);
   validateBreakpointSets(breakpoints);
 };
 
+// Don't expand config vars as we need to pass a single config object around.
 const configure = (breakpoints, config = {}) => {
-  // Don't expand config vars as we need to pass a single config object around.
   const configWithDefaults = merge(defaultConfig, config);
+
   validateConfigArgs(breakpoints, configWithDefaults);
   // Ensure we have a unitless value stored for baseFontSize
   if (isNumberWithDimensionsUnit(configWithDefaults.baseFontSize)) {

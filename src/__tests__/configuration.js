@@ -14,6 +14,7 @@ import {
   genericPositiveNumbers,
   positivePixelValues,
   negativePixelValuesOrZero,
+  booleanValues,
 } from './data';
 import featureValues from './featureValues';
 import { rangedFeatureNames } from '../features';
@@ -29,7 +30,7 @@ const validBreakpointValuesForFeature = name => ({
   ),
 });
 
-describe('configure()', () => {
+describe.only('configure()', () => {
   it("doesn't throw with default configuration", () => {
     expect(() => mqWithNoBreakpoints().not.toThrow());
   });
@@ -39,6 +40,25 @@ describe('configure()', () => {
       expect(() =>
         styledMQ.configure({ xxxx: { small: 100 } })
       ).toThrowErrorMatchingSnapshot();
+    });
+
+    const invalidBreakpointValues = [
+      ...genericStrings,
+      ...booleanValues,
+      ...genericNumbers,
+      null,
+      NaN,
+      [],
+    ];
+
+    for (const value of invalidBreakpointValues) {
+      it(`throws if ${value} is supplied`, () => {
+        expect(() => styledMQ.configure(value)).toThrowErrorMatchingSnapshot();
+      });
+    }
+
+    it('throws if an empty object is supplied', () => {
+      expect(() => styledMQ.configure({})).toThrowErrorMatchingSnapshot();
     });
 
     for (const featureName of rangedFeatureNames) {

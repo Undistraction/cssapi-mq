@@ -12,7 +12,7 @@ export default (
   } = {}
 ) => {
   const camelisedName = camelcase(name);
-  describe(`${name}`, () => {
+  describe.only(`${name}`, () => {
     describe('range features', () => {
       // Define accessor names
       const valueMethod = camelisedName;

@@ -193,4 +193,4 @@ export const mqWithTweakedBreakpointsForRange = name =>
     .configure(validBreakpointsForRange(name))
     .tweak({ width: { alpha: 300 } });
 
-export const mqWithNoBreakpoints = () => styledMQ.configure({});
+export const mqWithNoBreakpoints = () => styledMQ.configure();

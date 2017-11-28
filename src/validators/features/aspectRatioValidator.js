@@ -1,4 +1,4 @@
-import { isRatioString } from '../utils/value';
+import { isRatioString } from '../../utils/value';
 
 export default {
   message:

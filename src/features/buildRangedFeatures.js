@@ -4,6 +4,7 @@ import { RANGED_FEATURES } from '../features';
 import buildRangedFeature from './buildRangedFeature';
 
 const build = (globalConfig, breakpoints, item) => {
+  if (!breakpoints) breakpoints = {};
   const x = buildRangedFeature(
     item.name,
     item.valueRenderer(globalConfig),
@@ -13,9 +14,5 @@ const build = (globalConfig, breakpoints, item) => {
   return x;
 };
 
-export default (breakpoints, globalConfig) => {
-  const x = mergeAll(
-    map(curry(build)(globalConfig, breakpoints))(RANGED_FEATURES)
-  );
-  return x;
-};
+export default (breakpoints, globalConfig) =>
+  mergeAll(map(curry(build)(globalConfig, breakpoints))(RANGED_FEATURES));

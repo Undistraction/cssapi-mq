@@ -2,10 +2,6 @@
 
 exports[`tweak() throws if invalid breakpoint value is supplied 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied ["xxx"]`;
 
-exports[`tweak() throws if no breakpoint sets are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied '{}'.`;
-
-exports[`tweak() throws if no breakpoints are supplied 1`] = `You must supply at least one set of breakpoints to 'configure()', but the you supplied 'undefined'.`;
-
 exports[`tweaked() doesn't effect the original mq 1`] = `There is no 'width' breakpoint defined called 'alpha', only: 'small, medium, large, xLarge' are defined.`;
 
 exports[`tweaked() doesn't effect the original mq 2`] = `(min-width: 25em) and (max-width: 56.249375em)`;
