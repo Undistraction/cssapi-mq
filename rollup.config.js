@@ -9,9 +9,11 @@ export default {
     file: 'dist/styled-mq.js',
     format: 'umd',
   },
-  // Define modules that shoudln't be included in the build. It is assumed they
+  // Define modules that shouldn't be included in the build. It is assumed they
   // will be available via globals at runtime.
   external: ['react', 'styled-components', 'ramda'],
+  // Define how external global modules should be referenced in the UMD bundle
+  globals: { react: 'React', 'styled-components': 'styled', ramda: 'R' },
   plugins: [
     nodeResolve(),
     babel({
@@ -31,14 +33,13 @@ export default {
         'transform-object-rest-spread',
       ],
     }),
+    // Allow CommonJS modules to be included in build.
     commonjs({
       // Styled components uses the following and we need to ignore them here.
       namedExports: {
-        'node_modules/is-plain-object/index.js': ['default'],
-        'node_modules/react/index.js': ['Component', 'createElement'],
+        //'node_modules/is-plain-object/index.js': ['default'],
+        //'node_modules/react/index.js': ['Component', 'createElement'],
       },
     }),
   ],
-  // Define how external modules should be referenced in the UMD bundle
-  globals: { react: 'React', 'styled-components': 'styled', ramda: 'R' },
 };
