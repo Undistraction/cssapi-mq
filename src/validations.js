@@ -29,7 +29,7 @@ import {
   isObject,
   isArray,
   isNull,
-} from './utils/value';
+} from './utils/predicates';
 import {
   composeError,
   invalidBreakpointsErrorMessage,

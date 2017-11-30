@@ -12,7 +12,7 @@ import {
   validateBreakpointMap,
 } from './validations';
 
-import { isNumberWithDimensionsUnit, isUndefined } from './utils/value';
+import { isNumberWithDimensionsUnit, isUndefined } from './utils/predicates';
 import { unitedDimensionToUnitlessPixelValue } from './utils/units';
 import { MEDIA_TYPES, UNITS } from './const';
 import renderQuery from './renderers/cssRenderers/styledComponentsRenderer';

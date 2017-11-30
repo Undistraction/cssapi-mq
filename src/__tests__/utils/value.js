@@ -3,7 +3,7 @@ import {
   isPositiveNumberWithDimensionsUnit,
   isPositiveIntegerOrZero,
   isRatioString,
-} from '../../utils/value';
+} from '../../utils/predicates';
 
 describe('utils', () => {
   describe('isNumberWithUnit', () => {

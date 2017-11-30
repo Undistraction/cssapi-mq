@@ -2,7 +2,7 @@ import { either } from 'ramda';
 import {
   isNumber,
   isPositiveNumberWithResolutionUnit,
-} from '../../utils/value';
+} from '../../utils/predicates';
 
 export default {
   message: "You must supply 'resolution' as a positive number",

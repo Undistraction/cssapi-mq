@@ -87,7 +87,7 @@ export const invalidDefaultMediaTypeErrorMessage = value =>
     MEDIA_TYPES
   )}' but was '${value}'.`;
 
-export const invalidUnitErrorMessage = value =>
+export const invalidDimensionsUnitErrorMessage = value =>
   `'unit' must be one of '${valuesToCommaSeparatedList(
     UNITS.DIMENSIONS
   )}' but was '${value}'.`;

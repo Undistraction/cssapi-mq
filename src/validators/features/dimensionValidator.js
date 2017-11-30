@@ -2,7 +2,7 @@ import { either } from 'ramda';
 import {
   isPositiveNumber,
   isPositiveNumberWithDimensionsUnit,
-} from '../../utils/value';
+} from '../../utils/predicates';
 
 export default {
   message:

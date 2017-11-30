@@ -4,7 +4,7 @@ import {
   appendUnit,
   unitedResolutionToUnitlessValue,
 } from '../../utils/units';
-import { isNumberWithResolutionUnit } from '../../utils/value';
+import { isNumberWithResolutionUnit } from '../../utils/predicates';
 import { UNITS } from '../../const';
 
 const prepareUnitlessValue = (value, shouldSeparateQueries, unit) =>

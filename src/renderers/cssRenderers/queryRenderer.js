@@ -17,7 +17,7 @@ import {
   complement,
   values,
 } from 'ramda';
-import { isArray, isString, isObject, isNull } from '../../utils/value';
+import { isArray, isString, isObject, isNull } from '../../utils/predicates';
 import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const';
 import {
   throwError,
