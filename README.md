@@ -54,6 +54,8 @@ const component = styled.div`
 `
 ```
 
+Or you can play with a Codepen [here](https://codepen.io/Pedr/pen/MOmpxr)
+
 ## A Quick Refresher On Media Queries
 
 Media queries can be broken down into two types - those that take a arbitrary value (which I will refer to as ranged queries), for example `width` or `resolution` and those that accept only values from a predifined list (which I will refer to as linear queries), for example `scan` which only accepts the values `interlace` or `progressive`. In some cases both ranged or linear queries also support no argument, for example `color` can be used with no argument to target on color devices.
