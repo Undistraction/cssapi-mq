@@ -44,6 +44,9 @@ import {
   invalidMediaTypeErrorMessage,
 } from './errors';
 
+// TODO: Can't move these to predicates as they import helper from features and
+// this causes an acyclical dependency between features -> validators ->
+// predicates.
 const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
 const areBreakpointSetNamesValid = all(isBreakpointSetNameValid);
 
@@ -95,13 +98,12 @@ const validateBreakpointObject = breakpointMap => {
   validate(both(complement(isArray), isObject), invalidBreakpointsErrorMessage)(
     breakpointMap
   );
-
   validate(isPopulatedObject, emptyBreakpointMapErrorMessage)(breakpointMap);
 };
 
-export const validateBreakpointMap = v => {
-  validateBreakpointObject(v);
-  validateBreakpointSetNames(v);
+export const validateBreakpointMap = breakpoints => {
+  validateBreakpointObject(breakpoints);
+  validateBreakpointSetNames(breakpoints);
 };
 
 export const validateBreakpointSets = compose(
