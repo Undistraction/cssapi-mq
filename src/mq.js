@@ -84,7 +84,7 @@ const configure = (breakpoints, config = {}, originalMQ = null) => {
   // Export
   // ---------------------------------------------------------------------------
 
-  const exports = {
+  const o = {
     mediaType: buildMediaType(configWithDefaults.defaultMediaType),
     ...buildLinearFeatures(),
     ...buildRangeFeatures(breakpoints, configWithDefaults),
@@ -97,8 +97,8 @@ const configure = (breakpoints, config = {}, originalMQ = null) => {
       return originalMQ;
     },
   };
-  exports.tweak = partial(tweak, [exports]);
-  return exports;
+  o.tweak = partial(tweak, [o]);
+  return o;
 };
 
 export default {
