@@ -1,14 +1,6 @@
 import { css } from 'styled-components';
 
-import {
-  partial,
-  mergeDeepLeft,
-  merge,
-  isEmpty,
-  complement,
-  always,
-  ifElse,
-} from 'ramda';
+import { partial, mergeDeepLeft, merge, isEmpty, complement } from 'ramda';
 
 import buildMediaType from './features/buildMediaType';
 import buildLinearFeatures from './features/buildLinearFeatures';
@@ -30,7 +22,6 @@ import {
 } from './renderers/cssRenderers/queryRenderer';
 import {
   throwError,
-  composeError,
   queryNoElementsErrorMessage,
   noUntweakedErrorMessage,
 } from './errors';
