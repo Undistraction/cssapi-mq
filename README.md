@@ -1,10 +1,10 @@
-![Grid Model Logo](https://dl.dropbox.com/s/i2frqmnui6fr5ki/styled-mq-logo.png?dl=0)
+![Styled MQ Logo](https://dl.dropbox.com/s/i2frqmnui6fr5ki/styled-mq-logo.png?dl=0)
 
 # Styled MQ
 
 ## What?
 
-Styled MQ is a toolkit for dealing with media queries when using Styled Components. It offers a broad API for dealing with all widely supported media query features and can easily be used as is, or as the building blocks for your own abstractions.
+Styled MQ is a toolkit for dealing with media queries when using Styled Components. It offers a broad API for dealing with all widely supported media query features and can easily be used as is, or as the building blocks for your own more focused api.
 
 ## Why?
 
@@ -22,6 +22,10 @@ It offers the following features:
 - Think in pixels but output in em, rem or pixel values.
 - Well tested.
 - Numerous other useful features.
+
+## But I need …
+
+I've tried to cover everything realistic while ignoring legacy cruft. If there is anything you need beyond what is currently there please open an issue and explain what you need.
 
 ## Quick Start
 
@@ -326,6 +330,14 @@ const { query, mediaType, aboveWidth } = mq;
 
 const aboveSmallQuery = query([mediaType(), aboveWidth('small')]);
 ```
+
+### How should I use this on a real project.
+
+One possiblity is to create an `mq` object and make it available to all your components through a theme. 
+
+### I have two parts of the same app that need different sets of breakpoints.
+
+You can just create different `mq` objects for each part of the app.
 
 
 ## Maintainance
