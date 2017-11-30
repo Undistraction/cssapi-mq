@@ -19,29 +19,34 @@ describe('tweak()', () => {
 // -----------------------------------------------------------------------------
 
 describe('tweaked()', () => {
+  it('throws when accessing original without an original object', () => {
+    expect(() =>
+      mqWithValidBreakpointsForRange('width').untweaked()
+    ).toThrowErrorMatchingSnapshot();
+  });
+
   it('includes original breakpoints and added tweakpoints', () => {
     expect(
-      mqWithTweakedBreakpointsForRange('width').tweaked.aboveWidth('alpha')
+      mqWithTweakedBreakpointsForRange('width').aboveWidth('alpha')
     ).toMatchSnapshot();
 
     expect(
-      mqWithTweakedBreakpointsForRange('width').tweaked.betweenWidths(
-        'alpha',
-        'large'
-      )
+      mqWithTweakedBreakpointsForRange('width').betweenWidths('alpha', 'large')
     ).toMatchSnapshot();
   });
 
   it("doesn't effect the original mq", () => {
     expect(() =>
-      mqWithTweakedBreakpointsForRange('width').aboveWidth('alpha')
+      mqWithTweakedBreakpointsForRange('width')
+        .untweaked()
+        .aboveWidth('alpha')
     ).toThrowErrorMatchingSnapshot();
 
     // Make sure the upper limit is 'medium', not 'alpha'
     expect(
-      mqWithTweakedBreakpointsForRange('width').tweaked.atWidthBreakpoint(
-        'small'
-      )
+      mqWithTweakedBreakpointsForRange('width')
+        .untweaked()
+        .atWidthBreakpoint('small')
     ).toMatchSnapshot();
   });
 });

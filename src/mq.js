@@ -1,6 +1,14 @@
 import { css } from 'styled-components';
 
-import { partial, mergeDeepLeft, merge, isEmpty, complement } from 'ramda';
+import {
+  partial,
+  mergeDeepLeft,
+  merge,
+  isEmpty,
+  complement,
+  always,
+  ifElse,
+} from 'ramda';
 
 import buildMediaType from './features/buildMediaType';
 import buildLinearFeatures from './features/buildLinearFeatures';
@@ -20,7 +28,12 @@ import {
   renderQueryDefinition,
   renderNotQueryDefinition,
 } from './renderers/cssRenderers/queryRenderer';
-import { throwError, queryNoElementsErrorMessage } from './errors';
+import {
+  throwError,
+  composeError,
+  queryNoElementsErrorMessage,
+  noUntweakedErrorMessage,
+} from './errors';
 
 const defaultConfig = {
   baseFontSize: 16,
@@ -37,7 +50,7 @@ const validateConfigArgs = (breakpoints, config) => {
 };
 
 // Don't expand config vars as we need to pass a single config object around.
-const configure = (breakpoints, config = {}) => {
+const configure = (breakpoints, config = {}, originalMQ = null) => {
   const configWithDefaults = merge(defaultConfig, config);
 
   validateConfigArgs(breakpoints, configWithDefaults);
@@ -56,8 +69,7 @@ const configure = (breakpoints, config = {}) => {
     if (breakpoints) validateBreakpointMap(tweakpoints);
     validateBreakpointSets(tweakpoints);
     const mergedBreakpoints = mergeDeepLeft(breakpoints, tweakpoints);
-    mq.tweaked = configure(mergedBreakpoints, configWithDefaults);
-    return mq;
+    return configure(mergedBreakpoints, configWithDefaults, mq);
   };
 
   const query = (...elements) => {
@@ -87,8 +99,13 @@ const configure = (breakpoints, config = {}) => {
     ...buildRangeFeatures(breakpoints, configWithDefaults),
     query,
     not,
+    untweaked: () => {
+      if (!originalMQ) {
+        throwError(noUntweakedErrorMessage());
+      }
+      return originalMQ;
+    },
   };
-
   exports.tweak = partial(tweak, [exports]);
   return exports;
 };

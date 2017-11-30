@@ -117,3 +117,6 @@ export const queryNoNestedArraysErrorMessage = value =>
   `You must not supply any nested arrays to 'query()' but you supplied '${
     value
   }'`;
+
+export const noUntweakedErrorMessage = () =>
+  'There is no untweaked mq object available';
