@@ -125,7 +125,7 @@ export default (
 
   const titleizedName = name[0].toUpperCase() + camelcase(name.slice(1));
 
-  exports = {
+  const o = {
     [camelcase(name)]: feature,
     [`min${[titleizedName]}`]: minFeature,
     [`max${[titleizedName]}`]: maxFeature,
@@ -136,5 +136,5 @@ export default (
     [`at${[titleizedName]}`]: atFeature,
   };
 
-  return exports;
+  return o;
 };
