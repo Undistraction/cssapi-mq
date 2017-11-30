@@ -61,7 +61,7 @@ const configure = (breakpoints, config = {}) => {
   };
 
   const query = (...elements) => {
-    if (isEmpty(elements)) throwError(queryNoElementsErrorMessage);
+    if (isEmpty(elements)) throwError(queryNoElementsErrorMessage());
 
     return (stringParts, ...interpolationValues) =>
       renderQuery(

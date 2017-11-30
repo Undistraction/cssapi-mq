@@ -162,7 +162,8 @@ export const validateConfig = ({
   );
 };
 
-export const validateFeature = (name, value, possibleValues) => {
+export const validateFeature = (name, possibleValues, value) => {
+  console.log('VALIDATE', value);
   unless(
     doesListIncludeValue(possibleValues),
     composeError(invalidFeatureErrorMessage(name, possibleValues))

@@ -1,4 +1,4 @@
-import { keys, values, compose } from 'ramda';
+import { keys, values, compose, curry } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNames } from './features';
 import { toCommaSeparatedList } from './utils/string';
@@ -57,14 +57,12 @@ export const emptyBreakpointSetErrorMessage = breakpointMapName =>
 export const mssingBreakpointMapErrorMessage = name =>
   `There is no breakpoint map for ${name}`;
 
-export const missingBreakpointErrorMessage = (
-  name,
-  breakpointMapName,
-  breakpointMaps
-) =>
-  `There is no '${breakpointMapName}' breakpoint defined called '${
-    name
-  }', only: '${keysToCommaSeparatedList(breakpointMaps)}' are defined.`;
+export const missingBreakpointErrorMessage = curry(
+  (name, breakpointMapName, breakpointMaps) =>
+    `There is no '${breakpointMapName}' breakpoint defined called '${
+      name
+    }', only: '${keysToCommaSeparatedList(breakpointMaps)}' are defined.`
+);
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
   `You must supply two different breakpoints to 'widthBetween' but both were: '${
@@ -76,8 +74,10 @@ export const invalidMediaTypeErrorMessage = value =>
     MEDIA_TYPES
   )}' but you supplied: '${value}'.`;
 
-export const invalidBreakpointSetValueErrorMessage = (message, breakpoints) =>
-  `${message} but you supplied ${objectToString(breakpoints)}`;
+export const invalidBreakpointSetValueErrorMessage = curry(
+  (message, breakpoints) =>
+    `${message} but you supplied ${objectToString(breakpoints)}`
+);
 
 export const invalidBaseFontSizeErrorMessage = value =>
   `'baseFontSize' must be a positive number, but you supplied '${value}'`;
@@ -95,10 +95,12 @@ export const invalidUnitErrorMessage = value =>
 export const shouldSeparateQueriesErrorMessage = value =>
   `'shouldSeparateQueries' must be a boolean but was '${value}'.`;
 
-export const invalidFeatureErrorMessage = (name, possibleValues, value) => `
-  '${name}' must be one of: '${possibleValues}' but was: '${value}'.`;
+export const invalidFeatureErrorMessage = curry(
+  (name, possibleValues, value) => `
+  '${name}' must be one of: '${possibleValues}' but was: '${value}'.`
+);
 
-export const queryNoElementsErrorMessage =
+export const queryNoElementsErrorMessage = () =>
   "You must supply at least one argument to 'query()' to build a valid media query";
 
 export const queryElementIsValidTypeErrorMessage = value =>

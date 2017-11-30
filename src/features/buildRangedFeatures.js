@@ -1,10 +1,10 @@
-import { map, merge, mergeAll, curry } from 'ramda';
+import { map, merge, mergeAll, curry, defaultTo } from 'ramda';
 import camelcase from 'camelcase';
 import { RANGED_FEATURES } from '../features';
 import buildRangedFeature from './buildRangedFeature';
 
 const build = (globalConfig, breakpoints, item) => {
-  if (!breakpoints) breakpoints = {};
+  breakpoints = defaultTo({})(breakpoints);
   const x = buildRangedFeature(
     item.name,
     item.valueRenderer(globalConfig),
