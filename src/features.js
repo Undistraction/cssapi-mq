@@ -1,11 +1,18 @@
-import { map, prop, compose } from 'ramda';
+import { __, find, propEq, map, prop, compose } from 'ramda';
 import camelcase from 'camelcase';
+import dasherize from 'dasherize';
 
 import dimensionsValueRenderer from './renderers/valueRenderers/dimensionsValueRenderer';
 import resolutionValueRenderer from './renderers/valueRenderers/resolutionValueRenderer';
 import aspectRatioValueRenderer from './renderers/valueRenderers/aspectRatioValueRenderer';
 import colorValueRenderer from './renderers/valueRenderers/colorValueRenderer';
 import monochromeValueRenderer from './renderers/valueRenderers/monochromeValueRenderer';
+
+import dimensionValidator from './validators/features/dimensionValidator';
+import resolutionValidator from './validators/features/resolutionValidator';
+import aspectRatioValidator from './validators/features/aspectRatioValidator';
+import colorValidator from './validators/features/colorValidator';
+import monochromeValidator from './validators/features/monochromeValidator';
 
 export const ORIENTATION = Object.freeze(['portrait', 'landscape']);
 export const SCAN = Object.freeze(['interlace', 'progressive']);
@@ -66,22 +73,27 @@ export const RANGED_FEATURES = [
   {
     name: 'width',
     valueRenderer: dimensionsValueRenderer,
+    validator: dimensionValidator,
   },
   {
     name: 'height',
     valueRenderer: dimensionsValueRenderer,
+    validator: dimensionValidator,
   },
   {
     name: 'resolution',
     valueRenderer: resolutionValueRenderer,
+    validator: resolutionValidator,
   },
   {
     name: 'aspect-ratio',
     valueRenderer: aspectRatioValueRenderer,
+    validator: aspectRatioValidator,
   },
   {
     name: 'color',
     valueRenderer: colorValueRenderer,
+    validator: colorValidator,
     config: {
       allowNoArgument: true,
     },
@@ -89,6 +101,7 @@ export const RANGED_FEATURES = [
   {
     name: 'color-index',
     valueRenderer: colorValueRenderer,
+    validator: colorValidator,
     config: {
       allowNoArgument: true,
     },
@@ -96,6 +109,7 @@ export const RANGED_FEATURES = [
   {
     name: 'monochrome',
     valueRenderer: monochromeValueRenderer,
+    validator: monochromeValidator,
     config: {
       allowNoArgument: true,
     },
@@ -104,4 +118,10 @@ export const RANGED_FEATURES = [
 
 export const rangedFeatureNames = map(compose(camelcase, prop('name')))(
   RANGED_FEATURES
+);
+
+export const rangedFeatureNamed = compose(
+  find(__, RANGED_FEATURES),
+  propEq('name'),
+  dasherize
 );

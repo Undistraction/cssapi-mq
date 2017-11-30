@@ -1,6 +1,5 @@
 import { findIndex, isNil, both, always } from 'ramda';
 import camelcase from 'camelcase';
-import { getValidatorForFeature } from '../validations';
 
 import { MEDIA_TYPES } from '../const';
 import {
@@ -15,6 +14,8 @@ import {
   propEqName,
   toBreakpointArray,
 } from '../utils/breakpoints';
+
+import { rangedFeatureNamed } from '../features';
 
 import {
   joinAnd,
@@ -39,7 +40,7 @@ export default (
 ) => {
   const camelisedName = camelcase(name);
 
-  const validator = getValidatorForFeature(camelisedName);
+  const { validator } = rangedFeatureNamed(name);
 
   // ---------------------------------------------------------------------------
   // UTILS
