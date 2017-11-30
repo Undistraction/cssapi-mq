@@ -190,6 +190,8 @@ Ranged features each offer their own api using the same naming convention. The f
 
 ##### `aboveWidth()` (aliased to `minWidth()`)
 
+![Styled MQ Logo](docs/images/aboveWidth.png?raw=true)
+
 Defines a `min-width` for the supplied breakpoint or value.
 
 ```javascript
@@ -198,6 +200,8 @@ mq.minWidth('medium');
 ```
 
 ##### `belowWidth()` (aliased to `maxWidth()`)
+
+![Styled MQ Logo](docs/images/belowWidth.png?raw=true)
 
 Defines a `min-width` for the supplied breakpoint or value.
 
@@ -208,6 +212,8 @@ mq.maxWidth('medium');
 
 #### `atWidth()` (aliased to `width()`)
 
+![Styled MQ Logo](docs/images/atWidth.png?raw=true)
+
 Defines an exact width query for the supplied breakpoint or value.
 
 ```javascript
@@ -216,18 +222,22 @@ mq.atWidth('medium');
 
 #### `atBreakpointWidth()` 
 
+![Styled MQ Logo](docs/images/atBreakpointWidth.png?raw=true)
+
 Defines a range of values running from the supplied breakpoint or value to the next highest breakpoint, or without an upper limit if no higher value breakpoint exists.
 
 ```javascript
-mq.atBreakpointWidth('large')
+mq.atBreakpointWidth('medium')
 ```
 
 #### `betweenWidths()`
 
+![Styled MQ Logo](docs/images/betweenWidths.png?raw=true)
+
 Defines a range spanning the the values between the two supplied breakpoints or values. The order is not important with the lowest value always used for the lower end of the range. 
 
 ```javascript
-mq.betweenWidth('small', 'large');
+mq.betweenWidth('medium', 'xLarge');
 ```
 
 ### Building A Query
