@@ -7,10 +7,9 @@ export default {
   input: 'src/index.js',
   output: {
     file: 'dist/styled-mq.js',
-    format: 'umd', // Use Common JS Modules in transpiled code
+    format: 'umd',
   },
-
-  external: ['ramda', 'styled-components'],
+  external: ['react', 'styled-components', 'ramda'],
   plugins: [
     nodeResolve(),
     babel({
