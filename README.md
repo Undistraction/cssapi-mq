@@ -58,7 +58,7 @@ Or you can play with a Codepen [here](https://codepen.io/Pedr/pen/MOmpxr)
 
 ## A Quick Refresher On Media Queries
 
-Media queries can be broken down into two types - those that take a arbitrary value (which I will refer to as ranged queries), for example `width` or `resolution` and those that accept only values from a predifined list (which I will refer to as linear queries), for example `scan` which only accepts the values `interlace` or `progressive`. In some cases both ranged or linear queries also support no argument, for example `color` can be used with no argument to target on color devices.
+Media queries can be broken down into two types - those that take a arbitrary value (which I will refer to as ranged queries), for example `width` or `resolution` and those that accept only values from a predifined list (which I will refer to as linear queries), for example `scan` which only accepts the values `interlace` or `progressive`. In some cases both ranged or linear queries also support no argument, for example `color` can be used with no argument to target only color devices.
 
 You can read much more about Media Queries [here](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
@@ -132,7 +132,7 @@ Styled MQ takes a very strict approach to validations, whilst giving you as much
 One you have defined your `mq` object, you can use it to create queries. The type of functions available to you depend on whether the feature is linear or ranged. In both cases you must wrap your features inside a call to query which will return a template literal function, ready for you to define the styles you want to apply within the query, for example:
 
 ```javascript
-mq.query(mq.mediaType('all'), mq.aboveWidth('medium), mq.orientation('horizontal')`
+mq.query(mq.mediaType('all'), mq.aboveWidth('medium'), mq.orientation('horizontal')`
   background-color: GhostWhite;
 `;
 ```
@@ -235,7 +235,7 @@ All the previous methods output a string, however to generate a query from these
 Any items wrapped in an array are anded together, meaning all values in the anded group must be true for the query to succeed for example:
 
 ```javascript
-mq.query([mq.orientation('horizontal'), mq.aboveWidth('small)])``;
+mq.query([mq.orientation('horizontal'), mq.aboveWidth('small')])``;
 ```
 
 Query
@@ -248,7 +248,7 @@ Query
 Each argument passed into `query()` is treated as an alternative, meaning any of the groups that have been ored together must be true for the query to succeed:
 
 ```javascript
-mq.query(mq.orientation('horizontal'), mq.aboveWidth('small))``;
+mq.query(mq.orientation('horizontal'), mq.aboveWidth('small'))``;
 ```
 
 Query
@@ -261,7 +261,7 @@ Query
 Using `not()` allows you to negate a feature or set of features. Note that negated values must have a media type, and Styled MQ will add a media type if you don't do so yourself, using the value of the 'defaultMediaType` configuration.
 
 ```javascript
-mq.query(mq.not([mq.orientation('horizontal'), mq.aboveWidth('small)])``;
+mq.query(mq.not([mq.orientation('horizontal'), mq.aboveWidth('small')])``;
 ```
 
 Query
@@ -272,7 +272,7 @@ Query
 Or
 
 ```javascript
-mq.query(mq.orientation('horizontal'), mq.aboveWidth('small))``;
+mq.query(mq.orientation('horizontal'), mq.aboveWidth('small'))``;
 ```
 
 Query
