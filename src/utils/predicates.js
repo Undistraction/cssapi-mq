@@ -12,10 +12,13 @@ import {
   isEmpty,
   equals,
   values,
+  contains,
+  flip,
+  all,
 } from 'ramda';
 
 import { numericPartOfUnitedNumber } from './units';
-import { DIMENSIONS_UNITS, RESOLUTION_UNIT } from '../const';
+import { DIMENSIONS_UNITS, RESOLUTION_UNIT, MEDIA_TYPES } from '../const';
 
 export const isBoolean = is(Boolean);
 export const isNumber = both(is(Number), complement(equals(NaN)));
@@ -57,4 +60,11 @@ export const isPositiveNumberWithResolutionUnit = both(
 export const isPositiveNumberWithDimensionsUnit = both(
   isNumberWithDimensionsUnit,
   isNumericPartOfUnitValuePositive
+);
+export const doesListIncludeValue = list => contains(__, values(list));
+export const isDimensionsUnitValid = contains(__, values(DIMENSIONS_UNITS));
+export const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
+export const areMediaTypesValid = both(
+  all(isMediaTypeValid),
+  complement(isEmpty)
 );

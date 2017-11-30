@@ -9,18 +9,14 @@ import {
   toPairs,
   map,
   keys,
-  flip,
-  isEmpty,
   unless,
   anyPass,
   either,
   curry,
   always,
 } from 'ramda';
-import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNamed, rangedFeatureNames } from './features';
 import { ensureArray } from './utils/array';
-
 import {
   isBoolean,
   isPopulatedObject,
@@ -29,6 +25,9 @@ import {
   isObject,
   isArray,
   isNull,
+  doesListIncludeValue,
+  isDimensionsUnitValid,
+  areMediaTypesValid,
 } from './utils/predicates';
 import {
   composeError,
@@ -45,12 +44,8 @@ import {
   invalidMediaTypeErrorMessage,
 } from './errors';
 
-const isMediaTypeValid = flip(contains)(values(MEDIA_TYPES));
 const isBreakpointSetNameValid = contains(__, rangedFeatureNames);
 const areBreakpointSetNamesValid = all(isBreakpointSetNameValid);
-const isDimensionsUnitValid = contains(__, values(UNITS.DIMENSIONS));
-const areMediaTypesValid = both(all(isMediaTypeValid), complement(isEmpty));
-const doesListIncludeValue = list => contains(__, values(list));
 
 const validate = (predicate, errorMessage) => value => {
   unless(predicate, composeError(errorMessage))(value);
