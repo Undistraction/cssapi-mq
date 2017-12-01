@@ -1,4 +1,4 @@
-import { findIndex, isNil, both, always } from 'ramda';
+import { findIndex, isNil, both, always, isEmpty } from 'ramda';
 import camelcase from 'camelcase';
 
 import { MEDIA_TYPES } from '../const';
@@ -47,7 +47,7 @@ export default (
   // ---------------------------------------------------------------------------
 
   const getBreakpointNamed = breakpoint => {
-    if (!breakpoints)
+    if (isEmpty(breakpoints))
       throwError(mssingBreakpointMapErrorMessage(camelisedName));
     const value = breakpoints[breakpoint];
     if (isNil(value))

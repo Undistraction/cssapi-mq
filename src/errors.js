@@ -55,7 +55,7 @@ export const emptyBreakpointSetErrorMessage = breakpointMapName =>
   )}' map.`;
 
 export const mssingBreakpointMapErrorMessage = name =>
-  `There is no breakpoint map for ${name}`;
+  `This mq object was not configured with a breakpoint map for '${name}'.`;
 
 export const missingBreakpointErrorMessage = curry(
   (name, breakpointMapName, breakpointMaps) =>

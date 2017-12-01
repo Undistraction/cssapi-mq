@@ -14,7 +14,7 @@ exports[`ranged features aspect-ratio range features aspectRatio() returns the c
 
 exports[`ranged features aspect-ratio range features aspectRatio() returns the correct feature when called with existing breakpoint 1`] = `(aspect-ratio: 2/3)`;
 
-exports[`ranged features aspect-ratio range features aspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features aspect-ratio range features aspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'aspectRatio'.`;
 
 exports[`ranged features aspect-ratio range features aspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -140,7 +140,7 @@ exports[`ranged features aspect-ratio range features maxAspectRatio() returns th
 
 exports[`ranged features aspect-ratio range features maxAspectRatio() returns the correct feature when called with existing breakpoint 1`] = `(max-aspect-ratio: 2/3)`;
 
-exports[`ranged features aspect-ratio range features maxAspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features aspect-ratio range features maxAspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'aspectRatio'.`;
 
 exports[`ranged features aspect-ratio range features maxAspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -268,7 +268,7 @@ exports[`ranged features aspect-ratio range features minAspectRatio() returns th
 
 exports[`ranged features aspect-ratio range features minAspectRatio() returns the correct feature when called with existing breakpoint 1`] = `(min-aspect-ratio: 2/3)`;
 
-exports[`ranged features aspect-ratio range features minAspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `There is no 'aspect-ratio' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features aspect-ratio range features minAspectRatio() throws if 'aspectRatio' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'aspectRatio'.`;
 
 exports[`ranged features aspect-ratio range features minAspectRatio() throws if no argument is supplied 1`] = `There is no 'aspect-ratio' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -396,7 +396,7 @@ exports[`ranged features color range features color() returns the correct featur
 
 exports[`ranged features color range features color() returns the correct feature when called with no arguments 1`] = `(color)`;
 
-exports[`ranged features color range features color() throws if 'color' breakpoint map doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features color range features color() throws if 'color' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'color'.`;
 
 exports[`ranged features color range features color() throws if supplied breakpoint value is invalid '-6/-' 1`] = `There is no 'color' breakpoint defined called '-6/-', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -432,7 +432,7 @@ exports[`ranged features color range features maxColor() returns the correct fea
 
 exports[`ranged features color range features maxColor() returns the correct feature when called with existing breakpoint 1`] = `(max-color: 1)`;
 
-exports[`ranged features color range features maxColor() throws if 'color' breakpoint map doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features color range features maxColor() throws if 'color' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'color'.`;
 
 exports[`ranged features color range features maxColor() throws if no argument is supplied 1`] = `There is no 'color' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -508,7 +508,7 @@ exports[`ranged features color range features minColor() returns the correct fea
 
 exports[`ranged features color range features minColor() returns the correct feature when called with existing breakpoint 1`] = `(min-color: 1)`;
 
-exports[`ranged features color range features minColor() throws if 'color' breakpoint map doesn't exist 1`] = `There is no 'color' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features color range features minColor() throws if 'color' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'color'.`;
 
 exports[`ranged features color range features minColor() throws if no argument is supplied 1`] = `There is no 'color' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -588,7 +588,7 @@ exports[`ranged features color-index range features colorIndex() returns the cor
 
 exports[`ranged features color-index range features colorIndex() returns the correct feature when called with no arguments 1`] = `(color-index)`;
 
-exports[`ranged features color-index range features colorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features color-index range features colorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'colorIndex'.`;
 
 exports[`ranged features color-index range features colorIndex() throws if supplied breakpoint value is invalid '-6/-' 1`] = `There is no 'color-index' breakpoint defined called '-6/-', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -624,7 +624,7 @@ exports[`ranged features color-index range features maxColorIndex() returns the 
 
 exports[`ranged features color-index range features maxColorIndex() returns the correct feature when called with existing breakpoint 1`] = `(max-color-index: 1)`;
 
-exports[`ranged features color-index range features maxColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features color-index range features maxColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'colorIndex'.`;
 
 exports[`ranged features color-index range features maxColorIndex() throws if no argument is supplied 1`] = `There is no 'color-index' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -700,7 +700,7 @@ exports[`ranged features color-index range features minColorIndex() returns the 
 
 exports[`ranged features color-index range features minColorIndex() returns the correct feature when called with existing breakpoint 1`] = `(min-color-index: 1)`;
 
-exports[`ranged features color-index range features minColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `There is no 'color-index' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features color-index range features minColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'colorIndex'.`;
 
 exports[`ranged features color-index range features minColorIndex() throws if no argument is supplied 1`] = `There is no 'color-index' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -806,7 +806,7 @@ exports[`ranged features height range features height() returns the correct feat
 
 exports[`ranged features height range features height() returns the correct feature when called with existing breakpoint 1`] = `(height: 25em)`;
 
-exports[`ranged features height range features height() throws if 'height' breakpoint map doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features height range features height() throws if 'height' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'height'.`;
 
 exports[`ranged features height range features height() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -970,7 +970,7 @@ exports[`ranged features height range features maxHeight() returns the correct f
 
 exports[`ranged features height range features maxHeight() returns the correct feature when called with existing breakpoint 1`] = `(max-height: 24.999375em)`;
 
-exports[`ranged features height range features maxHeight() throws if 'height' breakpoint map doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features height range features maxHeight() throws if 'height' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'height'.`;
 
 exports[`ranged features height range features maxHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1146,7 +1146,7 @@ exports[`ranged features height range features minHeight() returns the correct f
 
 exports[`ranged features height range features minHeight() returns the correct feature when called with existing breakpoint 1`] = `(min-height: 25em)`;
 
-exports[`ranged features height range features minHeight() throws if 'height' breakpoint map doesn't exist 1`] = `There is no 'height' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features height range features minHeight() throws if 'height' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'height'.`;
 
 exports[`ranged features height range features minHeight() throws if no argument is supplied 1`] = `There is no 'height' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1266,7 +1266,7 @@ exports[`ranged features monochrome range features maxMonochrome() returns the c
 
 exports[`ranged features monochrome range features maxMonochrome() returns the correct feature when called with existing breakpoint 1`] = `(max-monochrome: 0)`;
 
-exports[`ranged features monochrome range features maxMonochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features monochrome range features maxMonochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'monochrome'.`;
 
 exports[`ranged features monochrome range features maxMonochrome() throws if no argument is supplied 1`] = `There is no 'monochrome' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1342,7 +1342,7 @@ exports[`ranged features monochrome range features minMonochrome() returns the c
 
 exports[`ranged features monochrome range features minMonochrome() returns the correct feature when called with existing breakpoint 1`] = `(min-monochrome: 0)`;
 
-exports[`ranged features monochrome range features minMonochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features monochrome range features minMonochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'monochrome'.`;
 
 exports[`ranged features monochrome range features minMonochrome() throws if no argument is supplied 1`] = `There is no 'monochrome' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1422,7 +1422,7 @@ exports[`ranged features monochrome range features monochrome() returns the corr
 
 exports[`ranged features monochrome range features monochrome() returns the correct feature when called with no arguments 1`] = `(monochrome)`;
 
-exports[`ranged features monochrome range features monochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `There is no 'monochrome' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features monochrome range features monochrome() throws if 'monochrome' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'monochrome'.`;
 
 exports[`ranged features monochrome range features monochrome() throws if supplied breakpoint value is invalid '-6/-' 1`] = `There is no 'monochrome' breakpoint defined called '-6/-', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1472,7 +1472,7 @@ exports[`ranged features resolution range features maxResolution() returns the c
 
 exports[`ranged features resolution range features maxResolution() returns the correct feature when called with existing breakpoint 1`] = `(max-resolution: 71dpi)`;
 
-exports[`ranged features resolution range features maxResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features resolution range features maxResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'resolution'.`;
 
 exports[`ranged features resolution range features maxResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1596,7 +1596,7 @@ exports[`ranged features resolution range features minResolution() returns the c
 
 exports[`ranged features resolution range features minResolution() returns the correct feature when called with existing breakpoint 1`] = `(min-resolution: 72dpi)`;
 
-exports[`ranged features resolution range features minResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features resolution range features minResolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'resolution'.`;
 
 exports[`ranged features resolution range features minResolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1720,7 +1720,7 @@ exports[`ranged features resolution range features resolution() returns the corr
 
 exports[`ranged features resolution range features resolution() returns the correct feature when called with existing breakpoint 1`] = `(resolution: 72dpi)`;
 
-exports[`ranged features resolution range features resolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features resolution range features resolution() throws if 'resolution' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'resolution'.`;
 
 exports[`ranged features resolution range features resolution() throws if no argument is supplied 1`] = `There is no 'resolution' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -1858,7 +1858,7 @@ exports[`ranged features width range features maxWidth() returns the correct fea
 
 exports[`ranged features width range features maxWidth() returns the correct feature when called with existing breakpoint 1`] = `(max-width: 24.999375em)`;
 
-exports[`ranged features width range features maxWidth() throws if 'width' breakpoint map doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features width range features maxWidth() throws if 'width' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'width'.`;
 
 exports[`ranged features width range features maxWidth() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -2008,7 +2008,7 @@ exports[`ranged features width range features minWidth() returns the correct fea
 
 exports[`ranged features width range features minWidth() returns the correct feature when called with existing breakpoint 1`] = `(min-width: 25em)`;
 
-exports[`ranged features width range features minWidth() throws if 'width' breakpoint map doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features width range features minWidth() throws if 'width' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'width'.`;
 
 exports[`ranged features width range features minWidth() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 
@@ -2158,7 +2158,7 @@ exports[`ranged features width range features width() returns the correct featur
 
 exports[`ranged features width range features width() returns the correct feature when called with existing breakpoint 1`] = `(width: 25em)`;
 
-exports[`ranged features width range features width() throws if 'width' breakpoint map doesn't exist 1`] = `There is no 'width' breakpoint defined called 'xxxx', only: '' are defined.`;
+exports[`ranged features width range features width() throws if 'width' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint map for 'width'.`;
 
 exports[`ranged features width range features width() throws if no argument is supplied 1`] = `There is no 'width' breakpoint defined called 'undefined', only: 'small, medium, large, xLarge' are defined.`;
 

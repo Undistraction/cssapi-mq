@@ -3,6 +3,7 @@ import { compose, sequence, of, flip, repeat, filter } from 'ramda';
 import {
   mqWithValidBreakpointsForRange,
   validBreakpointKeysForRange,
+  mqWithNoBreakpoints,
 } from '../data';
 
 const permutations = compose(sequence(of), flip(repeat));
@@ -12,6 +13,14 @@ export const queryThrowsIfMissingBreakpoint = (name, method) => {
   it("throws if breakpoint doesn't exist", () => {
     expect(() =>
       mqWithValidBreakpointsForRange(name)[method]('xxxx')
+    ).toThrowErrorMatchingSnapshot();
+  });
+};
+
+export const queryThrowsIfMissingBreakpointSet = (name, method) => {
+  it("throws if breakpoint set doesn't exist", () => {
+    expect(() =>
+      mqWithNoBreakpoints()[method]('xxxx')
     ).toThrowErrorMatchingSnapshot();
   });
 };

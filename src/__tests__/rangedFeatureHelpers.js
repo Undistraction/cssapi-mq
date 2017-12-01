@@ -4,6 +4,7 @@ import { RANGED_FEATURES } from '../features';
 
 import {
   queryThrowsIfMissingBreakpoint,
+  queryThrowsIfMissingBreakpointSet,
   queryReturnsCorrectValueSingleBreakpoint,
   queryReturnsCorrectValueWithTwoBreakpoints,
   queryThrowsIfMissingEitherBreakpoint,
@@ -14,6 +15,7 @@ expect.addSnapshotSerializer(cssSerialiser);
 
 const singleArgumentSharedTest = [
   queryThrowsIfMissingBreakpoint,
+  queryThrowsIfMissingBreakpointSet,
   queryReturnsCorrectValueSingleBreakpoint,
 ];
 
