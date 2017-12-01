@@ -14,17 +14,18 @@ import {
   both,
   has,
   contains,
-  complement,
   values,
+  unless,
 } from 'ramda';
 import { isArray, isString, isObject, isNull } from '../../utils/predicates';
 import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const';
 import {
-  throwError,
+  composeError,
   queryNoNestedArraysErrorMessage,
   queryElementIsValidTypeErrorMessage,
   queryChildElementIsValidTypeErrorMessage,
 } from '../../errors';
+import { neither } from '../../utils/logic';
 
 const nameValue = compose(join(': '), reject(isNil));
 const isArrayOrString = either(isArray, isString);
@@ -54,30 +55,27 @@ export const ensureMediaType = (defaultMediaType, ...elements) =>
   })(elements);
 
 const queryElementIsValidType = element => {
-  if (
-    either(isNull, complement(either(isArrayOrString, isNegationObject)))(
-      element
-    )
-  )
-    throwError(queryElementIsValidTypeErrorMessage(element));
+  when(
+    either(isNull, neither(isArrayOrString, isNegationObject)),
+    composeError(queryElementIsValidTypeErrorMessage)
+  )(element);
 };
 
 const queryElementChildrenValidType = element => {
-  if (isArray(element)) {
-    if (
-      !all(child => either(isArrayOrString, isNegationObject(child)))(element)
-    ) {
-      throwError(queryChildElementIsValidTypeErrorMessage(element));
-    }
-  }
+  when(
+    isArray,
+    unless(
+      all(child => either(isArrayOrString, isNegationObject(child))),
+      composeError(queryChildElementIsValidTypeErrorMessage)
+    )
+  )(element);
 };
 
 const elemementHasNoNestedArrays = element => {
-  if (isArray(element)) {
-    if (any(containsArrays)(element)) {
-      throwError(queryNoNestedArraysErrorMessage(element));
-    }
-  }
+  when(
+    isArray,
+    when(any(containsArrays), composeError(queryNoNestedArraysErrorMessage))
+  )(element);
 };
 
 const validateDefinition = (...elements) => {
