@@ -70,11 +70,8 @@ export default (
       return valueRenderer(value, shouldSeparate);
     }
 
-    if (validator.validate(value)) {
-      return valueRenderer(value, shouldSeparate);
-    }
-
-    throw new Error(`Supplied value was invalid: '${value}'`);
+    validator.validate(value);
+    return valueRenderer(value, shouldSeparate);
   };
 
   const defaultAPIConfig = { mediaType: defaultMediaType };
