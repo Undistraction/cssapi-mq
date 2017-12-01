@@ -104,34 +104,34 @@ exports[`query renders query with single feature 1`] = `
 }
 `;
 
-exports[`query throws with invalid argument [object Object] 1`] = `You must only supply strings or arrays to 'query()' but you supplied '[object Object]'`;
+exports[`query throws with invalid argument [object Object] 1`] = `You must only supply strings or arrays to 'query()' but you supplied '[object Object]'.`;
 
-exports[`query throws with invalid argument -0.4 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-0.4'`;
+exports[`query throws with invalid argument -0.4 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-0.4'.`;
 
-exports[`query throws with invalid argument -6 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-6'`;
+exports[`query throws with invalid argument -6 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-6'.`;
 
-exports[`query throws with invalid argument -90 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-90'`;
+exports[`query throws with invalid argument -90 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-90'.`;
 
-exports[`query throws with invalid argument -99.8 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-99.8'`;
+exports[`query throws with invalid argument -99.8 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-99.8'.`;
 
-exports[`query throws with invalid argument 0 1`] = `You must only supply strings or arrays to 'query()' but you supplied '0'`;
+exports[`query throws with invalid argument 0 1`] = `You must only supply strings or arrays to 'query()' but you supplied '0'.`;
 
-exports[`query throws with invalid argument 0.6 1`] = `You must only supply strings or arrays to 'query()' but you supplied '0.6'`;
+exports[`query throws with invalid argument 0.6 1`] = `You must only supply strings or arrays to 'query()' but you supplied '0.6'.`;
 
-exports[`query throws with invalid argument 44.7 1`] = `You must only supply strings or arrays to 'query()' but you supplied '44.7'`;
+exports[`query throws with invalid argument 44.7 1`] = `You must only supply strings or arrays to 'query()' but you supplied '44.7'.`;
 
-exports[`query throws with invalid argument 78 1`] = `You must only supply strings or arrays to 'query()' but you supplied '78'`;
+exports[`query throws with invalid argument 78 1`] = `You must only supply strings or arrays to 'query()' but you supplied '78'.`;
 
-exports[`query throws with invalid argument 4999 1`] = `You must only supply strings or arrays to 'query()' but you supplied '4999'`;
+exports[`query throws with invalid argument 4999 1`] = `You must only supply strings or arrays to 'query()' but you supplied '4999'.`;
 
-exports[`query throws with invalid argument NaN 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'NaN'`;
+exports[`query throws with invalid argument NaN 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'NaN'.`;
 
-exports[`query throws with invalid argument false 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'false'`;
+exports[`query throws with invalid argument false 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'false'.`;
 
-exports[`query throws with invalid argument null 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'null'`;
+exports[`query throws with invalid argument null 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'null'.`;
 
-exports[`query throws with invalid argument true 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'true'`;
+exports[`query throws with invalid argument true 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'true'.`;
 
-exports[`query throws with invalid argument undefined 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'undefined'`;
+exports[`query throws with invalid argument undefined 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'undefined'.`;
 
-exports[`query throws with no arguments 1`] = `You must supply at least one argument to 'query()' to build a valid media query`;
+exports[`query throws with no arguments 1`] = `You must supply at least one argument to 'query()' to build a valid media query.`;

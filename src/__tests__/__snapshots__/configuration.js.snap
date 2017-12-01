@@ -1,30 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`configure() breakpoints throws if  is supplied 1`] = `Breakpoints must be an object, but you supplied '[]'`;
+exports[`configure() breakpoints throws if  is supplied 1`] = `Breakpoints must be an object, but you supplied '[]'.`;
 
-exports[`configure() breakpoints throws if -0.4 is supplied 1`] = `Breakpoints must be an object, but you supplied '-0.4'`;
+exports[`configure() breakpoints throws if -0.4 is supplied 1`] = `Breakpoints must be an object, but you supplied '-0.4'.`;
 
-exports[`configure() breakpoints throws if -6 is supplied 1`] = `Breakpoints must be an object, but you supplied '-6'`;
+exports[`configure() breakpoints throws if -6 is supplied 1`] = `Breakpoints must be an object, but you supplied '-6'.`;
 
-exports[`configure() breakpoints throws if -90 is supplied 1`] = `Breakpoints must be an object, but you supplied '-90'`;
+exports[`configure() breakpoints throws if -90 is supplied 1`] = `Breakpoints must be an object, but you supplied '-90'.`;
 
-exports[`configure() breakpoints throws if -99.8 is supplied 1`] = `Breakpoints must be an object, but you supplied '-99.8'`;
+exports[`configure() breakpoints throws if -99.8 is supplied 1`] = `Breakpoints must be an object, but you supplied '-99.8'.`;
 
-exports[`configure() breakpoints throws if 0 is supplied 1`] = `Breakpoints must be an object, but you supplied '0'`;
+exports[`configure() breakpoints throws if 0 is supplied 1`] = `Breakpoints must be an object, but you supplied '0'.`;
 
-exports[`configure() breakpoints throws if 0.6 is supplied 1`] = `Breakpoints must be an object, but you supplied '0.6'`;
+exports[`configure() breakpoints throws if 0.6 is supplied 1`] = `Breakpoints must be an object, but you supplied '0.6'.`;
 
-exports[`configure() breakpoints throws if 44.7 is supplied 1`] = `Breakpoints must be an object, but you supplied '44.7'`;
+exports[`configure() breakpoints throws if 44.7 is supplied 1`] = `Breakpoints must be an object, but you supplied '44.7'.`;
 
-exports[`configure() breakpoints throws if 78 is supplied 1`] = `Breakpoints must be an object, but you supplied '78'`;
+exports[`configure() breakpoints throws if 78 is supplied 1`] = `Breakpoints must be an object, but you supplied '78'.`;
 
-exports[`configure() breakpoints throws if 4999 is supplied 1`] = `Breakpoints must be an object, but you supplied '4999'`;
+exports[`configure() breakpoints throws if 4999 is supplied 1`] = `Breakpoints must be an object, but you supplied '4999'.`;
 
-exports[`configure() breakpoints throws if NaN is supplied 1`] = `Breakpoints must be an object, but you supplied 'null'`;
+exports[`configure() breakpoints throws if NaN is supplied 1`] = `Breakpoints must be an object, but you supplied 'null'.`;
 
 exports[`configure() breakpoints throws if an empty object is supplied 1`] = `You must not supply an empty object of breakpoints to 'configure()', but the you supplied '{}'.`;
 
-exports[`configure() breakpoints throws if false is supplied 1`] = `Breakpoints must be an object, but you supplied 'false'`;
+exports[`configure() breakpoints throws if false is supplied 1`] = `Breakpoints must be an object, but you supplied 'false'.`;
 
 exports[`configure() breakpoints throws if invalid 'aspectRatio' breakpoint set value is supplied of '' 1`] = `You must supply an 'aspectRatio' in the form of two positive integers separated by a forward slash, for example '16/9' but you supplied '[""]'.`;
 
@@ -228,11 +228,11 @@ exports[`configure() breakpoints throws if invalid 'width' breakpoint set value 
 
 exports[`configure() breakpoints throws if invalid breakpoint set name is supplied 1`] = `You supplied a breakpoint set with an invalid name. Valid values are: 'width,height,resolution,aspectRatio,color,colorIndex,monochrome', but you supplied: '{"xxxx":{"small":100}}'.`;
 
-exports[`configure() breakpoints throws if null is supplied 1`] = `Breakpoints must be an object, but you supplied 'null'`;
+exports[`configure() breakpoints throws if null is supplied 1`] = `Breakpoints must be an object, but you supplied 'null'.`;
 
-exports[`configure() breakpoints throws if true is supplied 1`] = `Breakpoints must be an object, but you supplied 'true'`;
+exports[`configure() breakpoints throws if true is supplied 1`] = `Breakpoints must be an object, but you supplied 'true'.`;
 
-exports[`configure() breakpoints throws if xxxx is supplied 1`] = `Breakpoints must be an object, but you supplied '"xxxx"'`;
+exports[`configure() breakpoints throws if xxxx is supplied 1`] = `Breakpoints must be an object, but you supplied '"xxxx"'.`;
 
 exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `(max-height: 39.999em)`;
 

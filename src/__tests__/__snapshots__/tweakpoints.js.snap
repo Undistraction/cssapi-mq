@@ -10,4 +10,4 @@ exports[`tweaked() includes original breakpoints and added tweakpoints 1`] = `(m
 
 exports[`tweaked() includes original breakpoints and added tweakpoints 2`] = `(min-width: 68.75em) and (max-width: 18.749375em)`;
 
-exports[`tweaked() throws when accessing original without an original object 1`] = `There is no untweaked mq object available`;
+exports[`tweaked() throws when accessing original without an original object 1`] = `There is no untweaked mq object available.`;
