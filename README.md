@@ -17,7 +17,7 @@ It offers the following features:
 - Allows you to define lists of breakpoints for `width`, `height`, `resolution`, `color`, `color-index` or `monochrome` and offers a convenient API for accessing these breakpoints or ranges of those breakpoints.
 - Offers a convenient api for accessing linear breakpoints (those with fixed valid values) and supports: `orientation`, `scan`, `grid`, `update`, `overflow-block` and `overflow-inline`, `color-gamut` and `display` mode.
 - Offers strict validation of valid values, with descriptive error messages, with the option to support arbitrary values for defining breakpoints on the fly.
-- Supports tweakpoins as a separate entity to breakpoints. 
+- Supports tweakpoints as a separate entity to breakpoints. 
 - Supports complex media queries including negated queries.
 - Think in pixels but output in em, rem or pixel values.
 - Well tested.
@@ -62,7 +62,7 @@ Or you can play with a Codepen [here](https://codepen.io/Pedr/pen/MOmpxr)
 
 ## A Quick Refresher On Media Queries
 
-Media queries can be broken down into two types - those that take a arbitrary value (which I will refer to as ranged queries), for example `width` or `resolution` and those that accept only values from a predifined list (which I will refer to as linear queries), for example `scan` which only accepts the values `interlace` or `progressive`. In some cases both ranged or linear queries also support no argument, for example `color` can be used with no argument to target only color devices.
+Media queries can be broken down into two types - those that take a arbitrary value (which I will refer to as ranged queries), for example `width` or `resolution` and those that accept only values from a predefined list (which I will refer to as linear queries), for example `scan` which only accepts the values `interlace` or `progressive`. In some cases both ranged or linear queries also support no argument, for example `color` can be used with no argument to target only color devices.
 
 You can read much more about Media Queries [here](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
