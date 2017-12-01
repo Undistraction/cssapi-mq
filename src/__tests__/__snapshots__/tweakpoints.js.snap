@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tweak() throws if invalid breakpoint value is supplied 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied ["xxx"]`;
+exports[`tweak() throws if invalid breakpoint value is supplied 1`] = `You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px but you supplied '["xxx"]'.`;
 
-exports[`tweaked() doesn't effect the original mq 1`] = `There is no 'width' breakpoint defined called 'alpha', only: 'small, medium, large, xLarge' are defined.`;
+exports[`tweaked() doesn't effect the original mq 1`] = `There is no 'width' breakpoint defined called 'alpha', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`tweaked() doesn't effect the original mq 2`] = `(min-width: 25em) and (max-width: 56.249375em)`;
 

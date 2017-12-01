@@ -1,9 +1,14 @@
-import { keys, values, compose, curry } from 'ramda';
+import { keys, values, compose, curry, map } from 'ramda';
 import { MEDIA_TYPES, UNITS } from './const';
 import { rangedFeatureNames } from './features';
 import { toCommaSeparatedList } from './utils/string';
 
-const keysToCommaSeparatedList = compose(toCommaSeparatedList, keys);
+const wrapWithQuotes = map(v => `'${v}'`);
+const keysToCommaSeparatedList = compose(
+  toCommaSeparatedList,
+  wrapWithQuotes,
+  keys
+);
 const valuesToCommaSeparatedList = compose(toCommaSeparatedList, values);
 const objectToString = JSON.stringify;
 
@@ -35,33 +40,33 @@ export const throwError = message => {
 export const composeError = message => compose(throwError, message);
 
 export const invalidBreakpointsErrorMessage = breakpoints =>
-  `The breakpoints object must be an object, but you supplied '${objectToString(
+  `Breakpoints must be an object, but you supplied '${objectToString(
     breakpoints
-  )}'`;
+  )}'.`;
 
 export const emptyBreakpointMapErrorMessage = breakpointMap => `
-  You must not supply an empty object of breakpoints 'configure()', but the you supplied '${objectToString(
+  You must not supply an empty object of breakpoints to 'configure()', but the you supplied '${objectToString(
     breakpointMap
   )}'.`;
 
 export const invalidBreakpointNamesErrorMessage = breakpointMap =>
   `You supplied a breakpoint set with an invalid name. Valid values are: '${
     rangedFeatureNames
-  }'. but you supplied: '${objectToString(breakpointMap)}'.`;
+  }', but you supplied: '${objectToString(breakpointMap)}'.`;
 
 export const emptyBreakpointSetErrorMessage = breakpointMapName =>
-  `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint map for the '${objectToString(
+  `A breakpoint set must contain at least one breakpoint, but you supplied an empty breakpoint set for the '${objectToString(
     breakpointMapName
   )}' map.`;
 
 export const mssingBreakpointMapErrorMessage = name =>
-  `This mq object was not configured with a breakpoint map for '${name}'.`;
+  `This mq object was not configured with a breakpoint set for '${name}'.`;
 
 export const missingBreakpointErrorMessage = curry(
-  (name, breakpointMapName, breakpointMaps) =>
+  (name, breakpointMapName, breakpoints) =>
     `There is no '${breakpointMapName}' breakpoint defined called '${
       name
-    }', only: '${keysToCommaSeparatedList(breakpointMaps)}' are defined.`
+    }', only: ${keysToCommaSeparatedList(breakpoints)} are defined.`
 );
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
@@ -76,11 +81,11 @@ export const invalidMediaTypeErrorMessage = value =>
 
 export const invalidBreakpointSetValueErrorMessage = curry(
   (message, breakpoints) =>
-    `${message} but you supplied ${objectToString(breakpoints)}`
+    `${message} but you supplied '${objectToString(breakpoints)}'.`
 );
 
 export const invalidBaseFontSizeErrorMessage = value =>
-  `'baseFontSize' must be a positive number, but you supplied '${value}'`;
+  `'baseFontSize' must be a positive number, but you supplied '${value}'.`;
 
 export const invalidDefaultMediaTypeErrorMessage = value =>
   `'defaultMediaType' must be one of '${valuesToCommaSeparatedList(
@@ -101,22 +106,22 @@ export const invalidFeatureErrorMessage = curry(
 );
 
 export const queryNoElementsErrorMessage = () =>
-  "You must supply at least one argument to 'query()' to build a valid media query";
+  "You must supply at least one argument to 'query()' to build a valid media query.";
 
 export const queryElementIsValidTypeErrorMessage = value =>
   `You must only supply strings or arrays to 'query()' but you supplied '${
     value
-  }'`;
+  }'.`;
 
 export const queryChildElementIsValidTypeErrorMessage = value =>
   `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '${objectToString(
     value
-  )}'`;
+  )}'.`;
 
 export const queryNoNestedArraysErrorMessage = value =>
   `You must not supply any nested arrays to 'query()' but you supplied '${
     value
-  }'`;
+  }'.`;
 
 export const noUntweakedErrorMessage = () =>
-  'There is no untweaked mq object available';
+  'There is no untweaked mq object available.';
