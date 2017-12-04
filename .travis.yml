@@ -9,7 +9,7 @@ notifications:
 script:
   - node --version
   - yarn --version
-  - yarn run lint && yarn run test:noWatch
+  - yarn run lint && yarn run test:noWatch && codecov
 cache:
   yarn: true
   bundler: true
