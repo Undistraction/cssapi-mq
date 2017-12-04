@@ -6,6 +6,10 @@ node_js:
 notifications:
   email:
     on_failure: change
+script:
+  - node --version
+  - yarn --version
+  - yarn run lint && yarn run test
 cache:
   yarn: true
   bundler: true
