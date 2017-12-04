@@ -1,6 +1,8 @@
 ![Styled MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
 [![codecov](https://codecov.io/gh/Undistraction/styled-mq/branch/master/graph/badge.svg)](https://codecov.io/gh/Undistraction/styled-mq)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/b8fa93a42a7de18616c3/maintainability)](https://codeclimate.com/github/Undistraction/styled-mq/maintainability)
+
 # Styled MQ
 
 ## What?
