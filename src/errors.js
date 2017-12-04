@@ -108,6 +108,9 @@ export const invalidFeatureErrorMessage = curry(
 export const queryNoElementsErrorMessage = () =>
   "You must supply at least one argument to 'query()' to build a valid media query.";
 
+export const notNoElementsErrorMessage = () =>
+  "You must supply at least one argument to 'not()' to build a valid media query.";
+
 export const queryElementIsValidTypeErrorMessage = value =>
   `You must only supply strings or arrays to 'query()' but you supplied '${
     value
@@ -119,7 +122,7 @@ export const queryChildElementIsValidTypeErrorMessage = value =>
   )}'.`;
 
 export const queryNoNestedArraysErrorMessage = value =>
-  `You must not supply any nested arrays to 'query()' but you supplied '${
+  `You must not supply any nested arrays as part of a query but you supplied '${
     value
   }'.`;
 

@@ -54,6 +54,17 @@ describe('query', () => {
     });
   }
 
+  it('throws with a nested array', () => {
+    const mq = mqWithValidBreakpointsForRange('width');
+    const { query } = mq;
+    expect(
+      () =>
+        query([[]])`
+        background-color: ${() => 'GhostWhite'};
+      `
+    ).toThrowErrorMatchingSnapshot();
+  });
+
   it('renders query with single feature', () => {
     const mq = mqWithValidBreakpointsForRange('width');
     const { query, minWidth } = mq;
@@ -123,6 +134,17 @@ describe('query', () => {
   });
 
   describe('not', () => {
+    it('throws with no arguments', () => {
+      const mq = mqWithValidBreakpointsForRange('width');
+      const { query, not } = mq;
+      expect(
+        () =>
+          query(not())`
+          background-color: ${() => 'GhostWhite'};
+        `
+      ).toThrowErrorMatchingSnapshot();
+    });
+
     for (const value of invalidValues) {
       it(`throws with invalid argument of '${value}'`, () => {
         const mq = mqWithValidBreakpointsForRange('width');
@@ -148,6 +170,17 @@ describe('query', () => {
         ).toThrowErrorMatchingSnapshot();
       });
     }
+
+    it('throws with a nested array', () => {
+      const mq = mqWithValidBreakpointsForRange('width');
+      const { query, not } = mq;
+      expect(
+        () =>
+          query(not([[]]))`
+          background-color: ${() => 'GhostWhite'};
+        `
+      ).toThrowErrorMatchingSnapshot();
+    });
 
     it('negates anded queries', () => {
       // @media not screen and (color) and (orientation: landscape) {

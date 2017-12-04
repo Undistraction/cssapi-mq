@@ -16,6 +16,7 @@ import {
   contains,
   values,
   unless,
+  isEmpty,
 } from 'ramda';
 import { isArray, isString, isObject, isNull } from '../../utils/predicates';
 import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const';
@@ -24,6 +25,7 @@ import {
   queryNoNestedArraysErrorMessage,
   queryElementIsValidTypeErrorMessage,
   queryChildElementIsValidTypeErrorMessage,
+  notNoElementsErrorMessage,
 } from '../../errors';
 import { neither } from '../../utils/logic';
 
@@ -74,7 +76,7 @@ const queryElementChildrenValidType = element => {
 const elemementHasNoNestedArrays = element => {
   when(
     isArray,
-    when(any(containsArrays), composeError(queryNoNestedArraysErrorMessage))
+    when(containsArrays, composeError(queryNoNestedArraysErrorMessage))
   )(element);
 };
 
@@ -97,7 +99,9 @@ export const renderQueryDefinition = (...elements) => {
 };
 
 export const renderNotQueryDefinition = (defaultMediaType, ...elements) => {
+  when(isEmpty, composeError(notNoElementsErrorMessage))(elements);
   validateDefinition(...elements);
+
   elements = ensureMediaType(defaultMediaType, ...elements);
 
   return compose(

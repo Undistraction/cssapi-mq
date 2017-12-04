@@ -56,6 +56,8 @@ exports[`query not negates ored queries 1`] = `
 }
 `;
 
+exports[`query not throws with a nested array 1`] = `You must not supply any nested arrays as part of a query but you supplied ''.`;
+
 exports[`query not throws with invalid argument of '[object Object]' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '[object Object]'.`;
 
 exports[`query not throws with invalid argument of '-0.4' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-0.4'.`;
@@ -116,6 +118,8 @@ exports[`query not throws with invalid child of 'true' 1`] = `You must only supp
 
 exports[`query not throws with invalid child of 'undefined' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[null]'.`;
 
+exports[`query not throws with no arguments 1`] = `You must supply at least one argument to 'not()' to build a valid media query.`;
+
 exports[`query not with media type negates anded queries without adding default media type 1`] = `
 @media not screen and (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape) {
     background-color: function () {
@@ -163,6 +167,8 @@ exports[`query renders query with single feature 1`] = `
     }; ;
 }
 `;
+
+exports[`query throws with a nested array 1`] = `You must not supply any nested arrays as part of a query but you supplied ''.`;
 
 exports[`query throws with invalid argument of '[object Object]' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '[object Object]'.`;
 
