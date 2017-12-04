@@ -27,8 +27,9 @@ describe('query', () => {
     NaN,
     {},
   ];
+
   for (const value of invalidValues) {
-    it(`throws with invalid argument ${value}`, () => {
+    it(`throws with invalid argument of '${value}'`, () => {
       const mq = mqWithValidBreakpointsForRange('width');
       const { query } = mq;
       expect(
@@ -40,8 +41,20 @@ describe('query', () => {
     });
   }
 
+  for (const value of invalidValues) {
+    it(`throws with invalid child of '${value}'`, () => {
+      const mq = mqWithValidBreakpointsForRange('width');
+      const { query } = mq;
+      expect(
+        () =>
+          query([value])`
+          background-color: ${() => 'GhostWhite'};
+        `
+      ).toThrowErrorMatchingSnapshot();
+    });
+  }
+
   it('renders query with single feature', () => {
-    // @media (min-width: 25em) {
     const mq = mqWithValidBreakpointsForRange('width');
     const { query, minWidth } = mq;
     expect(
@@ -110,6 +123,32 @@ describe('query', () => {
   });
 
   describe('not', () => {
+    for (const value of invalidValues) {
+      it(`throws with invalid argument of '${value}'`, () => {
+        const mq = mqWithValidBreakpointsForRange('width');
+        const { query, not } = mq;
+        expect(
+          () =>
+            query(not(value))`
+            background-color: ${() => 'GhostWhite'};
+          `
+        ).toThrowErrorMatchingSnapshot();
+      });
+    }
+
+    for (const value of invalidValues) {
+      it(`throws with invalid child of '${value}'`, () => {
+        const mq = mqWithValidBreakpointsForRange('width');
+        const { query, not } = mq;
+        expect(
+          () =>
+            query(not([value]))`
+            background-color: ${() => 'GhostWhite'};
+          `
+        ).toThrowErrorMatchingSnapshot();
+      });
+    }
+
     it('negates anded queries', () => {
       // @media not screen and (color) and (orientation: landscape) {
       const mq = mqWithValidBreakpointsForRange('width');

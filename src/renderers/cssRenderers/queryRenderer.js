@@ -65,7 +65,7 @@ const queryElementChildrenValidType = element => {
   when(
     isArray,
     unless(
-      all(child => either(isArrayOrString, isNegationObject(child))),
+      all(child => either(isArrayOrString, isNegationObject)(child)),
       composeError(queryChildElementIsValidTypeErrorMessage)
     )
   )(element);
