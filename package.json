@@ -6,11 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
   },
-  "files": [
-    "dist",
-    "src",
-    "lib"
-  ],
+  "files": ["dist", "src", "lib"],
   "keywords": [
     "styled-components",
     "media-queries",
@@ -31,7 +27,9 @@
     "build:lib": "babel --out-dir lib --ignore \"__tests__\" src",
     "prebuild:dist": "rimraf dist/*",
     "build:dist": "NODE_ENV=development rollup --config",
-    "test": "NODE_ENV=test jest --config jest.config.js --watch",
+    "test": "NODE_ENV=test jest --watch",
+    "test:cov":
+      "NODE_ENV=test jest && codecov -t 186863e9-4fc9-45f1-9265-29c0dcfa0893",
     "publish:patch": "npm version patch && sudo npm publish",
     "publish:minor": "npm version minor && sudo npm publish",
     "publish:major": "npm version major && sudo npm publish",
@@ -44,6 +42,7 @@
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "codecov": "^3.0.0",
     "cssbeautify": "^0.3.1",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
