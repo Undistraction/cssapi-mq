@@ -1,7 +1,7 @@
 {
   "name": "styled-mq",
   "version": "0.3.10",
-  "main": "dist/styled-mq.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
