@@ -1,3 +1,5 @@
+A Toolkit For Using Media Queries With Styled Components
+
 ![Styled MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
 [![codecov](https://codecov.io/gh/Undistraction/styled-mq/branch/master/graph/badge.svg)](https://codecov.io/gh/Undistraction/styled-mq)
 [![Build Status](https://travis-ci.org/Undistraction/styled-mq.svg?branch=master)](https://travis-ci.org/Undistraction/styled-mq)
@@ -20,20 +22,31 @@ and weren't well tested enough to give me confidence.
 
 It offers the following features:
 
-* Allows you to define lists of breakpoints for `width`, `height`, `resolution`,
-  `color`, `color-index` or `monochrome` and offers a convenient API for
-  accessing these breakpoints or ranges of those breakpoints.
-* Offers a convenient api for accessing linear breakpoints (those with fixed
-  valid values) and supports: `orientation`, `scan`, `grid`, `update`,
-  `overflow-block` and `overflow-inline`, `color-gamut` and `display` mode.
-* Offers strict validation of valid values, with descriptive error messages,
-  with the option to support arbitrary values for defining breakpoints on the
-  fly.
-* Supports tweakpoints as a separate entity to breakpoints.
-* Supports complex media queries including negated queries.
-* Think in pixels but output in em, rem or pixel values.
-* Well tested.
-* Numerous other useful features.
+* Lots of validation and useful error messages to make it (hopefully) impossible
+  to write invalid or non-functioning media queries.
+* Full support for all media features that are widely supported, including
+  width, height, resolution, orientation and lots more.
+* A simple API with convenience methods like aboveResolution(), betweenWidths()
+  and atHeight().
+* Full support for complex media queries (ands, ors, not) with validation.
+* Support for tweakpoints.
+* Lots and lots of tests.
+* Automatic addition of media-type for not queries to ensure they are valid.
+* Work in whatever units you like (rems, ems or px) and choose your preferred
+  output unit.
+* Use arbitrary values or make things strict, so only predefined, named
+  breakpoints can be used.
+* Automatic separation of media query values to avoid overlap (if you want it).
+* Lots of scope for you to use as a robust base for using media queries however
+  you want to - you can easily build out a few predefined queries if that's all
+  you need or keep things very flexible.
+* Create multiple sets of configuration for different places within the same
+  application.
+
+## How big?
+
+[According to Bundle Phobia](https://bundlephobia.com/result?p=styled-mq@latest)
+it comes in at 38.7KB GZipped.
 
 ## But I need …
 
