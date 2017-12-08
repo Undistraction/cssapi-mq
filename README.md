@@ -1,8 +1,9 @@
 A Toolkit For Using Media Queries With Styled Components
 
 ![Styled MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
-[![codecov](https://codecov.io/gh/Undistraction/styled-mq/branch/master/graph/badge.svg)](https://codecov.io/gh/Undistraction/styled-mq)
-[![Build Status](https://travis-ci.org/Undistraction/styled-mq.svg?branch=master)](https://travis-ci.org/Undistraction/styled-mq)
+[![NPM Version](https://img.shields.io/npm/v/styled-mq.svg)](https://www.npmjs.com/package/styled-mq)
+[![codecov](https://img.shields.io/codecov/c/github/Undistraction/styled-mq.svg)](https://codecov.io/gh/Undistraction/styled-mq)
+[![Build Status](https://img.shields.io/travis/Undistraction/styled-mq.svg)](https://travis-ci.org/Undistraction/styled-mq)
 
 # Styled MQ
 
