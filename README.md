@@ -4,6 +4,7 @@ A Toolkit For Using Media Queries With Styled Components
 [![NPM Version](https://img.shields.io/npm/v/styled-mq.svg)](https://www.npmjs.com/package/styled-mq)
 [![codecov](https://img.shields.io/codecov/c/github/Undistraction/styled-mq.svg)](https://codecov.io/gh/Undistraction/styled-mq)
 [![Build Status](https://img.shields.io/travis/Undistraction/styled-mq.svg)](https://travis-ci.org/Undistraction/styled-mq)
+[![DUB](https://img.shields.io/dub/l/vibe-d.svg)](./LICENSE.md)
 
 # Styled MQ
 
@@ -68,8 +69,8 @@ const mq = styledMQ.configure({
     medium: 900,
     large: 1200,
     xLarge: 1400,
-  }
-})
+  },
+});
 
 // Access the mq object
 
@@ -77,13 +78,13 @@ const component = styled.div`
   ${mq.query(mq.betweenWidth('small', 'large'))`
     background-color: GhostWhite;
   `};
-`
+`;
 
 const component = styled.div`
   ${mq.aboveWidth('large')`
     background-color: WhiteSmoke;
   `};
-`
+`;
 ```
 
 Or you can play with a Codepen [here](https://codepen.io/Pedr/pen/MOmpxr)
@@ -123,11 +124,11 @@ const mq = styledMQ.configure({
   },
   height: {
     small: 400,
-    large: 800
+    large: 800,
   },
   resolution: {
     high: 192,
-  }
+  },
 });
 ```
 
