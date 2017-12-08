@@ -57,7 +57,7 @@ explain what you need.
 
 ## Quick Start
 
-```
+```js
 import styled from 'styled-components';
 import styledMQ from 'styledMQ';
 
@@ -113,7 +113,7 @@ features, with a separate breakpoint set for each feature. If you wanted to
 defined breakpoints for `width`, `height` and `resolution`, your breakpoint map
 would look like this:
 
-```
+```js
 const mq = styledMQ.configure({
   width: {
     small: 400,
@@ -136,7 +136,7 @@ const mq = styledMQ.configure({
 The second argument is a config object that changes the behaviour of the object
 that is retured.
 
-```
+```js
 const mq = styledMQ.configure({
   width: {
     small: 400,
@@ -462,19 +462,19 @@ You can just create different `mq` objects for each part of the app.
 
 ### Test
 
-```
+```sh
 yarn test
 ```
 
 ### Build
 
-```
+```sh
 yarn run build
 ```
 
 ### Publish
 
-```
+```sh
 yarn run publish:patch
 yarn run publish:minor
 yarn run publish:major
