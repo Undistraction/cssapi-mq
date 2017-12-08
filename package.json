@@ -70,6 +70,7 @@
     "camelcase": "^4.1.0",
     "dasherize": "^2.0.0",
     "ramda": "^0.25.0",
+    "ramda-adjunct": "^2.1.0",
     "react": "^16.1.0",
     "styled-components": "^2.2.3"
   }

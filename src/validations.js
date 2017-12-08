@@ -15,16 +15,13 @@ import {
   curry,
   always,
 } from 'ramda';
+import { isNull, isObj, isBoolean, isArray } from 'ramda-adjunct';
 import { rangedFeatureNamed, rangedFeatureNames } from './features';
 import { ensureArray } from './utils/array';
 import {
-  isBoolean,
   isPopulatedObject,
   isPositiveNumber,
   isPositiveNumberWithPixelUnit,
-  isObject,
-  isArray,
-  isNull,
   doesListIncludeValue,
   isDimensionsUnitValid,
   areMediaTypesValid,
@@ -95,7 +92,7 @@ const validateBreakpointSetNames = validate(
 );
 
 const validateBreakpointObject = breakpointMap => {
-  validate(both(complement(isArray), isObject), invalidBreakpointsErrorMessage)(
+  validate(both(complement(isArray), isObj), invalidBreakpointsErrorMessage)(
     breakpointMap
   );
   validate(isPopulatedObject, emptyBreakpointMapErrorMessage)(breakpointMap);

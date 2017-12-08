@@ -1,6 +1,6 @@
 import { unless, both, always, partial } from 'ramda';
 
-import { isUndefined } from '../utils/predicates';
+import { isUndefined } from 'ramda-adjunct';
 import { validateFeature } from '../validations';
 import { renderFeature } from '../renderers/cssRenderers/queryRenderer';
 

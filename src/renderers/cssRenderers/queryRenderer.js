@@ -18,7 +18,8 @@ import {
   unless,
   isEmpty,
 } from 'ramda';
-import { isArray, isString, isObject, isNull } from '../../utils/predicates';
+import { isNull, isString, isArray, isObj } from 'ramda-adjunct';
+
 import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const';
 import {
   composeError,
@@ -31,7 +32,7 @@ import { neither } from '../../utils/logic';
 
 const nameValue = compose(join(': '), reject(isNil));
 const isArrayOrString = either(isArray, isString);
-const isNegationObject = both(isObject, has('not'));
+const isNegationObject = both(isObj, has('not'));
 
 export const joinAnd = join(' and ');
 const joinComma = join(', ');

@@ -17,18 +17,14 @@ import {
   all,
 } from 'ramda';
 
+import { isObj } from 'ramda-adjunct';
+
 import { numericPartOfUnitedNumber } from './units';
 import { DIMENSIONS_UNITS, RESOLUTION_UNIT, MEDIA_TYPES } from '../const';
 
-export const isBoolean = is(Boolean);
 export const isNumber = both(is(Number), complement(equals(NaN)));
-export const isObject = is(Object);
-export const isString = is(String);
-export const isArray = is(Array);
-export const isNull = value => value === null;
-export const isUndefined = value => value === undefined;
 
-export const isPopulatedObject = both(complement(isEmpty), isObject);
+export const isPopulatedObject = both(complement(isEmpty), isObj);
 export const isRatioString = test(/^[1-9]+[0-9]* ?\/ ?[1-9]+[0-9]*$/);
 export const isPositiveNumber = both(isNumber, gt(__, 0));
 export const isPositiveNumberOrZero = both(isNumber, gte(__, 0));
