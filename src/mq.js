@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 import { partial, mergeDeepLeft, merge, isEmpty, complement } from 'ramda';
 import { isUndefined } from 'ramda-adjunct';
+import { unitedDimensionToUnitlessPixelValue } from 'js-css-units';
 
 import buildMediaType from './features/buildMediaType';
 import buildLinearFeatures from './features/buildLinearFeatures';
@@ -14,7 +15,6 @@ import {
 } from './validations';
 
 import { isNumberWithDimensionsUnit } from './utils/predicates';
-import { unitedDimensionToUnitlessPixelValue } from './utils/units';
 import { MEDIA_TYPES, UNITS } from './const';
 import renderQuery from './renderers/cssRenderers/styledComponentsRenderer';
 import {

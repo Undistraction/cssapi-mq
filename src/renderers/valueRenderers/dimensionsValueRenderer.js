@@ -1,14 +1,14 @@
 import { __, partial, always, subtract, when } from 'ramda';
 import {
-  toDimensionOutput,
-  separatorValueForUnit,
+  outputWithUnit,
   unitedDimensionToUnitlessPixelValue,
-} from '../../utils/units';
+} from 'js-css-units';
+import { separatorValueForUnit } from '../../utils/units';
 import { UNITS } from '../../const';
 import { isNumberWithDimensionsUnit } from '../../utils/predicates';
 
 const toUnit = (dimensionsUnit, baseFontSize) =>
-  partial(toDimensionOutput, [dimensionsUnit, baseFontSize]);
+  partial(outputWithUnit, [dimensionsUnit, baseFontSize]);
 
 const prepareUnitlessValue = (value, shouldSeparateQueries, dimensionsUnit) =>
   when(

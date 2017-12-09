@@ -1,10 +1,9 @@
 import { either } from 'ramda';
-import {
-  isNumber,
-  isPositiveNumberWithResolutionUnit,
-} from '../../utils/predicates';
+import { isValidNumber } from 'js-css-units';
+
+import { isPositiveNumberWithResolutionUnit } from '../../utils/predicates';
 
 export default {
   message: "You must supply 'resolution' as a positive number",
-  validate: either(isNumber, isPositiveNumberWithResolutionUnit),
+  validate: either(isValidNumber, isPositiveNumberWithResolutionUnit),
 };

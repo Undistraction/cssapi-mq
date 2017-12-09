@@ -34,12 +34,6 @@ export default {
       ],
     }),
     // Allow CommonJS modules to be included in build.
-    commonjs({
-      // Styled components uses the following and we need to ignore them here.
-      namedExports: {
-        //'node_modules/is-plain-object/index.js': ['default'],
-        //'node_modules/react/index.js': ['Component', 'createElement'],
-      },
-    }),
+    commonjs(),
   ],
 };

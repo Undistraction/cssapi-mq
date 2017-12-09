@@ -16,11 +16,11 @@ import {
   always,
 } from 'ramda';
 import { isNull, isObj, isBoolean, isArray } from 'ramda-adjunct';
+import { isValidPositiveNumber } from 'js-css-units';
 import { rangedFeatureNamed, rangedFeatureNames } from './features';
 import { ensureArray } from './utils/array';
 import {
   isPopulatedObject,
-  isPositiveNumber,
   isPositiveNumberWithPixelUnit,
   doesListIncludeValue,
   isDimensionsUnitValid,
@@ -115,7 +115,7 @@ export const validateConfig = ({
   shouldSeparateQueries,
 }) => {
   validate(
-    either(isPositiveNumber, isPositiveNumberWithPixelUnit),
+    either(isValidPositiveNumber, isPositiveNumberWithPixelUnit),
     invalidBaseFontSizeErrorMessage
   )(baseFontSize);
 

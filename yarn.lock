@@ -2393,6 +2393,14 @@ jest@^21.2.1:
   dependencies:
     jest-cli "^21.2.1"
 
+js-css-units@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/js-css-units/-/js-css-units-0.2.6.tgz#738adf140b02b35abac43ce5f0c3dbac6ae0a6f3"
+  dependencies:
+    codecov "^3.0.0"
+    ramda "^0.25.0"
+    ramda-adjunct "^2.1.0"
+
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"

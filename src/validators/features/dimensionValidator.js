@@ -1,11 +1,10 @@
 import { either } from 'ramda';
-import {
-  isPositiveNumber,
-  isPositiveNumberWithDimensionsUnit,
-} from '../../utils/predicates';
+import { isValidPositiveNumber } from 'js-css-units';
+
+import { isPositiveNumberWithDimensionsUnit } from '../../utils/predicates';
 
 export default {
   message:
     "You must supply a 'dimension' as either a unitless positive number or a string comprised of a number followed by em, rem px",
-  validate: either(isPositiveNumber, isPositiveNumberWithDimensionsUnit),
+  validate: either(isValidPositiveNumber, isPositiveNumberWithDimensionsUnit),
 };
