@@ -33,7 +33,6 @@
     "build:dist": "NODE_ENV=development rollup --config",
     "test": "jest --watch",
     "test:noWatch": "jest",
-    "test:cov": "NODE_ENV=test jest && codecov -t 186863e9-4fc9-45f1-9265-29c0dcfa0893",
     "publish:patch": "npm version patch && sudo npm publish",
     "publish:minor": "npm version minor && sudo npm publish",
     "publish:major": "npm version major && sudo npm publish",
