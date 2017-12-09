@@ -2393,9 +2393,9 @@ jest@^21.2.1:
   dependencies:
     jest-cli "^21.2.1"
 
-js-css-units@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/js-css-units/-/js-css-units-0.2.6.tgz#738adf140b02b35abac43ce5f0c3dbac6ae0a6f3"
+js-css-units@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/js-css-units/-/js-css-units-0.2.8.tgz#aebb754e259a963d0051f845827894d1d7b25219"
   dependencies:
     codecov "^3.0.0"
     ramda "^0.25.0"
