@@ -12,6 +12,10 @@
     {
       "files": ".babelrc",
       "options": { "parser": "json" }
+    },
+    {
+      "files": ".stylelintrc",
+      "options": { "parser": "json" }
     }
   ]
 }
