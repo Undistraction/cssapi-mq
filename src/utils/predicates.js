@@ -16,7 +16,7 @@ import {
   isNumberWithUnit,
   isNumberWithDpi,
   numericPartOfUnitedNumber,
-} from 'js-css-units';
+} from 'cssjs-units';
 
 import { isObj } from 'ramda-adjunct';
 

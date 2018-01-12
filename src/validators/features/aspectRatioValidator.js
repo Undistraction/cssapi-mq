@@ -1,4 +1,4 @@
-import { isAspectRatioString } from 'js-css-units';
+import { isAspectRatioString } from 'cssjs-units';
 
 export default {
   message:

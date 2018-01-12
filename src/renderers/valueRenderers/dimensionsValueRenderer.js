@@ -2,7 +2,7 @@ import { __, partial, always, subtract, when } from 'ramda';
 import {
   outputWithUnit,
   unitedDimensionToUnitlessPixelValue,
-} from 'js-css-units';
+} from 'cssjs-units';
 import { separatorValueForUnit } from '../../utils/units';
 import { UNITS } from '../../const';
 import { isNumberWithDimensionsUnit } from '../../utils/predicates';

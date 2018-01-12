@@ -1,5 +1,5 @@
 import { either } from 'ramda';
-import { isValidNumber } from 'js-css-units';
+import { isValidNumber } from 'cssjs-units';
 
 import { isPositiveNumberWithResolutionUnit } from '../../utils/predicates';
 

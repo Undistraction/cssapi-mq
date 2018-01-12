@@ -68,8 +68,8 @@
   },
   "dependencies": {
     "camelcase": "^4.1.0",
+    "cssjs-units": "^0.2.12",
     "dasherize": "^2.0.0",
-    "js-css-units": "^0.2.8",
     "ramda": "^0.25.0",
     "ramda-adjunct": "^2.1.0",
     "react": "^16.1.0",

@@ -1073,6 +1073,13 @@ cssbeautify@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cssbeautify/-/cssbeautify-0.3.1.tgz#12dd1f734035c2e6faca67dcbdcef74e42811397"
 
+cssjs-units@^0.2.12:
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/cssjs-units/-/cssjs-units-0.2.12.tgz#2a21d1202f693d28f355064618108259e0eb19a8"
+  dependencies:
+    ramda "^0.25.0"
+    ramda-adjunct "^2.2.0"
+
 cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/cssom/-/cssom-0.3.2.tgz#b8036170c79f07a90ff2f16e22284027a243848b"
@@ -2393,14 +2400,6 @@ jest@^21.2.1:
   dependencies:
     jest-cli "^21.2.1"
 
-js-css-units@^0.2.8:
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/js-css-units/-/js-css-units-0.2.8.tgz#aebb754e259a963d0051f845827894d1d7b25219"
-  dependencies:
-    codecov "^3.0.0"
-    ramda "^0.25.0"
-    ramda-adjunct "^2.1.0"
-
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
@@ -3025,6 +3024,10 @@ qs@~6.5.1:
 ramda-adjunct@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.1.0.tgz#5664029109570bc14584a0e0f39c456a8a87f506"
+
+ramda-adjunct@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.2.0.tgz#3f56acd359d442041db70d302f4df8063e83fd9d"
 
 ramda@^0.25.0:
   version "0.25.0"

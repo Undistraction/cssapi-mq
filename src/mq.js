@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 import { partial, mergeDeepLeft, merge, isEmpty, complement } from 'ramda';
 import { isUndefined } from 'ramda-adjunct';
-import { unitedDimensionToUnitlessPixelValue } from 'js-css-units';
+import { unitedDimensionToUnitlessPixelValue } from 'cssjs-units';
 
 import buildMediaType from './features/buildMediaType';
 import buildLinearFeatures from './features/buildLinearFeatures';

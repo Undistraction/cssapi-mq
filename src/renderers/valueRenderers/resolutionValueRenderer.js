@@ -3,7 +3,7 @@ import {
   appendUnit,
   numericPartOfUnitedNumber,
   isNumberWithDpi,
-} from 'js-css-units';
+} from 'cssjs-units';
 import { separatorValueForUnit } from '../../utils/units';
 import { UNITS } from '../../const';
 
