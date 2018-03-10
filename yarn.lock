@@ -1069,6 +1069,13 @@ css@^2.2.1:
     source-map-resolve "^0.3.0"
     urix "^0.1.0"
 
+cssapi-units@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/cssapi-units/-/cssapi-units-0.3.0.tgz#b930cd3359f9f468dcd487d449d4f3593b5a2832"
+  dependencies:
+    ramda "^0.25.0"
+    ramda-adjunct "^2.2.0"
+
 cssbeautify@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cssbeautify/-/cssbeautify-0.3.1.tgz#12dd1f734035c2e6faca67dcbdcef74e42811397"
@@ -1123,6 +1130,10 @@ decamelize@^1.0.0, decamelize@^1.1.1:
 deep-extend@~0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
+
+deep-freeze@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/deep-freeze/-/deep-freeze-0.0.1.tgz#3a0b0005de18672819dfd38cd31f91179c893e84"
 
 deep-is@~0.1.3:
   version "0.1.3"
@@ -1570,6 +1581,21 @@ flat-cache@^1.2.1:
     del "^2.0.2"
     graceful-fs "^4.1.2"
     write "^0.2.1"
+
+folktale-validations@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/folktale-validations/-/folktale-validations-2.2.1.tgz#1e3897d38032004cbc5ceb89c3d2e672ed0f73a1"
+  dependencies:
+    cssapi-units "^0.3.0"
+    deep-freeze "^0.0.1"
+    folktale "^2.0.1"
+    ramda "^0.25.0"
+    ramda-adjunct "^2.5.0"
+    ramda-log "0.0.3"
+
+folktale@^2.0.1:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/folktale/-/folktale-2.1.0.tgz#3332b9e37b4b92150788b72bd0e2ddd8d70e4096"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -3007,6 +3033,18 @@ ramda-adjunct@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.2.0.tgz#3f56acd359d442041db70d302f4df8063e83fd9d"
 
+ramda-adjunct@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.5.0.tgz#50d7d74ca273731b05dcdda77d102bc57d7c1145"
+
+ramda-log@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/ramda-log/-/ramda-log-0.0.3.tgz#bdfcd33868c071acac4627866893b4e7ef3f7914"
+  dependencies:
+    ramda "^0.25.0"
+    ramda-adjunct "^2.5.0"
+    safe-json-stringify "^1.1.0"
+
 ramda@^0.25.0:
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
@@ -3274,6 +3312,10 @@ rx-lite@*, rx-lite@^4.0.8:
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
+
+safe-json-stringify@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/safe-json-stringify/-/safe-json-stringify-1.1.0.tgz#bd2b6dad1ebafab3c24672a395527f01804b7e19"
 
 sane@^2.0.0:
   version "2.2.0"

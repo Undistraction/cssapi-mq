@@ -63,6 +63,7 @@
     "camelcase": "^4.1.0",
     "cssjs-units": "^0.2.12",
     "dasherize": "^2.0.0",
+    "folktale-validations": "^2.2.1",
     "ramda": "^0.25.0",
     "ramda-adjunct": "^2.1.0",
     "react": "^16.1.0",
