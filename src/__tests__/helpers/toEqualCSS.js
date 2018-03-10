@@ -10,7 +10,7 @@ expect.extend({
       };
     }
     return {
-      message: () => `expected ${received} to be ${argument}`,
+      message: () => `expected ${received} not to be ${argument}`,
       pass: false,
     };
   },
