@@ -2,10 +2,9 @@ module.exports = {
   extends: [
     'eslint-config-airbnb-base',
     'prettier',
-    'plugin:react/recommended',
     'plugin:ramda/recommended',
   ],
-  plugins: ['prettier', 'react', 'ramda', 'styled-components-config'],
+  plugins: ['prettier', 'eslint-plugin-ramda'],
   env: {
     browser: true,
     jest: true,
@@ -16,14 +15,17 @@ module.exports = {
       jsx: true,
     },
   },
-  globals: {
-    l: true,
-  },
   rules: {
     'func-names': ['error', 'never'],
     'no-param-reassign': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-confusing-arrow': 'off',
+    'no-unused-expressions': [
+      'error',
+      {
+        allowTaggedTemplates: true,
+      },
+    ],
     quotes: [
       'error',
       'backtick',
@@ -40,6 +42,10 @@ module.exports = {
         argsIgnorePattern: '^_$',
       },
     ],
-    'react/jsx-uses-vars': ['error'],
+    'no-console': ['error'],
+    'ramda/always-simplification': ['error'],
+    'ramda/compose-simplification': ['error'],
+    'ramda/eq-by-simplification': ['error'],
+    'ramda/prefer-complement': ['error'],
   },
-};
+}

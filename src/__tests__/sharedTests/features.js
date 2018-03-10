@@ -60,9 +60,7 @@ export const featureThrowsForInvalidExplicitBreakpoint = (
     invalidExplicitValues = removeNull(invalidAspectRatioValues);
 
   for (const value of invalidExplicitValues) {
-    it(`throws if supplied explicit breakpoint value is invalid '${
-      value
-    }'`, () => {
+    it(`throws if supplied explicit breakpoint value is invalid '${value}'`, () => {
       expect(() =>
         mqWithValidBreakpointsForRange(name)[method](value)
       ).toThrowErrorMatchingSnapshot();
@@ -77,9 +75,7 @@ export const featureReturnsCorrectValueForValidExpicitValue = (
 ) => {
   if (allowNoArgument) validExplicitValues = prepend(null, validExplicitValues);
   for (const value of validExplicitValues) {
-    it(`returns the correct feature when called with a valid explicit value of '${
-      value
-    }'`, () => {
+    it(`returns the correct feature when called with a valid explicit value of '${value}'`, () => {
       expect(
         mqWithValidBreakpointsForRange(name, { onlyNamedBreakpoints: false })[
           method

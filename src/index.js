@@ -1,3 +1,3 @@
-import mq from './mq';
+import mq from './mq'
 
-export default mq;
+export default mq

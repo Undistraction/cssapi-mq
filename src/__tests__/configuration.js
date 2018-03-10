@@ -74,9 +74,7 @@ describe.only('configure()', () => {
         .invalidExplicitValues;
 
       for (const invalidValue of invalidFeatureValues) {
-        it(`throws if invalid '${
-          featureName
-        }' breakpoint set value is supplied of '${invalidValue}'`, () => {
+        it(`throws if invalid '${featureName}' breakpoint set value is supplied of '${invalidValue}'`, () => {
           expect(() =>
             styledMQ.configure({ [featureName]: { a: invalidValue } })
           ).toThrowErrorMatchingSnapshot();
@@ -196,9 +194,7 @@ describe.only('configure()', () => {
 
       const validShouldSeparateQueriesValues = [true, false];
       for (const value of validShouldSeparateQueriesValues) {
-        it(`doesn't throw an error if 'shouldSeparateQueries' isn't  a '${
-          value
-        }'`, () => {
+        it(`doesn't throw an error if 'shouldSeparateQueries' isn't  a '${value}'`, () => {
           const config = { shouldSeparateQueries: value };
           expect(() =>
             styledMQ.configure(validBreakpointsForRange('width'), config)

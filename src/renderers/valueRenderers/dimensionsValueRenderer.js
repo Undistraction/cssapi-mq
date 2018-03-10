@@ -16,13 +16,11 @@ const prepareUnitlessValue = (value, shouldSeparateQueries, dimensionsUnit) =>
     subtract(__, separatorValueForUnit(dimensionsUnit))
   )(value);
 
-export default (
-  {
-    baseFontSize = 16,
-    dimensionsUnit = UNITS.DIMENSIONS.EM,
-    shouldSeparateQueries = true,
-  } = {}
-) => (value, shouldSeparate) => {
+export default ({
+  baseFontSize = 16,
+  dimensionsUnit = UNITS.DIMENSIONS.EM,
+  shouldSeparateQueries = true,
+} = {}) => (value, shouldSeparate) => {
   if (isNumberWithDimensionsUnit(value)) {
     value = unitedDimensionToUnitlessPixelValue(value, baseFontSize);
   }
