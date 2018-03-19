@@ -2,7 +2,7 @@ import { compose, construct } from 'ramda'
 import { configureRenderers } from 'folktale-validations'
 import { appendFlipped } from 'ramda-adjunct'
 import validatorMessages from './validations/validatorMessages'
-import { ERROR_PREFIX, CONFIGURE_PREFIX } from './const'
+import { ERROR_PREFIX, CONFIGURE_PREFIX, API_MEDIA_TYPE_PREFIX } from './const'
 import { joinWithSpace } from './utils/string'
 
 const { argumentsFailureRenderer } = configureRenderers({
@@ -34,15 +34,14 @@ const throwErrorWithPrefixedMessage = prefix =>
 // Prefixed Errors
 // -----------------------------------------------------------------------------
 
-// eslint-disable-next-line import/prefer-default-export
 export const throwConfigureError = compose(
   throwErrorWithPrefixedMessage(CONFIGURE_PREFIX),
   argumentsFailureRenderer
 )
-// export const throwAPIVerticalRhythmError = compose(
-//   throwErrorWithPrefixedMessage(API_VERTICAL_RHYTHM_PREFIX),
-//   argumentsFailureRenderer
-// )
+export const throwAPIMediaTypeError = compose(
+  throwErrorWithPrefixedMessage(API_MEDIA_TYPE_PREFIX),
+  argumentsFailureRenderer
+)
 // export const throwAPIHorizontalRhythmError = compose(
 //   throwErrorWithPrefixedMessage(API_HORIZONTAL_RHYTHM_PREFIX),
 //   argumentsFailureRenderer

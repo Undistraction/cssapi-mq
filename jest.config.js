@@ -6,7 +6,7 @@ module.exports = {
   coveragePathIgnorePatterns: [`src/index.js`],
   coverageReporters: [`json`],
   setupFiles: [],
-  modulePathIgnorePatterns: [`helpers/`, `testHelpers/`],
+  modulePathIgnorePatterns: [`helpers/`, `testHelpers/`, `sharedTests/`],
   setupTestFrameworkScriptFile: `<rootDir>/src/__tests__/testHelpers/matchers/customMatchers.js`,
   unmockedModulePathPatterns: [`jasmine-expect`],
 }

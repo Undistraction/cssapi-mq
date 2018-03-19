@@ -98,28 +98,6 @@ export const validateBreakpointSets = compose(
   toPairs
 )
 
-// export const validateConfig = ({
-//   baseFontSize,
-//   defaultMediaType,
-//   dimensionsUnit,
-//   shouldSeparateQueries,
-// }) => {
-//   // validate(
-//   //   either(isValidPositiveNumber, isPositiveNumberWithPixelUnit),
-//   //   invalidBaseFontSizeErrorMessage
-//   // )(baseFontSize)
-
-//   // validate(
-//   //   anyPass([isNull, compose(areMediaTypesValid, ensureArray)]),
-//   //   invalidDefaultMediaTypeErrorMessage
-//   // )(defaultMediaType)
-
-//   // validate(isDimensionsUnitValid, invalidDimensionsUnitErrorMessage)(
-//   //   dimensionsUnit
-//   // )
-//   validate(isBoolean, shouldSeparateQueriesErrorMessage)(shouldSeparateQueries)
-// }
-
 export const validateFeature = (name, possibleValues, value) => {
   validate(
     doesListIncludeValue(possibleValues),

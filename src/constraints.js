@@ -1,4 +1,8 @@
-import { validateIsBoolean, validateIsPlainObject } from 'folktale-validations'
+import {
+  validateIsBoolean,
+  validateIsPlainObject,
+  validateIsArrayOf,
+} from 'folktale-validations'
 import validateIsNumberOrPx from './validations/validators/validateIsNumberOrPx'
 import validateBreakpointMapNames from './validations/validators/validateBreakpointMapNames'
 import validateIsValidDimensionsUnit from './validations/validators/validateIsValidDimensionsUnit'
@@ -142,6 +146,10 @@ export const BREAKPOINTS = {
   ],
 }
 
+// -----------------------------------------------------------------------------
+// Connfiguration
+// -----------------------------------------------------------------------------
+
 export const MQ_ARGS = {
   fields: [
     {
@@ -159,6 +167,19 @@ export const MQ_ARGS = {
     {
       name: `originalMQ`,
       validator: validateIsPlainObject,
+    },
+  ],
+}
+
+// -----------------------------------------------------------------------------
+// API
+// -----------------------------------------------------------------------------
+
+export const API_MEDIA_TYPE = {
+  fields: [
+    {
+      name: `mediaTypes`,
+      validator: validateIsArrayOf(validateIsValidMediaType),
     },
   ],
 }

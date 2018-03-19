@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`mediaTypes returns default media type if called with an empty array 1`] = `screen`;
+
+exports[`mediaTypes returns default media type if called with no arguments 1`] = `screen`;
+
 exports[`mediaTypes returns the correct default media type if called with no arguments 1`] = `screen`;
 
 exports[`mediaTypes returns the supplied mediaTypes for 'all' 1`] = `all`;
