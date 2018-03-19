@@ -11,24 +11,27 @@ import {
   positiveDimensionValues,
   genericResolutionValues,
   negativeResolutionValuesIncludingZero,
-  genericNegativeDecimalsIncludingZero,
   positiveResolutionValues,
   genericAspectRatioValues,
   invalidAspectRatioValues,
   genericNegativeNumbers,
   genericNumbers,
-} from './data';
+  genericNegativeDecimals,
+} from './data'
 
 const dimensionsValues = {
   invalidNonExplicitValues: [...genericValues, ...positiveDimensionValues],
   invalidExplicitValues: [
     ...invalidValues,
     ...genericStrings,
-    ...genericNegativeDecimalsIncludingZero,
+    ...genericNegativeDecimals,
     ...genericNegativeIntegers,
   ],
-  validExplicitValues: [...genericPositiveIntegers, ...positiveDimensionValues],
-};
+  validExplicitValues: [
+    ...genericPositiveIntegersIncludingZero,
+    ...positiveDimensionValues,
+  ],
+}
 
 const colorAndMonochromeValues = {
   invalidNonExplicitValues: [...genericValues],
@@ -38,8 +41,8 @@ const colorAndMonochromeValues = {
     ...genericNegativeIntegers,
     ...genericDecimals,
   ],
-  validExplicitValues: [null, ...genericPositiveIntegersIncludingZero],
-};
+  validExplicitValues: [...genericPositiveIntegersIncludingZero],
+}
 
 const featureValues = {
   // Linear
@@ -92,7 +95,7 @@ const featureValues = {
     ],
     validExplicitValues: [
       ...positiveResolutionValues,
-      ...genericPositiveIntegersIncludingZero,
+      ...genericPositiveIntegers,
     ],
   },
   aspectRatio: {
@@ -113,6 +116,6 @@ const featureValues = {
   monochrome: {
     ...colorAndMonochromeValues,
   },
-};
+}
 
-export default featureName => featureValues[featureName];
+export default featureName => featureValues[featureName]

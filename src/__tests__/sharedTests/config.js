@@ -1,27 +1,27 @@
-import { mqWithValidBreakpointsForRange } from '../data';
+import { mqWithValidBreakpointsForRange } from '../data'
 
 export const configOutputsConfiguredDimensionUnits = (name, method) => {
-  it('renders configured dimensionsUnits', () => {
+  it(`renders configured dimensionsUnits`, () => {
     expect(
-      mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'rem' })[method](
-        'small'
+      mqWithValidBreakpointsForRange(name, { dimensionsUnit: `rem` })[method](
+        `small`
       )
-    ).toMatchSnapshot();
+    ).toMatchSnapshot()
 
     expect(
-      mqWithValidBreakpointsForRange(name, { dimensionsUnit: 'px' })[method](
-        'small'
+      mqWithValidBreakpointsForRange(name, { dimensionsUnit: `px` })[method](
+        `small`
       )
-    ).toMatchSnapshot();
-  });
-};
+    ).toMatchSnapshot()
+  })
+}
 
 export const configSeparatesValuesWhenSet = (name, method) => {
-  it("doesn't separate values if not configured to do so", () => {
+  it(`doesn't separate values if not configured to do so`, () => {
     expect(
       mqWithValidBreakpointsForRange(name, { shouldSeparateQueries: false })[
         method
-      ]('small')
-    ).toMatchSnapshot();
-  });
-};
+      ](`small`)
+    ).toMatchSnapshot()
+  })
+}

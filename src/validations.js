@@ -10,20 +10,14 @@ import {
   map,
   keys,
   unless,
-  anyPass,
-  either,
   curry,
   always,
 } from 'ramda'
-import { isNull, isObj, isBoolean, isArray } from 'ramda-adjunct'
-import { isValidPositiveNumber } from 'cssjs-units'
+import { isObj, isArray } from 'ramda-adjunct'
 import { rangedFeatureNamed, rangedFeatureNames } from './features'
-import { ensureArray } from './utils/array'
 import {
   isPopulatedObject,
-  isPositiveNumberWithPixelUnit,
   doesListIncludeValue,
-  isDimensionsUnitValid,
   areMediaTypesValid,
 } from './utils/predicates'
 import {
@@ -33,10 +27,6 @@ import {
   emptyBreakpointSetErrorMessage,
   invalidBreakpointNamesErrorMessage,
   invalidBreakpointSetValueErrorMessage,
-  invalidBaseFontSizeErrorMessage,
-  invalidDefaultMediaTypeErrorMessage,
-  invalidDimensionsUnitErrorMessage,
-  shouldSeparateQueriesErrorMessage,
   invalidFeatureErrorMessage,
   invalidMediaTypeErrorMessage,
 } from './errors'
@@ -108,27 +98,27 @@ export const validateBreakpointSets = compose(
   toPairs
 )
 
-export const validateConfig = ({
-  baseFontSize,
-  defaultMediaType,
-  dimensionsUnit,
-  shouldSeparateQueries,
-}) => {
-  validate(
-    either(isValidPositiveNumber, isPositiveNumberWithPixelUnit),
-    invalidBaseFontSizeErrorMessage
-  )(baseFontSize)
+// export const validateConfig = ({
+//   baseFontSize,
+//   defaultMediaType,
+//   dimensionsUnit,
+//   shouldSeparateQueries,
+// }) => {
+//   // validate(
+//   //   either(isValidPositiveNumber, isPositiveNumberWithPixelUnit),
+//   //   invalidBaseFontSizeErrorMessage
+//   // )(baseFontSize)
 
-  validate(
-    anyPass([isNull, compose(areMediaTypesValid, ensureArray)]),
-    invalidDefaultMediaTypeErrorMessage
-  )(defaultMediaType)
+//   // validate(
+//   //   anyPass([isNull, compose(areMediaTypesValid, ensureArray)]),
+//   //   invalidDefaultMediaTypeErrorMessage
+//   // )(defaultMediaType)
 
-  validate(isDimensionsUnitValid, invalidDimensionsUnitErrorMessage)(
-    dimensionsUnit
-  )
-  validate(isBoolean, shouldSeparateQueriesErrorMessage)(shouldSeparateQueries)
-}
+//   // validate(isDimensionsUnitValid, invalidDimensionsUnitErrorMessage)(
+//   //   dimensionsUnit
+//   // )
+//   validate(isBoolean, shouldSeparateQueriesErrorMessage)(shouldSeparateQueries)
+// }
 
 export const validateFeature = (name, possibleValues, value) => {
   validate(

@@ -390,8 +390,6 @@ exports[`ranged features color range features color() returns the correct featur
 
 exports[`ranged features color range features color() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(color)`;
 
-exports[`ranged features color range features color() returns the correct feature when called with a valid explicit value of 'null' 2`] = `(color)`;
-
 exports[`ranged features color range features color() returns the correct feature when called with existing breakpoint 1`] = `(color: 1)`;
 
 exports[`ranged features color range features color() returns the correct feature when called with no arguments 1`] = `(color)`;
@@ -427,8 +425,6 @@ exports[`ranged features color range features maxColor() returns the correct fea
 exports[`ranged features color range features maxColor() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-color: 78)`;
 
 exports[`ranged features color range features maxColor() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(max-color: 4999)`;
-
-exports[`ranged features color range features maxColor() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(max-color)`;
 
 exports[`ranged features color range features maxColor() returns the correct feature when called with existing breakpoint 1`] = `(max-color: 1)`;
 
@@ -503,8 +499,6 @@ exports[`ranged features color range features minColor() returns the correct fea
 exports[`ranged features color range features minColor() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-color: 78)`;
 
 exports[`ranged features color range features minColor() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(min-color: 4999)`;
-
-exports[`ranged features color range features minColor() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(min-color)`;
 
 exports[`ranged features color range features minColor() returns the correct feature when called with existing breakpoint 1`] = `(min-color: 1)`;
 
@@ -582,8 +576,6 @@ exports[`ranged features color-index range features colorIndex() returns the cor
 
 exports[`ranged features color-index range features colorIndex() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(color-index)`;
 
-exports[`ranged features color-index range features colorIndex() returns the correct feature when called with a valid explicit value of 'null' 2`] = `(color-index)`;
-
 exports[`ranged features color-index range features colorIndex() returns the correct feature when called with existing breakpoint 1`] = `(color-index: 1)`;
 
 exports[`ranged features color-index range features colorIndex() returns the correct feature when called with no arguments 1`] = `(color-index)`;
@@ -619,8 +611,6 @@ exports[`ranged features color-index range features maxColorIndex() returns the 
 exports[`ranged features color-index range features maxColorIndex() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-color-index: 78)`;
 
 exports[`ranged features color-index range features maxColorIndex() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(max-color-index: 4999)`;
-
-exports[`ranged features color-index range features maxColorIndex() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(max-color-index)`;
 
 exports[`ranged features color-index range features maxColorIndex() returns the correct feature when called with existing breakpoint 1`] = `(max-color-index: 1)`;
 
@@ -696,8 +686,6 @@ exports[`ranged features color-index range features minColorIndex() returns the 
 
 exports[`ranged features color-index range features minColorIndex() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(min-color-index: 4999)`;
 
-exports[`ranged features color-index range features minColorIndex() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(min-color-index)`;
-
 exports[`ranged features color-index range features minColorIndex() returns the correct feature when called with existing breakpoint 1`] = `(min-color-index: 1)`;
 
 exports[`ranged features color-index range features minColorIndex() throws if 'colorIndex' breakpoint map doesn't exist 1`] = `This mq object was not configured with a breakpoint set for 'colorIndex'.`;
@@ -771,6 +759,10 @@ exports[`ranged features height range features height() doesn't separate values 
 exports[`ranged features height range features height() renders configured dimensionsUnits 1`] = `(height: 25rem)`;
 
 exports[`ranged features height range features height() renders configured dimensionsUnits 2`] = `(height: 400px)`;
+
+exports[`ranged features height range features height() returns the correct feature when called with a valid explicit value of '0' 1`] = `(height: 0em)`;
+
+exports[`ranged features height range features height() returns the correct feature when called with a valid explicit value of '0' 2`] = `(height: 0em)`;
 
 exports[`ranged features height range features height() returns the correct feature when called with a valid explicit value of '78' 1`] = `(height: 4.875em)`;
 
@@ -886,10 +878,6 @@ exports[`ranged features height range features height() throws if supplied expli
 
 exports[`ranged features height range features height() throws if supplied explicit breakpoint value is invalid '-99.8' 2`] = `There is no 'height' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
-exports[`ranged features height range features height() throws if supplied explicit breakpoint value is invalid '0' 1`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features height range features height() throws if supplied explicit breakpoint value is invalid '0' 2`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
 exports[`ranged features height range features height() throws if supplied explicit breakpoint value is invalid 'NaN' 1`] = `There is no 'height' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features height range features height() throws if supplied explicit breakpoint value is invalid 'NaN' 2`] = `There is no 'height' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
@@ -919,6 +907,12 @@ exports[`ranged features height range features maxHeight() doesn't separate valu
 exports[`ranged features height range features maxHeight() renders configured dimensionsUnits 1`] = `(max-height: 24.999375rem)`;
 
 exports[`ranged features height range features maxHeight() renders configured dimensionsUnits 2`] = `(max-height: 399px)`;
+
+exports[`ranged features height range features maxHeight() returns the correct feature when called with a valid explicit value of '0' 1`] = `(max-height: -0.000625em)`;
+
+exports[`ranged features height range features maxHeight() returns the correct feature when called with a valid explicit value of '0' 2`] = `(max-height: -0.000625em)`;
+
+exports[`ranged features height range features maxHeight() returns the correct feature when called with a valid explicit value of '0' 3`] = `(max-height: -0.000625em)`;
 
 exports[`ranged features height range features maxHeight() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-height: 4.874375em)`;
 
@@ -1064,12 +1058,6 @@ exports[`ranged features height range features maxHeight() throws if supplied ex
 
 exports[`ranged features height range features maxHeight() throws if supplied explicit breakpoint value is invalid '-99.8' 3`] = `There is no 'height' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
-exports[`ranged features height range features maxHeight() throws if supplied explicit breakpoint value is invalid '0' 1`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features height range features maxHeight() throws if supplied explicit breakpoint value is invalid '0' 2`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features height range features maxHeight() throws if supplied explicit breakpoint value is invalid '0' 3`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
 exports[`ranged features height range features maxHeight() throws if supplied explicit breakpoint value is invalid 'NaN' 1`] = `There is no 'height' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features height range features maxHeight() throws if supplied explicit breakpoint value is invalid 'NaN' 2`] = `There is no 'height' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
@@ -1111,6 +1099,10 @@ exports[`ranged features height range features minHeight() doesn't separate valu
 exports[`ranged features height range features minHeight() renders configured dimensionsUnits 1`] = `(min-height: 25rem)`;
 
 exports[`ranged features height range features minHeight() renders configured dimensionsUnits 2`] = `(min-height: 400px)`;
+
+exports[`ranged features height range features minHeight() returns the correct feature when called with a valid explicit value of '0' 1`] = `(min-height: 0em)`;
+
+exports[`ranged features height range features minHeight() returns the correct feature when called with a valid explicit value of '0' 2`] = `(min-height: 0em)`;
 
 exports[`ranged features height range features minHeight() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-height: 4.875em)`;
 
@@ -1228,10 +1220,6 @@ exports[`ranged features height range features minHeight() throws if supplied ex
 
 exports[`ranged features height range features minHeight() throws if supplied explicit breakpoint value is invalid '-99.8' 2`] = `There is no 'height' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
-exports[`ranged features height range features minHeight() throws if supplied explicit breakpoint value is invalid '0' 1`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features height range features minHeight() throws if supplied explicit breakpoint value is invalid '0' 2`] = `There is no 'height' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
 exports[`ranged features height range features minHeight() throws if supplied explicit breakpoint value is invalid 'NaN' 1`] = `There is no 'height' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features height range features minHeight() throws if supplied explicit breakpoint value is invalid 'NaN' 2`] = `There is no 'height' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
@@ -1261,8 +1249,6 @@ exports[`ranged features monochrome range features maxMonochrome() returns the c
 exports[`ranged features monochrome range features maxMonochrome() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-monochrome: 78)`;
 
 exports[`ranged features monochrome range features maxMonochrome() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(max-monochrome: 4999)`;
-
-exports[`ranged features monochrome range features maxMonochrome() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(max-monochrome)`;
 
 exports[`ranged features monochrome range features maxMonochrome() returns the correct feature when called with existing breakpoint 1`] = `(max-monochrome: 0)`;
 
@@ -1337,8 +1323,6 @@ exports[`ranged features monochrome range features minMonochrome() returns the c
 exports[`ranged features monochrome range features minMonochrome() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-monochrome: 78)`;
 
 exports[`ranged features monochrome range features minMonochrome() returns the correct feature when called with a valid explicit value of '4999' 1`] = `(min-monochrome: 4999)`;
-
-exports[`ranged features monochrome range features minMonochrome() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(min-monochrome)`;
 
 exports[`ranged features monochrome range features minMonochrome() returns the correct feature when called with existing breakpoint 1`] = `(min-monochrome: 0)`;
 
@@ -1416,8 +1400,6 @@ exports[`ranged features monochrome range features monochrome() returns the corr
 
 exports[`ranged features monochrome range features monochrome() returns the correct feature when called with a valid explicit value of 'null' 1`] = `(monochrome)`;
 
-exports[`ranged features monochrome range features monochrome() returns the correct feature when called with a valid explicit value of 'null' 2`] = `(monochrome)`;
-
 exports[`ranged features monochrome range features monochrome() returns the correct feature when called with existing breakpoint 1`] = `(monochrome: 0)`;
 
 exports[`ranged features monochrome range features monochrome() returns the correct feature when called with no arguments 1`] = `(monochrome)`;
@@ -1449,10 +1431,6 @@ exports[`ranged features monochrome range features monochrome() throws if suppli
 exports[`ranged features monochrome range features monochrome() throws if supplied explicit breakpoint value is invalid '1/0' 1`] = `There is no 'monochrome' breakpoint defined called '1/0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features resolution range features maxResolution() doesn't separate values if not configured to do so 1`] = `(max-resolution: 72dpi)`;
-
-exports[`ranged features resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '0' 1`] = `(max-resolution: -1dpi)`;
-
-exports[`ranged features resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '0' 2`] = `(max-resolution: -1dpi)`;
 
 exports[`ranged features resolution range features maxResolution() returns the correct feature when called with a valid explicit value of '56dpi' 1`] = `(max-resolution: 55dpi)`;
 
@@ -1574,10 +1552,6 @@ exports[`ranged features resolution range features maxResolution() throws if sup
 
 exports[`ranged features resolution range features minResolution() doesn't separate values if not configured to do so 1`] = `(min-resolution: 72dpi)`;
 
-exports[`ranged features resolution range features minResolution() returns the correct feature when called with a valid explicit value of '0' 1`] = `(min-resolution: 0dpi)`;
-
-exports[`ranged features resolution range features minResolution() returns the correct feature when called with a valid explicit value of '0' 2`] = `(min-resolution: 0dpi)`;
-
 exports[`ranged features resolution range features minResolution() returns the correct feature when called with a valid explicit value of '56dpi' 1`] = `(min-resolution: 56dpi)`;
 
 exports[`ranged features resolution range features minResolution() returns the correct feature when called with a valid explicit value of '56dpi' 2`] = `(min-resolution: 56dpi)`;
@@ -1697,10 +1671,6 @@ exports[`ranged features resolution range features minResolution() throws if sup
 exports[`ranged features resolution range features minResolution() throws if supplied explicit breakpoint value is invalid 'xxxx' 2`] = `There is no 'resolution' breakpoint defined called 'xxxx', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features resolution range features resolution() doesn't separate values if not configured to do so 1`] = `(resolution: 72dpi)`;
-
-exports[`ranged features resolution range features resolution() returns the correct feature when called with a valid explicit value of '0' 1`] = `(resolution: 0dpi)`;
-
-exports[`ranged features resolution range features resolution() returns the correct feature when called with a valid explicit value of '0' 2`] = `(resolution: 0dpi)`;
 
 exports[`ranged features resolution range features resolution() returns the correct feature when called with a valid explicit value of '56dpi' 1`] = `(resolution: 56dpi)`;
 
@@ -1824,6 +1794,10 @@ exports[`ranged features width range features maxWidth() renders configured dime
 
 exports[`ranged features width range features maxWidth() renders configured dimensionsUnits 2`] = `(max-width: 399px)`;
 
+exports[`ranged features width range features maxWidth() returns the correct feature when called with a valid explicit value of '0' 1`] = `(max-width: -0.000625em)`;
+
+exports[`ranged features width range features maxWidth() returns the correct feature when called with a valid explicit value of '0' 2`] = `(max-width: -0.000625em)`;
+
 exports[`ranged features width range features maxWidth() returns the correct feature when called with a valid explicit value of '78' 1`] = `(max-width: 4.874375em)`;
 
 exports[`ranged features width range features maxWidth() returns the correct feature when called with a valid explicit value of '78' 2`] = `(max-width: 4.874375em)`;
@@ -1940,10 +1914,6 @@ exports[`ranged features width range features maxWidth() throws if supplied expl
 
 exports[`ranged features width range features maxWidth() throws if supplied explicit breakpoint value is invalid '-99.8' 2`] = `There is no 'width' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
-exports[`ranged features width range features maxWidth() throws if supplied explicit breakpoint value is invalid '0' 1`] = `There is no 'width' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features width range features maxWidth() throws if supplied explicit breakpoint value is invalid '0' 2`] = `There is no 'width' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
 exports[`ranged features width range features maxWidth() throws if supplied explicit breakpoint value is invalid 'NaN' 1`] = `There is no 'width' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features width range features maxWidth() throws if supplied explicit breakpoint value is invalid 'NaN' 2`] = `There is no 'width' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
@@ -1973,6 +1943,10 @@ exports[`ranged features width range features minWidth() doesn't separate values
 exports[`ranged features width range features minWidth() renders configured dimensionsUnits 1`] = `(min-width: 25rem)`;
 
 exports[`ranged features width range features minWidth() renders configured dimensionsUnits 2`] = `(min-width: 400px)`;
+
+exports[`ranged features width range features minWidth() returns the correct feature when called with a valid explicit value of '0' 1`] = `(min-width: 0em)`;
+
+exports[`ranged features width range features minWidth() returns the correct feature when called with a valid explicit value of '0' 2`] = `(min-width: 0em)`;
 
 exports[`ranged features width range features minWidth() returns the correct feature when called with a valid explicit value of '78' 1`] = `(min-width: 4.875em)`;
 
@@ -2090,10 +2064,6 @@ exports[`ranged features width range features minWidth() throws if supplied expl
 
 exports[`ranged features width range features minWidth() throws if supplied explicit breakpoint value is invalid '-99.8' 2`] = `There is no 'width' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
-exports[`ranged features width range features minWidth() throws if supplied explicit breakpoint value is invalid '0' 1`] = `There is no 'width' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features width range features minWidth() throws if supplied explicit breakpoint value is invalid '0' 2`] = `There is no 'width' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
 exports[`ranged features width range features minWidth() throws if supplied explicit breakpoint value is invalid 'NaN' 1`] = `There is no 'width' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features width range features minWidth() throws if supplied explicit breakpoint value is invalid 'NaN' 2`] = `There is no 'width' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
@@ -2123,6 +2093,10 @@ exports[`ranged features width range features width() doesn't separate values if
 exports[`ranged features width range features width() renders configured dimensionsUnits 1`] = `(width: 25rem)`;
 
 exports[`ranged features width range features width() renders configured dimensionsUnits 2`] = `(width: 400px)`;
+
+exports[`ranged features width range features width() returns the correct feature when called with a valid explicit value of '0' 1`] = `(width: 0em)`;
+
+exports[`ranged features width range features width() returns the correct feature when called with a valid explicit value of '0' 2`] = `(width: 0em)`;
 
 exports[`ranged features width range features width() returns the correct feature when called with a valid explicit value of '78' 1`] = `(width: 4.875em)`;
 
@@ -2237,10 +2211,6 @@ exports[`ranged features width range features width() throws if supplied explici
 exports[`ranged features width range features width() throws if supplied explicit breakpoint value is invalid '-99.8' 1`] = `There is no 'width' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features width range features width() throws if supplied explicit breakpoint value is invalid '-99.8' 2`] = `There is no 'width' breakpoint defined called '-99.8', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features width range features width() throws if supplied explicit breakpoint value is invalid '0' 1`] = `There is no 'width' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
-
-exports[`ranged features width range features width() throws if supplied explicit breakpoint value is invalid '0' 2`] = `There is no 'width' breakpoint defined called '0', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 
 exports[`ranged features width range features width() throws if supplied explicit breakpoint value is invalid 'NaN' 1`] = `There is no 'width' breakpoint defined called 'NaN', only: 'small', 'medium', 'large', 'xLarge' are defined.`;
 

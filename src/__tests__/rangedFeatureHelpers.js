@@ -1,6 +1,6 @@
-import testRangedFeatureHelpers from './helpers/testRangedFeatureHelpers';
-import cssSerialiser from './helpers/cssSerialiser';
-import { RANGED_FEATURES } from '../features';
+import testRangedFeatureHelpers from './helpers/testRangedFeatureHelpers'
+import cssSerialiser from './helpers/cssSerialiser'
+import { RANGED_FEATURES } from '../features'
 
 import {
   queryThrowsIfMissingBreakpoint,
@@ -9,17 +9,17 @@ import {
   queryReturnsCorrectValueWithTwoBreakpoints,
   queryThrowsIfMissingEitherBreakpoint,
   queryThrowsWithBothBreakpointsTheSame,
-} from './sharedTests/rangedFeatureHelpers';
+} from './sharedTests/rangedFeatureHelpers'
 
-expect.addSnapshotSerializer(cssSerialiser);
+expect.addSnapshotSerializer(cssSerialiser)
 
 const singleArgumentSharedTest = [
   queryThrowsIfMissingBreakpoint,
   queryThrowsIfMissingBreakpointSet,
   queryReturnsCorrectValueSingleBreakpoint,
-];
+]
 
-describe('ranged feature helpers', () => {
+describe(`ranged feature helpers`, () => {
   for (const feature of RANGED_FEATURES) {
     testRangedFeatureHelpers(feature.name, {
       tests: {
@@ -33,6 +33,6 @@ describe('ranged feature helpers', () => {
         at: [...singleArgumentSharedTest],
         atBreakpoint: [...singleArgumentSharedTest],
       },
-    });
+    })
   }
-});
+})

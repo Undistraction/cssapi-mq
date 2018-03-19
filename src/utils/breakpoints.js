@@ -8,7 +8,7 @@ import {
   findIndex,
   propEq,
   nth,
-} from 'ramda';
+} from 'ramda'
 
 // -----------------------------------------------------------------------------
 // Internal
@@ -18,16 +18,16 @@ import {
 // Exports
 // -----------------------------------------------------------------------------
 
-export const propEqName = propEq('name');
-const propName = prop('name');
-const zipToNameAndValue = zipObj(['name', 'value']);
+export const propEqName = propEq(`name`)
+const propName = prop(`name`)
+const zipToNameAndValue = zipObj([`name`, `value`])
 // TODO: This should be internal
 const findBreakpointIndex = (breakpoint, breakpointsArray) =>
-  findIndex(propEqName(breakpoint))(breakpointsArray);
+  findIndex(propEqName(breakpoint))(breakpointsArray)
 
-export const toBreakpointArray = compose(map(zipToNameAndValue), toPairs);
+export const toBreakpointArray = compose(map(zipToNameAndValue), toPairs)
 
 export const getUpperLimit = (breakpointsArray, breakpoint) => {
-  const index = findBreakpointIndex(breakpoint, breakpointsArray);
-  return compose(propName, nth(inc(index)))(breakpointsArray);
-};
+  const index = findBreakpointIndex(breakpoint, breakpointsArray)
+  return compose(propName, nth(inc(index)))(breakpointsArray)
+}

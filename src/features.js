@@ -14,84 +14,84 @@ import aspectRatioValidator from './validators/features/aspectRatioValidator'
 import colorValidator from './validators/features/colorValidator'
 import monochromeValidator from './validators/features/monochromeValidator'
 
-export const ORIENTATION = Object.freeze(['portrait', 'landscape'])
-export const SCAN = Object.freeze(['interlace', 'progressive'])
+export const ORIENTATION = Object.freeze([`portrait`, `landscape`])
+export const SCAN = Object.freeze([`interlace`, `progressive`])
 export const GRID = Object.freeze([0, 1])
-export const UPDATE = Object.freeze(['none', 'slow', 'fast'])
+export const UPDATE = Object.freeze([`none`, `slow`, `fast`])
 export const OVERFLOW_BLOCK = Object.freeze([
-  'none',
-  'scroll',
-  'optional-paged',
+  `none`,
+  `scroll`,
+  `optional-paged`,
 ])
-export const OVERFLOW_INLINE = Object.freeze(['none', 'scroll'])
-export const COLOR_GAMUT = Object.freeze(['srgb', 'p3', 'rec2020'])
+export const OVERFLOW_INLINE = Object.freeze([`none`, `scroll`])
+export const COLOR_GAMUT = Object.freeze([`srgb`, `p3`, `rec2020`])
 export const DISPLAY_MODE = Object.freeze([
-  'fullscreen',
-  'standalone',
-  'minimal-ui',
-  'browser',
+  `fullscreen`,
+  `standalone`,
+  `minimal-ui`,
+  `browser`,
 ])
 
 export const LINEAR_FEATURES = [
   {
-    name: 'orientation',
+    name: `orientation`,
     validValues: ORIENTATION,
   },
   {
-    name: 'scan',
+    name: `scan`,
     validValues: SCAN,
   },
   {
-    name: 'grid',
+    name: `grid`,
     validValues: GRID,
     allowNoArgument: true,
   },
   {
-    name: 'update',
+    name: `update`,
     validValues: UPDATE,
     allowNoArgument: true,
   },
   {
-    name: 'overflow-block',
+    name: `overflow-block`,
     validValues: OVERFLOW_BLOCK,
   },
   {
-    name: 'overflow-inline',
+    name: `overflow-inline`,
     validValues: OVERFLOW_INLINE,
   },
   {
-    name: 'color-gamut',
+    name: `color-gamut`,
     validValues: COLOR_GAMUT,
   },
   {
-    name: 'display-mode',
+    name: `display-mode`,
     validValues: DISPLAY_MODE,
   },
 ]
 
 export const RANGED_FEATURES = [
   {
-    name: 'width',
+    name: `width`,
     valueRenderer: dimensionsValueRenderer,
     validator: dimensionValidator,
   },
   {
-    name: 'height',
+    name: `height`,
     valueRenderer: dimensionsValueRenderer,
     validator: dimensionValidator,
   },
   {
-    name: 'resolution',
+    name: `resolution`,
     valueRenderer: resolutionValueRenderer,
     validator: resolutionValidator,
   },
   {
-    name: 'aspect-ratio',
+    name: `aspect-ratio`,
     valueRenderer: aspectRatioValueRenderer,
     validator: aspectRatioValidator,
   },
   {
-    name: 'color',
+    name: `color`,
     valueRenderer: colorValueRenderer,
     validator: colorValidator,
     config: {
@@ -99,7 +99,7 @@ export const RANGED_FEATURES = [
     },
   },
   {
-    name: 'color-index',
+    name: `color-index`,
     valueRenderer: colorValueRenderer,
     validator: colorValidator,
     config: {
@@ -107,7 +107,7 @@ export const RANGED_FEATURES = [
     },
   },
   {
-    name: 'monochrome',
+    name: `monochrome`,
     valueRenderer: monochromeValueRenderer,
     validator: monochromeValidator,
     config: {
@@ -116,12 +116,12 @@ export const RANGED_FEATURES = [
   },
 ]
 
-export const rangedFeatureNames = map(compose(camelcase, prop('name')))(
+export const rangedFeatureNames = map(compose(camelcase, prop(`name`)))(
   RANGED_FEATURES
 )
 
 export const rangedFeatureNamed = compose(
   find(__, RANGED_FEATURES),
-  propEq('name'),
+  propEq(`name`),
   dasherize
 )
