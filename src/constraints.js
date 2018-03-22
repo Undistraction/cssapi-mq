@@ -2,6 +2,7 @@ import {
   validateIsBoolean,
   validateIsPlainObject,
   validateIsArrayOf,
+  validateIsWhitelistedValue,
 } from 'folktale-validations'
 import validateIsNumberOrPx from './validations/validators/validateIsNumberOrPx'
 import validateBreakpointMapNames from './validations/validators/validateBreakpointMapNames'
@@ -13,7 +14,6 @@ import { MEDIA_TYPES, UNITS } from './const'
 import validateIsResolution from './validations/validators/validateIsResolution'
 import validateIsAspectRatio from './validations/validators/validateIsAspectRatio'
 import validateIsNonNegativeValidInteger from './validations/validators/validateIsNonNegativeValidInteger'
-import validateIsWhitelistedValue from 'folktale-validations/lib/validators/other/validateIsWhitelistedValue'
 
 // -----------------------------------------------------------------------------
 // Constraints for config obj
@@ -185,6 +185,16 @@ export const API_MEDIA_TYPE = {
   ],
 }
 
+export const API_TWEAK = {
+  fields: [
+    {
+      name: `tweakpoints`,
+      validator: validateIsPlainObject,
+      value: BREAKPOINTS,
+    },
+  ],
+}
+
 // -----------------------------------------------------------------------------
 // Linear Features
 // -----------------------------------------------------------------------------
@@ -201,3 +211,20 @@ export const constraintsForLinearFeature = (
     },
   ],
 })
+
+// -----------------------------------------------------------------------------
+// Ranged Features
+// -----------------------------------------------------------------------------
+
+// export const constraintsForRangedFeature = (
+//   validValues,
+//   isRequired = true
+// ) => ({
+//   fields: [
+//     {
+//       name: `value`,
+//       validator: validateIsWhitelistedValue(validValues),
+//       isRequired,
+//     },
+//   ],
+// })

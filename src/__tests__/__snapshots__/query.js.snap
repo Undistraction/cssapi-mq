@@ -60,10 +60,6 @@ exports[`query not throws with a nested array 1`] = `You must not supply any nes
 
 exports[`query not throws with invalid argument of '[object Object]' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '[object Object]'.`;
 
-exports[`query not throws with invalid argument of '-0.4' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-0.4'.`;
-
-exports[`query not throws with invalid argument of '-6' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-6'.`;
-
 exports[`query not throws with invalid argument of '-90' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-90'.`;
 
 exports[`query not throws with invalid argument of '-99.8' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-99.8'.`;
@@ -72,11 +68,7 @@ exports[`query not throws with invalid argument of '0' 1`] = `You must only supp
 
 exports[`query not throws with invalid argument of '0.6' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '0.6'.`;
 
-exports[`query not throws with invalid argument of '44.7' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '44.7'.`;
-
 exports[`query not throws with invalid argument of '78' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '78'.`;
-
-exports[`query not throws with invalid argument of '4999' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '4999'.`;
 
 exports[`query not throws with invalid argument of 'NaN' 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'NaN'.`;
 
@@ -90,10 +82,6 @@ exports[`query not throws with invalid argument of 'undefined' 1`] = `You must o
 
 exports[`query not throws with invalid child of '[object Object]' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[{}]'.`;
 
-exports[`query not throws with invalid child of '-0.4' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-0.4]'.`;
-
-exports[`query not throws with invalid child of '-6' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-6]'.`;
-
 exports[`query not throws with invalid child of '-90' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-90]'.`;
 
 exports[`query not throws with invalid child of '-99.8' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-99.8]'.`;
@@ -102,11 +90,7 @@ exports[`query not throws with invalid child of '0' 1`] = `You must only supply 
 
 exports[`query not throws with invalid child of '0.6' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[0.6]'.`;
 
-exports[`query not throws with invalid child of '44.7' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[44.7]'.`;
-
 exports[`query not throws with invalid child of '78' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[78]'.`;
-
-exports[`query not throws with invalid child of '4999' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[4999]'.`;
 
 exports[`query not throws with invalid child of 'NaN' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[null]'.`;
 
@@ -172,10 +156,6 @@ exports[`query throws with a nested array 1`] = `You must not supply any nested 
 
 exports[`query throws with invalid argument of '[object Object]' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '[object Object]'.`;
 
-exports[`query throws with invalid argument of '-0.4' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-0.4'.`;
-
-exports[`query throws with invalid argument of '-6' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-6'.`;
-
 exports[`query throws with invalid argument of '-90' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-90'.`;
 
 exports[`query throws with invalid argument of '-99.8' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '-99.8'.`;
@@ -184,11 +164,7 @@ exports[`query throws with invalid argument of '0' 1`] = `You must only supply s
 
 exports[`query throws with invalid argument of '0.6' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '0.6'.`;
 
-exports[`query throws with invalid argument of '44.7' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '44.7'.`;
-
 exports[`query throws with invalid argument of '78' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '78'.`;
-
-exports[`query throws with invalid argument of '4999' 1`] = `You must only supply strings or arrays to 'query()' but you supplied '4999'.`;
 
 exports[`query throws with invalid argument of 'NaN' 1`] = `You must only supply strings or arrays to 'query()' but you supplied 'NaN'.`;
 
@@ -202,10 +178,6 @@ exports[`query throws with invalid argument of 'undefined' 1`] = `You must only 
 
 exports[`query throws with invalid child of '[object Object]' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[{}]'.`;
 
-exports[`query throws with invalid child of '-0.4' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-0.4]'.`;
-
-exports[`query throws with invalid child of '-6' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-6]'.`;
-
 exports[`query throws with invalid child of '-90' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-90]'.`;
 
 exports[`query throws with invalid child of '-99.8' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[-99.8]'.`;
@@ -214,11 +186,7 @@ exports[`query throws with invalid child of '0' 1`] = `You must only supply stri
 
 exports[`query throws with invalid child of '0.6' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[0.6]'.`;
 
-exports[`query throws with invalid child of '44.7' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[44.7]'.`;
-
 exports[`query throws with invalid child of '78' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[78]'.`;
-
-exports[`query throws with invalid child of '4999' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[4999]'.`;
 
 exports[`query throws with invalid child of 'NaN' 1`] = `You must only supply strings or arrays as children of arrays passed in to 'query()' but you supplied '[null]'.`;
 

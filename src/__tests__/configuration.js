@@ -54,7 +54,9 @@ describe(`configure()`, () => {
 
     it(`throws if invalid value is supplied`, () => {
       map(value => {
-        expect(() => styledMQ.configure(value)).toThrowErrorMatchingSnapshot()
+        expect(() => styledMQ.configure(value)).toThrowMultiline(`
+          [cssapi-rhythm] configure() Arguments included invalid value(s)
+            – breakpoints: Wasn't Plain Object`)
       })(invalidBreakpointValues)
     })
 

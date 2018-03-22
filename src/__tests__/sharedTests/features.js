@@ -28,7 +28,7 @@ export const featureThrowsForInvalidBreakpoint = (
 }
 
 export const featureThrowsForMissingArgument = (name, method) => {
-  it(`throws if no argument is supplied`, () => {
+  it(`throws if no argument is suppliedXßå`, () => {
     expect(() =>
       mqWithValidBreakpointsForRange(name)[method]()
     ).toThrowErrorMatchingSnapshot()

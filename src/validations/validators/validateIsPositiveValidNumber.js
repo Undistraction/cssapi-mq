@@ -1,4 +1,7 @@
-import { andValidator, validateIsValidNumber } from 'folktale-validations'
-import { validateIsPositive } from 'folktale-validations/lib/validators/predicate/generatedPredicateValidators'
+import {
+  andValidator,
+  validateIsValidNumber,
+  validateIsPositive,
+} from 'folktale-validations'
 
 export default andValidator(validateIsValidNumber, validateIsPositive)

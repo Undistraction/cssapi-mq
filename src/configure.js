@@ -3,21 +3,19 @@ import { compose, prop, values, apply } from 'ramda'
 import api from './api'
 import validateMQArgs from './validations/validators/validateMQArgs'
 import { throwConfigureError } from './errors2'
-import { pickIsNotUndefined } from './utils/object'
+import { toArgsObj } from './utils/args'
 
-const propValue = prop(`value`)
-
-// Don't expand config vars as we need to pass a single config object around.
 export default (breakpoints, config, originalMQ) =>
   compose(
     matchWithSuccessOrFailure(
-      compose(apply(api), values, propValue),
-      compose(throwConfigureError, propValue)
+      compose(apply(api), values, prop(`value`)),
+      compose(throwConfigureError, prop(`value`))
     ),
-    validateMQArgs,
-    pickIsNotUndefined
-  )({
-    breakpoints,
-    config,
-    originalMQ,
-  })
+    validateMQArgs
+  )(
+    toArgsObj({
+      breakpoints,
+      config,
+      originalMQ,
+    })
+  )

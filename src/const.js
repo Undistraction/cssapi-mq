@@ -47,6 +47,11 @@ export const MEDIA_TYPES = Object.freeze({
 
 export const ERROR_PREFIX = `[cssapi-rhythm]`
 export const CONFIGURE_PREFIX = `configure()`
+export const TWEAK_PREFIX = `tweak()`
+export const UNTWEAKED_PREFIX = `untweaked()`
 export const API_MEDIA_TYPE_PREFIX = `mediaType()`
+export const NOT_PREFIX = `not()`
+export const QUERY_PREFIX = `query()`
 
 export const linearFeaturePrefix = name => `${name}()`
+export const rangedFeaturePrefix = name => `${name}()`

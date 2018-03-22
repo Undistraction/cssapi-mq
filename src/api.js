@@ -1,34 +1,22 @@
 import { css } from 'styled-components'
-import { partial, mergeDeepLeft, isEmpty, when } from 'ramda'
-import { isUndefined } from 'ramda-adjunct'
+import { isEmpty } from 'ramda'
 
-import buildMediaType from './features/buildMediaType'
+import mediaType from './api/mediaType'
 import buildLinearFeatures from './features/buildLinearFeatures'
 import buildRangeFeatures from './features/buildRangedFeatures'
-import { validateBreakpointSets, validateBreakpointMap } from './validations'
 import renderQuery from './renderers/cssRenderers/styledComponentsRenderer'
 import {
   renderQueryDefinition,
   renderNotQueryDefinition,
 } from './renderers/cssRenderers/queryRenderer'
-import {
-  throwError,
-  queryNoElementsErrorMessage,
-  noUntweakedErrorMessage,
-} from './errors'
-import configure from './configure'
+import { throwError, queryNoElementsErrorMessage } from './errors'
+import tweak from './api/tweak'
+import untweaked from './api/untweaked'
 
 export default (breakpoints, config, originalMQ) => {
   // ---------------------------------------------------------------------------
   // API
   // ---------------------------------------------------------------------------
-
-  const tweak = (mq, tweakpoints) => {
-    if (breakpoints) validateBreakpointMap(tweakpoints)
-    validateBreakpointSets(tweakpoints)
-    const mergedBreakpoints = mergeDeepLeft(breakpoints, tweakpoints)
-    return configure(mergedBreakpoints, config, mq)
-  }
 
   const query = (...elements) => {
     if (isEmpty(elements)) throwError(queryNoElementsErrorMessage())
@@ -43,21 +31,18 @@ export default (breakpoints, config, originalMQ) => {
     not: renderNotQueryDefinition(config.defaultMediaType, ...elements),
   })
 
-  const untweaked = () =>
-    when(isUndefined, () => throwError(noUntweakedErrorMessage()))(originalMQ)
-
   // ---------------------------------------------------------------------------
   // Export
   // ---------------------------------------------------------------------------
 
-  const o = {
-    mediaType: buildMediaType(config.defaultMediaType),
+  const mq = {
+    mediaType: mediaType(config.defaultMediaType),
     ...buildLinearFeatures(),
     ...buildRangeFeatures(breakpoints, config),
     query,
     not,
-    untweaked,
+    untweaked: untweaked(originalMQ),
   }
-  o.tweak = partial(tweak, [o])
-  return o
+  mq.tweak = tweak(mq, breakpoints, config)
+  return mq
 }

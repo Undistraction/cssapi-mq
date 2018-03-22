@@ -17,27 +17,27 @@ export const invalidValuesNotUndefined = [
   ...booleanValues,
 ]
 export const genericStrings = [`xxxx`]
-export const genericPositiveIntegers = [78, 4999]
+export const genericPositiveIntegers = [78]
 export const genericPositiveIntegersIncludingZero = [
   0,
   ...genericPositiveIntegers,
 ]
-export const genericNegativeIntegers = [-90, -6]
+export const genericNegativeIntegers = [-90]
 export const genericNegativeIntegersIncludingZero = [
   0,
   ...genericNegativeIntegers,
 ]
-export const genericPositiveDecimals = [0.6, 44.7]
+export const genericPositiveDecimals = [44.7]
 export const genericPositiveDecimalsIncludingZero = [
   0,
   ...genericPositiveDecimals,
 ]
-export const genericNegativeDecimals = [-99.8, -0.4]
+export const genericNegativeDecimals = [-0.4]
 export const genericNegativeDecimalsIncludingZero = [
   0,
   ...genericNegativeDecimals,
 ]
-export const genericDecimals = [-99.8, -0.4, 0.6, 44.7]
+export const genericDecimals = [-99.8, 0.6]
 export const genericNegativeNumbers = [
   ...genericNegativeDecimals,
   ...genericNegativeIntegers,
@@ -67,21 +67,17 @@ export const positiveDimensionValues = [
   ...positivePixelValues,
 ]
 
-export const negativePixelValues = [`-163px`, `-555px`]
-export const negativeRemValuesOrZero = [`0rem`, `-163rem`, `-555rem`]
-export const negativeEmValuesOrZero = [`0em`, `-163em`, `-555em`]
-export const negativePixelValuesOrZero = [`0px`, `-163px`, `-555px`]
+export const negativePixelValues = [`-163px`]
+export const negativeRemValuesOrZero = [`0rem`, `-163rem`]
+export const negativeEmValuesOrZero = [`0em`, `-163em`]
+export const negativePixelValuesOrZero = [`0px`, `-163px`]
 export const negativeDimensionValuesOrZero = [
   ...negativeEmValuesOrZero,
   ...negativeRemValuesOrZero,
   ...negativePixelValuesOrZero,
 ]
-export const positiveResolutionValues = [`111dpi`, `56dpi`]
-export const negativeResolutionValuesIncludingZero = [
-  `0dpi`,
-  `-163dpi`,
-  `-555dpi`,
-]
+export const positiveResolutionValues = [`111dpi`]
+export const negativeResolutionValuesIncludingZero = [`0dpi`, `-163dpi`]
 export const genericAspectRatioValues = [
   `16/9`,
   `1/1`,
@@ -111,7 +107,7 @@ export const genericNumbers = [
 ]
 
 export const genericValues = [
-  ...invalidValues,
+  ...invalidValuesNotUndefined,
   ...genericStrings,
   ...genericNumbers,
 ]

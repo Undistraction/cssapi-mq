@@ -33,9 +33,18 @@ describe(`linear features`, () => {
           })
         } else {
           it(`throws if no argument is supplied`, () => {
+            expect(() => mqWithValidBreakpointsForRange(`width`)[methodName]())
+              .toThrowMultiline(`
+              [cssapi-rhythm] ${name}() Arguments missing required key(s): ['value']
+            `)
+          })
+
+          it(`throws if 'undefined' is supplied`, () => {
             expect(() =>
-              mqWithValidBreakpointsForRange(`width`)[methodName]()
-            ).toThrowErrorMatchingSnapshot()
+              mqWithValidBreakpointsForRange(`width`)[methodName](undefined)
+            ).toThrowMultiline(`
+              [cssapi-rhythm] ${name}() Arguments missing required key(s): ['value']
+            `)
           })
         }
 

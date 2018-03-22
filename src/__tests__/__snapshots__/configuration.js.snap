@@ -1,35 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`configure() breakpoints throws if invalid value is supplied 1`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 2`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 3`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 4`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 5`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 6`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 7`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 8`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 9`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 10`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 11`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 12`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 13`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 14`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
-exports[`configure() breakpoints throws if invalid value is supplied 15`] = `[cssapi-rhythm] configure() Arguments included invalid value(s) – breakpoints: Wasn't Plain Object`;
-
 exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for height 1`] = `(max-height: 39.999em)`;
 
 exports[`configure() config object baseFontSize adjusts values based on 'basefontSize' for width 1`] = `(max-width: 39.999em)`;
