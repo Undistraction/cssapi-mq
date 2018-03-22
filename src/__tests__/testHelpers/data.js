@@ -1,6 +1,6 @@
 import { keys } from 'ramda'
 import camelcase from 'camelcase'
-import styledMQ from '../mq'
+import styledMQ from '../../mq'
 
 // -----------------------------------------------------------------------------
 // Values

@@ -6,43 +6,7 @@ exports[`linear features colorGamut() linear feature returns the supplied color-
 
 exports[`linear features colorGamut() linear feature returns the supplied color-gamut for 'srgb' 1`] = `(color-gamut: srgb)`;
 
-exports[`linear features colorGamut() linear feature throws if argument is '' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: ''.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '' 2`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: ''.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '[object Object]' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '[object Object]'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '-0.4' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '-0.4'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '-6' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '-6'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '-90' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '-90'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '-99.8' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '-99.8'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '0' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '0'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '0.6' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '0.6'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '44.7' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '44.7'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '78' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '78'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is '4999' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: '4999'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is 'NaN' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'NaN'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is 'false' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'false'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is 'null' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'null'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is 'true' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'true'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is 'undefined' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'undefined'.`;
-
-exports[`linear features colorGamut() linear feature throws if argument is 'xxxx' 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'xxxx'.`;
-
-exports[`linear features colorGamut() linear feature throws if no argument is supplied 1`] = `'color-gamut'must be one of: 'srgb,p3,rec2020' but was: 'undefined'.`;
+exports[`linear features colorGamut() linear feature throws if no argument is supplied 1`] = `[cssapi-rhythm] color-gamut() Arguments included invalid value(s) – value: Value wasn't on the whitelist: ['srgb', 'p3', 'rec2020']`;
 
 exports[`linear features displayMode() linear feature returns the supplied display-mode for 'browser' 1`] = `(display-mode: browser)`;
 
@@ -52,43 +16,7 @@ exports[`linear features displayMode() linear feature returns the supplied displ
 
 exports[`linear features displayMode() linear feature returns the supplied display-mode for 'standalone' 1`] = `(display-mode: standalone)`;
 
-exports[`linear features displayMode() linear feature throws if argument is '' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: ''.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '' 2`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: ''.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '[object Object]' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '[object Object]'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '-0.4' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '-0.4'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '-6' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '-6'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '-90' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '-90'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '-99.8' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '-99.8'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '0' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '0'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '0.6' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '0.6'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '44.7' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '44.7'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '78' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '78'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is '4999' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: '4999'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is 'NaN' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'NaN'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is 'false' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'false'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is 'null' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'null'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is 'true' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'true'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is 'undefined' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'undefined'.`;
-
-exports[`linear features displayMode() linear feature throws if argument is 'xxxx' 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'xxxx'.`;
-
-exports[`linear features displayMode() linear feature throws if no argument is supplied 1`] = `'display-mode'must be one of: 'fullscreen,standalone,minimal-ui,browser' but was: 'undefined'.`;
+exports[`linear features displayMode() linear feature throws if no argument is supplied 1`] = `[cssapi-rhythm] display-mode() Arguments included invalid value(s) – value: Value wasn't on the whitelist: ['fullscreen', 'standalone', 'minimal-ui', 'browser']`;
 
 exports[`linear features grid() linear feature returns a valueless grid 1`] = `(grid)`;
 
@@ -96,73 +24,11 @@ exports[`linear features grid() linear feature returns the supplied grid for '0'
 
 exports[`linear features grid() linear feature returns the supplied grid for '1' 1`] = `(grid: 1)`;
 
-exports[`linear features grid() linear feature throws if argument is '' 1`] = `'grid'must be one of: '0,1' but was: ''.`;
-
-exports[`linear features grid() linear feature throws if argument is '' 2`] = `'grid'must be one of: '0,1' but was: ''.`;
-
-exports[`linear features grid() linear feature throws if argument is '[object Object]' 1`] = `'grid'must be one of: '0,1' but was: '[object Object]'.`;
-
-exports[`linear features grid() linear feature throws if argument is '-0.4' 1`] = `'grid'must be one of: '0,1' but was: '-0.4'.`;
-
-exports[`linear features grid() linear feature throws if argument is '-6' 1`] = `'grid'must be one of: '0,1' but was: '-6'.`;
-
-exports[`linear features grid() linear feature throws if argument is '-90' 1`] = `'grid'must be one of: '0,1' but was: '-90'.`;
-
-exports[`linear features grid() linear feature throws if argument is '-99.8' 1`] = `'grid'must be one of: '0,1' but was: '-99.8'.`;
-
-exports[`linear features grid() linear feature throws if argument is '2' 1`] = `'grid'must be one of: '0,1' but was: '2'.`;
-
-exports[`linear features grid() linear feature throws if argument is 'NaN' 1`] = `'grid'must be one of: '0,1' but was: 'NaN'.`;
-
-exports[`linear features grid() linear feature throws if argument is 'false' 1`] = `'grid'must be one of: '0,1' but was: 'false'.`;
-
-exports[`linear features grid() linear feature throws if argument is 'null' 1`] = `'grid'must be one of: '0,1' but was: 'null'.`;
-
-exports[`linear features grid() linear feature throws if argument is 'true' 1`] = `'grid'must be one of: '0,1' but was: 'true'.`;
-
-exports[`linear features grid() linear feature throws if argument is 'xxxx' 1`] = `'grid'must be one of: '0,1' but was: 'xxxx'.`;
-
 exports[`linear features orientation() linear feature returns the supplied orientation for 'landscape' 1`] = `(orientation: landscape)`;
 
 exports[`linear features orientation() linear feature returns the supplied orientation for 'portrait' 1`] = `(orientation: portrait)`;
 
-exports[`linear features orientation() linear feature throws if argument is '' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: ''.`;
-
-exports[`linear features orientation() linear feature throws if argument is '' 2`] = `'orientation'must be one of: 'portrait,landscape' but was: ''.`;
-
-exports[`linear features orientation() linear feature throws if argument is '[object Object]' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '[object Object]'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '-0.4' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '-0.4'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '-6' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '-6'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '-90' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '-90'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '-99.8' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '-99.8'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '0' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '0'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '0.6' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '0.6'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '44.7' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '44.7'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '78' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '78'.`;
-
-exports[`linear features orientation() linear feature throws if argument is '4999' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: '4999'.`;
-
-exports[`linear features orientation() linear feature throws if argument is 'NaN' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'NaN'.`;
-
-exports[`linear features orientation() linear feature throws if argument is 'false' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'false'.`;
-
-exports[`linear features orientation() linear feature throws if argument is 'null' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'null'.`;
-
-exports[`linear features orientation() linear feature throws if argument is 'true' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'true'.`;
-
-exports[`linear features orientation() linear feature throws if argument is 'undefined' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'undefined'.`;
-
-exports[`linear features orientation() linear feature throws if argument is 'xxxx' 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'xxxx'.`;
-
-exports[`linear features orientation() linear feature throws if no argument is supplied 1`] = `'orientation'must be one of: 'portrait,landscape' but was: 'undefined'.`;
+exports[`linear features orientation() linear feature throws if no argument is supplied 1`] = `[cssapi-rhythm] orientation() Arguments included invalid value(s) – value: Value wasn't on the whitelist: ['portrait', 'landscape']`;
 
 exports[`linear features overflowBlock() linear feature returns the supplied overflow-block for 'none' 1`] = `(overflow-block: none)`;
 
@@ -170,127 +36,19 @@ exports[`linear features overflowBlock() linear feature returns the supplied ove
 
 exports[`linear features overflowBlock() linear feature returns the supplied overflow-block for 'scroll' 1`] = `(overflow-block: scroll)`;
 
-exports[`linear features overflowBlock() linear feature throws if argument is '' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: ''.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '' 2`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: ''.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '[object Object]' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '[object Object]'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '-0.4' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '-0.4'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '-6' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '-6'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '-90' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '-90'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '-99.8' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '-99.8'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '0' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '0'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '0.6' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '0.6'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '44.7' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '44.7'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '78' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '78'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is '4999' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: '4999'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is 'NaN' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'NaN'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is 'false' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'false'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is 'null' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'null'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is 'true' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'true'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is 'undefined' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'undefined'.`;
-
-exports[`linear features overflowBlock() linear feature throws if argument is 'xxxx' 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'xxxx'.`;
-
-exports[`linear features overflowBlock() linear feature throws if no argument is supplied 1`] = `'overflow-block'must be one of: 'none,scroll,optional-paged' but was: 'undefined'.`;
+exports[`linear features overflowBlock() linear feature throws if no argument is supplied 1`] = `[cssapi-rhythm] overflow-block() Arguments included invalid value(s) – value: Value wasn't on the whitelist: ['none', 'scroll', 'optional-paged']`;
 
 exports[`linear features overflowInline() linear feature returns the supplied overflow-inline for 'none' 1`] = `(overflow-inline: none)`;
 
 exports[`linear features overflowInline() linear feature returns the supplied overflow-inline for 'scroll' 1`] = `(overflow-inline: scroll)`;
 
-exports[`linear features overflowInline() linear feature throws if argument is '' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: ''.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '' 2`] = `'overflow-inline'must be one of: 'none,scroll' but was: ''.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '[object Object]' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '[object Object]'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '-0.4' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '-0.4'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '-6' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '-6'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '-90' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '-90'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '-99.8' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '-99.8'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '0' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '0'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '0.6' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '0.6'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '44.7' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '44.7'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '78' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '78'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is '4999' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: '4999'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is 'NaN' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'NaN'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is 'false' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'false'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is 'null' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'null'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is 'true' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'true'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is 'undefined' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'undefined'.`;
-
-exports[`linear features overflowInline() linear feature throws if argument is 'xxxx' 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'xxxx'.`;
-
-exports[`linear features overflowInline() linear feature throws if no argument is supplied 1`] = `'overflow-inline'must be one of: 'none,scroll' but was: 'undefined'.`;
+exports[`linear features overflowInline() linear feature throws if no argument is supplied 1`] = `[cssapi-rhythm] overflow-inline() Arguments included invalid value(s) – value: Value wasn't on the whitelist: ['none', 'scroll']`;
 
 exports[`linear features scan() linear feature returns the supplied scan for 'interlace' 1`] = `(scan: interlace)`;
 
 exports[`linear features scan() linear feature returns the supplied scan for 'progressive' 1`] = `(scan: progressive)`;
 
-exports[`linear features scan() linear feature throws if argument is '' 1`] = `'scan'must be one of: 'interlace,progressive' but was: ''.`;
-
-exports[`linear features scan() linear feature throws if argument is '' 2`] = `'scan'must be one of: 'interlace,progressive' but was: ''.`;
-
-exports[`linear features scan() linear feature throws if argument is '[object Object]' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '[object Object]'.`;
-
-exports[`linear features scan() linear feature throws if argument is '-0.4' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '-0.4'.`;
-
-exports[`linear features scan() linear feature throws if argument is '-6' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '-6'.`;
-
-exports[`linear features scan() linear feature throws if argument is '-90' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '-90'.`;
-
-exports[`linear features scan() linear feature throws if argument is '-99.8' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '-99.8'.`;
-
-exports[`linear features scan() linear feature throws if argument is '0' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '0'.`;
-
-exports[`linear features scan() linear feature throws if argument is '0.6' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '0.6'.`;
-
-exports[`linear features scan() linear feature throws if argument is '44.7' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '44.7'.`;
-
-exports[`linear features scan() linear feature throws if argument is '78' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '78'.`;
-
-exports[`linear features scan() linear feature throws if argument is '4999' 1`] = `'scan'must be one of: 'interlace,progressive' but was: '4999'.`;
-
-exports[`linear features scan() linear feature throws if argument is 'NaN' 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'NaN'.`;
-
-exports[`linear features scan() linear feature throws if argument is 'false' 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'false'.`;
-
-exports[`linear features scan() linear feature throws if argument is 'null' 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'null'.`;
-
-exports[`linear features scan() linear feature throws if argument is 'true' 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'true'.`;
-
-exports[`linear features scan() linear feature throws if argument is 'undefined' 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'undefined'.`;
-
-exports[`linear features scan() linear feature throws if argument is 'xxxx' 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'xxxx'.`;
-
-exports[`linear features scan() linear feature throws if no argument is supplied 1`] = `'scan'must be one of: 'interlace,progressive' but was: 'undefined'.`;
+exports[`linear features scan() linear feature throws if no argument is supplied 1`] = `[cssapi-rhythm] scan() Arguments included invalid value(s) – value: Value wasn't on the whitelist: ['interlace', 'progressive']`;
 
 exports[`linear features update() linear feature returns a valueless update 1`] = `(update)`;
 
@@ -299,37 +57,3 @@ exports[`linear features update() linear feature returns the supplied update for
 exports[`linear features update() linear feature returns the supplied update for 'none' 1`] = `(update: none)`;
 
 exports[`linear features update() linear feature returns the supplied update for 'slow' 1`] = `(update: slow)`;
-
-exports[`linear features update() linear feature throws if argument is '' 1`] = `'update'must be one of: 'none,slow,fast' but was: ''.`;
-
-exports[`linear features update() linear feature throws if argument is '' 2`] = `'update'must be one of: 'none,slow,fast' but was: ''.`;
-
-exports[`linear features update() linear feature throws if argument is '[object Object]' 1`] = `'update'must be one of: 'none,slow,fast' but was: '[object Object]'.`;
-
-exports[`linear features update() linear feature throws if argument is '-0.4' 1`] = `'update'must be one of: 'none,slow,fast' but was: '-0.4'.`;
-
-exports[`linear features update() linear feature throws if argument is '-6' 1`] = `'update'must be one of: 'none,slow,fast' but was: '-6'.`;
-
-exports[`linear features update() linear feature throws if argument is '-90' 1`] = `'update'must be one of: 'none,slow,fast' but was: '-90'.`;
-
-exports[`linear features update() linear feature throws if argument is '-99.8' 1`] = `'update'must be one of: 'none,slow,fast' but was: '-99.8'.`;
-
-exports[`linear features update() linear feature throws if argument is '0' 1`] = `'update'must be one of: 'none,slow,fast' but was: '0'.`;
-
-exports[`linear features update() linear feature throws if argument is '0.6' 1`] = `'update'must be one of: 'none,slow,fast' but was: '0.6'.`;
-
-exports[`linear features update() linear feature throws if argument is '44.7' 1`] = `'update'must be one of: 'none,slow,fast' but was: '44.7'.`;
-
-exports[`linear features update() linear feature throws if argument is '78' 1`] = `'update'must be one of: 'none,slow,fast' but was: '78'.`;
-
-exports[`linear features update() linear feature throws if argument is '4999' 1`] = `'update'must be one of: 'none,slow,fast' but was: '4999'.`;
-
-exports[`linear features update() linear feature throws if argument is 'NaN' 1`] = `'update'must be one of: 'none,slow,fast' but was: 'NaN'.`;
-
-exports[`linear features update() linear feature throws if argument is 'false' 1`] = `'update'must be one of: 'none,slow,fast' but was: 'false'.`;
-
-exports[`linear features update() linear feature throws if argument is 'null' 1`] = `'update'must be one of: 'none,slow,fast' but was: 'null'.`;
-
-exports[`linear features update() linear feature throws if argument is 'true' 1`] = `'update'must be one of: 'none,slow,fast' but was: 'true'.`;
-
-exports[`linear features update() linear feature throws if argument is 'xxxx' 1`] = `'update'must be one of: 'none,slow,fast' but was: 'xxxx'.`;

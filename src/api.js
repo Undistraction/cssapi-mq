@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
-import { partial, mergeDeepLeft, isEmpty } from 'ramda'
+import { partial, mergeDeepLeft, isEmpty, when } from 'ramda'
+import { isUndefined } from 'ramda-adjunct'
 
 import buildMediaType from './features/buildMediaType'
 import buildLinearFeatures from './features/buildLinearFeatures'
@@ -31,7 +32,6 @@ export default (breakpoints, config, originalMQ) => {
 
   const query = (...elements) => {
     if (isEmpty(elements)) throwError(queryNoElementsErrorMessage())
-
     return (stringParts, ...interpolationValues) =>
       renderQuery(
         renderQueryDefinition(...elements),
@@ -43,6 +43,9 @@ export default (breakpoints, config, originalMQ) => {
     not: renderNotQueryDefinition(config.defaultMediaType, ...elements),
   })
 
+  const untweaked = () =>
+    when(isUndefined, () => throwError(noUntweakedErrorMessage()))(originalMQ)
+
   // ---------------------------------------------------------------------------
   // Export
   // ---------------------------------------------------------------------------
@@ -53,12 +56,7 @@ export default (breakpoints, config, originalMQ) => {
     ...buildRangeFeatures(breakpoints, config),
     query,
     not,
-    untweaked: () => {
-      if (!originalMQ) {
-        throwError(noUntweakedErrorMessage())
-      }
-      return originalMQ
-    },
+    untweaked,
   }
   o.tweak = partial(tweak, [o])
   return o

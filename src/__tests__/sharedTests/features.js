@@ -4,7 +4,7 @@ import {
   mqWithValidBreakpointsForRange,
   mqWithNoBreakpoints,
   invalidAspectRatioValues,
-} from '../data'
+} from '../testHelpers/data'
 
 expect.addSnapshotSerializer(cssSerialiser)
 

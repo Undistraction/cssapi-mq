@@ -1,7 +1,7 @@
 module.exports = {
   bail: true,
-  verbose: true,
-  collectCoverage: true,
+  verbose: false,
+  collectCoverage: false,
   collectCoverageFrom: [`src/**/*.js`],
   coveragePathIgnorePatterns: [`src/index.js`],
   coverageReporters: [`json`],

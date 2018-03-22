@@ -1,64 +1,67 @@
-import { values } from 'ramda';
-import camelcase from 'camelcase';
-import { LINEAR_FEATURES } from '../features';
-import featureValues from './featureValues';
-import { mqWithValidBreakpointsForRange } from './data';
-import cssSerialiser from './helpers/cssSerialiser';
+import { values } from 'ramda'
+import camelcase from 'camelcase'
+import { LINEAR_FEATURES } from '../features'
+import featureValues from './testHelpers/featureValues'
+import { mqWithValidBreakpointsForRange } from './testHelpers/data'
+import cssSerialiser from './helpers/cssSerialiser'
+import { toList } from '../utils/string'
 
-expect.addSnapshotSerializer(cssSerialiser);
+expect.addSnapshotSerializer(cssSerialiser)
 
-describe('linear features', () => {
+describe(`linear features`, () => {
   const testLinearFeature = (
     name,
     validValuesMap,
     invalidValues,
     { allowNoArgument = false } = {}
   ) => {
-    const validValues = values(validValuesMap);
-    const methodName = camelcase(name);
+    const validValues = values(validValuesMap)
+    const methodName = camelcase(name)
     describe(`${methodName}()`, () => {
-      describe('linear feature', () => {
+      describe(`linear feature`, () => {
         if (allowNoArgument) {
-          it("doesn't throw if no argument is supplied", () => {
+          it(`doesn't throw if no argument is supplied`, () => {
             expect(() =>
-              mqWithValidBreakpointsForRange('width')[methodName]()
-            ).not.toThrow();
-          });
+              mqWithValidBreakpointsForRange(`width`)[methodName]()
+            ).not.toThrow()
+          })
 
           it(`returns a valueless ${name}`, () => {
             expect(
-              mqWithValidBreakpointsForRange('width')[methodName]()
-            ).toMatchSnapshot();
-          });
+              mqWithValidBreakpointsForRange(`width`)[methodName]()
+            ).toMatchSnapshot()
+          })
         } else {
-          it('throws if no argument is supplied', () => {
+          it(`throws if no argument is supplied`, () => {
             expect(() =>
-              mqWithValidBreakpointsForRange('width')[methodName]()
-            ).toThrowErrorMatchingSnapshot();
-          });
+              mqWithValidBreakpointsForRange(`width`)[methodName]()
+            ).toThrowErrorMatchingSnapshot()
+          })
         }
 
         for (const value of invalidValues) {
           it(`throws if argument is '${value}'`, () => {
             expect(() =>
-              mqWithValidBreakpointsForRange('width')[methodName](value)
-            ).toThrowErrorMatchingSnapshot();
-          });
+              mqWithValidBreakpointsForRange(`width`)[methodName](value)
+            ).toThrowMultiline(`
+              [cssapi-rhythm] ${name}() Arguments included invalid value(s)
+                – value: Value wasn't on the whitelist: ${toList(validValues)}`)
+          })
         }
         for (const value of validValues) {
           it(`returns the supplied ${name} for '${value}'`, () => {
             expect(
-              mqWithValidBreakpointsForRange('width')[methodName](value)
-            ).toMatchSnapshot();
-          });
+              mqWithValidBreakpointsForRange(`width`)[methodName](value)
+            ).toMatchSnapshot()
+          })
         }
-      });
-    });
-  };
+      })
+    })
+  }
 
   for (const feature of LINEAR_FEATURES) {
-    const { name, validValues, allowNoArgument } = feature;
-    const { invalidValues } = featureValues(camelcase(name));
-    testLinearFeature(name, validValues, invalidValues, { allowNoArgument });
+    const { name, validValues, allowNoArgument } = feature
+    const { invalidValues } = featureValues(camelcase(name))
+    testLinearFeature(name, validValues, invalidValues, { allowNoArgument })
   }
-});
+})

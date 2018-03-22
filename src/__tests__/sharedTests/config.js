@@ -1,4 +1,4 @@
-import { mqWithValidBreakpointsForRange } from '../data'
+import { mqWithValidBreakpointsForRange } from '../testHelpers/data'
 
 export const configOutputsConfiguredDimensionUnits = (name, method) => {
   it(`renders configured dimensionsUnits`, () => {

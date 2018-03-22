@@ -13,6 +13,7 @@ import { MEDIA_TYPES, UNITS } from './const'
 import validateIsResolution from './validations/validators/validateIsResolution'
 import validateIsAspectRatio from './validations/validators/validateIsAspectRatio'
 import validateIsNonNegativeValidInteger from './validations/validators/validateIsNonNegativeValidInteger'
+import validateIsWhitelistedValue from 'folktale-validations/lib/validators/other/validateIsWhitelistedValue'
 
 // -----------------------------------------------------------------------------
 // Constraints for config obj
@@ -183,3 +184,20 @@ export const API_MEDIA_TYPE = {
     },
   ],
 }
+
+// -----------------------------------------------------------------------------
+// Linear Features
+// -----------------------------------------------------------------------------
+
+export const constraintsForLinearFeature = (
+  validValues,
+  isRequired = true
+) => ({
+  fields: [
+    {
+      name: `value`,
+      validator: validateIsWhitelistedValue(validValues),
+      isRequired,
+    },
+  ],
+})

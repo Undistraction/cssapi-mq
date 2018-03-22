@@ -2,7 +2,12 @@ import { compose, construct } from 'ramda'
 import { configureRenderers } from 'folktale-validations'
 import { appendFlipped } from 'ramda-adjunct'
 import validatorMessages from './validations/validatorMessages'
-import { ERROR_PREFIX, CONFIGURE_PREFIX, API_MEDIA_TYPE_PREFIX } from './const'
+import {
+  ERROR_PREFIX,
+  CONFIGURE_PREFIX,
+  API_MEDIA_TYPE_PREFIX,
+  linearFeaturePrefix,
+} from './const'
 import { joinWithSpace } from './utils/string'
 
 const { argumentsFailureRenderer } = configureRenderers({
@@ -42,11 +47,7 @@ export const throwAPIMediaTypeError = compose(
   throwErrorWithPrefixedMessage(API_MEDIA_TYPE_PREFIX),
   argumentsFailureRenderer
 )
-// export const throwAPIHorizontalRhythmError = compose(
-//   throwErrorWithPrefixedMessage(API_HORIZONTAL_RHYTHM_PREFIX),
-//   argumentsFailureRenderer
-// )
-// export const throwAPIRhythmError = compose(
-//   throwErrorWithPrefixedMessage(API_RHYTHM_PREFIX),
-//   argumentsFailureRenderer
-// )
+export const throwAPILinearFeatureError = name => value => compose(
+    throwErrorWithPrefixedMessage(linearFeaturePrefix(name)),
+    argumentsFailureRenderer
+  )(value)

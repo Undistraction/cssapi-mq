@@ -4,7 +4,7 @@ import {
   mqWithValidBreakpointsForRange,
   validBreakpointKeysForRange,
   mqWithNoBreakpoints,
-} from '../data'
+} from '../testHelpers/data'
 
 const permutations = compose(sequence(of), flip(repeat))
 const filterIfPairSame = filter(pair => pair[0] !== pair[1])

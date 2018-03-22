@@ -48,3 +48,5 @@ export const MEDIA_TYPES = Object.freeze({
 export const ERROR_PREFIX = `[cssapi-rhythm]`
 export const CONFIGURE_PREFIX = `configure()`
 export const API_MEDIA_TYPE_PREFIX = `mediaType()`
+
+export const linearFeaturePrefix = name => `${name}()`

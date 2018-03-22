@@ -15,8 +15,8 @@ import {
   positivePixelValues,
   booleanValues,
   negativePixelValues,
-} from './data'
-import featureValues from './featureValues'
+} from './testHelpers/data'
+import featureValues from './testHelpers/featureValues'
 import { rangedFeatureNames } from '../features'
 
 expect.addSnapshotSerializer(cssSerialiser)

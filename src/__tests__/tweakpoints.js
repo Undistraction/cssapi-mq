@@ -2,7 +2,7 @@ import cssSerialiser from './helpers/cssSerialiser'
 import {
   mqWithValidBreakpointsForRange,
   mqWithTweakedBreakpointsForRange,
-} from './data'
+} from './testHelpers/data'
 
 expect.addSnapshotSerializer(cssSerialiser)
 
