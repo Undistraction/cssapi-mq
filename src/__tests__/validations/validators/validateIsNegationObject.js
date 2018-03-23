@@ -5,7 +5,6 @@ describe(`validateIsNegationObject()`, () => {
     const value = {
       not: `not screen and (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape)`,
     }
-
     const result = validateIsNegationObject(value)
     expect(result).toEqualSuccessWithValue(value)
   })
@@ -21,7 +20,7 @@ describe(`validateIsNegationObject()`, () => {
       })
     })
 
-    it(`handles null`, () => {
+    it(`returns a Validation.Failure for 'null'`, () => {
       const value = null
       const result = validateIsNegationObject(value)
       expect(result).toEqualFailureWithValue({
@@ -31,7 +30,7 @@ describe(`validateIsNegationObject()`, () => {
       })
     })
 
-    it(`handles undefined`, () => {
+    it(`returns a Validation.Failure for 'undefined'`, () => {
       const value = undefined
       const result = validateIsNegationObject(value)
       expect(result).toEqualFailureWithValue({

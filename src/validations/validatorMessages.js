@@ -1,10 +1,10 @@
 import { always } from 'ramda'
-import validatorUIDs from './validatorUIDs'
+import VALIDATOR_UIDS from './validatorUIDs'
 
 const {
   VALIDATE_IS_ASPECT_RATIO_STRING,
   VALIDATE_IS_NEGATION_OBJECT,
-} = validatorUIDs
+} = VALIDATOR_UIDS
 
 const messages = {
   [VALIDATE_IS_ASPECT_RATIO_STRING]: always(

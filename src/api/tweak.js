@@ -1,9 +1,8 @@
 import { compose, prop, mergeDeepLeft } from 'ramda'
-import { matchWithSuccessOrFailure } from 'folktale-validations'
+import { matchWithSuccessOrFailure, toArgsObj } from 'folktale-validations'
 import configure from '../configure'
 import { throwAPITweakError } from '../errors2'
-import validateAPITweak from '../validations/validators/validateAPITweak'
-import { toArgsObj } from '../utils/args'
+import validateAPITweak from '../validations/validators/args/validateAPITweak'
 
 export default (mq, breakpoints, config) => tweakpoints =>
   compose(

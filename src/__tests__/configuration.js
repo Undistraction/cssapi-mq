@@ -17,7 +17,7 @@ import {
   negativePixelValues,
 } from './testHelpers/data'
 import featureValues from './testHelpers/featureValues'
-import { rangedFeatureNames } from '../features'
+import { rangedFeatureNames } from '../utils/features'
 
 expect.addSnapshotSerializer(cssSerialiser)
 
@@ -117,7 +117,7 @@ describe(`configure()`, () => {
         ...positivePixelValues,
       ]
 
-      it(`doesn't throw an error if 'baseFontSize' is invalid`, () => {
+      it(`doesn't throw if 'baseFontSize' is invalid`, () => {
         for (const value of validBaseFontSizes) {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), {
@@ -144,7 +144,7 @@ describe(`configure()`, () => {
       })
 
       const validDefaultMediaTypes = [`screen`, `print`, `all`, `speech`, null]
-      it(`doesn't throw an error if 'defaultMediaType' is invalid`, () => {
+      it(`doesn't throw if 'defaultMediaType' is invalid`, () => {
         for (const value of validDefaultMediaTypes) {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), {
@@ -171,7 +171,7 @@ describe(`configure()`, () => {
       })
 
       const validDimensionsUnits = [`em`, `rem`, `px`]
-      it(`doesn't throw an error if 'dimensionsUnit' is invalid`, () => {
+      it(`doesn't throw if 'dimensionsUnit' is invalid`, () => {
         for (const value of validDimensionsUnits) {
           const config = { dimensionsUnit: value }
           expect(() =>

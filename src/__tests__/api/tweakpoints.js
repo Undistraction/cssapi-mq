@@ -3,6 +3,7 @@ import {
   mqWithValidBreakpointsForRange,
   mqWithTweakedBreakpointsForRange,
 } from '../testHelpers/data'
+import { map } from 'ramda'
 
 expect.addSnapshotSerializer(cssSerialiser)
 
@@ -20,12 +21,12 @@ describe(`tweak()`, () => {
   it(`throws if argument is invalid`, () => {
     const invalidTweakpoints = [``, true, false, `xxxx`, 444, []]
 
-    for (const value of invalidTweakpoints) {
+    map(value => {
       expect(() => mqWithValidBreakpointsForRange(`width`).tweak(value))
         .toThrowMultiline(`
           [cssapi-mq] tweak() Arguments included invalid value(s)
             – tweakpoints: Wasn't Plain Object`)
-    }
+    })(invalidTweakpoints)
   })
 
   it(`doesn't throw with empty map`, () => {
@@ -52,7 +53,7 @@ describe(`tweaked()`, () => {
     ).toMatchSnapshot()
 
     expect(
-      mqWithTweakedBreakpointsForRange(`width`).betweenWidths(`alpha`, `large`)
+      mqWithTweakedBreakpointsForRange(`width`).betweenWidths(`alpha`, `xLarge`)
     ).toMatchSnapshot()
   })
 
@@ -62,7 +63,8 @@ describe(`tweaked()`, () => {
         mqWithTweakedBreakpointsForRange(`width`)
           .untweaked()
           .aboveWidth(`alpha`)
-      ).toThrowErrorMatchingSnapshot()
+      ).toThrowMultiline(`
+        [cssapi-mq] aboveWidth() There is no 'width' breakpoint defined called 'alpha', only: 'small', 'medium', 'large', 'xLarge' are defined`)
     })
 
     it(`original breakpoints are available`, () => {

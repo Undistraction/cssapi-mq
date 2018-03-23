@@ -2,23 +2,23 @@ import {
   validateIsBoolean,
   validateIsPlainObject,
   validateIsArrayOf,
-  validateIsWhitelistedValue,
   validateIsNonEmptyArray,
   andValidator,
   validateArrayElements,
+  validateIsWhitelistedValue,
 } from 'folktale-validations'
 import validateIsNumberOrPx from './validations/validators/validateIsNumberOrPx'
 import validateBreakpointMapNames from './validations/validators/validateBreakpointMapNames'
 import validateIsValidDimensionsUnit from './validations/validators/validateIsValidDimensionsUnit'
 import validateIsValidMediaType from './validations/validators/validateIsValidMediaType'
 import validateIsDimension from './validations/validators/validateIsDimension'
-import numberOrPxNumberToNumber from './transformers/numberOrPxNumberToNumber'
+import numberOrPxNumberToNumber from './validations/transformers/numberOrPxNumberToNumber'
 import { MEDIA_TYPES, UNITS } from './const'
 import validateIsResolution from './validations/validators/validateIsResolution'
 import validateIsAspectRatio from './validations/validators/validateIsAspectRatio'
-import validateIsNonNegativeValidInteger from './validations/validators/validateIsNonNegativeValidInteger'
 import validateIsQueryElement from './validations/validators/validateIsQueryElement'
 import validateIsNegationElement from './validations/validators/validateIsNegationElement'
+import validateIsNonNegativeValidInteger from './validations/validators/validateIsNonNegativeValidInteger'
 
 // -----------------------------------------------------------------------------
 // Constraints for config obj
@@ -48,7 +48,7 @@ export const CONFIG = {
       defaultValue: true,
     },
     {
-      name: `onlyNamedBreakpoints`,
+      name: `useNamedBreakpoints`,
       validator: validateIsBoolean,
       defaultValue: true,
     },
@@ -227,7 +227,7 @@ export const API_NOT = {
 }
 
 // -----------------------------------------------------------------------------
-// Linear Features
+// Ranged Features
 // -----------------------------------------------------------------------------
 
 export const constraintsForLinearFeature = (
@@ -242,20 +242,3 @@ export const constraintsForLinearFeature = (
     },
   ],
 })
-
-// -----------------------------------------------------------------------------
-// Ranged Features
-// -----------------------------------------------------------------------------
-
-// export const constraintsForRangedFeature = (
-//   validValues,
-//   isRequired = true
-// ) => ({
-//   fields: [
-//     {
-//       name: `value`,
-//       validator: validateIsWhitelistedValue(validValues),
-//       isRequired,
-//     },
-//   ],
-// })

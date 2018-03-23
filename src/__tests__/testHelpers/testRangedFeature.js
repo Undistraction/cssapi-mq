@@ -20,7 +20,7 @@ export default (
       const maxValueMethod = camelcase(`max`, name)
 
       describe(`${valueMethod}()`, () => {
-        runTests(tests.value, camelisedName, valueMethod, {
+        runTests(tests.value, name, camelisedName, valueMethod, {
           invalidNonExplicitValues,
           invalidExplicitValues,
           validExplicitValues,
@@ -29,7 +29,7 @@ export default (
       })
 
       describe(`${minValueMethod}()`, () => {
-        runTests(tests.minValue, camelisedName, minValueMethod, {
+        runTests(tests.minValue, name, camelisedName, minValueMethod, {
           invalidNonExplicitValues,
           invalidExplicitValues,
           validExplicitValues,
@@ -37,7 +37,7 @@ export default (
       })
 
       describe(`${maxValueMethod}()`, () => {
-        runTests(tests.maxValue, camelisedName, maxValueMethod, {
+        runTests(tests.maxValue, name, camelisedName, maxValueMethod, {
           invalidNonExplicitValues,
           invalidExplicitValues,
           validExplicitValues,

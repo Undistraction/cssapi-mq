@@ -1,3 +1,4 @@
+import { map } from 'ramda'
 import testRangedFeatureHelpers from './testHelpers/testRangedFeatureHelpers'
 import cssSerialiser from './testHelpers/cssSerialiser'
 import { RANGED_FEATURES } from '../features'
@@ -11,6 +12,7 @@ import {
   queryThrowsWithBothBreakpointsTheSame,
 } from './sharedTests/rangedFeatureHelpers'
 
+// Add serialiser for generating readable snapshots from CSS
 expect.addSnapshotSerializer(cssSerialiser)
 
 const singleArgumentSharedTest = [
@@ -20,7 +22,7 @@ const singleArgumentSharedTest = [
 ]
 
 describe(`ranged feature helpers`, () => {
-  for (const feature of RANGED_FEATURES) {
+  map(feature => {
     testRangedFeatureHelpers(feature.name, {
       tests: {
         above: [...singleArgumentSharedTest],
@@ -34,5 +36,5 @@ describe(`ranged feature helpers`, () => {
         atBreakpoint: [...singleArgumentSharedTest],
       },
     })
-  }
+  })(RANGED_FEATURES)
 })

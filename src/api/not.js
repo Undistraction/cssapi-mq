@@ -1,7 +1,6 @@
-import { matchWithSuccessOrFailure } from 'folktale-validations'
+import { matchWithSuccessOrFailure, toArgsObj } from 'folktale-validations'
 import { compose, prop } from 'ramda'
-import { toArgsObj } from '../utils/args'
-import validateAPINot from '../validations/validators/validateAPINot'
+import validateAPINot from '../validations/validators/args/validateAPINot'
 import { throwAPINotError } from '../errors2'
 import { renderNotQueryDefinition } from '../renderers/cssRenderers/queryRenderer'
 

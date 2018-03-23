@@ -1,5 +1,4 @@
 import { compose, construct } from 'ramda'
-import { logToConsole } from 'ramda-log'
 import { configureRenderers } from 'folktale-validations'
 import { appendFlipped } from 'ramda-adjunct'
 import validatorMessages from './validations/validatorMessages'
@@ -8,7 +7,7 @@ import {
   CONFIGURE_PREFIX,
   API_MEDIA_TYPE_PREFIX,
   UNTWEAKED_PREFIX,
-  linearFeaturePrefix,
+  functionPrefix,
   TWEAK_PREFIX,
   NOT_PREFIX,
   QUERY_PREFIX,
@@ -31,13 +30,13 @@ const throwError = error => {
 
 const throwNewError = compose(throwError, constructError)
 
-const throwErrorWithMessage = compose(
+export const throwErrorWithMessage = compose(
   throwNewError,
   joinWithSpace,
   appendFlipped([ERROR_PREFIX])
 )
 
-const throwErrorWithPrefixedMessage = prefix =>
+export const throwErrorWithPrefixedMessage = prefix =>
   compose(throwErrorWithMessage, joinWithSpace, appendFlipped([prefix]))
 
 // -----------------------------------------------------------------------------
@@ -48,13 +47,21 @@ export const throwConfigureError = compose(
   throwErrorWithPrefixedMessage(CONFIGURE_PREFIX),
   argumentsFailureRenderer
 )
+
 export const throwAPIMediaTypeError = compose(
   throwErrorWithPrefixedMessage(API_MEDIA_TYPE_PREFIX),
   argumentsFailureRenderer
 )
+
 export const throwAPILinearFeatureError = name => value =>
   compose(
-    throwErrorWithPrefixedMessage(linearFeaturePrefix(name)),
+    throwErrorWithPrefixedMessage(functionPrefix(name)),
+    argumentsFailureRenderer
+  )(value)
+
+export const throwAPIRangedFeatureError = name => value =>
+  compose(
+    throwErrorWithPrefixedMessage(functionPrefix(name)),
     argumentsFailureRenderer
   )(value)
 
@@ -75,5 +82,18 @@ export const throwAPINotError = compose(
 
 export const throwAPIQueryError = compose(
   throwErrorWithPrefixedMessage(QUERY_PREFIX),
+  argumentsFailureRenderer
+)
+
+export const throwMissingBreakpointSetErrorMessage = breakpointMapName =>
+  throwNewError(
+    `This mq object was not configured with a breakpoint set for '${breakpointMapName}'`
+  )
+
+export const throwScopedError = (scope, message) =>
+  throwErrorWithPrefixedMessage(functionPrefix(scope))(message)
+
+export const throwAPILinearFeatureInvalidValueError = compose(
+  throwNewError,
   argumentsFailureRenderer
 )

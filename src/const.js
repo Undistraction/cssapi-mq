@@ -1,4 +1,31 @@
+import camelcase from 'camelcase'
+
 export const MEDIA_PREFIX = `@media`
+
+// -----------------------------------------------------------------------------
+// FEATURE NAMES
+// -----------------------------------------------------------------------------
+
+export const RANGED_FEATURE_NAMES = Object.freeze({
+  WIDTH: `width`,
+  HEIGHT: `height`,
+  RESOLUTION: `resolution`,
+  ASPECT_RATIO: `aspect-ratio`,
+  COLOR: `color`,
+  COLOR_INDEX: `color-index`,
+  MONOCHROME: `monochrome`,
+})
+
+export const LINEAR_FEATURE_NAMES = Object.freeze({
+  ORIENTATION: `orientation`,
+  SCAN: `scan`,
+  GRID: `grid`,
+  UPDATE: `update`,
+  OVERFLOW_BLOCK: `overflow-block`,
+  OVERFLOW_INLINE: `overflow-inline`,
+  COLOR_GAMUT: `color-gamut`,
+  DISPLAY_MODE: `display-mode`,
+})
 
 // -----------------------------------------------------------------------------
 // CONFIG
@@ -53,5 +80,4 @@ export const API_MEDIA_TYPE_PREFIX = `mediaType()`
 export const NOT_PREFIX = `not()`
 export const QUERY_PREFIX = `query()`
 
-export const linearFeaturePrefix = name => `${name}()`
-export const rangedFeaturePrefix = name => `${name}()`
+export const functionPrefix = name => `${camelcase(name)}()`

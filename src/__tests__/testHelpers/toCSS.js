@@ -1,19 +1,17 @@
-import { compose, trim } from 'ramda'
+import { compose, trim, replace, ifElse } from 'ramda'
+import { isArray } from 'ramda-adjunct'
 import cssbeautify from 'cssbeautify'
+import { joinWithNoSpace } from '../../utils/string'
 
-const collapseSpaces = s => s.replace(/\s\s+/g, ` `)
-const removeBlankLines = s => s.replace(/^\s*\n/gm, ``)
-const beautify = s => cssbeautify(s)
+const R_GLOBAL_WHITESPACE = /\s\s+/g
+const R_GLOBAL_BLANK_LINES = /^\s*\n/gm
+const R_GLOBAL_COMMENTS = /^\s*\/\/.*$/gm
 
-const prepString = compose(beautify, removeBlankLines, collapseSpaces, trim)
+const collapseSpaces = replace(R_GLOBAL_WHITESPACE, ` `)
+const removeBlankLines = replace(R_GLOBAL_BLANK_LINES, ``)
+const removeComments = replace(R_GLOBAL_COMMENTS, ``)
 
-const stringifyRules = rules => {
-  const flatCSS = rules.join(``).replace(/^\s*\/\/.*$/gm, ``)
-  const trimmedCSS = prepString(flatCSS)
-  return trimmedCSS
-}
+const prepString = compose(cssbeautify, removeBlankLines, collapseSpaces, trim)
+const stringifyRules = compose(prepString, removeComments, joinWithNoSpace)
 
-export default rules => {
-  if (Array.isArray(rules)) return stringifyRules(rules)
-  return prepString(rules)
-}
+export default ifElse(isArray, stringifyRules, prepString)

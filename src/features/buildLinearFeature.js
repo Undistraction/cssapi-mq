@@ -1,9 +1,8 @@
 import { compose, prop } from 'ramda'
-import { matchWithSuccessOrFailure } from 'folktale-validations'
+import { matchWithSuccessOrFailure, toArgsObj } from 'folktale-validations'
 import { renderFeature } from '../renderers/cssRenderers/queryRenderer'
 import { throwAPILinearFeatureError } from '../errors2'
 import validatorForLinearFeature from '../validations/validatorForLinearFeature'
-import { toArgsObj } from '../utils/args'
 
 export default (name, possibleValues, allowNoArgument = false) => value =>
   compose(

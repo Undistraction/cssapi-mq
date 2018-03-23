@@ -1,5 +1,5 @@
-export default (tests, name, method, config) => {
-  for (const test of tests) {
-    test(name, method, config);
-  }
-};
+import { map } from 'ramda'
+
+export default (tests, name, camelisedName, method, config) => {
+  map(test => test(name, camelisedName, method, config))(tests)
+}

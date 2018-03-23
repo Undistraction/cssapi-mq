@@ -1,5 +1,7 @@
-import { pickBy } from 'ramda'
-import { isNotUndefined } from 'ramda-adjunct'
+import { compose, curry, reduce, toPairs, flip, prop } from 'ramda'
 
-// eslint-disable-next-line import/prefer-default-export
-export const pickIsNotUndefined = pickBy(isNotUndefined)
+export const reduceObjIndexed = curry((f, acc, v) =>
+  compose(reduce(f, acc), toPairs)(v)
+)
+
+export const propOf = flip(prop)

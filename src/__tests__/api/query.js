@@ -1,3 +1,4 @@
+import { map } from 'ramda'
 import {
   mqWithValidBreakpointsForRange,
   booleanValues,
@@ -34,7 +35,7 @@ describe(`query`, () => {
   ]
 
   it(`throws with invalid argument`, () => {
-    for (const value of invalidValues) {
+    map(value => {
       const mq = mqWithValidBreakpointsForRange(`width`)
       const { query } = mq
       expect(
@@ -47,11 +48,11 @@ describe(`query`, () => {
           – elements: Array included invalid value(s)
             – [0] Wasn't String or Wasn't Array or Wasn't negation (not) object
       `)
-    }
+    })(invalidValues)
   })
 
   it(`throws with invalid child`, () => {
-    for (const value of invalidValues) {
+    map(value => {
       const mq = mqWithValidBreakpointsForRange(`width`)
       const { query } = mq
       expect(
@@ -64,7 +65,7 @@ describe(`query`, () => {
           – elements: Array included invalid value(s)
             – [0] Array included invalid value(s)
               – [0] Wasn't String`)
-    }
+    })(invalidValues)
   })
 
   it(`throws with a nested array`, () => {
@@ -165,7 +166,7 @@ describe(`query`, () => {
     })
 
     it(`throws with invalid argument`, () => {
-      for (const value of invalidValues) {
+      map(value => {
         const mq = mqWithValidBreakpointsForRange(`width`)
         const { query, not } = mq
         expect(
@@ -177,7 +178,7 @@ describe(`query`, () => {
           [cssapi-mq] not() Arguments included invalid value(s)
             – elements: Array included invalid value(s)
               – [0] Wasn't String or Wasn't Array`)
-      }
+      })(invalidValues)
     })
 
     it(`throws with not object`, () => {
@@ -195,7 +196,7 @@ describe(`query`, () => {
     })
 
     it(`throws with invalid child`, () => {
-      for (const value of invalidValues) {
+      map(value => {
         const mq = mqWithValidBreakpointsForRange(`width`)
         const { query, not } = mq
         expect(
@@ -208,7 +209,7 @@ describe(`query`, () => {
             – elements: Array included invalid value(s)
               – [0] Array included invalid value(s)
                 – [0] Wasn't String`)
-      }
+      })(invalidValues)
     })
 
     it(`throws with a nested array`, () => {

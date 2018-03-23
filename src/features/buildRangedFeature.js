@@ -1,134 +1,132 @@
-import { findIndex, isNil, both, always, isEmpty } from 'ramda'
-import camelcase from 'camelcase'
-
-import { MEDIA_TYPES } from '../const'
 import {
-  throwError,
-  sameBreakpointsForBetweenErrorMessage,
-  missingBreakpointErrorMessage,
-  mssingBreakpointMapErrorMessage,
-} from '../errors'
+  findIndex,
+  both,
+  always,
+  flip,
+  toUpper,
+  assoc,
+  tryCatch,
+  when,
+  unless,
+  pipe,
+} from 'ramda'
+import { isUndefined } from 'ramda-adjunct'
+import camelcase from 'camelcase'
+import { reduceObjIndexed } from '../utils/object'
+
+import { throwError, sameBreakpointsForBetweenErrorMessage } from '../errors'
 
 import {
   getUpperLimit,
   propEqName,
   toBreakpointArray,
+  getBreakpointNamed,
 } from '../utils/breakpoints'
 
-import { rangedFeatureNamed } from '../features'
-
-import { joinAnd, renderFeature } from '../renderers/cssRenderers/queryRenderer'
-
-const buildFeatureItem = (name, parser, config) => breakpoint =>
-  renderFeature(name, parser(breakpoint, config))
-
-const nilValueAndAllowedToPass = (value, noArgs) =>
-  both(isNil, always(noArgs))(value)
+import { joinWithAnd } from '../utils/query'
+import { throwScopedError } from '../errors2'
+import { buildFeatureItem, validateAndTransform } from '../utils/features'
 
 export default (
-  name,
-  valueRenderer,
-  breakpoints = {},
-  {
-    defaultMediaType = MEDIA_TYPES.SCREEN,
-    onlyNamedBreakpoints = true,
-    allowNoArgument = false,
-  } = {}
+  featureName,
+  validator,
+  transformer,
+  breakpointSet = {},
+  config
 ) => {
-  const camelisedName = camelcase(name)
-
-  const { validator } = rangedFeatureNamed(name)
+  const { defaultMediaType, useNamedBreakpoints, allowNoArgument } = config
 
   // ---------------------------------------------------------------------------
-  // UTILS
+  // Renderer
   // ---------------------------------------------------------------------------
-
-  const getBreakpointNamed = breakpoint => {
-    if (isEmpty(breakpoints))
-      throwError(mssingBreakpointMapErrorMessage(camelisedName))
-    const value = breakpoints[breakpoint]
-    if (isNil(value))
-      throwError(missingBreakpointErrorMessage(breakpoint, name, breakpoints))
-    return value
-  }
 
   const configuredValueRenderer = (
+    methodName,
     value,
-    { shouldSeparate = false, noArgs = false } = {}
-  ) => {
-    // TODO clean this up, but order here is vital - we need to return in this
-    // order.
-    if (nilValueAndAllowedToPass(value, noArgs)) {
-      return valueRenderer(value, shouldSeparate)
-    }
-
-    if (onlyNamedBreakpoints) {
-      value = getBreakpointNamed(value)
-      return valueRenderer(value, shouldSeparate)
-    }
-
-    validator.validate(value)
-    return valueRenderer(value, shouldSeparate)
-  }
+    { canSeparateQueries = false, noArgs = false } = {}
+  ) =>
+    unless(
+      both(isUndefined, always(noArgs)),
+      pipe(
+        when(
+          always(useNamedBreakpoints),
+          getBreakpointNamed(featureName, methodName, breakpointSet)
+        ),
+        validateAndTransform(
+          validator,
+          transformer,
+          assoc(`canSeparateQueries`, canSeparateQueries, config)
+        )
+      )
+    )(value)
 
   const defaultAPIConfig = { mediaType: defaultMediaType }
-
-  const orderedBreakpoints = toBreakpointArray(breakpoints)
-  const indexOfBreakpointNamed = value => findIndex(value, orderedBreakpoints)
-
-  const nextBreakpointAboveNamed = value =>
-    getUpperLimit(orderedBreakpoints, value)
+  const orderedBreakpoints = toBreakpointArray(breakpointSet)
+  const indexOfBreakpointNamed = flip(findIndex)(orderedBreakpoints)
+  const nextBreakpointAboveNamed = getUpperLimit(orderedBreakpoints)
 
   // ---------------------------------------------------------------------------
   // Features
   // ---------------------------------------------------------------------------
 
-  const feature = buildFeatureItem(name, configuredValueRenderer, {
+  const feature = buildFeatureItem(featureName, configuredValueRenderer, {
     noArgs: allowNoArgument,
   })
-  const minFeature = buildFeatureItem(`min-${name}`, configuredValueRenderer)
-  const maxFeature = buildFeatureItem(`max-${name}`, configuredValueRenderer, {
-    shouldSeparate: true,
-  })
+  const aboveFeature = buildFeatureItem(
+    `min-${featureName}`,
+    configuredValueRenderer
+  )
+  const belowFeature = buildFeatureItem(
+    `max-${featureName}`,
+    configuredValueRenderer,
+    {
+      canSeparateQueries: true,
+    }
+  )
 
   // ---------------------------------------------------------------------------
   // Feature Helpers
   // ---------------------------------------------------------------------------
-
-  const aboveFeature = from => minFeature(from)
-
-  const belowFeature = to => maxFeature(to)
 
   const betweenFeatures = (from, to) => {
     if (from === to) throwError(sameBreakpointsForBetweenErrorMessage(from))
     const fromIndex = indexOfBreakpointNamed(propEqName(from))
     const toIndex = indexOfBreakpointNamed(propEqName(to))
     const [lower, higher] = fromIndex < toIndex ? [from, to] : [to, from]
-    return joinAnd([minFeature(lower), maxFeature(higher)])
+    return joinWithAnd([aboveFeature(lower), belowFeature(higher)])
   }
 
-  const atFeatureBreakpoint = (breakpoint, config = defaultAPIConfig) => {
+  const atFeatureBreakpoint = (breakpoint, conf = defaultAPIConfig) => {
     const breakpointAbove = nextBreakpointAboveNamed(breakpoint)
-    if (breakpointAbove) {
-      return betweenFeatures(breakpoint, breakpointAbove, config)
-    }
-    return aboveFeature(breakpoint, config)
+    return breakpointAbove
+      ? betweenFeatures(breakpoint, breakpointAbove, conf)
+      : aboveFeature(breakpoint, conf)
   }
 
-  const atFeature = breakpoint => feature(breakpoint)
+  const titleizedName =
+    toUpper(featureName[0]) + camelcase(featureName.slice(1))
 
-  const titleizedName = name[0].toUpperCase() + camelcase(name.slice(1))
+  // ---------------------------------------------------------------------------
+  // Exports
+  // ---------------------------------------------------------------------------
 
-  const o = {
-    [camelcase(name)]: feature,
-    [`min${[titleizedName]}`]: minFeature,
-    [`max${[titleizedName]}`]: maxFeature,
-    [`above${[titleizedName]}`]: aboveFeature,
-    [`below${[titleizedName]}`]: belowFeature,
-    [`between${[titleizedName]}s`]: betweenFeatures,
-    [`at${[titleizedName]}Breakpoint`]: atFeatureBreakpoint,
-    [`at${[titleizedName]}`]: atFeature,
+  const wrapWithErrorHandler = (fName, f) =>
+    tryCatch(f, ({ message }) => throwScopedError(fName, message))
+
+  const functionMap = {
+    [camelcase(featureName)]: feature,
+    [`min${titleizedName}`]: aboveFeature,
+    [`max${titleizedName}`]: belowFeature,
+    [`at${titleizedName}Breakpoint`]: atFeatureBreakpoint,
+    [`between${titleizedName}s`]: betweenFeatures,
+    [`at${titleizedName}`]: feature,
+    [`above${titleizedName}`]: aboveFeature,
+    [`below${titleizedName}`]: belowFeature,
   }
 
-  return o
+  return reduceObjIndexed(
+    (acc, [functionName, f]) =>
+      assoc(functionName, wrapWithErrorHandler(functionName, f), acc),
+    {}
+  )(functionMap)
 }
