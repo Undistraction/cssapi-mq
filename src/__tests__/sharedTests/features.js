@@ -1,5 +1,5 @@
 import { reject, prepend } from 'ramda'
-import cssSerialiser from '../helpers/cssSerialiser'
+import cssSerialiser from '../testHelpers/cssSerialiser'
 import {
   mqWithValidBreakpointsForRange,
   mqWithNoBreakpoints,

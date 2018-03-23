@@ -1,7 +1,7 @@
 import { reject, compose, toString, map, range, zipObj } from 'ramda'
 import camelcase from 'camelcase'
 import styledMQ from '../mq'
-import cssSerialiser from './helpers/cssSerialiser'
+import cssSerialiser from './testHelpers/cssSerialiser'
 import {
   mqWithValidBreakpointsForRange,
   validBreakpointsForRange,

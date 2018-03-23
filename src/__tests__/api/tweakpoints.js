@@ -1,4 +1,4 @@
-import cssSerialiser from '../helpers/cssSerialiser'
+import cssSerialiser from '../testHelpers/cssSerialiser'
 import {
   mqWithValidBreakpointsForRange,
   mqWithTweakedBreakpointsForRange,

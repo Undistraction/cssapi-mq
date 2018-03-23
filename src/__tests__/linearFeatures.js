@@ -3,7 +3,7 @@ import camelcase from 'camelcase'
 import { LINEAR_FEATURES } from '../features'
 import featureValues from './testHelpers/featureValues'
 import { mqWithValidBreakpointsForRange } from './testHelpers/data'
-import cssSerialiser from './helpers/cssSerialiser'
+import cssSerialiser from './testHelpers/cssSerialiser'
 import { toList } from '../utils/string'
 
 expect.addSnapshotSerializer(cssSerialiser)

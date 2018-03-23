@@ -11,8 +11,8 @@ import {
   featureReturnsCorrectValueNoArguments,
   featureThrowsForInvalidBreakpoint,
 } from './sharedTests/features'
-import cssSerialiser from './helpers/cssSerialiser'
-import testRangedFeature from './helpers/testRangedFeature'
+import cssSerialiser from './testHelpers/cssSerialiser'
+import testRangedFeature from './testHelpers/testRangedFeature'
 import featureValues from './testHelpers/featureValues'
 
 expect.addSnapshotSerializer(cssSerialiser)

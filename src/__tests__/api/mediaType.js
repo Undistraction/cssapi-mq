@@ -1,7 +1,7 @@
 import { values, drop } from 'ramda'
 import { MEDIA_TYPES } from '../../const'
 import { mqWithValidBreakpointsForRange } from '../testHelpers/data'
-import cssSerialiser from '../helpers/cssSerialiser'
+import cssSerialiser from '../testHelpers/cssSerialiser'
 
 expect.addSnapshotSerializer(cssSerialiser)
 const validValues = values(MEDIA_TYPES)

@@ -3,7 +3,7 @@ import {
   booleanValues,
   genericNumbers,
 } from '../testHelpers/data'
-import cssSerialiser from '../helpers/cssSerialiser'
+import cssSerialiser from '../testHelpers/cssSerialiser'
 
 /* eslint-disable ramda/no-redundant-not */
 

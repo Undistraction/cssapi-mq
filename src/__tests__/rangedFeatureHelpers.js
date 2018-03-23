@@ -1,5 +1,5 @@
-import testRangedFeatureHelpers from './helpers/testRangedFeatureHelpers'
-import cssSerialiser from './helpers/cssSerialiser'
+import testRangedFeatureHelpers from './testHelpers/testRangedFeatureHelpers'
+import cssSerialiser from './testHelpers/cssSerialiser'
 import { RANGED_FEATURES } from '../features'
 
 import {
