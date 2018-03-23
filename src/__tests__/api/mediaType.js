@@ -1,7 +1,7 @@
 import { values, drop } from 'ramda'
-import { MEDIA_TYPES } from '../const'
-import { mqWithValidBreakpointsForRange } from './testHelpers/data'
-import cssSerialiser from './helpers/cssSerialiser'
+import { MEDIA_TYPES } from '../../const'
+import { mqWithValidBreakpointsForRange } from '../testHelpers/data'
+import cssSerialiser from '../helpers/cssSerialiser'
 
 expect.addSnapshotSerializer(cssSerialiser)
 const validValues = values(MEDIA_TYPES)
@@ -38,7 +38,7 @@ describe(`mediaTypes`, () => {
     it(`throws if argument is '${value}'`, () => {
       expect(() => mqWithValidBreakpointsForRange(`width`).mediaType(value))
         .toThrowMultiline(`
-          [cssapi-rhythm] mediaType() Arguments included invalid value(s)
+          [cssapi-mq] mediaType() Arguments included invalid value(s)
             – mediaTypes: Array included invalid value(s)
               – [0] Value wasn't on the whitelist: ['all', 'print', 'screen', 'speech'] or Wasn't null`)
     })

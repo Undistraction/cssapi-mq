@@ -1,8 +1,8 @@
-import cssSerialiser from './helpers/cssSerialiser'
+import cssSerialiser from '../helpers/cssSerialiser'
 import {
   mqWithValidBreakpointsForRange,
   mqWithTweakedBreakpointsForRange,
-} from './testHelpers/data'
+} from '../testHelpers/data'
 
 expect.addSnapshotSerializer(cssSerialiser)
 
@@ -11,7 +11,7 @@ describe(`tweak()`, () => {
     expect(() =>
       mqWithValidBreakpointsForRange(`width`).tweak({ width: { small: `xxx` } })
     ).toThrowMultiline(`
-      [cssapi-rhythm] tweak() Arguments included invalid value(s)
+      [cssapi-mq] tweak() Arguments included invalid value(s)
         – tweakpoints: Object included invalid value(s)
           – width: Object included invalid value(s)
             – small: (Wasn't Valid Number and Wasn't Non-Negative) or Wasn't valid non-negative number with unit: 'rem' or Wasn't valid non-negative number with unit: 'em' or Wasn't valid non-negative number with unit: 'px'`)
@@ -23,7 +23,7 @@ describe(`tweak()`, () => {
     for (const value of invalidTweakpoints) {
       expect(() => mqWithValidBreakpointsForRange(`width`).tweak(value))
         .toThrowMultiline(`
-          [cssapi-rhythm] tweak() Arguments included invalid value(s)
+          [cssapi-mq] tweak() Arguments included invalid value(s)
             – tweakpoints: Wasn't Plain Object`)
     }
   })
@@ -43,7 +43,7 @@ describe(`tweaked()`, () => {
   it(`throws when accessing original without an original object`, () => {
     expect(() => mqWithValidBreakpointsForRange(`width`).untweaked())
       .toThrowMultiline(`
-        [cssapi-rhythm] untweaked() There is no untweaked mq object available to untweak`)
+        [cssapi-mq] untweaked() There is no untweaked mq object available to untweak`)
   })
 
   it(`includes original breakpoints and added tweakpoints`, () => {

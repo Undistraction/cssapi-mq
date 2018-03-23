@@ -39,7 +39,7 @@ describe(`configure()`, () => {
     it(`throws if invalid breakpoint set name is supplied`, () => {
       expect(() => styledMQ.configure({ xxxx: { small: 100 } }))
         .toThrowMultiline(`
-            [cssapi-rhythm] configure() Arguments included invalid value(s)
+            [cssapi-mq] configure() Arguments included invalid value(s)
               – breakpoints: Object included key(s) not on whitelist: ['width', 'height', 'resolution', 'aspectRatio', 'color', 'colorIndex', 'monochrome']`)
     })
 
@@ -55,7 +55,7 @@ describe(`configure()`, () => {
     it(`throws if invalid value is supplied`, () => {
       map(value => {
         expect(() => styledMQ.configure(value)).toThrowMultiline(`
-          [cssapi-rhythm] configure() Arguments included invalid value(s)
+          [cssapi-mq] configure() Arguments included invalid value(s)
             – breakpoints: Wasn't Plain Object`)
       })(invalidBreakpointValues)
     })
@@ -75,7 +75,7 @@ describe(`configure()`, () => {
         it(`throws if invalid '${featureName}' breakpoint set value is supplied of '${invalidValue}'`, () => {
           expect(() =>
             styledMQ.configure({ [featureName]: { a: invalidValue } })
-          ).toThrow(/^\[cssapi-rhythm\] configure\(\)/)
+          ).toThrow(/^\[cssapi-mq\] configure\(\)/)
         })
       }
     }
@@ -106,7 +106,7 @@ describe(`configure()`, () => {
               baseFontSize: value,
             })
           ).toThrowMultiline(`
-              [cssapi-rhythm] configure() Arguments included invalid value(s)
+              [cssapi-mq] configure() Arguments included invalid value(s)
                 – config: Object included invalid value(s)
                   – baseFontSize: (Wasn't Valid Number and Wasn't Non-Negative) or Wasn't valid non-negative number with unit: 'px'`)
         })
@@ -137,7 +137,7 @@ describe(`configure()`, () => {
               defaultMediaType: value,
             })
           ).toThrowMultiline(`
-          [cssapi-rhythm] configure() Arguments included invalid value(s)
+          [cssapi-mq] configure() Arguments included invalid value(s)
             – config: Object included invalid value(s)
               – defaultMediaType: Value wasn't on the whitelist: ['all', 'print', 'screen', 'speech'] or Wasn't null`)
         })
@@ -163,7 +163,7 @@ describe(`configure()`, () => {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), config)
           ).toThrowMultiline(`
-          [cssapi-rhythm] configure() Arguments included invalid value(s)
+          [cssapi-mq] configure() Arguments included invalid value(s)
             – config: Object included invalid value(s)
               – dimensionsUnit: Value wasn't on the whitelist: ['em', 'rem', 'px']
           `)
@@ -194,7 +194,7 @@ describe(`configure()`, () => {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), config)
           ).toThrowMultiline(`
-            [cssapi-rhythm] configure() Arguments included invalid value(s)
+            [cssapi-mq] configure() Arguments included invalid value(s)
               – config: Object included invalid value(s)
                 – shouldSeparateQueries: Wasn't Boolean`)
         })

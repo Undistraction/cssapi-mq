@@ -1,4 +1,5 @@
-import { compose, construct, always } from 'ramda'
+import { compose, construct } from 'ramda'
+import { logToConsole } from 'ramda-log'
 import { configureRenderers } from 'folktale-validations'
 import { appendFlipped } from 'ramda-adjunct'
 import validatorMessages from './validations/validatorMessages'
@@ -67,8 +68,12 @@ export const throwAPIUntweakedError = () =>
     `There is no untweaked mq object available to untweak`
   )
 
-export const throwAPINotError = () =>
-  compose(throwErrorWithPrefixedMessage(NOT_PREFIX), argumentsFailureRenderer)
+export const throwAPINotError = compose(
+  throwErrorWithPrefixedMessage(NOT_PREFIX),
+  argumentsFailureRenderer
+)
 
-export const throwQueryError = () =>
-  compose(throwErrorWithPrefixedMessage(QUERY_PREFIX), argumentsFailureRenderer)
+export const throwAPIQueryError = compose(
+  throwErrorWithPrefixedMessage(QUERY_PREFIX),
+  argumentsFailureRenderer
+)

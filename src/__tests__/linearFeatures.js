@@ -35,7 +35,7 @@ describe(`linear features`, () => {
           it(`throws if no argument is supplied`, () => {
             expect(() => mqWithValidBreakpointsForRange(`width`)[methodName]())
               .toThrowMultiline(`
-              [cssapi-rhythm] ${name}() Arguments missing required key(s): ['value']
+              [cssapi-mq] ${name}() Arguments missing required key(s): ['value']
             `)
           })
 
@@ -43,7 +43,7 @@ describe(`linear features`, () => {
             expect(() =>
               mqWithValidBreakpointsForRange(`width`)[methodName](undefined)
             ).toThrowMultiline(`
-              [cssapi-rhythm] ${name}() Arguments missing required key(s): ['value']
+              [cssapi-mq] ${name}() Arguments missing required key(s): ['value']
             `)
           })
         }
@@ -53,7 +53,7 @@ describe(`linear features`, () => {
             expect(() =>
               mqWithValidBreakpointsForRange(`width`)[methodName](value)
             ).toThrowMultiline(`
-              [cssapi-rhythm] ${name}() Arguments included invalid value(s)
+              [cssapi-mq] ${name}() Arguments included invalid value(s)
                 – value: Value wasn't on the whitelist: ${toList(validValues)}`)
           })
         }

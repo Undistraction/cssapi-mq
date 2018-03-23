@@ -3,6 +3,9 @@ import {
   validateIsPlainObject,
   validateIsArrayOf,
   validateIsWhitelistedValue,
+  validateIsNonEmptyArray,
+  andValidator,
+  validateArrayElements,
 } from 'folktale-validations'
 import validateIsNumberOrPx from './validations/validators/validateIsNumberOrPx'
 import validateBreakpointMapNames from './validations/validators/validateBreakpointMapNames'
@@ -14,6 +17,8 @@ import { MEDIA_TYPES, UNITS } from './const'
 import validateIsResolution from './validations/validators/validateIsResolution'
 import validateIsAspectRatio from './validations/validators/validateIsAspectRatio'
 import validateIsNonNegativeValidInteger from './validations/validators/validateIsNonNegativeValidInteger'
+import validateIsQueryElement from './validations/validators/validateIsQueryElement'
+import validateIsNegationElement from './validations/validators/validateIsNegationElement'
 
 // -----------------------------------------------------------------------------
 // Constraints for config obj
@@ -191,6 +196,32 @@ export const API_TWEAK = {
       name: `tweakpoints`,
       validator: validateIsPlainObject,
       value: BREAKPOINTS,
+    },
+  ],
+}
+
+export const API_QUERY = {
+  fields: [
+    {
+      name: `elements`,
+      validator: andValidator(
+        validateIsNonEmptyArray,
+        validateArrayElements(validateIsQueryElement)
+      ),
+      isRequired: true,
+    },
+  ],
+}
+
+export const API_NOT = {
+  fields: [
+    {
+      name: `elements`,
+      validator: andValidator(
+        validateIsNonEmptyArray,
+        validateArrayElements(validateIsNegationElement)
+      ),
+      isRequired: true,
     },
   ],
 }

@@ -1,10 +1,12 @@
 import {
   validateRequiredKeys,
-  andValidator,
+  untilFailureValidator,
   validateIsPlainObject,
+  decorateValidator,
 } from 'folktale-validations'
+import validatorUIDs from '../validatorUIDs'
 
-export default andValidator(
-  validateIsPlainObject,
-  validateRequiredKeys([`not`])
+export default decorateValidator(
+  validatorUIDs.VALIDATE_IS_NEGATION_OBJECT,
+  untilFailureValidator([validateIsPlainObject, validateRequiredKeys([`not`])])
 )

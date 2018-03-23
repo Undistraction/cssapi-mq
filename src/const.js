@@ -45,7 +45,7 @@ export const MEDIA_TYPES = Object.freeze({
   SPEECH: `speech`,
 })
 
-export const ERROR_PREFIX = `[cssapi-rhythm]`
+export const ERROR_PREFIX = `[cssapi-mq]`
 export const CONFIGURE_PREFIX = `configure()`
 export const TWEAK_PREFIX = `tweak()`
 export const UNTWEAKED_PREFIX = `untweaked()`

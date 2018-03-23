@@ -10,13 +10,35 @@ describe(`validateIsNegationObject()`, () => {
     expect(result).toEqualSuccessWithValue(value)
   })
 
-  it(`returns a Validation.Failure if the value not a negation object`, () => {
-    const value = {}
-    const result = validateIsNegationObject(value)
-    expect(result).toEqualFailureWithValue({
-      args: [[`not`], [`not`]],
-      uid: `folktale-validations.validateRequiredKeys`,
-      value: {},
+  describe(`failures`, () => {
+    it(`returns a Validation.Failure if the value not a negation object`, () => {
+      const value = {}
+      const result = validateIsNegationObject(value)
+      expect(result).toEqualFailureWithValue({
+        args: [[`not`], [`not`]],
+        uid: `cssapi-mq.validateIsNegationObject`,
+        value: {},
+      })
+    })
+
+    it(`handles null`, () => {
+      const value = null
+      const result = validateIsNegationObject(value)
+      expect(result).toEqualFailureWithValue({
+        args: [],
+        uid: `cssapi-mq.validateIsNegationObject`,
+        value: null,
+      })
+    })
+
+    it(`handles undefined`, () => {
+      const value = undefined
+      const result = validateIsNegationObject(value)
+      expect(result).toEqualFailureWithValue({
+        args: [],
+        uid: `cssapi-mq.validateIsNegationObject`,
+        value: undefined,
+      })
     })
   })
 })

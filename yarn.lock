@@ -1933,9 +1933,9 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-folktale-validations@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/folktale-validations/-/folktale-validations-2.7.0.tgz#8c232f505437af5427a9c481203747cb9bb4227a"
+folktale-validations@2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/folktale-validations/-/folktale-validations-2.10.1.tgz#2ef008ae49ffc5824b2cdf073c848ad050e0813b"
   dependencies:
     cssapi-units "^0.3.0"
     deep-freeze "^0.0.1"

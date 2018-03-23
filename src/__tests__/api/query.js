@@ -2,8 +2,8 @@ import {
   mqWithValidBreakpointsForRange,
   booleanValues,
   genericNumbers,
-} from './testHelpers/data'
-import cssSerialiser from './helpers/cssSerialiser'
+} from '../testHelpers/data'
+import cssSerialiser from '../helpers/cssSerialiser'
 
 /* eslint-disable ramda/no-redundant-not */
 
@@ -18,7 +18,10 @@ describe(`query`, () => {
         query()`
         background-color: ${() => `GhostWhite`};
       `
-    ).toThrowErrorMatchingSnapshot()
+    ).toThrowMultiline(`
+      [cssapi-mq] query() Arguments included invalid value(s)
+        – elements: Was Empty Array
+    `)
   })
 
   const invalidValues = [
@@ -30,8 +33,8 @@ describe(`query`, () => {
     {},
   ]
 
-  for (const value of invalidValues) {
-    it(`throws with invalid argument of '${value}'`, () => {
+  it(`throws with invalid argument`, () => {
+    for (const value of invalidValues) {
       const mq = mqWithValidBreakpointsForRange(`width`)
       const { query } = mq
       expect(
@@ -39,12 +42,16 @@ describe(`query`, () => {
           query(value)`
           background-color: ${() => `GhostWhite`};
         `
-      ).toThrowErrorMatchingSnapshot()
-    })
-  }
+      ).toThrowMultiline(`
+        [cssapi-mq] query() Arguments included invalid value(s)
+          – elements: Array included invalid value(s)
+            – [0] Wasn't String or Wasn't Array or Wasn't negation (not) object
+      `)
+    }
+  })
 
-  for (const value of invalidValues) {
-    it(`throws with invalid child of '${value}'`, () => {
+  it(`throws with invalid child`, () => {
+    for (const value of invalidValues) {
       const mq = mqWithValidBreakpointsForRange(`width`)
       const { query } = mq
       expect(
@@ -52,9 +59,13 @@ describe(`query`, () => {
           query([value])`
           background-color: ${() => `GhostWhite`};
         `
-      ).toThrowErrorMatchingSnapshot()
-    })
-  }
+      ).toThrowMultiline(`
+        [cssapi-mq] query() Arguments included invalid value(s)
+          – elements: Array included invalid value(s)
+            – [0] Array included invalid value(s)
+              – [0] Wasn't String`)
+    }
+  })
 
   it(`throws with a nested array`, () => {
     const mq = mqWithValidBreakpointsForRange(`width`)
@@ -64,7 +75,11 @@ describe(`query`, () => {
         query([[]])`
         background-color: ${() => `GhostWhite`};
       `
-    ).toThrowErrorMatchingSnapshot()
+    ).toThrowMultiline(`
+      [cssapi-mq] query() Arguments included invalid value(s)
+        – elements: Array included invalid value(s)
+          – [0] Array included invalid value(s)
+            – [0] Wasn't String`)
   })
 
   it(`renders query with single feature`, () => {
@@ -144,11 +159,13 @@ describe(`query`, () => {
           query(not())`
           background-color: ${() => `GhostWhite`};
         `
-      ).toThrowErrorMatchingSnapshot()
+      ).toThrowMultiline(`
+        [cssapi-mq] not() Arguments included invalid value(s)
+          – elements: Was Empty Array`)
     })
 
-    for (const value of invalidValues) {
-      it(`throws with invalid argument of '${value}'`, () => {
+    it(`throws with invalid argument`, () => {
+      for (const value of invalidValues) {
         const mq = mqWithValidBreakpointsForRange(`width`)
         const { query, not } = mq
         expect(
@@ -156,12 +173,29 @@ describe(`query`, () => {
             query(not(value))`
             background-color: ${() => `GhostWhite`};
           `
-        ).toThrowErrorMatchingSnapshot()
-      })
-    }
+        ).toThrowMultiline(`
+          [cssapi-mq] not() Arguments included invalid value(s)
+            – elements: Array included invalid value(s)
+              – [0] Wasn't String or Wasn't Array`)
+      }
+    })
 
-    for (const value of invalidValues) {
-      it(`throws with invalid child of '${value}'`, () => {
+    it(`throws with not object`, () => {
+      const mq = mqWithValidBreakpointsForRange(`width`)
+      const { query, not } = mq
+      expect(
+        () =>
+          query(not({ not: `small` }))`
+            background-color: ${() => `GhostWhite`};
+          `
+      ).toThrowMultiline(`
+          [cssapi-mq] not() Arguments included invalid value(s)
+            – elements: Array included invalid value(s)
+              – [0] Wasn't String or Wasn't Array`)
+    })
+
+    it(`throws with invalid child`, () => {
+      for (const value of invalidValues) {
         const mq = mqWithValidBreakpointsForRange(`width`)
         const { query, not } = mq
         expect(
@@ -169,9 +203,13 @@ describe(`query`, () => {
             query(not([value]))`
             background-color: ${() => `GhostWhite`};
           `
-        ).toThrowErrorMatchingSnapshot()
-      })
-    }
+        ).toThrowMultiline(`
+          [cssapi-mq] not() Arguments included invalid value(s)
+            – elements: Array included invalid value(s)
+              – [0] Array included invalid value(s)
+                – [0] Wasn't String`)
+      }
+    })
 
     it(`throws with a nested array`, () => {
       const mq = mqWithValidBreakpointsForRange(`width`)
@@ -181,7 +219,11 @@ describe(`query`, () => {
           query(not([[]]))`
           background-color: ${() => `GhostWhite`};
         `
-      ).toThrowErrorMatchingSnapshot()
+      ).toThrowMultiline(`
+        [cssapi-mq] not() Arguments included invalid value(s)
+          – elements: Array included invalid value(s)
+            – [0] Array included invalid value(s)
+              – [0] Wasn't String`)
     })
 
     it(`negates anded queries`, () => {
