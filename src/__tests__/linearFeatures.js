@@ -48,15 +48,15 @@ describe(`linear features`, () => {
           })
         }
 
-        for (const value of invalidValues) {
-          it(`throws if argument is '${value}'`, () => {
+        it(`throws if argument is invalid`, () => {
+          for (const value of invalidValues) {
             expect(() =>
               mqWithValidBreakpointsForRange(`width`)[methodName](value)
             ).toThrowMultiline(`
               [cssapi-mq] ${name}() Arguments included invalid value(s)
                 – value: Value wasn't on the whitelist: ${toList(validValues)}`)
-          })
-        }
+          }
+        })
         for (const value of validValues) {
           it(`returns the supplied ${name} for '${value}'`, () => {
             expect(

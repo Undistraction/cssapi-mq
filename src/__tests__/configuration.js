@@ -71,13 +71,13 @@ describe(`configure()`, () => {
       const invalidFeatureValues = featureValues(camelcase(featureName))
         .invalidExplicitValues
 
-      for (const invalidValue of invalidFeatureValues) {
-        it(`throws if invalid '${featureName}' breakpoint set value is supplied of '${invalidValue}'`, () => {
+      it(`throws if invalid '${featureName}' breakpoint set value is supplied`, () => {
+        for (const invalidValue of invalidFeatureValues) {
           expect(() =>
             styledMQ.configure({ [featureName]: { a: invalidValue } })
           ).toThrow(/^\[cssapi-mq\] configure\(\)/)
-        })
-      }
+        }
+      })
     }
   })
 
@@ -99,8 +99,8 @@ describe(`configure()`, () => {
 
       const invalidBaseFontSizes = [...invalidValues, ...negativePixelValues]
 
-      for (const value of invalidBaseFontSizes) {
-        it(`throws if 'baseFontSize' is '${value}'`, () => {
+      it(`throws if 'baseFontSize' is invalid`, () => {
+        for (const value of invalidBaseFontSizes) {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), {
               baseFontSize: value,
@@ -109,29 +109,29 @@ describe(`configure()`, () => {
               [cssapi-mq] configure() Arguments included invalid value(s)
                 – config: Object included invalid value(s)
                   – baseFontSize: (Wasn't Valid Number and Wasn't Non-Negative) or Wasn't valid non-negative number with unit: 'px'`)
-        })
-      }
+        }
+      })
 
       const validBaseFontSizes = [
         ...genericPositiveNumbers,
         ...positivePixelValues,
       ]
 
-      for (const value of validBaseFontSizes) {
-        it(`doesn't throw an error if 'baseFontSize' is '${value}'`, () => {
+      it(`doesn't throw an error if 'baseFontSize' is invalid`, () => {
+        for (const value of validBaseFontSizes) {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), {
               baseFontSize: value,
             })
           ).not.toThrow()
-        })
-      }
+        }
+      })
     })
 
     describe(`defaultMediaType`, () => {
       const invalidDefaultMediaTypes = reject(v => v === null, genericValues)
-      for (const value of invalidDefaultMediaTypes) {
-        it(`throws if 'defaultMediaType' is '${value}'`, () => {
+      it(`throws if 'defaultMediaType' is invalid`, () => {
+        for (const value of invalidDefaultMediaTypes) {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), {
               defaultMediaType: value,
@@ -140,25 +140,25 @@ describe(`configure()`, () => {
           [cssapi-mq] configure() Arguments included invalid value(s)
             – config: Object included invalid value(s)
               – defaultMediaType: Value wasn't on the whitelist: ['all', 'print', 'screen', 'speech'] or Wasn't null`)
-        })
-      }
+        }
+      })
 
       const validDefaultMediaTypes = [`screen`, `print`, `all`, `speech`, null]
-      for (const value of validDefaultMediaTypes) {
-        it(`doesn't throw an error if 'defaultMediaType' is '${value}'`, () => {
+      it(`doesn't throw an error if 'defaultMediaType' is invalid`, () => {
+        for (const value of validDefaultMediaTypes) {
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), {
               defaultMediaType: value,
             })
           ).not.toThrow()
-        })
-      }
+        }
+      })
     })
 
     describe(`dimensionsUnit`, () => {
       const invalidDimensionsUnits = [...invalidValues, ...genericStrings]
-      for (const value of invalidDimensionsUnits) {
-        it(`throws if 'dimensionsUnit' is '${value}'`, () => {
+      it(`throws if 'dimensionsUnit' is invalid`, () => {
+        for (const value of invalidDimensionsUnits) {
           const config = { dimensionsUnit: value }
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), config)
@@ -167,18 +167,18 @@ describe(`configure()`, () => {
             – config: Object included invalid value(s)
               – dimensionsUnit: Value wasn't on the whitelist: ['em', 'rem', 'px']
           `)
-        })
-      }
+        }
+      })
 
       const validDimensionsUnits = [`em`, `rem`, `px`]
-      for (const value of validDimensionsUnits) {
-        it(`doesn't throw an error if 'dimensionsUnit' is '${value}'`, () => {
+      it(`doesn't throw an error if 'dimensionsUnit' is invalid`, () => {
+        for (const value of validDimensionsUnits) {
           const config = { dimensionsUnit: value }
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), config)
           ).not.toThrow()
-        })
-      }
+        }
+      })
     })
 
     describe(`shouldSeparateQueries`, () => {
@@ -188,8 +188,8 @@ describe(`configure()`, () => {
         genericStrings,
       ]
 
-      for (const value of invalidShouldSeparateQueriesValues) {
-        it(`throws if 'shouldSeparateQueries' is '${value}'`, () => {
+      it(`throws if 'shouldSeparateQueries' is invalid`, () => {
+        for (const value of invalidShouldSeparateQueriesValues) {
           const config = { shouldSeparateQueries: value }
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), config)
@@ -197,18 +197,18 @@ describe(`configure()`, () => {
             [cssapi-mq] configure() Arguments included invalid value(s)
               – config: Object included invalid value(s)
                 – shouldSeparateQueries: Wasn't Boolean`)
-        })
-      }
+        }
+      })
 
       const validShouldSeparateQueriesValues = [true, false]
-      for (const value of validShouldSeparateQueriesValues) {
-        it(`doesn't throw an error if 'shouldSeparateQueries' isn't  a '${value}'`, () => {
+      it(`doesn't throw if 'shouldSeparateQueries' isn't valid'`, () => {
+        for (const value of validShouldSeparateQueriesValues) {
           const config = { shouldSeparateQueries: value }
           expect(() =>
             styledMQ.configure(validBreakpointsForRange(`width`), config)
           ).not.toThrow()
-        })
-      }
+        }
+      })
     })
   })
 })
