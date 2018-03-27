@@ -1,7 +1,7 @@
 import {
   configSeparatesValuesWhenSet,
   configOutputsConfiguredDimensionUnits,
-} from './sharedTests/config';
+} from './sharedTests/config'
 import {
   featureThrowsForMissingBreakpointSet,
   featureReturnsCorrectValueForBreakpoint,
@@ -10,18 +10,18 @@ import {
   featureThrowsForInvalidExplicitBreakpoint,
   featureReturnsCorrectValueNoArguments,
   featureThrowsForInvalidBreakpoint,
-} from './sharedTests/features';
-import cssSerialiser from './helpers/cssSerialiser';
-import testRangedFeature from './helpers/testRangedFeature';
-import featureValues from './featureValues';
+} from './sharedTests/features'
+import cssSerialiser from './testHelpers/cssSerialiser'
+import testRangedFeature from './testHelpers/testRangedFeature'
+import featureValues from './testHelpers/featureValues'
 
-expect.addSnapshotSerializer(cssSerialiser);
+expect.addSnapshotSerializer(cssSerialiser)
 
 // Tests common to features that support explicit values
 const explicitValueTests = [
   featureReturnsCorrectValueForValidExpicitValue,
   featureThrowsForInvalidExplicitBreakpoint,
-];
+]
 
 // Tests common to all ranged features
 const sharedTests = {
@@ -45,14 +45,14 @@ const sharedTests = {
     featureThrowsForInvalidBreakpoint,
     ...explicitValueTests,
   ],
-};
+}
 
 // Tests common to features that support separation of breakpoints
-const separationTests = [configSeparatesValuesWhenSet];
+const separationTests = [configSeparatesValuesWhenSet]
 
-describe('ranged features', () => {
+describe(`ranged features`, () => {
   // Range
-  testRangedFeature('width', {
+  testRangedFeature(`width`, {
     tests: {
       value: [
         ...sharedTests.value,
@@ -76,10 +76,10 @@ describe('ranged features', () => {
         featureThrowsForMissingArgument,
       ],
     },
-    ...featureValues('width'),
-  });
+    ...featureValues(`width`),
+  })
 
-  testRangedFeature('height', {
+  testRangedFeature(`height`, {
     tests: {
       value: [
         ...sharedTests.value,
@@ -103,10 +103,10 @@ describe('ranged features', () => {
         configOutputsConfiguredDimensionUnits,
       ],
     },
-    ...featureValues('height'),
-  });
+    ...featureValues(`height`),
+  })
 
-  testRangedFeature('resolution', {
+  testRangedFeature(`resolution`, {
     tests: {
       value: [
         ...sharedTests.value,
@@ -127,45 +127,45 @@ describe('ranged features', () => {
         featureThrowsForMissingArgument,
       ],
     },
-    ...featureValues('resolution'),
-  });
+    ...featureValues(`resolution`),
+  })
 
-  testRangedFeature('aspect-ratio', {
+  testRangedFeature(`aspect-ratio`, {
     tests: {
       value: [...sharedTests.value, featureThrowsForMissingArgument],
       minValue: [...sharedTests.minValue, featureThrowsForMissingArgument],
       maxValue: [...sharedTests.maxValue, featureThrowsForMissingArgument],
     },
-    ...featureValues('aspectRatio'),
-  });
+    ...featureValues(`aspectRatio`),
+  })
 
-  testRangedFeature('color', {
+  testRangedFeature(`color`, {
     tests: {
       value: [...sharedTests.value, featureReturnsCorrectValueNoArguments],
       minValue: [...sharedTests.minValue, featureThrowsForMissingArgument],
       maxValue: [...sharedTests.maxValue, featureThrowsForMissingArgument],
     },
-    ...featureValues('color'),
+    ...featureValues(`color`),
     allowNoArgument: true,
-  });
+  })
 
-  testRangedFeature('color-index', {
+  testRangedFeature(`color-index`, {
     tests: {
       value: [...sharedTests.value, featureReturnsCorrectValueNoArguments],
       minValue: [...sharedTests.minValue, featureThrowsForMissingArgument],
       maxValue: [...sharedTests.maxValue, featureThrowsForMissingArgument],
     },
-    ...featureValues('colorIndex'),
+    ...featureValues(`colorIndex`),
     allowNoArgument: true,
-  });
+  })
 
-  testRangedFeature('monochrome', {
+  testRangedFeature(`monochrome`, {
     tests: {
       value: [...sharedTests.value, featureReturnsCorrectValueNoArguments],
       minValue: [...sharedTests.minValue, featureThrowsForMissingArgument],
       maxValue: [...sharedTests.maxValue, featureThrowsForMissingArgument],
     },
-    ...featureValues('monochrome'),
+    ...featureValues(`monochrome`),
     allowNoArgument: true,
-  });
-});
+  })
+})

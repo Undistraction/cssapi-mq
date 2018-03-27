@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`query and renders query with multiple features anded together 1`] = `
+@media (color-gamut: srgb) and (min-width: 25em) and (orientation: landscape) and (grid) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query and renders query with two features anded together 1`] = `
+@media (min-width: 25em) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query mixed allows mixed not queries (both and and or) 1`] = `
+@media not screen and (display-mode: fullscreen) and (color-gamut: rec2020) and (grid: 0),(orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query mixed allows mixed queries (both and and or) 1`] = `
+@media (display-mode: fullscreen),(color-gamut: rec2020),(display-mode: standalone) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query mixed allows mixed queries and not queries (both and and or) 1`] = `
+@media (grid),(color-gamut: rec2020),(grid: 1) and (orientation: landscape),not screen and (grid) and (width: 68.75em),(orientation: portrait) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not negates anded queries 1`] = `
+@media not screen and (display-mode: fullscreen),(color-gamut: p3),(orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not negates ored queries 1`] = `
+@media not screen and (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not with media type negates anded queries without adding default media type 1`] = `
+@media not screen and screen,(display-mode: fullscreen),(color-gamut: p3),(orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not with media type negates ored queries without adding default media type 1`] = `
+@media not screen and (display-mode: fullscreen) and (color-gamut: p3) and (orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query not with media type renders single uquery with media type without adding default media type 1`] = `
+@media not screen and (display-mode: fullscreen) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query or renders query with multiple features ored together 1`] = `
+@media (color-gamut: srgb),(min-width: 25em),(orientation: landscape),(grid) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query or renders query with two features ored together 1`] = `
+@media (min-width: 25em),(orientation: landscape) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;
+
+exports[`query renders query with single feature 1`] = `
+@media (min-width: 25em) {
+    background-color: function () {
+        return 'GhostWhite';
+    }; ;
+}
+`;

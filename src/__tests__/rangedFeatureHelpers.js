@@ -1,6 +1,7 @@
-import testRangedFeatureHelpers from './helpers/testRangedFeatureHelpers';
-import cssSerialiser from './helpers/cssSerialiser';
-import { RANGED_FEATURES } from '../features';
+import { map } from 'ramda'
+import testRangedFeatureHelpers from './testHelpers/testRangedFeatureHelpers'
+import cssSerialiser from './testHelpers/cssSerialiser'
+import { RANGED_FEATURES } from '../features'
 
 import {
   queryThrowsIfMissingBreakpoint,
@@ -9,18 +10,19 @@ import {
   queryReturnsCorrectValueWithTwoBreakpoints,
   queryThrowsIfMissingEitherBreakpoint,
   queryThrowsWithBothBreakpointsTheSame,
-} from './sharedTests/rangedFeatureHelpers';
+} from './sharedTests/rangedFeatureHelpers'
 
-expect.addSnapshotSerializer(cssSerialiser);
+// Add serialiser for generating readable snapshots from CSS
+expect.addSnapshotSerializer(cssSerialiser)
 
 const singleArgumentSharedTest = [
   queryThrowsIfMissingBreakpoint,
   queryThrowsIfMissingBreakpointSet,
   queryReturnsCorrectValueSingleBreakpoint,
-];
+]
 
-describe('ranged feature helpers', () => {
-  for (const feature of RANGED_FEATURES) {
+describe(`ranged feature helpers`, () => {
+  map(feature => {
     testRangedFeatureHelpers(feature.name, {
       tests: {
         above: [...singleArgumentSharedTest],
@@ -33,6 +35,6 @@ describe('ranged feature helpers', () => {
         at: [...singleArgumentSharedTest],
         atBreakpoint: [...singleArgumentSharedTest],
       },
-    });
-  }
-});
+    })
+  })(RANGED_FEATURES)
+})

@@ -1,18 +1,24 @@
-import { map, merge, mergeAll, curry, defaultTo } from 'ramda';
-import camelcase from 'camelcase';
-import { RANGED_FEATURES } from '../features';
-import buildRangedFeature from './buildRangedFeature';
+import { reduce, merge, prop } from 'ramda'
+import camelcase from 'camelcase'
+import { RANGED_FEATURES } from '../features'
+import buildRangedFeature from './buildRangedFeature'
 
-const build = (globalConfig, breakpoints, item) => {
-  breakpoints = defaultTo({})(breakpoints);
-  const x = buildRangedFeature(
-    item.name,
-    item.valueRenderer(globalConfig),
-    breakpoints[camelcase(item.name)],
-    merge(globalConfig, item.config)
-  );
-  return x;
-};
+const breakpointMapNamed = (name, breakpoints) =>
+  prop(camelcase(name), breakpoints)
+
+const reducer = (globalConfig, breakpoints = {}) => (
+  acc,
+  { name, featureConfig, validator, transformer }
+) => {
+  const feat = buildRangedFeature(
+    name,
+    validator,
+    transformer,
+    breakpointMapNamed(name, breakpoints),
+    merge(globalConfig, featureConfig)
+  )
+  return merge(acc, feat)
+}
 
 export default (breakpoints, globalConfig) =>
-  mergeAll(map(curry(build)(globalConfig, breakpoints))(RANGED_FEATURES));
+  reduce(reducer(globalConfig, breakpoints), {}, RANGED_FEATURES)

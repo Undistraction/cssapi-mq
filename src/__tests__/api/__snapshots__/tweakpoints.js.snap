@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tweaked() doesn't effect the original mq original breakpoints are available 1`] = `(min-width: 25em) and (max-width: 56.249375em)`;
+
+exports[`tweaked() includes original breakpoints and added tweakpoints 1`] = `(min-width: 18.75em)`;
+
+exports[`tweaked() includes original breakpoints and added tweakpoints 2`] = `(min-width: 81.25em) and (max-width: 18.749375em)`;

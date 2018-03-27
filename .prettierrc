@@ -1,7 +1,7 @@
 {
   "printWidth": 80,
   "tabWidth": 2,
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
   "trailingComma": "es5",
   "overrides": [
@@ -11,10 +11,6 @@
     },
     {
       "files": ".babelrc",
-      "options": { "parser": "json" }
-    },
-    {
-      "files": ".stylelintrc",
       "options": { "parser": "json" }
     }
   ]

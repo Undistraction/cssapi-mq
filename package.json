@@ -6,11 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Undistraction/styled-mq.git"
   },
-  "files": [
-    "dist",
-    "src",
-    "lib"
-  ],
+  "files": ["src", "lib"],
   "keywords": [
     "styled-components",
     "media-queries",
@@ -25,12 +21,10 @@
   },
   "homepage": "https://github.com/Undistraction/styled-mq",
   "scripts": {
-    "build": "npm run build:lib && npm run build:dist",
+    "build": "npm run build:lib",
     "prebuild:lib": "rimraf lib/*",
     "prebuild": "npm run lint",
     "build:lib": "babel --out-dir lib --ignore \"__tests__\" src",
-    "prebuild:dist": "rimraf dist/*",
-    "build:dist": "NODE_ENV=development rollup --config",
     "test": "jest --watch",
     "test:noWatch": "jest",
     "prepublishOnly": "npm run build",
@@ -49,30 +43,37 @@
     "babel-preset-env": "^1.6.1",
     "codecov": "^3.0.0",
     "cssbeautify": "^0.3.1",
-    "eslint": "^4.11.0",
+    "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-ramda": "^2.5.0",
     "eslint-plugin-react": "^7.5.1",
-    "jest": "^21.2.1",
+    "jasmine-folktale": "^0.0.5",
+    "jasmine-multiline-matchers": "0.2.2",
+    "jest": "^22.4.2",
+    "jest-slow-test-reporter": "^1.0.0",
     "jest-styled-components": "^4.9.0",
-    "prettier": "^1.8.2",
-    "rollup": "^0.51.3",
-    "rollup-plugin-babel": "^3.0.2",
-    "rollup-plugin-commonjs": "^8.2.6",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "prettier": "^1.11.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.3.1",
     "stylis": "^3.4.0"
   },
   "dependencies": {
     "camelcase": "^4.1.0",
+    "cssapi-units": "^0.3.0",
     "cssjs-units": "^0.2.12",
     "dasherize": "^2.0.0",
+    "folktale-validations": "^2.11.0",
+    "jest-cli": "^22.4.3",
     "ramda": "^0.25.0",
-    "ramda-adjunct": "^2.1.0",
+    "ramda-adjunct": "^2.6.0",
     "react": "^16.1.0",
-    "styled-components": "^2.2.3"
+    "styled-components": "^2.2.3",
+    "stylelint": "^9.1.3"
   }
 }

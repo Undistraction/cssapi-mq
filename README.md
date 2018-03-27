@@ -1,16 +1,18 @@
 A Toolkit For Using Media Queries With Styled Components
 
-![Styled MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
+![CSSAPI-MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
 [![NPM Version](https://img.shields.io/npm/v/styled-mq.svg)](https://www.npmjs.com/package/styled-mq)
 [![codecov](https://img.shields.io/codecov/c/github/Undistraction/styled-mq.svg)](https://codecov.io/gh/Undistraction/styled-mq)
 [![Build Status](https://img.shields.io/travis/Undistraction/styled-mq.svg)](https://travis-ci.org/Undistraction/styled-mq)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)](./LICENSE.md)
 
-# Styled MQ
+# CSSAPI MQ
+
+Note: This library used to be called Styled MQ, however it is now part of [CSSAPI](https://github.com/Undistraction/cssapi). The API hasn't changed, though the package is now named `cssapi-mq`.
 
 ## What?
 
-Styled MQ is a toolkit for dealing with media queries when using Styled
+CSSAPI-MQ is a toolkit for dealing with media queries when using Styled
 Components. It offers a broad API for dealing with all widely supported media
 query features and can easily be used as is, or as the building blocks for your
 own more focused api.
@@ -59,18 +61,18 @@ explain what you need.
 ## Quick Start
 
 ```js
-import styled from 'styled-components';
-import styledMQ from 'styledMQ';
+import styled from 'styled-components'
+import mqAPI from 'cssapi-mq'
 
 // Define your mq object
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
     large: 1200,
     xLarge: 1400,
   },
-});
+})
 
 // Access the mq object
 
@@ -78,13 +80,13 @@ const component = styled.div`
   ${mq.query(mq.betweenWidth('small', 'large'))`
     background-color: GhostWhite;
   `};
-`;
+`
 
 const component = styled.div`
   ${mq.aboveWidth('large')`
     background-color: WhiteSmoke;
   `};
-`;
+`
 ```
 
 Or you can play with a Codepen [here](https://codepen.io/Pedr/pen/MOmpxr)
@@ -115,7 +117,7 @@ defined breakpoints for `width`, `height` and `resolution`, your breakpoint map
 would look like this:
 
 ```js
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
@@ -129,7 +131,7 @@ const mq = styledMQ.configure({
   resolution: {
     high: 192,
   },
-});
+})
 ```
 
 ### config object
@@ -138,7 +140,7 @@ The second argument is a config object that changes the behaviour of the object
 that is retured.
 
 ```js
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
@@ -150,7 +152,7 @@ const mq = styledMQ.configure({
     baseFontSize: 10,
     defaultMediaType: 'all',
     shouldSeparateQueries: false,
-    onlyNamedBreakpoints: false,
+    useNamedBreakpoints: false,
   });
 ```
 
@@ -162,20 +164,20 @@ const mq = styledMQ.configure({
   root-most document element. It is strongly advised you use ems.
 * **defaultMediaType all|print|screen|speech** _(defaults to 'screen')_ When
   using `not` in media queries, if a media type is missing the query will not be
-  evaluated. Styled MQ will automatically add a media type to `not` queries if
+  evaluated. CSSAPI-MQ will automatically add a media type to `not` queries if
   you don't define one yourself. This value will also decide the value what will
   be rendered if you call `mediaType()` with no argument.
 * **shouldSeparateQueries true|false** _(defaults to 'true')_ Using media
   queries that overlap is potentially problematic - if one media query uses an
   upper limit of 16em and another uses a lower limit of 16em, there is a
   potential conflict there which can be the source of bugs. If
-  `shouldSeparateQueries` is set to `true`, Styled MQ will remove the smallest
+  `shouldSeparateQueries` is set to `true`, CSSAPI-MQ will remove the smallest
   value possible from the upper breakpoints to avoid this collision. In the case
   of rems or ems this will be 0.01 less than the upper value. In the case of
   pixels it will be 1px. For this reason alone it is worth using ems. Note: this
   will only effect breakpoints defined in maps, not arbitrary values you pass in
-  if `onlyNamedBreakpoints` is set ot `false`.
-* **onlyNamedBreakpoints true|false** _(defaults to 'false')_ By default
+  if `useNamedBreakpoints` is set ot `false`.
+* **useNamedBreakpoints true|false** _(defaults to 'true')_ By default
   StyledMQ will only allow you to pass in defined breakpoint names. If you try
   and pass in anything that isn't a key on the relevant breakpoint set you will
   receive an error. By setting this value to `false` you remove this validation
@@ -183,13 +185,13 @@ const mq = styledMQ.configure({
 
 ### Validation
 
-Styled MQ takes a very strict approach to validations, whilst giving you as much
+CSSAPI-MQ takes a very strict approach to validations, whilst giving you as much
 freedom as possible in defining values. If you pass in an invalid value at any
 point it will throw an error and explain what the problem was. Given that you
 will be defining your media queries at author time, not runtime, this is of
 great benefit in allowing you to catch any issues immediatley. This hold true
 for the values you supply in your breakpoint map, or any values you supply to
-the methods exposed by Styled MQ> Principle causes of errors are:
+the methods exposed by CSSAPI-MQ> Principle causes of errors are:
 
 * You use an invalid value in a ranged query.
 * You use an invalid unit in a ranged query.
@@ -219,14 +221,14 @@ mq.query(mq.mediaType('all'), mq.aboveWidth('medium'), mq.orientation('horizonta
 You can define the media type of a query or part of a query using `mediaType`:
 
 ```javascript
-mq.mediaType('print');
+mq.mediaType('print')
 ```
 
 If it is called with no arguments, the configuration for `defaultMediaType` will
 be used:
 
 ```javascript
-mq.mediaType();
+mq.mediaType()
 ```
 
 #### Linear
@@ -243,15 +245,15 @@ mq.mediaType();
 Linear features are accessible directly using the name of the feature:
 
 ```javascript
-mq.orientation('landscape');
+mq.orientation('landscape')
 ```
 
 Both `grid` and `update` support being called with no argument. If any other
 linear query is called without an argument it will throw.
 
 ```javascript
-mq.grid();
-mq.update();
+mq.grid()
+mq.update()
 ```
 
 #### Ranged
@@ -269,58 +271,58 @@ features.
 
 ##### `aboveWidth()` (aliased to `minWidth()`)
 
-![Styled MQ Logo](docs/images/aboveWidth.png?raw=true)
+![aboveWidth() diagram](docs/images/aboveWidth.png?raw=true)
 
 Defines a `min-width` for the supplied breakpoint or value.
 
 ```javascript
-mq.aboveWidth('medium');
-mq.minWidth('medium');
+mq.aboveWidth('medium')
+mq.minWidth('medium')
 ```
 
 ##### `belowWidth()` (aliased to `maxWidth()`)
 
-![Styled MQ Logo](docs/images/belowWidth.png?raw=true)
+![belowWidth() diagram](docs/images/belowWidth.png?raw=true)
 
 Defines a `min-width` for the supplied breakpoint or value.
 
 ```javascript
-mq.belowWidth('medium');
-mq.maxWidth('medium');
+mq.belowWidth('medium')
+mq.maxWidth('medium')
 ```
 
 #### `atWidth()` (aliased to `width()`)
 
-![Styled MQ Logo](docs/images/atWidth.png?raw=true)
+![atWidth() diagram](docs/images/atWidth.png?raw=true)
 
 Defines an exact width query for the supplied breakpoint or value.
 
 ```javascript
-mq.atWidth('medium');
+mq.atWidth('medium')
 ```
 
 #### `atBreakpointWidth()`
 
-![Styled MQ Logo](docs/images/atBreakpointWidth.png?raw=true)
+![atBreakpointWidth() diagram](docs/images/atBreakpointWidth.png?raw=true)
 
 Defines a range of values running from the supplied breakpoint or value to the
 next highest breakpoint, or without an upper limit if no higher value breakpoint
 exists.
 
 ```javascript
-mq.atBreakpointWidth('medium');
+mq.atBreakpointWidth('medium')
 ```
 
 #### `betweenWidths()`
 
-![Styled MQ Logo](docs/images/betweenWidths.png?raw=true)
+![betweenWidths() diagram](docs/images/betweenWidths.png?raw=true)
 
 Defines a range spanning the the values between the two supplied breakpoints or
 values. The order is not important with the lowest value always used for the
 lower end of the range.
 
 ```javascript
-mq.betweenWidth('medium', 'xLarge');
+mq.betweenWidth('medium', 'xLarge')
 ```
 
 ### Building A Query
@@ -335,7 +337,7 @@ Any items wrapped in an array are anded together, meaning all values in the
 anded group must be true for the query to succeed for example:
 
 ```javascript
-mq.query([mq.orientation('horizontal'), mq.aboveWidth('small')])``;
+mq.query([mq.orientation('horizontal'), mq.aboveWidth('small')])``
 ```
 
 Query
@@ -351,7 +353,7 @@ Each argument passed into `query()` is treated as an alternative, meaning any of
 the groups that have been ored together must be true for the query to succeed:
 
 ```javascript
-mq.query(mq.orientation('horizontal'), mq.aboveWidth('small'))``;
+mq.query(mq.orientation('horizontal'), mq.aboveWidth('small'))``
 ```
 
 Query
@@ -364,7 +366,7 @@ Query
 #### Not
 
 Using `not()` allows you to negate a feature or set of features. Note that
-negated values must have a media type, and Styled MQ will add a media type if
+negated values must have a media type, and CSSAPI-MQ will add a media type if
 you don't do so yourself, using the value of the 'defaultMediaType`
 configuration.
 
@@ -382,7 +384,7 @@ Query
 Or
 
 ```javascript
-mq.query(mq.orientation('horizontal'), mq.aboveWidth('small'))``;
+mq.query(mq.orientation('horizontal'), mq.aboveWidth('small'))``
 ```
 
 Query
@@ -394,7 +396,7 @@ Query
 
 ### Tweakpoints
 
-Styled MQ also supports the concept of tweakpoints - breakpoints that are
+CSSAPI-MQ also supports the concept of tweakpoints - breakpoints that are
 specific to a component or small subset of components. In this case you can use
 the `tweak()` method to pass in additional maps of breakpoints. This will give
 you back a new tweaked `mq` obejct with all the same methods available, only now
@@ -412,32 +414,32 @@ You can easily achieve what you want. If you are only intending to use a few
 clearly defined media queries in your app, just use StyledMQ to define them and
 store them as needed. For example lets say all you want is a small, medium and
 large breakpoint for your app width, all with the mediaType of screen. Just
-configure Styled MQ and store the query functions that it generated.
+configure CSSAPI-MQ and store the query functions that it generated.
 
 ```javascript
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
     large: 1200,
   },
-});
+})
 
-const aboveSmallQuery = mq.query([mq.mediaType(), mq.aboveWidth('small')]);
-const aboveMediumQuery = mq.query([mq.mediaType(), mq.aboveWidth('medium')]);
-const abovelargeQuery = mq.query([mq.mediaType(), mq.aboveWidth('large')]);
+const aboveSmallQuery = mq.query([mq.mediaType(), mq.aboveWidth('small')])
+const aboveMediumQuery = mq.query([mq.mediaType(), mq.aboveWidth('medium')])
+const abovelargeQuery = mq.query([mq.mediaType(), mq.aboveWidth('large')])
 
 const queries = {
   aboveSmallQuery,
   aboveMediumQuery,
   aboveLargeQuery,
-};
+}
 
 const component = styled.div`
   ${queries.aboveSmallQuery`
     background-color: GhostWhite;
   `};
-`;
+`
 ```
 
 ### I don't like all this namespacing in the query definitions.
@@ -445,9 +447,9 @@ const component = styled.div`
 You can just expand the `mq` object to a set of consts:
 
 ```javascript
-const { query, mediaType, aboveWidth } = mq;
+const { query, mediaType, aboveWidth } = mq
 
-const aboveSmallQuery = query([mediaType(), aboveWidth('small')]);
+const aboveSmallQuery = query([mediaType(), aboveWidth('small')])
 ```
 
 ### How should I use this on a real project.

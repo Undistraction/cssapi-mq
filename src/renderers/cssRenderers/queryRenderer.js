@@ -1,112 +1,69 @@
 import {
-  __,
   reject,
-  concat,
   compose,
   isNil,
-  join,
   when,
   map,
-  forEach,
-  either,
   any,
-  all,
-  both,
-  has,
   contains,
   values,
+  curry,
+  prop,
+  flip,
+  prepend,
+  cond,
+  T,
   unless,
-  isEmpty,
-} from 'ramda';
-import { isNull, isString, isArray, isObj } from 'ramda-adjunct';
+  of,
+  identity,
+} from 'ramda'
 
-import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const';
+import { isArray } from 'ramda-adjunct'
+
+import { MEDIA_PREFIX, MEDIA_TYPES } from '../../const'
+import { joinWithAnd } from '../../utils/query'
 import {
-  composeError,
-  queryNoNestedArraysErrorMessage,
-  queryElementIsValidTypeErrorMessage,
-  queryChildElementIsValidTypeErrorMessage,
-  notNoElementsErrorMessage,
-} from '../../errors';
-import { neither } from '../../utils/logic';
+  joinWithColon,
+  joinWithCommaSpace,
+  prefixWithNot,
+  joinWithSpace,
+  wrapWithSoftBrackets,
+  joinWithComma,
+} from '../../utils/string'
+import { isNegationObject } from '../../utils/predicates'
 
-const nameValue = compose(join(': '), reject(isNil));
-const isArrayOrString = either(isArray, isString);
-const isNegationObject = both(isObj, has('not'));
+const nameValue = compose(joinWithColon, reject(isNil))
+const expandNegationObject = prop(`not`)
+const containsMediaType = flip(contains)(values(MEDIA_TYPES))
+const arrayContainsMediaType = any(containsMediaType)
 
-export const joinAnd = join(' and ');
-const joinComma = join(', ');
-const prefixWithNot = concat('not ');
-const containsArrays = any(isArray);
-const expandNegationObject = negationObject => negationObject.not;
-const containsMediaType = contains(__, values(MEDIA_TYPES));
-const arrayContainsMediaType = any(containsMediaType);
+const renderElements = map(compose(prefixWithNot, when(isArray, joinWithAnd)))
 
-export const ensureMediaType = (defaultMediaType, ...elements) =>
-  map(element => {
-    if (isArray(element)) {
-      // Only add prefix if no media type is declared
-      if (arrayContainsMediaType(element)) {
-        return element;
-      }
-      return [defaultMediaType, ...element];
-    }
-    if (containsMediaType(element)) {
-      return element;
-    }
-    return joinAnd([defaultMediaType, element]);
-  })(elements);
+const ensureMediaType = (defaultMediaType, ...elements) =>
+  map(
+    cond([
+      [isArray, unless(arrayContainsMediaType, prepend(defaultMediaType))],
+      [containsMediaType, identity],
+      [T, compose(joinWithAnd, prepend(defaultMediaType))],
+    ])
+  )(elements)
 
-const queryElementIsValidType = element => {
-  when(
-    either(isNull, neither(isArrayOrString, isNegationObject)),
-    composeError(queryElementIsValidTypeErrorMessage)
-  )(element);
-};
+export const renderFeature = curry((name, value) =>
+  compose(wrapWithSoftBrackets, nameValue)([name, value])
+)
 
-const queryElementChildrenValidType = element => {
-  when(
-    isArray,
-    unless(
-      all(child => either(isArrayOrString, isNegationObject)(child)),
-      composeError(queryChildElementIsValidTypeErrorMessage)
-    )
-  )(element);
-};
+export const renderQueryDefinition = (...elements) =>
+  compose(
+    joinWithSpace,
+    prepend(MEDIA_PREFIX),
+    of,
+    joinWithComma,
+    map(when(isArray, joinWithAnd)),
+    map(when(isNegationObject, expandNegationObject))
+  )(elements)
 
-const elemementHasNoNestedArrays = element => {
-  when(
-    isArray,
-    when(containsArrays, composeError(queryNoNestedArraysErrorMessage))
-  )(element);
-};
-
-const validateDefinition = (...elements) => {
-  forEach(element => {
-    queryElementIsValidType(element);
-    queryElementChildrenValidType(element);
-    elemementHasNoNestedArrays(element);
-  })(elements);
-};
-
-export const renderFeature = (name, value) =>
-  join('', ['(', nameValue([name, value]), ')']);
-
-export const renderQueryDefinition = (...elements) => {
-  validateDefinition(...elements);
-  elements = map(when(isNegationObject, expandNegationObject))(elements);
-  elements = map(when(isArray, joinAnd))(elements);
-  return join(' ', [MEDIA_PREFIX, elements]);
-};
-
-export const renderNotQueryDefinition = (defaultMediaType, ...elements) => {
-  when(isEmpty, composeError(notNoElementsErrorMessage))(elements);
-  validateDefinition(...elements);
-
-  elements = ensureMediaType(defaultMediaType, ...elements);
-
-  return compose(
-    joinComma,
-    map(compose(prefixWithNot, when(isArray, joinAnd)))
-  )(elements);
-};
+export const renderNotQueryDefinition = defaultMediaType => (...elements) =>
+  compose(joinWithCommaSpace, renderElements, ensureMediaType)(
+    defaultMediaType,
+    ...elements
+  )

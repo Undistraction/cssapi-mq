@@ -8,26 +8,42 @@ import {
   findIndex,
   propEq,
   nth,
-} from 'ramda';
+  isNil,
+  isEmpty,
+} from 'ramda'
 
-// -----------------------------------------------------------------------------
-// Internal
-// -----------------------------------------------------------------------------
+import { throwError, missingBreakpointErrorMessage } from '../errors'
 
-// -----------------------------------------------------------------------------
-// Exports
-// -----------------------------------------------------------------------------
+import { throwMissingBreakpointSetErrorMessage } from '../errors2'
 
-export const propEqName = propEq('name');
-const propName = prop('name');
-const zipToNameAndValue = zipObj(['name', 'value']);
-// TODO: This should be internal
+const NAME = `name`
+const VALUE = `value`
+
+export const propEqName = propEq(NAME)
+export const propName = prop(NAME)
+
+const zipToNameAndValue = zipObj([NAME, VALUE])
+
 const findBreakpointIndex = (breakpoint, breakpointsArray) =>
-  findIndex(propEqName(breakpoint))(breakpointsArray);
+  findIndex(propEqName(breakpoint))(breakpointsArray)
 
-export const toBreakpointArray = compose(map(zipToNameAndValue), toPairs);
+export const toBreakpointArray = compose(map(zipToNameAndValue), toPairs)
 
-export const getUpperLimit = (breakpointsArray, breakpoint) => {
-  const index = findBreakpointIndex(breakpoint, breakpointsArray);
-  return compose(propName, nth(inc(index)))(breakpointsArray);
-};
+export const getUpperLimit = breakpointsArray => breakpoint => {
+  const index = findBreakpointIndex(breakpoint, breakpointsArray)
+  return compose(propName, nth(inc(index)))(breakpointsArray)
+}
+
+export const getBreakpointNamed = (
+  featureName,
+  methodName,
+  breakpointSet
+) => breakpointName => {
+  if (isEmpty(breakpointSet)) throwMissingBreakpointSetErrorMessage(featureName)
+  const value = breakpointSet[breakpointName]
+  if (isNil(value))
+    throwError(
+      missingBreakpointErrorMessage(breakpointName, featureName, breakpointSet)
+    )
+  return value
+}

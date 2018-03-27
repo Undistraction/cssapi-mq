@@ -1,13 +1,14 @@
-import { unless, both, always, partial } from 'ramda';
+import { compose, prop } from 'ramda'
+import { matchWithSuccessOrFailure, toArgsObj } from 'folktale-validations'
+import { renderFeature } from '../renderers/cssRenderers/queryRenderer'
+import { throwAPILinearFeatureError } from '../errors2'
+import validatorForLinearFeature from '../validations/validatorForLinearFeature'
 
-import { isUndefined } from 'ramda-adjunct';
-import { validateFeature } from '../validations';
-import { renderFeature } from '../renderers/cssRenderers/queryRenderer';
-
-export default (name, possibleValues, allowNoArgument = false) => value => {
-  unless(
-    both(isUndefined, always(allowNoArgument)),
-    partial(validateFeature, [name, possibleValues])
-  )(value);
-  return renderFeature(name, value);
-};
+export default (name, possibleValues, allowNoArgument = false) => value =>
+  compose(
+    matchWithSuccessOrFailure(
+      compose(renderFeature(name), prop(`value`), prop(`value`)),
+      compose(throwAPILinearFeatureError(name), prop(`value`))
+    ),
+    validatorForLinearFeature(possibleValues, !allowNoArgument)
+  )(toArgsObj({ value }))

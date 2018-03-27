@@ -1,127 +1,97 @@
-import { __, find, propEq, map, prop, compose } from 'ramda';
-import camelcase from 'camelcase';
-import dasherize from 'dasherize';
-
-import dimensionsValueRenderer from './renderers/valueRenderers/dimensionsValueRenderer';
-import resolutionValueRenderer from './renderers/valueRenderers/resolutionValueRenderer';
-import aspectRatioValueRenderer from './renderers/valueRenderers/aspectRatioValueRenderer';
-import colorValueRenderer from './renderers/valueRenderers/colorValueRenderer';
-import monochromeValueRenderer from './renderers/valueRenderers/monochromeValueRenderer';
-
-import dimensionValidator from './validators/features/dimensionValidator';
-import resolutionValidator from './validators/features/resolutionValidator';
-import aspectRatioValidator from './validators/features/aspectRatioValidator';
-import colorValidator from './validators/features/colorValidator';
-import monochromeValidator from './validators/features/monochromeValidator';
-
-export const ORIENTATION = Object.freeze(['portrait', 'landscape']);
-export const SCAN = Object.freeze(['interlace', 'progressive']);
-export const GRID = Object.freeze([0, 1]);
-export const UPDATE = Object.freeze(['none', 'slow', 'fast']);
-export const OVERFLOW_BLOCK = Object.freeze([
-  'none',
-  'scroll',
-  'optional-paged',
-]);
-export const OVERFLOW_INLINE = Object.freeze(['none', 'scroll']);
-export const COLOR_GAMUT = Object.freeze(['srgb', 'p3', 'rec2020']);
-export const DISPLAY_MODE = Object.freeze([
-  'fullscreen',
-  'standalone',
-  'minimal-ui',
-  'browser',
-]);
+import validateIsNonNegativeValidInteger from './validations/validators/validateIsNonNegativeValidInteger'
+import validateIsDimension from './validations//validators/validateIsDimension'
+import validateIsResolution from './validations/validators/validateIsResolution'
+import validateIsAspectRatio from './validations/validators/validateIsAspectRatio'
+import dimensionTransformer from './validations/transformers/dimensionTransformer'
+import resolutionTransformer from './validations/transformers/resolutionTransformer'
+import identityTransformer from './validations/transformers/identityTransformer'
+import { LINEAR_FEATURE_NAMES, RANGED_FEATURE_NAMES } from './const'
 
 export const LINEAR_FEATURES = [
   {
-    name: 'orientation',
-    validValues: ORIENTATION,
+    name: LINEAR_FEATURE_NAMES.ORIENTATION,
+    validValues: Object.freeze([`portrait`, `landscape`]),
   },
   {
-    name: 'scan',
-    validValues: SCAN,
+    name: LINEAR_FEATURE_NAMES.SCAN,
+    validValues: Object.freeze([`interlace`, `progressive`]),
   },
   {
-    name: 'grid',
-    validValues: GRID,
+    name: LINEAR_FEATURE_NAMES.GRID,
+    validValues: Object.freeze([0, 1]),
     allowNoArgument: true,
   },
   {
-    name: 'update',
-    validValues: UPDATE,
+    name: LINEAR_FEATURE_NAMES.UPDATE,
+    validValues: Object.freeze([`none`, `slow`, `fast`]),
     allowNoArgument: true,
   },
   {
-    name: 'overflow-block',
-    validValues: OVERFLOW_BLOCK,
+    name: LINEAR_FEATURE_NAMES.OVERFLOW_BLOCK,
+    validValues: Object.freeze([`none`, `scroll`, `optional-paged`]),
   },
   {
-    name: 'overflow-inline',
-    validValues: OVERFLOW_INLINE,
+    name: LINEAR_FEATURE_NAMES.OVERFLOW_INLINE,
+    validValues: Object.freeze([`none`, `scroll`]),
   },
   {
-    name: 'color-gamut',
-    validValues: COLOR_GAMUT,
+    name: LINEAR_FEATURE_NAMES.COLOR_GAMUT,
+    validValues: Object.freeze([`srgb`, `p3`, `rec2020`]),
   },
   {
-    name: 'display-mode',
-    validValues: DISPLAY_MODE,
+    name: LINEAR_FEATURE_NAMES.DISPLAY_MODE,
+    validValues: Object.freeze([
+      `fullscreen`,
+      `standalone`,
+      `minimal-ui`,
+      `browser`,
+    ]),
   },
-];
+]
 
 export const RANGED_FEATURES = [
   {
-    name: 'width',
-    valueRenderer: dimensionsValueRenderer,
-    validator: dimensionValidator,
+    name: RANGED_FEATURE_NAMES.WIDTH,
+    validator: validateIsDimension,
+    transformer: dimensionTransformer,
   },
   {
-    name: 'height',
-    valueRenderer: dimensionsValueRenderer,
-    validator: dimensionValidator,
+    name: RANGED_FEATURE_NAMES.HEIGHT,
+    validator: validateIsDimension,
+    transformer: dimensionTransformer,
   },
   {
-    name: 'resolution',
-    valueRenderer: resolutionValueRenderer,
-    validator: resolutionValidator,
+    name: RANGED_FEATURE_NAMES.RESOLUTION,
+    validator: validateIsResolution,
+    transformer: resolutionTransformer,
   },
   {
-    name: 'aspect-ratio',
-    valueRenderer: aspectRatioValueRenderer,
-    validator: aspectRatioValidator,
+    name: RANGED_FEATURE_NAMES.ASPECT_RATIO,
+    validator: validateIsAspectRatio,
+    transformer: identityTransformer,
   },
   {
-    name: 'color',
-    valueRenderer: colorValueRenderer,
-    validator: colorValidator,
-    config: {
+    name: RANGED_FEATURE_NAMES.COLOR,
+    validator: validateIsNonNegativeValidInteger,
+    transformer: identityTransformer,
+    featureConfig: {
       allowNoArgument: true,
     },
   },
   {
-    name: 'color-index',
-    valueRenderer: colorValueRenderer,
-    validator: colorValidator,
-    config: {
+    name: RANGED_FEATURE_NAMES.COLOR_INDEX,
+    validator: validateIsNonNegativeValidInteger,
+    transformer: identityTransformer,
+    featureConfig: {
       allowNoArgument: true,
     },
   },
   {
-    name: 'monochrome',
-    valueRenderer: monochromeValueRenderer,
-    validator: monochromeValidator,
-    config: {
+    name: RANGED_FEATURE_NAMES.MONOCHROME,
+    validator: validateIsNonNegativeValidInteger,
+    transformer: identityTransformer,
+    featureConfig: {
       allowNoArgument: true,
     },
   },
-];
-
-export const rangedFeatureNames = map(compose(camelcase, prop('name')))(
-  RANGED_FEATURES
-);
-
-export const rangedFeatureNamed = compose(
-  find(__, RANGED_FEATURES),
-  propEq('name'),
-  dasherize
-);
+]

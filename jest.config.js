@@ -1,15 +1,19 @@
 module.exports = {
+  modulePaths: [`<rootDir>/src/__tests__`],
   bail: true,
-  verbose: true,
-  collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.js'],
-  coveragePathIgnorePatterns: ['src/index.js'],
-  coverageReporters: ['json'],
+  verbose: false,
+  collectCoverage: false,
+  collectCoverageFrom: [`src/**/*.js`],
+  coveragePathIgnorePatterns: [`src/index.js`],
+  coverageReporters: [`lcov`, `html`],
   setupFiles: [],
-  modulePathIgnorePatterns: [
-    'helpers/',
-    'sharedTests/',
-    'data.js',
-    'featureValues.js',
-  ],
-};
+  modulePathIgnorePatterns: [`testHelpers/`, `sharedTests/`],
+  setupTestFrameworkScriptFile: `<rootDir>/src/__tests__/testHelpers/matchers/customMatchers.js`,
+  unmockedModulePathPatterns: [`jasmine-expect`],
+  // reporters: [
+  //   [
+  //     `jest-slow-test-reporter`,
+  //     { numTests: 8, warnOnSlowerThan: 300, color: true },
+  //   ],
+  // ],
+}
