@@ -1,16 +1,18 @@
 A Toolkit For Using Media Queries With Styled Components
 
-![Styled MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
+![CSSAPI-MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
 [![NPM Version](https://img.shields.io/npm/v/styled-mq.svg)](https://www.npmjs.com/package/styled-mq)
 [![codecov](https://img.shields.io/codecov/c/github/Undistraction/styled-mq.svg)](https://codecov.io/gh/Undistraction/styled-mq)
 [![Build Status](https://img.shields.io/travis/Undistraction/styled-mq.svg)](https://travis-ci.org/Undistraction/styled-mq)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)](./LICENSE.md)
 
-# Styled MQ
+# CSSAPI MQ
+
+Note: This library used to be called Styled MQ, however it is now part of [CSSAPI](https://github.com/Undistraction/cssapi). The API hasn't changed, though the package is now named `cssapi-mq`.
 
 ## What?
 
-Styled MQ is a toolkit for dealing with media queries when using Styled
+CSSAPI-MQ is a toolkit for dealing with media queries when using Styled
 Components. It offers a broad API for dealing with all widely supported media
 query features and can easily be used as is, or as the building blocks for your
 own more focused api.
@@ -60,10 +62,10 @@ explain what you need.
 
 ```js
 import styled from 'styled-components'
-import styledMQ from 'styledMQ'
+import mqAPI from 'cssapi-mq'
 
 // Define your mq object
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
@@ -115,7 +117,7 @@ defined breakpoints for `width`, `height` and `resolution`, your breakpoint map
 would look like this:
 
 ```js
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
@@ -138,7 +140,7 @@ The second argument is a config object that changes the behaviour of the object
 that is retured.
 
 ```js
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
@@ -162,14 +164,14 @@ const mq = styledMQ.configure({
   root-most document element. It is strongly advised you use ems.
 * **defaultMediaType all|print|screen|speech** _(defaults to 'screen')_ When
   using `not` in media queries, if a media type is missing the query will not be
-  evaluated. Styled MQ will automatically add a media type to `not` queries if
+  evaluated. CSSAPI-MQ will automatically add a media type to `not` queries if
   you don't define one yourself. This value will also decide the value what will
   be rendered if you call `mediaType()` with no argument.
 * **shouldSeparateQueries true|false** _(defaults to 'true')_ Using media
   queries that overlap is potentially problematic - if one media query uses an
   upper limit of 16em and another uses a lower limit of 16em, there is a
   potential conflict there which can be the source of bugs. If
-  `shouldSeparateQueries` is set to `true`, Styled MQ will remove the smallest
+  `shouldSeparateQueries` is set to `true`, CSSAPI-MQ will remove the smallest
   value possible from the upper breakpoints to avoid this collision. In the case
   of rems or ems this will be 0.01 less than the upper value. In the case of
   pixels it will be 1px. For this reason alone it is worth using ems. Note: this
@@ -183,13 +185,13 @@ const mq = styledMQ.configure({
 
 ### Validation
 
-Styled MQ takes a very strict approach to validations, whilst giving you as much
+CSSAPI-MQ takes a very strict approach to validations, whilst giving you as much
 freedom as possible in defining values. If you pass in an invalid value at any
 point it will throw an error and explain what the problem was. Given that you
 will be defining your media queries at author time, not runtime, this is of
 great benefit in allowing you to catch any issues immediatley. This hold true
 for the values you supply in your breakpoint map, or any values you supply to
-the methods exposed by Styled MQ> Principle causes of errors are:
+the methods exposed by CSSAPI-MQ> Principle causes of errors are:
 
 * You use an invalid value in a ranged query.
 * You use an invalid unit in a ranged query.
@@ -269,7 +271,7 @@ features.
 
 ##### `aboveWidth()` (aliased to `minWidth()`)
 
-![Styled MQ Logo](docs/images/aboveWidth.png?raw=true)
+![aboveWidth() diagram](docs/images/aboveWidth.png?raw=true)
 
 Defines a `min-width` for the supplied breakpoint or value.
 
@@ -280,7 +282,7 @@ mq.minWidth('medium')
 
 ##### `belowWidth()` (aliased to `maxWidth()`)
 
-![Styled MQ Logo](docs/images/belowWidth.png?raw=true)
+![belowWidth() diagram](docs/images/belowWidth.png?raw=true)
 
 Defines a `min-width` for the supplied breakpoint or value.
 
@@ -291,7 +293,7 @@ mq.maxWidth('medium')
 
 #### `atWidth()` (aliased to `width()`)
 
-![Styled MQ Logo](docs/images/atWidth.png?raw=true)
+![atWidth() diagram](docs/images/atWidth.png?raw=true)
 
 Defines an exact width query for the supplied breakpoint or value.
 
@@ -301,7 +303,7 @@ mq.atWidth('medium')
 
 #### `atBreakpointWidth()`
 
-![Styled MQ Logo](docs/images/atBreakpointWidth.png?raw=true)
+![atBreakpointWidth() diagram](docs/images/atBreakpointWidth.png?raw=true)
 
 Defines a range of values running from the supplied breakpoint or value to the
 next highest breakpoint, or without an upper limit if no higher value breakpoint
@@ -313,7 +315,7 @@ mq.atBreakpointWidth('medium')
 
 #### `betweenWidths()`
 
-![Styled MQ Logo](docs/images/betweenWidths.png?raw=true)
+![betweenWidths() diagram](docs/images/betweenWidths.png?raw=true)
 
 Defines a range spanning the the values between the two supplied breakpoints or
 values. The order is not important with the lowest value always used for the
@@ -364,7 +366,7 @@ Query
 #### Not
 
 Using `not()` allows you to negate a feature or set of features. Note that
-negated values must have a media type, and Styled MQ will add a media type if
+negated values must have a media type, and CSSAPI-MQ will add a media type if
 you don't do so yourself, using the value of the 'defaultMediaType`
 configuration.
 
@@ -394,7 +396,7 @@ Query
 
 ### Tweakpoints
 
-Styled MQ also supports the concept of tweakpoints - breakpoints that are
+CSSAPI-MQ also supports the concept of tweakpoints - breakpoints that are
 specific to a component or small subset of components. In this case you can use
 the `tweak()` method to pass in additional maps of breakpoints. This will give
 you back a new tweaked `mq` obejct with all the same methods available, only now
@@ -412,10 +414,10 @@ You can easily achieve what you want. If you are only intending to use a few
 clearly defined media queries in your app, just use StyledMQ to define them and
 store them as needed. For example lets say all you want is a small, medium and
 large breakpoint for your app width, all with the mediaType of screen. Just
-configure Styled MQ and store the query functions that it generated.
+configure CSSAPI-MQ and store the query functions that it generated.
 
 ```javascript
-const mq = styledMQ.configure({
+const mq = mqAPI.configure({
   width: {
     small: 400,
     medium: 900,
