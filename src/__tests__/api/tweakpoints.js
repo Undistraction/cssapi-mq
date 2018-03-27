@@ -1,9 +1,9 @@
+import { map } from 'ramda'
 import cssSerialiser from '../testHelpers/cssSerialiser'
 import {
   mqWithValidBreakpointsForRange,
   mqWithTweakedBreakpointsForRange,
 } from '../testHelpers/data'
-import { map } from 'ramda'
 
 expect.addSnapshotSerializer(cssSerialiser)
 
