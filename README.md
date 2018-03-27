@@ -1,4 +1,4 @@
-A Toolkit For Using Media Queries With Styled Components
+A Toolkit For Consistent Management of Media Queries With Styled Components
 
 [![NPM Version](https://img.shields.io/npm/v/cssapi-mq.svg)](https://www.npmjs.com/package/cssapi-mq)
 [![codecov](https://img.shields.io/codecov/c/github/Undistraction/cssapi-mq.svg)](https://codecov.io/gh/Undistraction/cssapi-mq)
@@ -45,11 +45,6 @@ It offers the following features:
   you need or keep things very flexible.
 * Create multiple sets of configuration for different places within the same
   application.
-
-## How big?
-
-[According to Bundle Phobia](https://bundlephobia.com/result?p=cssapi-mq@latest)
-it comes in at 38.7KB GZipped.
 
 ## But I need …
 
