@@ -1,12 +1,15 @@
 {
   "name": "cssapi-mq",
-  "version": "0.3.11",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Undistraction/cssapi-mq.git"
   },
-  "files": ["src", "lib"],
+  "files": [
+    "src",
+    "lib"
+  ],
   "keywords": [
     "styled-components",
     "media-queries",
