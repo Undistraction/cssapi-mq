@@ -54,7 +54,7 @@ explain what you need.
 
 ## Quick Start
 
-```js
+```javascript
 import styled from 'styled-components'
 import mqAPI from 'cssapi-mq'
 
@@ -110,7 +110,7 @@ features, with a separate breakpoint set for each feature. If you wanted to
 defined breakpoints for `width`, `height` and `resolution`, your breakpoint map
 would look like this:
 
-```js
+```javascript
 const mq = mqAPI.configure({
   width: {
     small: 400,
@@ -133,7 +133,7 @@ const mq = mqAPI.configure({
 The second argument is a config object that changes the behaviour of the object
 that is retured.
 
-```js
+```javascript
 const mq = mqAPI.configure({
   width: {
     small: 400,
