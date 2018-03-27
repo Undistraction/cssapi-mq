@@ -1,9 +1,8 @@
 A Toolkit For Using Media Queries With Styled Components
 
-![CSSAPI-MQ Logo](docs/images/styled-mq-logo.png?raw=true)<br>
-[![NPM Version](https://img.shields.io/npm/v/styled-mq.svg)](https://www.npmjs.com/package/styled-mq)
-[![codecov](https://img.shields.io/codecov/c/github/Undistraction/styled-mq.svg)](https://codecov.io/gh/Undistraction/styled-mq)
-[![Build Status](https://img.shields.io/travis/Undistraction/styled-mq.svg)](https://travis-ci.org/Undistraction/styled-mq)
+[![NPM Version](https://img.shields.io/npm/v/cssapi-mq.svg)](https://www.npmjs.com/package/cssapi-mq)
+[![codecov](https://img.shields.io/codecov/c/github/Undistraction/cssapi-mq.svg)](https://codecov.io/gh/Undistraction/cssapi-mq)
+[![Build Status](https://img.shields.io/travis/Undistraction/cssapi-mq.svg)](https://travis-ci.org/Undistraction/cssapi-mq)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)](./LICENSE.md)
 
 # CSSAPI MQ
@@ -49,7 +48,7 @@ It offers the following features:
 
 ## How big?
 
-[According to Bundle Phobia](https://bundlephobia.com/result?p=styled-mq@latest)
+[According to Bundle Phobia](https://bundlephobia.com/result?p=cssapi-mq@latest)
 it comes in at 38.7KB GZipped.
 
 ## But I need …
