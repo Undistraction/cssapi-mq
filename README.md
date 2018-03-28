@@ -7,7 +7,10 @@ A Toolkit For Consistent Management of Media Queries With Styled Components
 
 # CSSAPI MQ
 
-Note: This library used to be called Styled MQ, however it is now part of [CSSAPI](https://github.com/Undistraction/cssapi). The API hasn't changed, though the package is now named `cssapi-mq`.
+Note: This library used to be called Styled MQ, however it is now part of [CSSAPI](https://github.com/Undistraction/cssapi). There are two signifcant changes:
+
+* The package is now named `cssapi-mq`.
+* The package now returns a function instead of an object with a `configuration` function, so you now pass configuration directly to this function: `mq(config) instead of`mq.configuration(config)`
 
 ## What?
 
@@ -59,7 +62,7 @@ import styled from 'styled-components'
 import mqAPI from 'cssapi-mq'
 
 // Define your mq object
-const mq = mqAPI.configure({
+const mq = mqAPI({
   width: {
     small: 400,
     medium: 900,
@@ -111,7 +114,7 @@ defined breakpoints for `width`, `height` and `resolution`, your breakpoint map
 would look like this:
 
 ```javascript
-const mq = mqAPI.configure({
+const mq = mqAPI({
   width: {
     small: 400,
     medium: 900,
@@ -134,7 +137,7 @@ The second argument is a config object that changes the behaviour of the object
 that is retured.
 
 ```javascript
-const mq = mqAPI.configure({
+const mq = mqAPI({
   width: {
     small: 400,
     medium: 900,
@@ -411,7 +414,7 @@ large breakpoint for your app width, all with the mediaType of screen. Just
 configure CSSAPI-MQ and store the query functions that it generated.
 
 ```javascript
-const mq = mqAPI.configure({
+const mq = mqAPI({
   width: {
     small: 400,
     medium: 900,

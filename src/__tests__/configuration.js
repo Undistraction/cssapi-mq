@@ -37,8 +37,7 @@ describe(`configure()`, () => {
 
   describe(`breakpoints`, () => {
     it(`throws if invalid breakpoint set name is supplied`, () => {
-      expect(() => styledMQ.configure({ xxxx: { small: 100 } }))
-        .toThrowMultiline(`
+      expect(() => styledMQ({ xxxx: { small: 100 } })).toThrowMultiline(`
             [cssapi-mq] configure() Arguments included invalid value(s)
               – breakpoints: Object included key(s) not on whitelist: ['width', 'height', 'resolution', 'aspectRatio', 'color', 'colorIndex', 'monochrome']`)
     })
@@ -54,7 +53,7 @@ describe(`configure()`, () => {
 
     it(`throws if invalid value is supplied`, () => {
       map(value => {
-        expect(() => styledMQ.configure(value)).toThrowMultiline(`
+        expect(() => styledMQ(value)).toThrowMultiline(`
           [cssapi-mq] configure() Arguments included invalid value(s)
             – breakpoints: Wasn't Plain Object`)
       })(invalidBreakpointValues)
@@ -63,7 +62,7 @@ describe(`configure()`, () => {
     it(`doesn't throw if breakpoint set values are valid`, () => {
       map(rangedFeatureName => {
         const values = validBreakpointValuesForFeature(rangedFeatureName)
-        expect(() => styledMQ.configure(values)).not.toThrow()
+        expect(() => styledMQ(values)).not.toThrow()
       })(rangedFeatureNames)
     })
 
@@ -74,7 +73,7 @@ describe(`configure()`, () => {
       it(`throws if invalid '${featureName}' breakpoint set value is supplied`, () => {
         for (const invalidValue of invalidFeatureValues) {
           expect(() =>
-            styledMQ.configure({ [featureName]: { a: invalidValue } })
+            styledMQ({ [featureName]: { a: invalidValue } })
           ).toThrow(/^\[cssapi-mq\] configure\(\)/)
         }
       })
@@ -102,7 +101,7 @@ describe(`configure()`, () => {
       it(`throws if 'baseFontSize' is invalid`, () => {
         for (const value of invalidBaseFontSizes) {
           expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), {
+            styledMQ(validBreakpointsForRange(`width`), {
               baseFontSize: value,
             })
           ).toThrowMultiline(`
@@ -120,7 +119,7 @@ describe(`configure()`, () => {
       it(`doesn't throw if 'baseFontSize' is invalid`, () => {
         for (const value of validBaseFontSizes) {
           expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), {
+            styledMQ(validBreakpointsForRange(`width`), {
               baseFontSize: value,
             })
           ).not.toThrow()
@@ -133,7 +132,7 @@ describe(`configure()`, () => {
       it(`throws if 'defaultMediaType' is invalid`, () => {
         for (const value of invalidDefaultMediaTypes) {
           expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), {
+            styledMQ(validBreakpointsForRange(`width`), {
               defaultMediaType: value,
             })
           ).toThrowMultiline(`
@@ -147,7 +146,7 @@ describe(`configure()`, () => {
       it(`doesn't throw if 'defaultMediaType' is invalid`, () => {
         for (const value of validDefaultMediaTypes) {
           expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), {
+            styledMQ(validBreakpointsForRange(`width`), {
               defaultMediaType: value,
             })
           ).not.toThrow()
@@ -160,9 +159,8 @@ describe(`configure()`, () => {
       it(`throws if 'dimensionsUnit' is invalid`, () => {
         for (const value of invalidDimensionsUnits) {
           const config = { dimensionsUnit: value }
-          expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), config)
-          ).toThrowMultiline(`
+          expect(() => styledMQ(validBreakpointsForRange(`width`), config))
+            .toThrowMultiline(`
           [cssapi-mq] configure() Arguments included invalid value(s)
             – config: Object included invalid value(s)
               – dimensionsUnit: Value wasn't on the whitelist: ['em', 'rem', 'px']
@@ -175,7 +173,7 @@ describe(`configure()`, () => {
         for (const value of validDimensionsUnits) {
           const config = { dimensionsUnit: value }
           expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), config)
+            styledMQ(validBreakpointsForRange(`width`), config)
           ).not.toThrow()
         }
       })
@@ -191,9 +189,8 @@ describe(`configure()`, () => {
       it(`throws if 'shouldSeparateQueries' is invalid`, () => {
         for (const value of invalidShouldSeparateQueriesValues) {
           const config = { shouldSeparateQueries: value }
-          expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), config)
-          ).toThrowMultiline(`
+          expect(() => styledMQ(validBreakpointsForRange(`width`), config))
+            .toThrowMultiline(`
             [cssapi-mq] configure() Arguments included invalid value(s)
               – config: Object included invalid value(s)
                 – shouldSeparateQueries: Wasn't Boolean`)
@@ -205,7 +202,7 @@ describe(`configure()`, () => {
         for (const value of validShouldSeparateQueriesValues) {
           const config = { shouldSeparateQueries: value }
           expect(() =>
-            styledMQ.configure(validBreakpointsForRange(`width`), config)
+            styledMQ(validBreakpointsForRange(`width`), config)
           ).not.toThrow()
         }
       })

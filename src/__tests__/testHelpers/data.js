@@ -179,7 +179,7 @@ export const validBreakpointsForRange = name => {
 }
 
 export const mqWithValidBreakpointsForRange = (name, config = {}) =>
-  styledMQ.configure(validBreakpointsForRange(name), config)
+  styledMQ(validBreakpointsForRange(name), config)
 
 export const validBreakpointKeysForRange = name => {
   const camelisedName = camelcase(name)
@@ -187,8 +187,6 @@ export const validBreakpointKeysForRange = name => {
 }
 
 export const mqWithTweakedBreakpointsForRange = name =>
-  styledMQ
-    .configure(validBreakpointsForRange(name))
-    .tweak({ width: { alpha: 300 } })
+  styledMQ(validBreakpointsForRange(name)).tweak({ width: { alpha: 300 } })
 
-export const mqWithNoBreakpoints = () => styledMQ.configure()
+export const mqWithNoBreakpoints = () => styledMQ()
