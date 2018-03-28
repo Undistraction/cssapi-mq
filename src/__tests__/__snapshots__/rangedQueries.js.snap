@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rangedQueries generates ranged queries 1`] = `
+Array [
+  "
+  ",
+  "@media (min-width: 56.25em)",
+  " {
+    ",
+  ";
+  }
+",
+]
+`;

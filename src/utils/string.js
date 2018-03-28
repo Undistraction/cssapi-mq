@@ -1,4 +1,15 @@
-import { map, append, prepend, compose, join, of, concat } from 'ramda'
+import {
+  map,
+  append,
+  prepend,
+  compose,
+  join,
+  of,
+  concat,
+  over,
+  lensIndex,
+  toUpper,
+} from 'ramda'
 
 export const joinWithNoSpace = join(``)
 export const joinWithCommaSpace = join(`, `)
@@ -23,3 +34,5 @@ export const quoteAndJoinWithComma = compose(
 export const toList = compose(wrapWithSquareBrackets, quoteAndJoinWithComma)
 
 export const prefixWithNot = concat(`not `)
+
+export const titleize = compose(joinWithNoSpace, over(lensIndex(0), toUpper))

@@ -5,7 +5,6 @@ import {
   flip,
   toUpper,
   assoc,
-  tryCatch,
   when,
   unless,
   pipe,
@@ -14,7 +13,11 @@ import { isUndefined } from 'ramda-adjunct'
 import camelcase from 'camelcase'
 import { reduceObjIndexed } from '../utils/object'
 
-import { throwError, sameBreakpointsForBetweenErrorMessage } from '../errors'
+import {
+  throwError,
+  sameBreakpointsForBetweenErrorMessage,
+  wrapWithErrorHandler,
+} from '../errors'
 
 import {
   getUpperLimit,
@@ -24,7 +27,6 @@ import {
 } from '../utils/breakpoints'
 
 import { joinWithAnd } from '../utils/query'
-import { throwScopedError } from '../errors2'
 import { buildFeatureItem, validateAndTransform } from '../utils/features'
 
 export default (
@@ -109,9 +111,6 @@ export default (
   // ---------------------------------------------------------------------------
   // Exports
   // ---------------------------------------------------------------------------
-
-  const wrapWithErrorHandler = (fName, f) =>
-    tryCatch(f, ({ message }) => throwScopedError(fName, message))
 
   const functionMap = {
     [camelcase(featureName)]: feature,

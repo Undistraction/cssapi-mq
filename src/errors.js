@@ -1,5 +1,6 @@
-import { keys, compose, curry, map } from 'ramda'
+import { keys, compose, curry, map, tryCatch } from 'ramda'
 import { toCommaSeparatedList } from './utils/string'
+import { throwScopedError } from './errors2'
 
 const wrapWithQuotes = map(v => `'${v}'`)
 const keysToCommaSeparatedList = compose(
@@ -25,3 +26,6 @@ export const missingBreakpointErrorMessage = curry(
 
 export const sameBreakpointsForBetweenErrorMessage = name =>
   `You must supply two different breakpoints but both were: '${name}'.`
+
+export const wrapWithErrorHandler = (fName, f) =>
+  tryCatch(f, ({ message }) => throwScopedError(fName, message))
