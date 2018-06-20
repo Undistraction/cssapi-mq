@@ -7,7 +7,7 @@ A Toolkit For Consistent Management of Media Queries With Styled Components
 
 # CSSAPI MQ
 
-Note: This library used to be called Styled MQ, however it is now part of [CSSAPI](https://github.com/Undistraction/cssapi). There are two signifcant changes:
+Note: This library used to be called Styled MQ. 
 
 * The package is now named `cssapi-mq`.
 * The package now returns a function instead of an object with a `configuration` function, so you now pass configuration directly to this function: `mq(config) instead of`mq.configuration(config)`
