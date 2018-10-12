@@ -71,7 +71,7 @@
     "cssapi-units": "^0.3.0",
     "cssjs-units": "^0.2.12",
     "dasherize": "^2.0.0",
-    "folktale-validations": "^2.11.0",
+    "folktale-validations": "^2.12.1",
     "jest-cli": "^22.4.3",
     "ramda": "^0.25.0",
     "ramda-adjunct": "^2.6.0",
